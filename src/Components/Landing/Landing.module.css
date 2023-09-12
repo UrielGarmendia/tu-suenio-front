@@ -1,0 +1,18 @@
+.principalContainer{
+    display: grid;
+    grid-template-rows: 10fr;
+    grid-template-columns: 5fr 5fr;
+    gap: 2rem;
+}
+.containerForm{
+    display: flex;
+    flex-direction: column;
+    gap:30px;
+}
+.containerPageLogo{
+    display: flex;
+}
+.pageLogo{
+    width: 500px;
+    height: 400px;
+}
