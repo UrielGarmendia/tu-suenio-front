@@ -18,10 +18,13 @@ const Alcancias = () => {
     }, [])
     return (
         <div className={styles.principalContainer}>
-            {alcancias? alcancias.map(({id, title, price, image}) => {
-                return(
-                <Card id={id} title={title} price={price} image={image} stock={id}/>)})
-            : <h1>Cargando...</h1>}
+            <div className={styles.containerCards}>
+                {alcancias ? alcancias.map(({ id, title, price, image }) => {
+                    return (
+                        <Card id={id} title={title} price={price} image={image} stock={id} />)
+                })
+                    : <h1>Cargando...</h1>}
+            </div>
         </div>
     )
 }

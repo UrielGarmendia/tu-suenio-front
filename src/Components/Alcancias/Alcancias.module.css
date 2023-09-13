@@ -1,5 +1,11 @@
-principalContainer{
+.principalContainer{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.containerCards {
     display: grid;
-    grid-template-rows: 8fr;
-    grid-template-columns: repeat(4, 2fr);
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8rem;
+    margin-top: 8rem;
 }
