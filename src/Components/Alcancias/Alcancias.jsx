@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Card from '../Card/Card'
+import styles from './Alcancias.module.css'
 
 const Alcancias = () => {
     const [alcancias, setAlcancias] = useState([])
@@ -16,11 +17,14 @@ const Alcancias = () => {
         }
     }, [])
     return (
-        <div>
-            {alcancias? alcancias.map(({id, title, price, image}) => {
-                return(
-                <Card id={id} title={title} price={price} image={image} stock={id}/>)})
-            : <h1>Cargando...</h1>}
+        <div className={styles.principalContainer}>
+            <div className={styles.containerCards}>
+                {alcancias ? alcancias.map(({ id, title, price, image }) => {
+                    return (
+                        <Card id={id} title={title} price={price} image={image} stock={id} />)
+                })
+                    : <h1>Cargando...</h1>}
+            </div>
         </div>
     )
 }

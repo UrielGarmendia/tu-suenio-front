@@ -17,6 +17,9 @@ import plan from "./plan.png"
               Tener un plan de ahorro debería ser importante para poder llevar un
               orden de ahorro, así va a ser más fácil llegar al éxito del ahorro.
             </p>
+            <div className={styles.informacion}>
+                <p className={styles.masinfop}>Mas informacion</p>
+            </div>
           </div>
         </div>
         <div className={styles.contentContainer}>
@@ -28,6 +31,9 @@ import plan from "./plan.png"
               recordatorios en bodas, fiestas infantiles, prácticamente para lo
               que quieras.
             </p>
+            <div className={styles.informacion1}>
+                <p className={styles.masinfop}>Mas informacion</p>
+            </div>
           </div>
           <div className={styles.imageContainer}>
             <img src={fiestas} alt="fiestas" className={styles.fiestaLogo} />
