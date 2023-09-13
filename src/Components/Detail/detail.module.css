@@ -1,0 +1,110 @@
+.cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 85%;
+    margin: auto;
+    padding: 1rem;
+    border-radius: 0.3rem;
+    box-shadow: 0 0 5px 1px black;
+    background-color: rgb(0, 0, 0, 0.1);
+}
+
+.close_button {
+    width: 10%;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    background-color: pink;
+}
+
+.close_button:hover {
+    box-shadow: 0 0 5px 1px rgb(249, 72, 154);
+}
+
+.general_cont {
+    display: flex;
+}
+
+.image_cont {
+    width: 50%;
+}
+
+.image {
+    border-radius: 0.3rem;
+    width: 100%;
+    height: 100%;
+}
+
+.info_cont {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: flex-start;
+    padding-left: 3rem;
+}
+
+h2 {
+    margin: 0 auto 2rem auto;
+}
+
+.separador {
+    width: 100%;
+    background-color: grey;
+    height: 0.1rem;
+    margin: 2rem 0;
+}
+
+.description {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+.tamaños {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ul {
+    display: none;
+    list-style: none;
+    background-color: rgb(246, 251, 255);
+    margin: 0;
+    position: absolute;
+    text-align: center;
+    padding: 2px;
+    width: 6%;
+    font-size: small;
+}
+
+div button:hover + ul,
+div ul:hover {
+    display: flex;
+    flex-direction: column;
+}
+
+.size_buttons {
+    width: 100%;
+    height: 2rem;
+    background-color: lightblue;
+    display: flex;
+    align-items: center;
+    cursor: default;
+}
+
+.button_cart_cont {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.button_cart_cont button {
+    background-color: pink;
+}
+
+.button_cart_cont button:hover {
+    box-shadow: 0 0 5px 1px rgb(249, 72, 154);
+}

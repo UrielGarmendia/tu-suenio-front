@@ -1,0 +1,11 @@
+.principalContainer{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.containerCards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8rem;
+    margin-top: 8rem;
+}
