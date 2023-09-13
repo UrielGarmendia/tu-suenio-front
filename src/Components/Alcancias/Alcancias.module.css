@@ -1,0 +1,5 @@
+principalContainer{
+    display: grid;
+    grid-template-rows: 8fr;
+    grid-template-columns: repeat(4, 2fr);
+}
