@@ -11,24 +11,33 @@
     border: 1px solid #ccc;
     padding: 10px;
     margin: 10px 0;
+    color: black;
+    border-radius: 20px;
+    border-color: black;
+    text-align: justify;
+   
 }
 
 .informacion {
     border-radius: 40px;
-    width: 200px;
+    width: 300px;
     border: 1px solid #ccc;
     background-color: aquamarine;
-    margin-top: 300px;
-    margin-left:400px
-    
+    margin-top: 280px;
+    margin-left:400px;
+    border-color: black;
+    text-align: center;
 
 }
 .informacion1{
     border-radius: 40px;
-    width: 200px;
+    width: 300px;
     border: 1px solid #ccc;
     background-color: aquamarine;
-    margin-top: 300px;
+    margin-top: 280px;
+    border-color: black;
+    text-align: center;
+
 }
 
 .masinfop {
@@ -50,6 +59,20 @@
 
 .fiestaLogo {
     height: 450px;
-    width: 350px;
+    width: 450px;
     margin-left: 150px;
+}
+.imgAhorro{
+    width: 800px;
+    height: 300px;
+}
+.informacion2{
+    border-radius: 40px;
+    width: 300px;
+    border: 1px solid #ccc;
+    background-color: aquamarine;
+    margin-top: 30px;
+    border-color: black;
+    text-align: center;
+    margin-left: 500px;
 }
