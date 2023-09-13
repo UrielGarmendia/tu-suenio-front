@@ -4,11 +4,13 @@ import Landing from "./Components/Landing/Landing";
 import Alcancias from "./Components/Alcancias/Alcancias";
 import Home from "./Components/Home/Home";
 import Detail from "./Components/Detail/Detail";
+import NavBar from "./Components/NavBar/NavBar"
 
 function App() {
   const location = useLocation();
   return (
     <div >
+      <NavBar />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/alcancias" element={<Alcancias />} />

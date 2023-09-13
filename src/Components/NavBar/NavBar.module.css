@@ -1,0 +1,64 @@
+.navBar {
+    background: #e377b1;
+    display: flex;
+    padding: 0.5em ;
+    justify-content:space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}   
+
+.navBar .search{
+    justify-content: center;
+}
+
+.navBar .search input{
+    background: #202020;
+    color:  #0085CA;
+    font-size: medium;
+    border-radius: 2em 0.5em 0.5em 2em;
+    padding: 0.5em;
+}
+
+.navBar .search button{
+    margin: 0;
+    border-radius: 0.5em 2em 2em 0.5em;
+    font-weight: bolder;
+    padding: 0.5em;
+
+}
+.botones{
+    margin: 0.5em;
+}
+
+.navBar .botones button{
+    color: #0e6692;
+    border: 0.2em solid #ca00c7;
+    background: #30e6c1;
+    margin-left: 0.1em;
+    padding: 0.5em;
+    font-size: medium;
+    font-weight: bolder;
+}
+
+.navBar button:hover {
+    color: #7AC74C;
+    border: 0.2em solid#7AC74C;
+    cursor: pointer;
+}
+
+.navBar img:hover {
+    cursor: pointer;
+    transform: scale(1.10);
+}
+
+.signin {
+    display: flex;
+    flex-direction: row;
+    padding: 0.2rem;
+}
+
+.signin img {
+    height: 2rem;
+    margin: 0.5rem;
+}
