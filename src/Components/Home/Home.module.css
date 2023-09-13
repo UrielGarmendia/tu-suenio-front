@@ -1,0 +1,55 @@
+.principal {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.contentContainer {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.informacion {
+    border-radius: 40px;
+    width: 200px;
+    border: 1px solid #ccc;
+    background-color: aquamarine;
+    margin-top: 300px;
+    margin-left:400px
+    
+
+}
+.informacion1{
+    border-radius: 40px;
+    width: 200px;
+    border: 1px solid #ccc;
+    background-color: aquamarine;
+    margin-top: 300px;
+}
+
+.masinfop {
+    color: black;
+}
+
+.textContainer {
+    flex: 1;
+}
+
+.imageContainer {
+    flex: 1;
+}
+
+.planLogo {
+    height: 400px;
+    width: 400px;
+}
+
+.fiestaLogo {
+    height: 450px;
+    width: 350px;
+    margin-left: 150px;
+}
