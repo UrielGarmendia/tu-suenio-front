@@ -2,6 +2,7 @@ import style from '../NavBar/NavBar.module.css'
 import logo from '../../Assents/logoPrincipal.png'
 import logoUser from '../../Assents/logoUser.png'
 import carrito from '../../Assents/carrito.png'
+import { Link } from 'react-router-dom'
 
 const NavBar = () => {
 
@@ -10,8 +11,8 @@ const NavBar = () => {
         <div><img src={logo} alt="logo" height='100px'/></div>
         <div className={style.botones}>
           <div>
-            <button>HOME</button>       
-            <button>ALCANCIAS</button>
+            <Link to='/home'><button>HOME</button></Link>
+            <Link to='/alcancias'><button>ALCANCIAS</button></Link>        
             <button>ABOUT</button>       
             <button>CONTACTANOS</button>
           </div>
