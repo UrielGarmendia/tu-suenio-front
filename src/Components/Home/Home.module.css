@@ -1,0 +1,33 @@
+.principal {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .contentContainer {
+    display: flex;
+  align-items: center; 
+  gap: 30px;
+  border: 1px solid #ccc; 
+  padding: 10px; 
+  margin: 10px 0;
+  }
+  
+  .textContainer {
+    flex: 1;
+  }
+  
+  .imageContainer {
+    flex: 1;
+  }
+  
+  .planLogo {
+    height: 400px;
+    width: 400px;
+  }
+  
+  .fiestaLogo {
+    height: 450px;
+    width: 350px;
+    margin-left: 150px;
+  }
