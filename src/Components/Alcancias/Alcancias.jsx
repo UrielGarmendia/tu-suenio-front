@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from "react-redux"
+import { allAlcancias } from '../../Redux/actions'
 import axios from 'axios'
 import Card from '../Card/Card'
 import styles from './Alcancias.module.css'
 
 const Alcancias = () => {
-    const [alcancias, setAlcancias] = useState([])
+
+    const dispatch = useDispatch()
+    const alcancias = useSelector(state => state.AllAlcancias)
+    console.log(alcancias);
+
     useEffect(() => {
-        try {
-            const getAlcancias = async () => {
-                const { data } = await axios.get("https://fakestoreapi.com/products");
-                setAlcancias(data)
-            }
-            getAlcancias();
-        } catch (error) {
-            console.error("error al obtener los productos", error)
-        }
+        dispatch(allAlcancias())
     }, [])
+
+
     return (
         <div className={styles.principalContainer}>
             <div className={styles.containerCards}>
-                {alcancias ? alcancias.map(({ id, title, price, image }) => {
+                {alcancias.length ? alcancias.map(({ id, title, price, image }) => {
                     return (
                         <Card id={id} title={title} price={price} image={image} stock={id} />)
                 })
