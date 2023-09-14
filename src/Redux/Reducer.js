@@ -1,4 +1,4 @@
-import { Alcancias } from "./actions-types";
+import { ALCANCIAS } from "./actions-types";
 
 const initialState = {
     AllAlcancias: [],
@@ -7,7 +7,7 @@ const initialState = {
 const reducer = (state = initialState, {type, payload}) => {
     switch(type) {
 
-        case Alcancias:
+        case ALCANCIAS:
             return {
                 ...state,
                 AllAlcancias: payload

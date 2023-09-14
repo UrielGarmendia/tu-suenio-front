@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import { allAlcancias } from '../../Redux/actions'
-import axios from 'axios'
 import Card from '../Card/Card'
 import styles from './Alcancias.module.css'
 
@@ -9,12 +8,10 @@ const Alcancias = () => {
 
     const dispatch = useDispatch()
     const alcancias = useSelector(state => state.AllAlcancias)
-    console.log(alcancias);
 
     useEffect(() => {
         dispatch(allAlcancias())
     }, [])
-
 
     return (
         <div className={styles.principalContainer}>
