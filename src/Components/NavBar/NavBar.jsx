@@ -11,9 +11,9 @@ const NavBar = () => {
         <div><img src={logo} alt="logo" height='100px'/></div>
         <div className={style.botones}>
           <div>
-            <Link to='/home'><button>HOME</button></Link>
-            <Link to='/alcancias'><button>ALCANCIAS</button></Link>        
-            <button>ABOUT</button>       
+            <Link to='/home'><button>INICIO</button></Link>
+            <Link to='/alcancias'><button>PRODUCTOS</button></Link>        
+            <button>ACERCA DE NOSOTROS</button>       
             <button>CONTACTANOS</button>
           </div>
         </div>

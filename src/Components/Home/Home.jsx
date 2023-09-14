@@ -8,11 +8,13 @@ import telefono from "./telefono.png"
 import credito from "./credito.png"
 import mujer from "./mujer.png"
 import plandeahorro from "./plan de ahorro.jpg"
+import Slide from "../Slide/Slide"
 
 
  const home = () => {
     return (
-        <div className={styles.principal}>
+      <div className={styles.principal}>
+          <Slide />
         <div className={styles.contentContainer}>
           <div className={styles.imageContainer}>
             <img src={plan} alt="plan" className={styles.planLogo} />
