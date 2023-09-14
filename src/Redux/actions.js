@@ -1,4 +1,4 @@
-import { Alcancias } from "./actions-types";
+import { ALCANCIAS } from "./actions-types";
 import axios from "axios";
 
 //Obtener lo que seria todas las alcancias
@@ -7,7 +7,7 @@ export const allAlcancias = () => {
         return async function(dispatch) {
             const { data } = await axios("https://fakestoreapi.com/products");
             return dispatch({
-                type: Alcancias,
+                type: ALCANCIAS,
                 payload: data
             })
         }    
