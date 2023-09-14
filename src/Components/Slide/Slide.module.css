@@ -1,0 +1,10 @@
+.slide div{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items: center;
+}
+
+.slide img{
+    height: 20rem;
+}

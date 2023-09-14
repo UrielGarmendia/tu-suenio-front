@@ -41,10 +41,10 @@ const Detail = () => {
                     <h4 className={styles.description}>Descripción:</h4>
                     <p>Esta es una breve descripción de la alcancia del chanchito canchero</p>
                     <div className={styles.separador}></div>
+                    <h4>+ Tamaños:</h4>
                     <div className={styles.tamaños}>
-                        <h4 className={styles.size_item}>+ Tamaños:</h4>
                         <div className={styles.size_item}>
-                            <button className={styles.size_buttons}>Pequeña</button>
+                            <button className={styles.size_buttons}>Chiquitín</button>
                             <ul className={styles.ul}>
                                 <li>alto 10cm</li>
                                 <li>ancho 10cm</li>
@@ -52,7 +52,7 @@ const Detail = () => {
                             </ul>
                         </div>
                         <div className={styles.size_item}>
-                            <button className={styles.size_buttons}>Mediana</button>
+                            <button className={styles.size_buttons}>Pequeño</button>
                             <ul className={styles.ul}>
                                 <li>alto 12cm</li>
                                 <li>ancho 13cm</li>
@@ -60,11 +60,19 @@ const Detail = () => {
                             </ul>
                         </div>
                         <div className={styles.size_item}>
-                            <button className={styles.size_buttons}>Grande</button>
+                            <button className={styles.size_buttons}>Mediano</button>
                             <ul className={styles.ul}>
                                 <li>alto 15cm</li>
                                 <li>ancho 13cm</li>
                                 <li>largo 16cm</li>
+                            </ul>
+                        </div>
+                        <div className={styles.size_item}>
+                            <button className={styles.size_buttons}>Grande</button>
+                            <ul className={styles.ul}>
+                                <li>alto 23cm</li>
+                                <li>ancho 21cm</li>
+                                <li>largo 23cm</li>
                             </ul>
                         </div>
                     </div>

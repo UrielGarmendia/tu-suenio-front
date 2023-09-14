@@ -1,0 +1,33 @@
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+.footer div {
+    max-width: 25vw;
+}
+.redes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.redes img {
+    height: 5rem;
+    margin: 1rem;
+}
+
+.footer h2 {
+    font-size: x-small;
+}
+
+.logoInf {
+    display: flex;
+    flex-direction: row;
+}
+
+.logoInf img{
+    height: 12rem;
+}
