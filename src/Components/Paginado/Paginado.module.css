@@ -1,0 +1,21 @@
+.unorderedList {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin-top: 2rem;
+}
+.unorderedList:hover {
+    flex-direction: row;
+}
+
+.listItem{
+    margin: 0px 10px 0px 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.numbers {
+    color: black;
+}
+.numbers:hover {
+    cursor: pointer;
+}
