@@ -1,21 +1,87 @@
-.unorderedList {
-    list-style: none;
+.principalContainer {
     display: flex;
     flex-direction: row;
-    margin-top: 2rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
 }
-.unorderedList:hover {
+.pagination {
+    display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 3rem;
 }
 
-.listItem{
-    margin: 0px 10px 0px 10px;
-    font-size: 1.5rem;
+.unorderedList {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.listItem {
+    display: inline-block;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    margin: 0px 10px;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 45px;
+    cursor: pointer;
+    text-align: center;
+    background-position: 0 -100px;
+    transition: background-position 0.6s;
+}
+.listItem:active{
+    background-position: 0 0;
+}
+.activeListItem {
+    color: #fff;
+    background: linear-gradient(#ff4568, #FF95AA);
+    background-repeat: no-repeat;
+}
+
+.prevButton {
+    display: inline-flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: 500;
+    color: #383838;
+    background-color: transparent;
+    outline: none;
+    border: none;
     cursor: pointer;
 }
-.numbers {
-    color: black;
+
+.prevButton:hover {
+    margin: 0px;
 }
-.numbers:hover {
+
+.nextButton {
+    display: inline-flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: 500;
+    color: #383838;
+    background-color: transparent;
+    outline: none;
+    border: none;
     cursor: pointer;
+}
+
+.nextButton:hover {
+    margin: 0px;
+}
+.iconBack{
+    margin-right: 5px;
+}
+.iconNext{
+    margin-left: 5px;
 }

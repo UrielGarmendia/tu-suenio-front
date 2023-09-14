@@ -41,7 +41,7 @@ const Alcancias = () => {
                 })
                     : <h1 style={{ color: '#23F2FF' }}>Cargando...</h1>}
             </div>
-            <Paginado changePage={changePage} numberOfPages={numberOfPages} next={nextPage} prev={prevPage} />
+            <Paginado pageIndex={pageIndex} changePage={changePage} numberOfPages={numberOfPages} next={nextPage} prev={prevPage} />
         </div>
     )
 }
