@@ -4,9 +4,8 @@ const initialState = {
     AllAlcancias: [],
 }
 
-const reducer = (state = initialState, {type, payload}) => {
-    switch(type) {
-
+const reducer = (state = initialState, { type, payload }) => {
+    switch (type) {
         case ALCANCIAS:
             return {
                 ...state,
@@ -14,7 +13,7 @@ const reducer = (state = initialState, {type, payload}) => {
             }
 
         default:
-            return {...state}
+            return { ...state }
     }
 }
 
