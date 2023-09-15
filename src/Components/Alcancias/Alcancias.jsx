@@ -37,7 +37,7 @@ const Alcancias = () => {
             <div className={styles.containerCards}>
                 {currentPage.length ? currentPage.map(({ id,name, title, price, image, stock,size,id_categorie  }) => {
                     return (
-                        <Card id={id}  id_categorie={id_categorie} name={name} title={title} price={price} image={image} stock={stock} size={size} />)
+                        <Card id={id} key={id}  id_categorie={id_categorie} name={name} title={title} price={price} image={image} stock={stock} size={size} />)
                 })
                     : <h1 style={{ color: '#23F2FF' }}>Cargando...</h1>}
             </div>

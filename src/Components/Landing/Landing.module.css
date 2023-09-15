@@ -1,18 +1,28 @@
-.principalContainer{
+.principalContainer {
     display: grid;
     grid-template-rows: 10fr;
     grid-template-columns: 5fr 5fr;
     gap: 2rem;
 }
-.containerForm{
+
+.containerForm {
     display: flex;
     flex-direction: column;
-    gap:30px;
+    gap: 30px;
 }
-.containerPageLogo{
+
+.containerPageLogo {
     display: flex;
 }
-.pageLogo{
+
+.pageLogo {
     width: 500px;
     height: 400px;
+}
+
+.iconBack {
+    position: absolute;
+    top: 1rem;
+    left:1rem;
+    font-size: 4rem;
 }
