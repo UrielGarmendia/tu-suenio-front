@@ -1,5 +1,5 @@
 .navBar {
-    background: #e377b1;
+    background-image: linear-gradient(to right, #46B7A5, #FFC5C4, #E5CDF7);
     display: flex;
     padding: 0.5em ;
     justify-content:space-around;
@@ -32,9 +32,10 @@
 }
 
 .navBar .botones button{
-    color: #0e6692;
-    border: 0.2em solid #ca00c7;
-    background: #30e6c1;
+    color: #Dc7996;
+    border: 0.1em solid #Dc7996;
+    border-radius: 1rem;
+    background: #F7DE61;
     margin-left: 0.1em;
     padding: 0.5em;
     font-size: medium;
@@ -42,8 +43,8 @@
 }
 
 .navBar button:hover {
-    color: #7AC74C;
-    border: 0.2em solid#7AC74C;
+    color: #46B7A5;
+    border: 0.2em solid#46B7A5;
     cursor: pointer;
 }
 

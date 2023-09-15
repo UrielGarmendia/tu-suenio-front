@@ -1,12 +1,18 @@
-.slide div{
-    display: flex;
-    flex-direction: row;
-    justify-content:space-around;
-    align-items: center;
-    margin-top: 15px;
-    margin-bottom: 8px;
+
+.slide {
+    margin-top: 1rem;
+    max-height: 40vh;
+    padding: 1rem;
 }
 
-.slide img{
-    height: 20rem;
+.card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.slide img {
+    max-height: 35vh;
+    object-fit: contain; /* Ajustar la imagen manteniendo la proporción */
+    object-position: center; /* Centrar la imagen */
 }
