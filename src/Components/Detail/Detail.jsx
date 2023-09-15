@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { detail } from '../../redux/actions';
@@ -75,12 +76,12 @@ const Detail = () => {
                     <h4>+ Stock: {alcancia.stock || 0} unidades</h4>
                     <div className={styles.separador}></div>
                     <div className={styles.button_cart_cont}>
-                        <button>Agregar al carrito</button>
+                        <button>Agregar al  <AddShoppingCartIcon/></button>
                     </div>
                 </div>
-            </div>
-        </div>
-    );
+          </div>
+    </div>
+  );
 };
 
 export default Detail;
