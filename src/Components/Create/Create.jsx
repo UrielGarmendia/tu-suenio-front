@@ -13,11 +13,11 @@ const Create = () => {
       stock: "",
       description: "",
       size: "",
-      categories:""
+      id_categorie:""
     });
     
     const [errors, setErrors] = useState({});
-    const [status, setStatus] = useState("Disponible");
+    
 
     const handleInputChange = (e) => {
       const { name, value } = e.target;
@@ -36,7 +36,7 @@ const Create = () => {
       productData.append("stock", formData.stock);
       productData.append("description", formData.description);
       productData.append("size", formData.size);
-      productData.append("categories", formData.categories);
+      productData.append("id_categorie", formData.id_categorie);
       
       
 
@@ -52,13 +52,9 @@ const Create = () => {
          
     );
         alert("Producto creado:", response.data);
-        if (formData.stock === "0") {
-          setStatus("Por pedido");
-        } else {
-          setStatus("Disponible");
-        }
+
       } catch (error) {
-       alert("Error al crear el producto:", error);
+      alert("Error al crear el producto:", error);
       }
     };
   
@@ -92,18 +88,6 @@ const Create = () => {
          {errors.price && <p className={styles.error}>{errors.price}</p>}
           </div>
           <div className={styles.group}>
-            <label htmlFor="image">Imagen:</label>
-            <input
-              type="text"
-              id="image"
-              name="image"
-              onChange={handleInputChange}
-              accept="image/*"
-              required
-            />
-             {errors.image && <p className={styles.error}>{errors.image}</p>}
-          </div>
-          <div className={styles.group}>
             <label htmlFor="stock">Stock:</label>
             <input
               type="text"
@@ -126,11 +110,11 @@ const Create = () => {
             ></textarea>
           </div>
           <div  className={styles.group}>
-            <label htmlFor="categories">categoria:</label>
+            <label htmlFor=" id_categorie">categoria:</label>
             <select
-              id="categories"
-              name="categories"
-              value={formData.categories}
+              id="id_categorie"
+              name="id_categorie"
+              value={formData.id_categorie}
               onChange={handleInputChange}
               required
             >
@@ -141,6 +125,7 @@ const Create = () => {
           </div>
           <div className={styles.group}>
             <label htmlFor="size">Tamaño:</label>
+            {errors.size && <p className={styles.error}>{errors.size}</p>}
             <select
               id="size"
               name="size"
@@ -148,13 +133,25 @@ const Create = () => {
               onChange={handleInputChange}
               required
             >
-             {errors.size && <p className={styles.error}>{errors.size}</p>}
+
               <option value="">Seleccionar tamaño</option>
               <option value="chiquitina">Chiquitina</option>
               <option value="pequeña">Pequeña</option>
               <option value="mediana">Mediana</option>
               <option value="grande">Grande</option>
             </select>
+          </div>
+          <div className={styles.group}>
+            <label htmlFor="image">Imagen:</label>
+            <input
+              type="text"
+              id="image"
+              name="image"
+              onChange={handleInputChange}
+              accept="image/*"
+              required
+            />
+             {errors.image && <p className={styles.error}>{errors.image}</p>}
           </div>
           <div className={styles.group}>
             <button type="submit">Crear alcancia</button>
