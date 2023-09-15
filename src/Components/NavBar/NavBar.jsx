@@ -13,8 +13,9 @@ const NavBar = () => {
           <div>
             <Link to='/home'><button>INICIO</button></Link>
             <Link to='/alcancias'><button>PRODUCTOS</button></Link>        
-            <button>ACERCA DE NOSOTROS</button>       
+            <button>EMPRESA</button>       
             <button>CONTACTANOS</button>
+            <Link to='/create'><button>CREAR PRODUCTO</button></Link>
           </div>
         </div>
         <div className={style.search}>
