@@ -66,7 +66,7 @@ const Create = () => {
     return (
       <div className={styles.createcontainer}>
         <h2>Crear una nueva alcancia</h2>
-        <form onSubmit={handleSubmit}>
+        <form  className={styles.createform} onSubmit={handleSubmit}>
           <div  className={styles.group}>
             <label htmlFor="name">Nombre:</label>
             <input
@@ -101,6 +101,7 @@ const Create = () => {
               accept="image/*"
               required
             />
+             {errors.image && <p className={styles.error}>{errors.image}</p>}
           </div>
           <div className={styles.group}>
             <label htmlFor="stock">Stock:</label>

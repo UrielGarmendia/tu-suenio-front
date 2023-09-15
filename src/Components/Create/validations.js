@@ -19,6 +19,9 @@ export const validateForm = (formData) => {
   if (formData.stock === "" || parseInt(formData.stock) < 1) {
     errors.stock = "El stock debe ser mayor que 0.";
   }
+  if (formData.image && !/(https?:\/\/.*\.(?:png|jpg|jpeg|gif))/i.test(formData.image)) {
+    errors.image = "Debe ser una URL válida de imagen (png, jpg, jpeg, gif).";
+  }
 
   return errors;
 };
