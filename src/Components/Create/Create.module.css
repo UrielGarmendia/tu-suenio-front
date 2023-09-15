@@ -53,3 +53,8 @@
     margin-top: 10px;
     display: block;
   }
+  .error{
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
