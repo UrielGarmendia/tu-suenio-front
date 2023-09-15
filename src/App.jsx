@@ -14,13 +14,13 @@ function App() {
   return (
     <div >
       
-      {location.pathname === "/" || "/detail" &&  <NavBar />}
+      {location.pathname === "/login" || "/detail" &&  <NavBar />}
       {location.pathname == "/alcancias" && <FilteredOrdered/>}
      
       <Routes>
-        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Landing />} />
         <Route path="/alcancias" element={<Alcancias />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/create" element={<Create/>} />
         <Route path="/detail/:id" element={<Detail />} />
       </Routes>
