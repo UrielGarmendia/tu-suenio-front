@@ -129,9 +129,12 @@ div ul:hover {
 .button_cart_cont button {
     background-image: linear-gradient(to bottom right, pink, lightgreen);
     border: 2px solid #946E69;
+    padding: 0 1rem;
     height: 2.5rem;
     border-radius: 0.5rem;
     font-weight: bold;
+    display: flex;
+    align-items: center;
 }
 
 .button_cart_cont button:hover {
