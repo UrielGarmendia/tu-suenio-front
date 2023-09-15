@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-
+import styles from "./Create.module.css"
 const Create = () => {
     const [formData, setFormData] = useState({
       name: "",
@@ -29,13 +29,11 @@ const Create = () => {
       productData.append("description", formData.description);
       productData.append("size", formData.size);
       productData.append("categories", formData.categories);
-      console.log(formData);
+      
       try {
-        const response = await axios.post("http://localhost:3001/products/create", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
+        const response = await axios.post("http://localhost:3001/products/create", formData 
+         
+    );
         console.log("Producto creado:", response.data);
       } catch (error) {
         console.error("Error al crear el producto:", error);
@@ -43,10 +41,10 @@ const Create = () => {
     };
   
     return (
-      <div>
+      <div className={styles.createcontainer}>
         <h2>Crear un nuevo producto</h2>
         <form onSubmit={handleSubmit}>
-          <div>
+          <div  className={styles.group}>
             <label htmlFor="name">Nombre:</label>
             <input
               type="text"
@@ -57,7 +55,7 @@ const Create = () => {
               required
             />
           </div>
-          <div>
+          <div  className={styles.group}>
             <label htmlFor="price">Precio:</label>
             <input
               type="text"
@@ -68,7 +66,7 @@ const Create = () => {
               required
             />
           </div>
-          <div>
+          <div className={styles.group}>
             <label htmlFor="image">Imagen:</label>
             <input
               type="text"
@@ -79,7 +77,7 @@ const Create = () => {
               required
             />
           </div>
-          <div>
+          <div className={styles.group}>
             <label htmlFor="stock">Stock:</label>
             <input
               type="text"
@@ -90,7 +88,7 @@ const Create = () => {
               required
             />
           </div>
-          <div>
+          <div className={styles.group}>
             <label htmlFor="description">Descripción:</label>
             <textarea
               id="description"
@@ -100,7 +98,7 @@ const Create = () => {
               required
             ></textarea>
           </div>
-          <div>
+          <div  className={styles.group}>
             <label htmlFor="categories">categoria:</label>
             <select
               id="categories"
@@ -114,7 +112,7 @@ const Create = () => {
               <option value="personajes animado">personajes animado</option>
               </select>
           </div>
-          <div>
+          <div className={styles.group}>
             <label htmlFor="size">Tamaño:</label>
             <select
               id="size"
@@ -130,7 +128,7 @@ const Create = () => {
               <option value="grande">Grande</option>
             </select>
           </div>
-          <div>
+          <div className={styles.group}>
             <button type="submit">Crear Producto</button>
           </div>
         </form>
