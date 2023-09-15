@@ -1,0 +1,22 @@
+.cont {
+    display: flex;
+    width: 25%;
+    justify-content: center;
+}
+
+.input {
+    height: 2rem;
+    border-radius: 0.3rem 0 0 0.3rem;
+    border: 1px solid black;
+}
+
+.button {
+    margin-left: 0.5rem;
+    border-radius: 0 0.3rem 0.3rem 0;
+    background-color: #30e6c1;
+    border: 2px solid #ca00c7;
+    color: #0e6692;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
