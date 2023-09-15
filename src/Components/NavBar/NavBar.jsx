@@ -13,10 +13,10 @@ const NavBar = () => {
         <div className={style.botones}>
           <div>
             <Link to='/home'><button>INICIO</button></Link>
-            <Link to='/alcancias'><button>PRODUCTOS</button></Link>        
-            <button>EMPRESA</button>       
+            <Link to='/create'><button>CREAR ALCANCIA</button></Link>
+            <Link to='/alcancias'><button>ALCANCIAS</button></Link>        
+            <button>EMPRESA</button>
             <button>CONTACTANOS</button>
-            <Link to='/create'><button>CREAR PRODUCTO</button></Link>
           </div>
         </div>
         <SearchBar/>
