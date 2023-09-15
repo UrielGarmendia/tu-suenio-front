@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { detail } from '../../redux/actions';
@@ -7,21 +8,20 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import styles from './detail.module.css';
 
 const Detail = () => {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  const { id } = useParams();
 
-    const { id } = useParams(); 
+  const alcancia = useSelector((state) => state.detail);
+  const dispatch = useDispatch();
 
-    const alcancia = useSelector((state) => state.detail);
-    const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(detail(id));
+  }, []);
 
-    useEffect(() => {
-        dispatch(detail(id));
-    },[]);
-
-    const handleClick = () => {
-        navigate(-1);
-    };
+  const handleClick = () => {
+    navigate(-1);
+  };
 
     return (
         <div className={styles.cont}>
@@ -81,9 +81,9 @@ const Detail = () => {
                         <button>Agregar al  <AddShoppingCartIcon/></button>
                     </div>
                 </div>
-            </div>
-        </div>
-    );
+          </div>
+    </div>
+  );
 };
 
 export default Detail;
