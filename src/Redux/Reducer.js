@@ -1,19 +1,23 @@
-import { ALCANCIAS } from "./actions-types";
+import { ALCANCIAS, CREATE_ALCANCIAS } from "./actions-types";
 
 const initialState = {
     AllAlcancias: [],
 }
 
-const reducer = (state = initialState, { type, payload }) => {
-    switch (type) {
+const reducer = (state = initialState, action) => {
+    switch (action.type) { 
         case ALCANCIAS:
             return {
                 ...state,
-                AllAlcancias: payload
+                AllAlcancias: action.payload, 
             }
-
+        case CREATE_ALCANCIAS:
+            return {
+                ...state,
+                AllAlcancias: [...state.AllAlcancias, action.payload],
+            };
         default:
-            return { ...state }
+            return state; 
     }
 }
 

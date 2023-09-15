@@ -1,3 +1,4 @@
 export const ALCANCIAS = "ALCANCIAS";
 export const FILTERED_BY = "FILTERED_BY";
 export const ORDERED_BY = "ORDERED_BY";
+export const CREATE_ALCANCIAS = 'CREATE_ALCANCIAS';
