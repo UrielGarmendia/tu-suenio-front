@@ -8,7 +8,6 @@ import Paginado from '../Paginado/Paginado';
 const Alcancias = () => {
 
     const dispatch = useDispatch()
-    const name = useSelector(state => state.allByName);
 
     useEffect(() => {
         dispatch(allAlcancias())
