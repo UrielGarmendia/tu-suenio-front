@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { allAlcancias } from '../../Redux/actions'
+import { allAlcancias, byName } from '../../Redux/actions'
 import Card from '../Card/Card'
 import styles from './Alcancias.module.css'
 import Paginado from '../Paginado/Paginado';
@@ -8,9 +8,11 @@ import Paginado from '../Paginado/Paginado';
 const Alcancias = () => {
 
     const dispatch = useDispatch()
+    const name = useSelector(state => state.allByName);
 
     useEffect(() => {
         dispatch(allAlcancias())
+        dispatch(byName("Alcancia marranito"))
     }, [])
     const alcancias = useSelector(state => state.AllAlcancias);
     const [pageIndex, setPageIndex] = useState(1);
