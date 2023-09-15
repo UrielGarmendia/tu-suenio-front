@@ -2,6 +2,9 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import styles from "./Create.module.css"
+import { validateForm } from "./validations";
+
+
 const Create = () => {
     const [formData, setFormData] = useState({
       name: "",
@@ -12,14 +15,19 @@ const Create = () => {
       size: "",
       categories:""
     });
-  
+    
+    const [errors, setErrors] = useState({});
+    const [status, setStatus] = useState("Disponible");
+
     const handleInputChange = (e) => {
       const { name, value } = e.target;
       setFormData({ ...formData, [name]: value });
+      setErrors(validateForm(formData))
     };
   
     const handleSubmit = async (e) => {
       e.preventDefault();
+    
   
       const productData = new FormData();
       productData.append("name", formData.name);
@@ -30,19 +38,34 @@ const Create = () => {
       productData.append("size", formData.size);
       productData.append("categories", formData.categories);
       
+      
+
+      if (Object.keys(errors).length > 0) {
+        console.log("Errores de validación:", errors);
+        return;
+      }
+      setErrors({});
+
+
       try {
         const response = await axios.post("http://localhost:3001/products/create", formData 
          
     );
-        console.log("Producto creado:", response.data);
+        alert("Producto creado:", response.data);
+        if (formData.stock === "0") {
+          setStatus("Por pedido");
+        } else {
+          setStatus("Disponible");
+        }
       } catch (error) {
-        console.error("Error al crear el producto:", error);
+       alert("Error al crear el producto:", error);
       }
     };
   
+  
     return (
       <div className={styles.createcontainer}>
-        <h2>Crear un nuevo producto</h2>
+        <h2>Crear una nueva alcancia</h2>
         <form onSubmit={handleSubmit}>
           <div  className={styles.group}>
             <label htmlFor="name">Nombre:</label>
@@ -54,6 +77,7 @@ const Create = () => {
               onChange={handleInputChange}
               required
             />
+            {errors.name && <p className={styles.error}>{errors.name}</p>}
           </div>
           <div  className={styles.group}>
             <label htmlFor="price">Precio:</label>
@@ -65,6 +89,7 @@ const Create = () => {
               onChange={handleInputChange}
               required
             />
+         {errors.price && <p className={styles.error}>{errors.price}</p>}
           </div>
           <div className={styles.group}>
             <label htmlFor="image">Imagen:</label>
@@ -87,6 +112,7 @@ const Create = () => {
               onChange={handleInputChange}
               required
             />
+             {errors.stock && <p className={styles.error}>{errors.stock}</p>}
           </div>
           <div className={styles.group}>
             <label htmlFor="description">Descripción:</label>
@@ -129,7 +155,7 @@ const Create = () => {
             </select>
           </div>
           <div className={styles.group}>
-            <button type="submit">Crear Producto</button>
+            <button type="submit">Crear alcancia</button>
           </div>
         </form>
       </div>
