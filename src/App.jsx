@@ -13,8 +13,9 @@ function App() {
   const location = useLocation();
   return (
     <div >
-      <NavBar />
+     
       {location.pathname == "/alcancias" && <FilteredOrdered/>}
+      {location.pathname === "/" || "/detail" &&  <NavBar />}
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/alcancias" element={<Alcancias />} />
@@ -23,7 +24,6 @@ function App() {
         <Route path="/detail" element={<Detail />} />
       </Routes>
       <Footer/>
-      {location.pathname !== "/"}
     </div>
   );
 }
