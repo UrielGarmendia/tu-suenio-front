@@ -3,7 +3,7 @@ import "./Card.css"
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useNavigate } from "react-router-dom";
 
-const Card = ({ id, name, title, price, stock, image, size }) => {
+const Card = ({ id, name, title, price, stock, image, size, id_categorie }) => {
 
   const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ const Card = ({ id, name, title, price, stock, image, size }) => {
       <h2 className="card-price">{name}</h2>
       <h3 className="card-price">Precio: {price}</h3>
       <h3 className="card-price">size : {size}</h3>
-      <h3>categoria:</h3>
+      <h3 className="card-price">categoria:{id_categorie}</h3>
       <h3 className="stockDisponible">Stock disponible: {stock}</h3>
     </div>
   )
