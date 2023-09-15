@@ -3,6 +3,7 @@ import logo from '../../Assents/logoPrincipal.png'
 import logoUser from '../../Assents/logoUser.png'
 import carrito from '../../Assents/carrito.png'
 import { Link } from 'react-router-dom'
+import SearchBar from '../SearchBar/SearchBar'
 
 const NavBar = () => {
 
@@ -18,12 +19,7 @@ const NavBar = () => {
             <button>CONTACTANOS</button>
           </div>
         </div>
-        <div className={style.search}>
-            <input 
-            placeholder="Buscar ..." 
-            type="search" />
-            <button>Buscar</button>
-        </div>
+        <SearchBar/>
         <div className={style.signin}>
           <img src={carrito} alt="carrito" />
         <img src={logoUser} alt="icono user"></img>
