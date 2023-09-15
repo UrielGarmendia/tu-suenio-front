@@ -2,7 +2,7 @@ import React from "react";
 import "./Card.css"
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
-const Card = ({ id, title, price, stock, image}) => {
+const Card = ({ id, title, price, stock, image }) => {
   return (
     <div key={id} className="card-container">
       <AddShoppingCartIcon className="iconAddShoppingCart"/>

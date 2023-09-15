@@ -10,6 +10,7 @@ const Create = () => {
       stock: "",
       description: "",
       size: "",
+      categories:""
     });
   
     const handleInputChange = (e) => {
@@ -27,6 +28,7 @@ const Create = () => {
       productData.append("stock", formData.stock);
       productData.append("description", formData.description);
       productData.append("size", formData.size);
+      productData.append("categories", formData.categories);
       console.log(formData);
       try {
         const response = await axios.post("http://localhost:3001/products/create", formData, {
@@ -97,6 +99,20 @@ const Create = () => {
               onChange={handleInputChange}
               required
             ></textarea>
+          </div>
+          <div>
+            <label htmlFor="categories">categoria:</label>
+            <select
+              id="categories"
+              name="categories"
+              value={formData.categories}
+              onChange={handleInputChange}
+              required
+            >
+              <option value="">Seleccionar categoria</option>
+              <option value="animales">animales</option>
+              <option value="personajes animado">personajes animado</option>
+              </select>
           </div>
           <div>
             <label htmlFor="size">Tamaño:</label>

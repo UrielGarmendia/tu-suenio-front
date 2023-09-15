@@ -7,11 +7,14 @@ import Detail from "./Components/Detail/Detail";
 import NavBar from "./Components/NavBar/NavBar";
 import Footer from "./Components/Footer/Footer"
 import Create from "./Components/Create/Create"
+import FilteredOrdered from "./Components/Filter/Filter";
+
 function App() {
   const location = useLocation();
   return (
     <div >
       <NavBar />
+      {location.pathname == "/alcancias" && <FilteredOrdered/>}
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/alcancias" element={<Alcancias />} />

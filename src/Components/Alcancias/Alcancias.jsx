@@ -8,9 +8,11 @@ import Paginado from '../Paginado/Paginado';
 const Alcancias = () => {
 
     const dispatch = useDispatch()
+   
 
     useEffect(() => {
         dispatch(allAlcancias())
+      
     }, [])
     const alcancias = useSelector(state => state.AllAlcancias);
     const [pageIndex, setPageIndex] = useState(1);

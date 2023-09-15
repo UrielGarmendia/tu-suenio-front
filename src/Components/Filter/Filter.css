@@ -1,0 +1,43 @@
+.filterAndOrder {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: #F4A7D0;
+}
+
+.allSelects {
+    margin-left: 20px;
+    padding-left: 5px;  
+    border-radius: 15px;
+    cursor: pointer;
+    height: 40px;
+    width: 195px;
+    border: 2px solid #000000;
+    font-size: 1em;
+    font-weight: 600;
+    font-family: sans-serif;
+    text-align: left;
+    color: #000000;
+    background: #FFD9F4;
+}
+
+.filterAndOrder button {
+    margin-left: 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 180px;
+    font-weight: 600;
+    font-family: sans-serif;
+    background: #FFD9F4;
+}
+
+.filterAndOrder select:hover {
+    background: none;
+  }
+
+  .filterAndOrder button:hover {
+    background: none;
+  }
+
