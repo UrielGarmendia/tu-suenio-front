@@ -148,6 +148,7 @@ const Create = () => {
               onChange={handleInputChange}
               required
             >
+             {errors.size && <p className={styles.error}>{errors.size}</p>}
               <option value="">Seleccionar tamaño</option>
               <option value="chiquitina">Chiquitina</option>
               <option value="pequeña">Pequeña</option>
