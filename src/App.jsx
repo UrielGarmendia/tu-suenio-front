@@ -6,6 +6,7 @@ import Home from "./Components/Home/Home";
 import Detail from "./Components/Detail/Detail";
 import NavBar from "./Components/NavBar/NavBar";
 import Footer from "./Components/Footer/Footer"
+import Create from "./Components/Create/Create"
 import FilteredOrdered from "./Components/Filter/Filter";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/alcancias" element={<Alcancias />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/create" element={<Create/>} />
         <Route path="/detail" element={<Detail />} />
       </Routes>
       <Footer/>

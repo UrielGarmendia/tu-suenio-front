@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { allAlcancias, byName } from '../../Redux/actions'
+import { allAlcancias } from '../../Redux/actions'
 import Card from '../Card/Card'
 import styles from './Alcancias.module.css'
 import Paginado from '../Paginado/Paginado';
@@ -8,11 +8,11 @@ import Paginado from '../Paginado/Paginado';
 const Alcancias = () => {
 
     const dispatch = useDispatch()
-    const name = useSelector(state => state.allByName);
+   
 
     useEffect(() => {
         dispatch(allAlcancias())
-        dispatch(byName("Alcancia marranito"))
+      
     }, [])
     const alcancias = useSelector(state => state.AllAlcancias);
     const [pageIndex, setPageIndex] = useState(1);
@@ -37,9 +37,9 @@ const Alcancias = () => {
     return (
         <div className={styles.principalContainer}>
             <div className={styles.containerCards}>
-                {currentPage.length ? currentPage.map(({ id, title, price, image }) => {
+                {currentPage.length ? currentPage.map(({ id,name, title, price, image }) => {
                     return (
-                        <Card id={id} title={title} price={price} image={image} stock={id} />)
+                        <Card id={id} name={name} title={title} price={price} image={image} stock={id} />)
                 })
                     : <h1 style={{ color: '#23F2FF' }}>Cargando...</h1>}
             </div>

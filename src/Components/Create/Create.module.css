@@ -1,0 +1,55 @@
+.createcontainer {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .createcontainer h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .createform .formgroup {
+    margin-bottom: 15px;
+  }
+  
+  .createform label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .createform input[type="text"],
+  .createform select,
+  .createform textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .createform button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .createform button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  .createform img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+    display: block;
+  }
