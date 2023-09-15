@@ -18,11 +18,11 @@ const reducer = (state = initialState, action) => {
         case DETAIL:
             return {
                 ...state,
-                detail: payload
+                detail: action.payload
             }
 
         case CATEGORIES:
-            const allCategories = payload.map(el => el.name);
+            const allCategories = action.payload.map(el => el.name);
             return {
                 ...state,
                 categories: allCategories
@@ -31,7 +31,7 @@ const reducer = (state = initialState, action) => {
         case BY_NAME:
             return {
                 ...state,
-                allByName: payload
+                AllAlcancias: action.payload
             }
         case CREATE_ALCANCIAS:
             return {
