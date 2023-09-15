@@ -2,10 +2,11 @@
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #46B7A5;
     border-radius: 5px;
     background-color: #fff;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
   }
   
   .createcontainer h2 {
@@ -26,16 +27,16 @@
   .createform input[type="text"],
   .createform select,
   .createform textarea {
-    width: 100%;
+    width: 95%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #ADD6C6;
     border-radius: 4px;
     font-size: 16px;
   }
   
   .createform button[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
+    background-color:#F5C7D5 ;
+    color: #0a0909;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
@@ -44,7 +45,7 @@
   }
   
   .createform button[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #FFC5C4 ;
   }
   
   .createform img {
@@ -53,7 +54,10 @@
     margin-top: 10px;
     display: block;
   }
-  .error{
+  .group{
+    margin-top: 10px;
+  }
+ .error{
     color: red;
     font-size: 14px;
     margin-top: 5px;
