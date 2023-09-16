@@ -53,7 +53,6 @@ export const categories = () => {
   try {
     return async function (dispatch) {
       const { data } = await axios("http://localhost:3001/categorie");
-      console.log(data);
       return dispatch({
         type: CATEGORIES,
         payload: data,

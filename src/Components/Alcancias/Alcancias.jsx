@@ -33,12 +33,12 @@ const Alcancias = () => {
       <div className={styles.containerCards}>
         {currentPage.length ? (
           currentPage.map(
-            ({ id, name, title, price, image, stock, size, id_categorie }) => {
+            ({ id, name, title, price, image, stock, size, Categories }) => {
               return (
                 <Card
                   key={id}
                   id={id}
-                  id_categorie={id_categorie}
+                  id_categorie={Categories[0].name}
                   name={name}
                   title={title}
                   price={price}
