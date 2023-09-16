@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../Home/Home.module.css"
 import fiestas from "./fiesta.png"
 import plan from "./plan.png"
@@ -9,9 +9,18 @@ import credito from "./credito.png"
 import mujer from "./mujer.png"
 import plandeahorro from "./plan de ahorro.jpg"
 import Slide from "../Slide/Slide"
+import { useDispatch } from "react-redux";
+import { categories } from "../../Redux/actions";
 
 
  const home = () => {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(categories())
+  }, [])
+
     return (
       <div className={styles.principal}>
           <Slide />

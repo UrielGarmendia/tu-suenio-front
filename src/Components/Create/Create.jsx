@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
 import styles from "./Create.module.css";
 import { validateForm } from "./validations";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { StayCurrentPortraitTwoTone } from "@mui/icons-material";
+import { categories } from "../../Redux/actions";
 
 const Create = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +17,12 @@ const Create = () => {
     size: "",
     id_categorie: "",
   });
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(categories())
+  }, [])
 
   const categorie = useSelector((state) => state.categories);
 
