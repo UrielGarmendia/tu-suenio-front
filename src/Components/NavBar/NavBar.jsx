@@ -5,12 +5,21 @@ import carrito from '../../Assents/carrito.png'
 import { Link } from 'react-router-dom'
 import SearchBar from '../SearchBar/SearchBar'
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux'
+import { allAlcancias } from '../../redux/actions'
 
 const NavBar = () => {
+
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
   const handleNavigate = () => {
     navigate(`/login`);
   };
+
+  const handleClick = () => {
+    dispatch(allAlcancias());
+  }
 
     return(
       <div className={style.navBar}>
@@ -19,7 +28,7 @@ const NavBar = () => {
           <div>
             <Link to='/'><button>INICIO</button></Link>
             <Link to='/create'><button>CREAR ALCANCIA</button></Link>
-            <Link to='/alcancias'><button>ALCANCIAS</button></Link>        
+            <Link to='/alcancias'><button onClick={handleClick}>ALCANCIAS</button></Link>        
             <button>EMPRESA</button>
             <button>CONTACTANOS</button>
           </div>

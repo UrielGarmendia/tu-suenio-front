@@ -1,8 +1,9 @@
-
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { detail } from '../../redux/actions';
 import { useNavigate, useParams } from 'react-router-dom';
+import UndoIcon from '@mui/icons-material/Undo';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import styles from './detail.module.css';
 
 const Detail = () => {
@@ -23,7 +24,7 @@ const Detail = () => {
 
     return (
         <div className={styles.cont}>
-            <button className={styles.close_button} onClick={handleClick}>X</button>
+            <button className={styles.close_button} onClick={handleClick}><UndoIcon/></button>
             <div className={styles.general_cont}>
                 <div className={styles.image_cont}>
                     <img src={alcancia.image} alt={alcancia.name} className={styles.image}/>
@@ -72,7 +73,7 @@ const Detail = () => {
                             </ul>
                         </div>
                     </div>
-                    <h4>+ Categoria:{alcancia.categories || " No se encontraron categorías"}</h4>
+                    <h4>+ Categoria:{alcancia.id_categorie || " No se encontraron categorías"}</h4>
                     <h4>+ Stock: {alcancia.stock || 0} unidades</h4>
                     <div className={styles.separador}></div>
                     <div className={styles.button_cart_cont}>
