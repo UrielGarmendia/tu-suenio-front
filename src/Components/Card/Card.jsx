@@ -1,10 +1,9 @@
 import React from "react";
-import "./Card.css"
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import "./Card.css";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useNavigate } from "react-router-dom";
 
 const Card = ({ id, name, title, price, stock, image, size, id_categorie }) => {
-
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -23,8 +22,10 @@ const Card = ({ id, name, title, price, stock, image, size, id_categorie }) => {
         <h3>categoria:{id_categorie}</h3>
         <h3>Stock disponible:{stock}</h3>
       </div>
+
+  
     </div>
-  )
-}
+  );
+};
 
 export default Card;
