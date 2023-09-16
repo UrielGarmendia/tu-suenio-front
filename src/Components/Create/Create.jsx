@@ -70,14 +70,26 @@ const Create = () => {
  
     setErrors({});
 
+  
     try {
       const response = await axios.post(
         "http://localhost:3001/products/create",
         formData
       );
-      alert("Producto creado:", response.data);
+    alert("Producto creado: " + response.data);
+
+      // Limpiar el formulario después de enviarlo con éxito
+      setFormData({
+        name: "",
+        price: "",
+        image: null, 
+        stock: "",
+        description: "",
+        size: "",
+        id_categorie: "",
+      });
     } catch (error) {
-      alert("Error al crear el producto:", error.message);
+      alert("Error al crear el producto: " + error.message);
     }
   };
 

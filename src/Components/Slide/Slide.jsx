@@ -6,7 +6,7 @@ import homefiesta from "../../Assents/homefiesta.jpg"
 import homefiesta1 from "../../Assents/homefiesta1.jpg"
 import homefiesta2 from "../../Assents/homefiesta2.jpg"
 import homefiesta3 from "../../Assents/homefiesta3.jpg"
-import { Link } from "react-router-dom";
+
 
 const Slide = () => {
     const settings = {
@@ -25,7 +25,7 @@ const Slide = () => {
         <Slider {...settings}  >
         <div>
           <div className={style.card}>
-            <Link to='/alcancias'><img src={homefiesta} alt=""/></Link>
+            <img src={homefiesta} alt=""/>
           </div>
         </div>
         <div>
@@ -42,6 +42,7 @@ const Slide = () => {
           <div className={style.card}>
             <img src={homefiesta3} alt=""/>
           </div>
+          
         </div>
         
         </Slider>

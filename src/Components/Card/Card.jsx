@@ -12,8 +12,9 @@ const Card = ({ id, name, title, price, stock, image, size, id_categorie }) => {
 
   return (
     <div key={id} onClick={handleNavigate} className="card-container">
-      <AddShoppingCartIcon className="iconAddShoppingCart" />
+       <AddShoppingCartIcon className="iconAddShoppingCart" />
       <img src={image} alt={title} className="card-image" />
+
       <div className="card-title">
         <h3>{title}</h3>
         <h2>{name}</h2>
@@ -23,7 +24,6 @@ const Card = ({ id, name, title, price, stock, image, size, id_categorie }) => {
         <h3>Stock disponible:{stock}</h3>
       </div>
 
-  
     </div>
   );
 };
