@@ -2,9 +2,11 @@ import Slider from "react-slick"
 import style from "../Slide/Slide.module.css"
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import logo from "../../Assents/logoSlide.jpg"
-import chancho from "../../Assents/slide.png"
-import { Link } from "react-router-dom";
+import homefiesta from "../../Assents/homefiesta.jpg"
+import homefiesta1 from "../../Assents/homefiesta1.jpg"
+import homefiesta2 from "../../Assents/homefiesta2.jpg"
+import homefiesta3 from "../../Assents/homefiesta3.jpg"
+
 
 const Slide = () => {
     const settings = {
@@ -23,23 +25,24 @@ const Slide = () => {
         <Slider {...settings}  >
         <div>
           <div className={style.card}>
-            <Link to='/alcancias'><img src={logo} alt=""/></Link>
+            <img src={homefiesta} alt=""/>
           </div>
         </div>
         <div>
           <div className={style.card}>
-            <img src={chancho} alt=""/>
+            <img src={homefiesta1} alt=""/>
           </div>
         </div>
         <div>
           <div className={style.card}>
-            <img src={logo} alt=""/>
+            <img src={homefiesta2} alt=""/>
           </div>
         </div>
         <div>
           <div className={style.card}>
-            <img src={chancho} alt=""/>
+            <img src={homefiesta3} alt=""/>
           </div>
+          
         </div>
         
         </Slider>
