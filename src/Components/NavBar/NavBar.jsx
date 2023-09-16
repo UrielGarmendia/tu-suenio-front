@@ -14,9 +14,9 @@ const NavBar = () => {
 
     return(
       <div className={style.navBar}>
-        <div><img src={logo} alt="logo" height='100px'/></div>
+        <div><img src={logo} alt="logo" height='100px' className={style.img}/></div>
         <div className={style.botones}>
-          <div>
+          <div className={style.links}>
             <Link to='/'><button>INICIO</button></Link>
             <Link to='/create'><button>CREAR ALCANCIA</button></Link>
             <Link to='/alcancias'><button>ALCANCIAS</button></Link>        

@@ -6,7 +6,11 @@
     align-items: center;
     flex-wrap: wrap;
     flex-direction: row;
+   
 }   
+.links{
+  
+}
 
 .navBar .search{
     justify-content: center;
@@ -32,10 +36,10 @@
 }
 
 .navBar .botones button{
-    color: #Dc7996;
+    color: #bd21b0;
     border: 0.1em solid #Dc7996;
     border-radius: 1rem;
-    background: #F7DE61;
+    background: #E5CDF7;
     margin-left: 0.1em;
     padding: 0.5em;
     font-size: medium;
@@ -51,6 +55,7 @@
 .navBar img:hover {
     cursor: pointer;
     transform: scale(1.10);
+    
 }
 
 .signin {
@@ -62,4 +67,9 @@
 .signin img {
     height: 2rem;
     margin: 0.5rem;
+}
+.img{
+   width: 180px;
+   height: 120px;
+   
 }

@@ -4,7 +4,7 @@
     justify-content: center;
     padding-top: 8px;
     padding-bottom: 8px;
-    background-color: #F4A7D0;
+    background-image: linear-gradient(to right, #46B7A5, #FFC5C4, #E5CDF7);
 }
 
 .allSelects {
@@ -14,7 +14,7 @@
     cursor: pointer;
     height: 40px;
     width: 195px;
-    border: 2px solid #000000;
+    border: 2px solid #ffffff;
     font-size: 1em;
     font-weight: 600;
     font-family: sans-serif;
