@@ -52,7 +52,7 @@ const FilteredOrdered = () => {
                 <option value="A">Menor a mayor</option>
                 <option value="D">Mayor a menor</option>
             </select>
-            <button onClick={handleClick}>Limpiar filtros</button>
+            <button className="limpiar" onClick={handleClick}>Limpiar filtros</button>
         </div>
     )
 }
