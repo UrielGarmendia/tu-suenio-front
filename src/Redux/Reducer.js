@@ -4,10 +4,14 @@ import {
   CATEGORIES,
   BY_NAME,
   CREATE_ALCANCIAS,
+  ORDERED_BY,
+  FILTERED_BY,
+  CLEAN_FILTERS
 } from "./actions-types";
 
 const initialState = {
   AllAlcancias: [],
+  copyAllAlcancias: [],
   detail: {},
   categories: [],
   allByName: [],
@@ -19,6 +23,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         AllAlcancias: action.payload,
+        copyAllAlcancias: action.payload
       };
 
     case DETAIL:
@@ -43,6 +48,21 @@ const reducer = (state = initialState, action) => {
         ...state,
         AllAlcancias: [...state.AllAlcancias, action.payload],
       };
+    case ORDERED_BY:
+      return {
+        ...state,
+        AllAlcancias: action.payload
+      }
+    case FILTERED_BY:
+      return {
+        ...state,
+        AllAlcancias: action.payload
+      }
+    case CLEAN_FILTERS:
+      return {
+        ...state,
+        AllAlcancias: state.copyAllAlcancias
+      }
     default:
       return state;
   }
