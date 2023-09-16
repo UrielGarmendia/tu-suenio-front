@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { detail } from "../../redux/actions";
 import { useNavigate, useParams } from "react-router-dom";
+import UndoIcon from "@mui/icons-material/Undo";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import styles from "./detail.module.css";
 
 const Detail = () => {
@@ -23,7 +25,7 @@ const Detail = () => {
   return (
     <div className={styles.cont}>
       <button className={styles.close_button} onClick={handleClick}>
-        X
+        <UndoIcon />
       </button>
       <div className={styles.general_cont}>
         <div className={styles.image_cont}>
@@ -78,13 +80,15 @@ const Detail = () => {
             </div>
           </div>
           <h4>
-            + Categoria:
+            + Categoria:{" "}
             {alcancia[0].Categories[0].name || " No se encontraron categorías"}
           </h4>
           <h4>+ Stock: {alcancia[0].stock || 0} unidades</h4>
           <div className={styles.separador}></div>
           <div className={styles.button_cart_cont}>
-            <button>Agregar al carrito</button>
+            <button>
+              Agregar al <AddShoppingCartIcon />
+            </button>
           </div>
         </div>
       </div>

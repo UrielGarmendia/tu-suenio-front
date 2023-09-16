@@ -11,6 +11,7 @@ const Alcancias = () => {
   useEffect(() => {
     dispatch(allAlcancias());
   }, []);
+  
   const alcancias = useSelector((state) => state.AllAlcancias);
   const [pageIndex, setPageIndex] = useState(1);
   let finalIndex = pageIndex * 8;
@@ -65,3 +66,4 @@ const Alcancias = () => {
 };
 
 export default Alcancias;
+
