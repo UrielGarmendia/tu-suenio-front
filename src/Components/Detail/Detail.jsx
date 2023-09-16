@@ -80,8 +80,8 @@ const Detail = () => {
                         <button>Agregar al  <AddShoppingCartIcon/></button>
                     </div>
                 </div>
+             </div>
           </div>
-    </div>
   );
 };
 

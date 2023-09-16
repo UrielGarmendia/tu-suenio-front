@@ -14,10 +14,10 @@ const Alcancias = () => {
   
   const alcancias = useSelector((state) => state.AllAlcancias);
   const [pageIndex, setPageIndex] = useState(1);
-  let finalIndex = pageIndex * 8;
-  let initialIndex = finalIndex - 8;
+  let finalIndex = pageIndex * 12;
+  let initialIndex = finalIndex - 12;
   let currentPage = alcancias.slice(initialIndex, finalIndex);
-  let numberOfPages = Math.ceil(alcancias.length / 8);
+  let numberOfPages = Math.ceil(alcancias.length / 12);
 
   const changePage = (page) => {
     setPageIndex(page);
@@ -34,12 +34,12 @@ const Alcancias = () => {
       <div className={styles.containerCards}>
         {currentPage.length ? (
           currentPage.map(
-            ({ id, name, title, price, image, stock, size, id_categorie }) => {
+            ({ id, name, title, price, image, stock, size, Categories }) => {
               return (
                 <Card
                   key={id}
                   id={id}
-                  id_categorie={id_categorie}
+                  id_categorie={Categories[0].name}
                   name={name}
                   title={title}
                   price={price}

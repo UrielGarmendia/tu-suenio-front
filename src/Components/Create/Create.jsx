@@ -46,20 +46,50 @@ const Create = () => {
     productData.append("size", formData.size);
     productData.append("id_categorie", formData.id_categorie);
 
-    if (Object.keys(errors).length > 0) {
-      console.log("Errores de validación:", errors);
-      return;
+   const formErrors = validateForm(formData);
+
+  if (Object.keys(formErrors).length > 0) {
+    // Manejar errores individualmente y mostrar alertas
+    if (formErrors.name) {
+      alert("Error en el nombre: " + formErrors.name);
     }
+    if (formErrors.price) {
+      alert("Error en el precio: " + formErrors.price);
+    }
+    if (formErrors.stock) {
+      alert("Error en el stock: " + formErrors.stock);
+    }
+    if (formErrors.size) {
+      alert("Error en el tamaño: " + formErrors.size);
+    }
+    if (formErrors.image) {
+      alert("Error en la URL de la imagen: " + formErrors.image);
+    }
+    return;
+  }
+ 
     setErrors({});
 
+  
     try {
       const response = await axios.post(
         "http://localhost:3001/products/create",
         formData
       );
-      alert("Producto creado:", response.data);
+    alert("Producto creado: " + response.data);
+
+      // Limpiar el formulario después de enviarlo con éxito
+      setFormData({
+        name: "",
+        price: "",
+        image: null, 
+        stock: "",
+        description: "",
+        size: "",
+        id_categorie: "",
+      });
     } catch (error) {
-      alert("Error al crear el producto:", error.message);
+      alert("Error al crear el producto: " + error.message);
     }
   };
 
