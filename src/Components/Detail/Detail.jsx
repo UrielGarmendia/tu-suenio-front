@@ -21,7 +21,7 @@ const Detail = () => {
   const handleClick = () => {
     navigate(-1);
   };
-
+  
   return (
     <div className={styles.cont}>
       <button className={styles.close_button} onClick={handleClick}>
