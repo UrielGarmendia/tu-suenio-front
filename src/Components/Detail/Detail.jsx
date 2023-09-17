@@ -30,15 +30,15 @@ const Detail = () => {
       <div className={styles.general_cont}>
         <div className={styles.image_cont}>
           <img
-            src={alcancia[0].image}
-            alt={alcancia[0].name}
+            src={alcancia[0]?.image}
+            alt={alcancia[0]?.name}
             className={styles.image}
           />
         </div>
         <div className={styles.info_cont}>
-          <h2>{alcancia[0].name}</h2>
+          <h2>{alcancia[0]?.name}</h2>
           <h4 className={styles.description}>Descripción:</h4>
-          <p>{alcancia[0].description}</p>
+          <p>{alcancia[0]?.description}</p>
           <div className={styles.separador}></div>
           <h4>+ Tamaños:</h4>
           <div className={styles.tamaños}>
@@ -81,9 +81,9 @@ const Detail = () => {
           </div>
           <h4>
             + Categoria:{" "}
-            {alcancia[0].Categories[0].name || " No se encontraron categorías"}
+            {alcancia[0]?.Categories[0]?.name || " No se encontraron categorías"}
           </h4>
-          <h4>+ Stock: {alcancia[0].stock || 0} unidades</h4>
+          <h4>+ Stock: {alcancia[0]?.stock || 0} unidades</h4>
           <div className={styles.separador}></div>
           <div className={styles.button_cart_cont}>
             <button>
