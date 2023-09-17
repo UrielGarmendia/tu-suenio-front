@@ -20,7 +20,7 @@ const Card = ({ id, name, title, price, stock, image, size, id_categorie }) => {
         <h2>{name}</h2>
         <h3>Precio: {price}</h3>
         <h3>size : {size}</h3>
-        <h3>categoria:{id_categorie}</h3>
+        <h3>categoria:{id_categorie === "1" ? "Animales" : "Personajes animados"}</h3>
         <h3>Stock disponible:{stock}</h3>
       </div>
 

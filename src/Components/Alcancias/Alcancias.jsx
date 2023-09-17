@@ -29,17 +29,19 @@ const Alcancias = () => {
     if (pageIndex > 1) setPageIndex(pageIndex - 1);
   };
 
+
   return (
     <div className={styles.principalContainer}>
       <div className={styles.containerCards}>
         {currentPage.length ? (
-          currentPage.map(
-            ({ id, name, title, price, image, stock, size, Categories }) => {
+          currentPage?.map(
+            ({ id, name, title, price, image, stock, size, Categories, id_categorie }) => {
               return (
                 <Card
                   key={id}
                   id={id}
-                  id_categorie={Categories[0].name}
+                  // id_categorie={Categories[0].name}
+                  id_categorie={id_categorie}
                   name={name}
                   title={title}
                   price={price}
