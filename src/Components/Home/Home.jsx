@@ -29,7 +29,7 @@ import { categories } from "../../Redux/actions";
             <img src={plan} alt="plan" className={styles.planLogo} />
           </div>
           <div className={styles.textContainer}>
-            <h2>por que es importante ahorrar ?</h2>
+            <h2>¿Por qué es importante ahorrar ?</h2>
             <p>
             Ahorrar te permite tener un colchón de dinero disponible 
             para emergencias inesperadas, como gastos médicos, reparaciones
@@ -46,7 +46,7 @@ import { categories } from "../../Redux/actions";
         </div>
         <div className={styles.contentContainer}>
           <div className={styles.textContainer}>
-            <h2>para que otros eventos puedo usar una alcancía?</h2>
+            <h2>¿Para qué otros eventos puedo usar una alcancía?</h2>
             <p>
               Nuestras alcancías sirven para cualquier tipo de evento, ya que
               puedes personalizarlas a tu gusto y usarlas como por ejemplo:
@@ -66,7 +66,7 @@ import { categories } from "../../Redux/actions";
             <img src={dequesirve} alt="dequesirve" className={styles.planLogo} />
           </div>
           <div className={styles.textContainer}>
-            <h2>por que es importante tener un   plan de ahorro ?</h2>
+            <h2>¿Por qué es importante tener un plan de ahorro ?</h2>
             <p>
             Un plan de ahorro te impulsa a ser disciplinado con tus finanzas personales.
              Al asignar una parte de tus ingresos para el ahorro de manera regular, desarrollas
@@ -76,7 +76,7 @@ import { categories } from "../../Redux/actions";
                el estrés relacionado con las preocupaciones financieras.
             </p>
             <div>
-            <img src={plandeahorro} alt="plandeahorro" className={styles.imgAhorro} />
+              <img src={plandeahorro} alt="plandeahorro" className={styles.imgAhorro} />
             </div>
             <div className={styles.informacion2}>
                 <p className={styles.masinfop}>Mas informacion</p>
@@ -85,7 +85,7 @@ import { categories } from "../../Redux/actions";
         </div>
         <div className={styles.contentContainer}>
           <div className={styles.textContainer}>
-            <h2>no se que mas preguntar?</h2>
+            <h2>¿No sé que mas preguntar?</h2>
             <p>
               Nuestras alcancías sirven para cualquier tipo de evento, ya que
               puedes personalizarlas a tu gusto y usarlas como por ejemplo:
@@ -105,7 +105,7 @@ import { categories } from "../../Redux/actions";
             <img src={telefono} alt="telefono" className={styles.planLogo} />
           </div>
           <div className={styles.textContainer}>
-            <h2>no se que mas preguntar ?</h2>
+            <h2>¿No sé que mas preguntar ?</h2>
             <p>
             Un plan de ahorro te impulsa a ser disciplinado con tus finanzas personales.
              Al asignar una parte de tus ingresos para el ahorro de manera regular, desarrollas
@@ -121,7 +121,7 @@ import { categories } from "../../Redux/actions";
         </div>
         <div className={styles.contentContainer}>
           <div className={styles.textContainer}>
-            <h2>no se que mas preguntar?</h2>
+            <h2>¿No sé que mas preguntar?</h2>
             <p>
               Nuestras alcancías sirven para cualquier tipo de evento, ya que
               puedes personalizarlas a tu gusto y usarlas como por ejemplo:
@@ -141,7 +141,7 @@ import { categories } from "../../Redux/actions";
             <img src={mujer} alt="mujer" className={styles.planLogo} />
           </div>
           <div className={styles.textContainer}>
-            <h2>no se que mas preguntar ?</h2>
+            <h2>¿No sé que mas preguntar ?</h2>
             <p>
             Un plan de ahorro te impulsa a ser disciplinado con tus finanzas personales.
              Al asignar una parte de tus ingresos para el ahorro de manera regular, desarrollas
