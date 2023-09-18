@@ -31,7 +31,11 @@ const Create = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    setErrors(validateForm(formData));
+      setErrors(validateForm({
+        ...formData,
+        [name]: value
+      })
+    );
   };
 
   const handleSubmit = async (e) => {

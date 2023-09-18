@@ -1,4 +1,4 @@
-export const isAlpha = (text) => /^[A-Za-z]+$/.test(text);
+export const isAlpha = (text) => /^[A-Za-z\s]+$/.test(text);
 export const isNumeric = (text) => /^\d+$/.test(text);
 
 export const validateForm = (formData) => {
@@ -7,7 +7,7 @@ export const validateForm = (formData) => {
   if (!isAlpha(formData.name)) {
     errors.name = "El nombre solo debe contener letras.";
   } else if (formData.name.toLowerCase() === formData.name) {
-    errors.name = "El nombre no puede estar completamente en minúsculas.";
+    errors.name = "El nombre debe comenzar con mayúscula.";
   }
 
   if (!isNumeric(formData.price)) {
@@ -24,7 +24,7 @@ export const validateForm = (formData) => {
 
   // Validar la URL de la imagen
   if (formData.image && !/(https?:\/\/.*\.(?:png|jpg|jpeg|gif))/i.test(formData.image)) {
-    errors.image = "Debe ser una URL válida de imagen (png, jpg, jpeg, gif).";
+    errors.image = "Debe ser una URL válida de imagen ( .png, .jpg, .jpeg, .gif).";
   }
 
   return errors;
