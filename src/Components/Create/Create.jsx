@@ -1,163 +1,196 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
-import styles from "./Create.module.css"
+import styles from "./Create.module.css";
 import { validateForm } from "./validations";
-
+import { useSelector, useDispatch } from "react-redux";
+import { StayCurrentPortraitTwoTone } from "@mui/icons-material";
+import { categories } from "../../Redux/actions";
 
 const Create = () => {
-    const [formData, setFormData] = useState({
-      name: "",
-      price: "",
-      image: null,
-      stock: "",
-      description: "",
-      size: "",
-      id_categorie:""
-    });
-    
-    const [errors, setErrors] = useState({});
-    
+  const [formData, setFormData] = useState({
+    name: "",
+    price: "",
+    image: null,
+    stock: "",
+    description: "",
+    size: "",
+    id_categorie: "",
+  });
 
-    const handleInputChange = (e) => {
-      const { name, value } = e.target;
-      setFormData({ ...formData, [name]: value });
-      setErrors(validateForm(formData))
-    };
-  
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-    
-  
-      const productData = new FormData();
-      productData.append("name", formData.name);
-      productData.append("price", formData.price);
-      productData.append("image", formData.image);
-      productData.append("stock", formData.stock);
-      productData.append("description", formData.description);
-      productData.append("size", formData.size);
-      productData.append("id_categorie", formData.id_categorie);
-      
-      
+  const dispatch = useDispatch();
 
-      if (Object.keys(errors).length > 0) {
-        console.log("Errores de validación:", errors);
-        return;
-      }
-      setErrors({});
+  useEffect(() => {
+    dispatch(categories())
+  }, [])
 
+  const categorie = useSelector((state) => state.categories);
 
-      try {
-        const response = await axios.post("http://localhost:3001/products/create", formData 
-         
-    );
-        alert("Producto creado:", response.data);
+  const [errors, setErrors] = useState({});
 
-      } catch (error) {
-      alert("Error al crear el producto:", error);
-      }
-    };
-  
-  
-    return (
-      <div className={styles.createcontainer}>
-        <h2>Crear una nueva alcancia</h2>
-        <form  className={styles.createform} onSubmit={handleSubmit}>
-          <div  className={styles.group}>
-            <label htmlFor="name">Nombre:</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              required
-            />
-            {errors.name && <p className={styles.error}>{errors.name}</p>}
-          </div>
-          <div  className={styles.group}>
-            <label htmlFor="price">Precio:</label>
-            <input
-              type="text"
-              id="price"
-              name="price"
-              value={formData.price}
-              onChange={handleInputChange}
-              required
-            />
-         {errors.price && <p className={styles.error}>{errors.price}</p>}
-          </div>
-          <div className={styles.group}>
-            <label htmlFor="stock">Stock:</label>
-            <input
-              type="text"
-              id="stock"
-              name="stock"
-              value={formData.stock}
-              onChange={handleInputChange}
-              required
-            />
-             {errors.stock && <p className={styles.error}>{errors.stock}</p>}
-          </div>
-          <div className={styles.group}>
-            <label htmlFor="description">Descripción:</label>
-            <textarea
-              id="description"
-              name="description"
-              value={formData.description}
-              onChange={handleInputChange}
-              required
-            ></textarea>
-          </div>
-          <div  className={styles.group}>
-            <label htmlFor=" id_categorie">categoria:</label>
-            <select
-              id="id_categorie"
-              name="id_categorie"
-              value={formData.id_categorie}
-              onChange={handleInputChange}
-              required
-            >
-              <option value="">Seleccionar categoria</option>
-              <option value="animales">animales</option>
-              <option value="personajes animado">personajes animado</option>
-              </select>
-          </div>
-          <div className={styles.group}>
-            <label htmlFor="size">Tamaño:</label>
-            {errors.size && <p className={styles.error}>{errors.size}</p>}
-            <select
-              id="size"
-              name="size"
-              value={formData.size}
-              onChange={handleInputChange}
-              required
-            >
-
-              <option value="">Seleccionar tamaño</option>
-              <option value="chiquitina">Chiquitina</option>
-              <option value="pequeña">Pequeña</option>
-              <option value="mediana">Mediana</option>
-              <option value="grande">Grande</option>
-            </select>
-          </div>
-          <div className={styles.group}>
-            <label htmlFor="image">Imagen:</label>
-            <input
-              type="text"
-              id="image"
-              name="image"
-              onChange={handleInputChange}
-              accept="image/*"
-              required
-            />
-             {errors.image && <p className={styles.error}>{errors.image}</p>}
-          </div>
-          <div className={styles.group}>
-            <button type="submit">Crear alcancia</button>
-          </div>
-        </form>
-      </div>
-    );
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    setErrors(validateForm(formData));
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const productData = new FormData();
+    productData.append("name", formData.name);
+    productData.append("price", formData.price);
+    productData.append("image", formData.image);
+    productData.append("stock", formData.stock);
+    productData.append("description", formData.description);
+    productData.append("size", formData.size);
+    productData.append("id_categorie", formData.id_categorie);
+
+   const formErrors = validateForm(formData);
+
+  if (Object.keys(formErrors).length > 0) {
+    // Manejar errores individualmente y mostrar alertas
+    if (formErrors.name) {
+      alert("Error en el nombre: " + formErrors.name);
+    }
+    if (formErrors.price) {
+      alert("Error en el precio: " + formErrors.price);
+    }
+    if (formErrors.stock) {
+      alert("Error en el stock: " + formErrors.stock);
+    }
+    if (formErrors.size) {
+      alert("Error en el tamaño: " + formErrors.size);
+    }
+    if (formErrors.image) {
+      alert("Error en la URL de la imagen: " + formErrors.image);
+    }
+    return;
+  }
+ 
+    setErrors({});
+
+  
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/products/create",
+        formData
+      );
+    alert("Producto creado: " + response.data);
+
+      // Limpiar el formulario después de enviarlo con éxito
+      setFormData({
+        name: "",
+        price: "",
+        image: null, 
+        stock: "",
+        description: "",
+        size: "",
+        id_categorie: "",
+      });
+    } catch (error) {
+      alert("Error al crear el producto: " + error.message);
+    }
+  };
+
+  return (
+    <div className={styles.createcontainer}>
+      <h2>Crear una nueva alcancia</h2>
+      <form className={styles.createform} onSubmit={handleSubmit}>
+        <div className={styles.group}>
+          <label htmlFor="name">Nombre:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            required
+          />
+          {errors.name && <p className={styles.error}>{errors.name}</p>}
+        </div>
+        <div className={styles.group}>
+          <label htmlFor="price">Precio:</label>
+          <input
+            type="text"
+            id="price"
+            name="price"
+            value={formData.price}
+            onChange={handleInputChange}
+            required
+          />
+          {errors.price && <p className={styles.error}>{errors.price}</p>}
+        </div>
+        <div className={styles.group}>
+          <label htmlFor="stock">Stock:</label>
+          <input
+            type="text"
+            id="stock"
+            name="stock"
+            value={formData.stock}
+            onChange={handleInputChange}
+            required
+          />
+          {errors.stock && <p className={styles.error}>{errors.stock}</p>}
+        </div>
+        <div className={styles.group}>
+          <label htmlFor="description">Descripción:</label>
+          <textarea
+            id="description"
+            name="description"
+            value={formData.description}
+            onChange={handleInputChange}
+            required></textarea>
+        </div>
+        <div className={styles.group}>
+          <label htmlFor=" id_categorie">categoria:</label>
+          <select
+            id="id_categorie"
+            name="id_categorie"
+            value={formData.id_categorie}
+            onChange={handleInputChange}
+            required>
+            <option value="">Seleccionar categoria</option>
+            {categorie.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className={styles.group}>
+          <label htmlFor="size">Tamaño:</label>
+          {errors.size && <p className={styles.error}>{errors.size}</p>}
+          <select
+            id="size"
+            name="size"
+            value={formData.size}
+            onChange={handleInputChange}
+            required>
+            <option value="">Seleccionar tamaño</option>
+            <option value="chiquitina">Chiquitina</option>
+            <option value="pequeña">Pequeña</option>
+            <option value="mediana">Mediana</option>
+            <option value="grande">Grande</option>
+          </select>
+        </div>
+        <div className={styles.group}>
+          <label htmlFor="image">Imagen:</label>
+          <input
+            type="text"
+            id="image"
+            name="image"
+            onChange={handleInputChange}
+            accept="image/*"
+            required
+          />
+          {errors.image && <p className={styles.error}>{errors.image}</p>}
+        </div>
+        <div className={styles.group}>
+          <button type="submit">Crear alcancia</button>
+        </div>
+      </form>
+    </div>
+  );
+};
 export default Create;

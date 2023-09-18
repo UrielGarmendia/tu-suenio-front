@@ -1,38 +1,50 @@
 import Slider from "react-slick"
 import style from "../Slide/Slide.module.css"
-// import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import logo from "../../Assents/logoSlide.jpg"
-import chancho from "../../Assents/slide.png"
-import { Link } from "react-router-dom";
+import homefiesta from "../../Assents/homefiesta.jpg"
+import homefiesta1 from "../../Assents/homefiesta1.jpg"
+import homefiesta2 from "../../Assents/homefiesta2.jpg"
+import homefiesta3 from "../../Assents/homefiesta3.jpg"
+
 
 const Slide = () => {
     const settings = {
-        dots: false,
+      dots: true,
       infinite: true,
       speed: 500,
-      slidesToShow: 1,
+      slidesToShow: 3,
       slidesToScroll: 1,
       autoplay: true,
-      autoplaySpeed: 1500,
-      cssEase: "linear"
+      speed: 2000,
+      autoplaySpeed: 3000,
       };
     return(
 
-    <div>
-        <Slider {...settings} className={style.slide} >
+    <div className={style.slide}>
+        <Slider {...settings}  >
         <div>
-            <Link to='/alcancias'><img src={logo} alt=""/></Link>
+          <div className={style.card}>
+            <img src={homefiesta} alt=""/>
           </div>
-          <div>
-            <img src={chancho} alt=""/>
+        </div>
+        <div>
+          <div className={style.card}>
+            <img src={homefiesta1} alt=""/>
           </div>
-          <div>
-            <img src={logo} alt=""/>
+        </div>
+        <div>
+          <div className={style.card}>
+            <img src={homefiesta2} alt=""/>
           </div>
-          <div>
-            <img src={chancho} alt=""/>
+        </div>
+        <div>
+          <div className={style.card}>
+            <img src={homefiesta3} alt=""/>
           </div>
+          
+        </div>
+        
         </Slider>
     </div>
    )

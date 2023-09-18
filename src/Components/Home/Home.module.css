@@ -1,16 +1,18 @@
 .principal {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    padding: 2rem;
+    margin-left: 8rem;
+    margin-right: 8rem;
 }
 
 .contentContainer {
     display: flex;
-    align-items: center;
-    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
     border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px 0;
+    padding: 3rem;
+    margin-top: 2rem;
     color: black;
     border-radius: 20px;
     border-color: black;
@@ -20,15 +22,15 @@
 
 .informacion {
     border-radius: 40px;
-    width: 300px;
     border: 1px solid #ccc;
+    max-width: 10vw;
     background-color: aquamarine;
     margin-top: 280px;
     margin-left:400px;
     border-color: black;
     text-align: center;
-
 }
+
 .informacion1{
     border-radius: 40px;
     width: 300px;
@@ -46,8 +48,11 @@
 
 .textContainer {
     flex: 1;
+    max-width: 40vw;
 }
-
+.textContainer img{
+    max-width: 35vw;
+}
 .imageContainer {
     flex: 1;
 }
@@ -74,5 +79,4 @@
     margin-top: 30px;
     border-color: black;
     text-align: center;
-    margin-left: 500px;
 }

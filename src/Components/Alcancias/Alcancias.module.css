@@ -3,10 +3,13 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    flex-wrap: wrap;
+    padding: 1rem;
+    margin: 1rem;
 }
 .containerCards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8rem;
-    margin-top: 3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
 }

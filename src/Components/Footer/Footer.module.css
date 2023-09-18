@@ -3,9 +3,14 @@
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
+    background-color: #E5CDF7 ;
     margin-top: 2rem;
-    margin: 1rem;
     padding: 1rem;
+    border: 10px solid rgba(255, 255, 255, 0.056);
+    border-top: 10px solid #46B7A5; 
+    border-left: 10px solid #F7DE61;  ;
+    border-bottom: 10px solid #FFC5C4;
+    border-right: 10px solid #F7DE61;
 }
 
 .footer div {
@@ -27,7 +32,19 @@
 .redes img {
     height: 3rem;
     margin: 0.4rem;
+    transition: .5s, color .10s;
+    -webkit-transition: .5s, color .10s;
+    -moz-transition: .5s, color .10s;
+    border-radius: 50%;
 }
+              
+.redes img:hover{
+    transform: translatey(-20px);
+        -webkit-transform: translatey(-20px);
+        -moz-transform: translatey(-20px);
+    box-shadow: 0 8px 8px 0 #000000,0 8px 8px 0 #000000;
+}
+              
 
 .footer h2 {
     font-size: x-small;
@@ -52,3 +69,26 @@
 .informacion span{
     font-weight: lighter;
 }
+
+@keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+      }
+  }
+  
+  
+  .loadingSpinner {
+    width: 200px;
+    height: 200px;
+    border: 10px solid rgba(255, 255, 255, 0.056);
+    border-top: 10px solid #f95959; 
+    border-bottom: 10px solid #FFCB05;
+    border-radius: 70%;
+    animation: spin 1.8s linear infinite;
+  }
