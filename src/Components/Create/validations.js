@@ -6,6 +6,8 @@ export const validateForm = (formData) => {
 
   if (!isAlpha(formData.name)) {
     errors.name = "El nombre solo debe contener letras.";
+  } else if (formData.name.toLowerCase() === formData.name) {
+    errors.name = "El nombre no puede estar completamente en minúsculas.";
   }
 
   if (!isNumeric(formData.price)) {
