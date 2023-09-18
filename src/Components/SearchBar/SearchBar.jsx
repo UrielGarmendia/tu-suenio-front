@@ -21,6 +21,8 @@ const SearchBar = () => {
 
     function onSearch (name) {
         dispatch(byName(name));
+        navigate("/alcancias");
+        setName("");
     };
 
     return (

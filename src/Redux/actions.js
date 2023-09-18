@@ -86,7 +86,7 @@ export const byName = (name) => {
 export const ordenamiento = (event) => {
   try {
     return async function(dispatch) {
-      if (event === "A-Z") {
+      if (event === "Z-A") {
         const { data } = await axios("http://localhost:3001/sort/alp-asc");
         return dispatch({
           type: ORDERED_BY,
@@ -94,7 +94,7 @@ export const ordenamiento = (event) => {
         })
       }
 
-      else if(event === "Z-A") {
+      else if(event === "A-Z") {
         const { data } = await axios("http://localhost:3001/sort/alp-desc");
         return dispatch({
           type: ORDERED_BY,
