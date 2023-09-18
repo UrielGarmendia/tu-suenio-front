@@ -4,34 +4,36 @@ import logoUser from '../../Assents/logoUser.png'
 import carrito from '../../Assents/carrito.png'
 import { Link } from 'react-router-dom'
 import SearchBar from '../SearchBar/SearchBar'
-import { useNavigate } from "react-router-dom";
+import { useAuth0 } from '@auth0/auth0-react'
+import SlideMenu from '../SlideMenu/SlideMenu'
 
 const NavBar = () => {
-  const navigate = useNavigate();
-  const handleNavigate = () => {
-    navigate(`/login`);
-  };
 
-    return(
-      <div className={style.navBar}>
-        <div><img src={logo} alt="logo" height='100px'/></div>
-        <div className={style.botones}>
-          <div>
-            <Link to='/'><button>INICIO</button></Link>
-            <Link to='/create'><button>CREAR ALCANCIA</button></Link>
-            <Link to='/alcancias'><button>ALCANCIAS</button></Link>        
-            <button>EMPRESA</button>
-            <button>CONTACTANOS</button>
-          </div>
+  const { loginWithRedirect, isAuthenticated, user } = useAuth0();
+
+  return (
+    <div className={style.navBar}>
+      <div><img src={logo} alt="logo" height='100px' /></div>
+      <div className={style.botones}>
+        <div>
+          <Link to='/'><button>INICIO</button></Link>
+          <Link to='/create'><button>CREAR ALCANCIA</button></Link>
+          <Link to='/alcancias'><button>ALCANCIAS</button></Link>
+          <button>EMPRESA</button>
+          <button>CONTACTANOS</button>
         </div>
-        <SearchBar/>
-        <div className={style.signin}>
-          <img src={carrito} alt="carrito" />
-        <img src={logoUser} alt="icono user"></img>
-          <button onClick={handleNavigate}>Iniciar sesion</button>
-        </div>
+      </div>
+      <SearchBar />
+      <div className={style.signin}>
+        <img src={carrito} alt="carrito" />
+        {isAuthenticated ?
+          <SlideMenu />
+          :
+          <button onClick={() => loginWithRedirect()}>Iniciar sesion</button>
+        }
+      </div>
     </div>
-   )
-   }
+  )
+}
 
-   export default NavBar
+export default NavBar
