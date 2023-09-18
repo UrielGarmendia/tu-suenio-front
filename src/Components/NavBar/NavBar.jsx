@@ -4,43 +4,42 @@ import logoUser from '../../Assents/logoUser.png'
 import carrito from '../../Assents/carrito.png'
 import { Link } from 'react-router-dom'
 import SearchBar from '../SearchBar/SearchBar'
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux'
 import { allAlcancias } from '../../redux/actions'
+import { useAuth0 } from '@auth0/auth0-react'
+import SlideMenu from '../SlideMenu/SlideMenu'
 
 const NavBar = () => {
-
+  const { loginWithRedirect, isAuthenticated, user } = useAuth0();
   const dispatch = useDispatch();
-
-  const navigate = useNavigate();
-  const handleNavigate = () => {
-    navigate(`/login`);
-  };
 
   const handleClick = () => {
     dispatch(allAlcancias());
   }
 
-    return(
-      <div className={style.navBar}>
-        <div><img src={logo} alt="logo" height='100px' className={style.img}/></div>
-        <div className={style.botones}>
-          <div className={style.links}>
-            <Link to='/'><button>INICIO</button></Link>
-            <Link to='/create'><button>CREAR ALCANCIA</button></Link>
-            <Link to='/alcancias'><button onClick={handleClick}>ALCANCIAS</button></Link>        
-            <button>EMPRESA</button>
-            <button>CONTACTANOS</button>
-          </div>
+  return (
+    <div className={style.navBar}>
+      <div><img src={logo} alt="logo" height='100px' className={style.img} /></div>
+      <div className={style.botones}>
+        <div className={style.links}>
+          <Link to='/'><button>INICIO</button></Link>
+          <Link to='/create'><button>CREAR ALCANCIA</button></Link>
+          <Link to='/alcancias'><button onClick={handleClick}>ALCANCIAS</button></Link>
+          <button>EMPRESA</button>
+          <button>CONTACTANOS</button>
         </div>
-        <SearchBar/>
-        <div className={style.signin}>
-          <img src={carrito} alt="carrito" />
-        <img src={logoUser} alt="icono user"></img>
-          <button onClick={handleNavigate}>Iniciar sesion</button>
-        </div>
+      </div>
+      <SearchBar />
+      <div className={style.signin}>
+        <img src={carrito} alt="carrito" />
+        {isAuthenticated ?
+          <SlideMenu />
+          :
+          <button onClick={() => loginWithRedirect()}>Iniciar sesion</button>
+        }
+      </div>
     </div>
-   )
-   }
+  )
+}
 
-   export default NavBar
+export default NavBar

@@ -60,13 +60,31 @@
 
 .signin {
     display: flex;
+    align-items: center;
     flex-direction: row;
     padding: 0.2rem;
 }
 
-.signin img {
+.signin button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 2rem;
     margin: 0.5rem;
+    border: none;
+    font-size: 18px;
+    padding: 15px;
+    border-radius: 5px;
+    font-weight: 500;
+    translate: none !important;
+    margin-left: 25px;
+    border: 2px solid #46B7A5 !important;
+}
+.signin button:hover{
+    transform: translateX(0px);
+}
+.signin img{
+    height: 2rem;
 }
 .img{
    width: 180px;
