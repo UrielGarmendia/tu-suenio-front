@@ -50,9 +50,9 @@
     padding-left: 3rem;
 }
 
-/* h2 {
+.h2 {
     margin: 0 auto 2rem auto;
-} */
+} 
 
 .separador {
     width: 100%;
@@ -122,8 +122,10 @@ div ul:hover {
 
 .button_cart_cont {
     width: 100%;
+    height: 30vh;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .button_cart_cont button {
@@ -190,5 +192,13 @@ div ul:hover {
         justify-content: space-between;
         width: 90%;
         margin-left: 1rem;
+    }
+
+    .button_cart_cont {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }

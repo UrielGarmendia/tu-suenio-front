@@ -36,7 +36,7 @@ const Detail = () => {
           />
         </div>
         <div className={styles.info_cont}>
-          <h2>{alcancia[0]?.name}</h2>
+          <h2 className={styles.h2}>{alcancia[0]?.name}</h2>
           <h4 className={styles.description}>Descripción:</h4>
           <p>{alcancia[0]?.description}</p>
           <div className={styles.separador}></div>
