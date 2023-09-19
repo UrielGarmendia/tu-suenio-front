@@ -6,7 +6,8 @@ import {
   CREATE_ALCANCIAS,
   ORDERED_BY,
   FILTERED_BY,
-  CLEAN_FILTERS
+  CLEAN_FILTERS,
+  CART_SHOPING
 } from "./actions-types";
 
 const initialState = {
@@ -15,6 +16,7 @@ const initialState = {
   detail: {},
   categories: [],
   allByName: [],
+  CartShopping: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -62,6 +64,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         AllAlcancias: state.copyAllAlcancias
+      }
+    case CART_SHOPING:
+      return {
+        ...state,
+        CartShopping: [...state.CartShopping, ...action.payload]
       }
     default:
       return state;

@@ -6,7 +6,8 @@ import {
   BY_NAME,
   ORDERED_BY,
   FILTERED_BY,
-  CLEAN_FILTERS
+  CLEAN_FILTERS,
+  CART_SHOPING,
 } from "./actions-types";
 import axios from "axios";
 
@@ -140,3 +141,17 @@ export const filtered = (id) => {
 export const cleanFilters = () => {
   return {type: CLEAN_FILTERS}
 }
+
+export const CartShopping = (id) => {
+  try {
+    return async function (dispatch) {
+      const { data } = await axios(`http://localhost:3001/products/${id}`);
+      return dispatch({
+        type: CART_SHOPING,
+        payload: data,
+      });
+    };
+  } catch (error) {
+    return { error: error.message };
+  }
+};
