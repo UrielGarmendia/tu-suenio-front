@@ -1,5 +1,6 @@
 import style from '../NavBar/NavBar.module.css'
 import logo from '../../Assents/logoPrincipal.png'
+import SettingsIcon from '@mui/icons-material/Settings';
 import logoUser from '../../Assents/logoUser.png'
 import carrito from '../../Assents/carrito.png'
 import { Link } from 'react-router-dom'
@@ -37,6 +38,7 @@ const NavBar = () => {
           :
           <button onClick={() => loginWithRedirect()}>Iniciar sesion</button>
         }
+        <Link to='/admin'><button><SettingsIcon></SettingsIcon></button></Link>
       </div>
     </div>
   )

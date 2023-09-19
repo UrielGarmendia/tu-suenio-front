@@ -1,0 +1,57 @@
+.dashboard{
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    margin: 2rem;
+    justify-content: space-between;
+}
+
+.dashboard section{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+    padding-top: 5rem;
+    width: 15vw;
+    align-items: left;
+    font-weight: bold;
+    color: #8f8c8c;
+}
+
+.dashboard section h3{
+    color:#101010 ;
+}
+.dashboard section div{
+    padding-bottom: 1rem;
+    margin-left: 3rem;
+}
+.ventas{
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+}
+.ventas span{
+    border: 0.2rem solid #333333;
+    padding: 0.3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ventas span:hover{
+    cursor: pointer;
+}
+
+.ventas span div{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: left;
+    padding: 0.8rem;
+}
+
+.graficos{
+    margin: 0;
+    width: 70vw;
+}
+
+
