@@ -8,6 +8,7 @@ import NavBar from "./Components/NavBar/NavBar";
 import Footer from "./Components/Footer/Footer"
 import Create from "./Components/Create/Create"
 import FilteredOrdered from "./Components/Filter/Filter";
+import Carrito from "./Components/Carrito/Carrito";
 
 function App() {
   const location = useLocation();
@@ -23,6 +24,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/create" element={<Create/>} />
         <Route path="/detail/:id" element={<Detail />} />
+        <Route path="/carrito" element={<Carrito/>}/>
       </Routes>
       <Footer/>
     </div>

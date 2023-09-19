@@ -8,9 +8,9 @@ import Paginado from "../Paginado/Paginado";
 const Alcancias = () => {
   const dispatch = useDispatch();
 
-  /*useEffect(() => {
+  useEffect(() => {
     dispatch(allAlcancias());
-  }, []);*/
+  }, []);
   
   const alcancias = useSelector((state) => state.AllAlcancias);
   const [pageIndex, setPageIndex] = useState(1);
@@ -18,6 +18,10 @@ const Alcancias = () => {
   let initialIndex = finalIndex - 12;
   let currentPage = alcancias.slice(initialIndex, finalIndex);
   let numberOfPages = Math.ceil(alcancias.length / 12);
+
+  useEffect(() => {
+    setPageIndex(1)
+  }, [alcancias])
 
   const changePage = (page) => {
     setPageIndex(page);

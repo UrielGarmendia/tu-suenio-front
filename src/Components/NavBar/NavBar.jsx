@@ -31,7 +31,7 @@ const NavBar = () => {
       </div>
       <SearchBar />
       <div className={style.signin}>
-        <img src={carrito} alt="carrito" />
+        <Link to="/carrito"><img src={carrito} alt="carrito" /></Link>
         {isAuthenticated ?
           <SlideMenu />
           :

@@ -30,7 +30,7 @@ const Detail = () => {
       <div className={styles.general_cont}>
         <div className={styles.image_cont}>
           <img
-            src={alcancia[0]?.image}
+            src={alcancia[0]?.image_secure_url}
             alt={alcancia[0]?.name}
             className={styles.image}
           />
