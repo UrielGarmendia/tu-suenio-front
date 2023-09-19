@@ -20,7 +20,7 @@ export const SlideMenu = () => {
               <div className={styles.containerHeader}>
                 <div className={styles.subContainerHeader}>
                   <img className={styles.imgMenu} src={user.picture} alt={user.name} />
-                  <h2 className={styles.nameMenu}>{user.name}</h2>
+                  <h4 className={styles.nameMenu}>{user.name}</h4>
                 </div>
                 <hr className={styles.hrMenu} />
               </div>
