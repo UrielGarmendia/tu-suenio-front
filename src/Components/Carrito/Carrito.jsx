@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import Card from "../Card/Card";
 
 const Carrito = () => {
 
+    let suma = 0;
+    let totalSum = 0;
+
     const state = useSelector(state => state.CartShopping);
-    let [index, setIndex] = useState( state.map(item => ({...item, quantity: 1})));
+    let [index, setIndex] = useState(() => {
+        const savedCart = localStorage.getItem("cart");
+        return savedCart ? JSON.parse(savedCart) : state.map(item => ({...item, quantity: 1}));
+    });
 
     const handleSum = (stock, indexEl) => {
         if(index[indexEl].quantity < stock) {
@@ -23,13 +28,22 @@ const Carrito = () => {
         }
     };
 
-    const handleDelete = (id) => {
-        setIndex(index.filter(el => el.id !== id));
+    const handleSuma = (price, quantity) => {
+        suma = price * quantity;
+        totalSum = totalSum + suma;
+        return suma;
     }
 
-    // useEffect(() => {
-    //     localStorage.setItem("cart", JSON.stringify(index))
-    // }, [index]);
+    const handleDelete = (id) => {
+       const filtrado = index.filter(el => el.id !== id);
+
+       if(!filtrado.length) localStorage.removeItem("cart")
+       setIndex(filtrado)
+    }
+
+    useEffect(() => {
+        if(index.length > 0) localStorage.setItem("cart", JSON.stringify(index));
+    }, [index]); 
 
     return (
         <div className="car-container">
@@ -47,9 +61,12 @@ const Carrito = () => {
                     <h4>{el.quantity}</h4>
                     <button onClick={() => handleRest(indexEl)}>-</button>
                     </div>
-                    <h2>Precio: {el.price * el.quantity}</h2>
+                    <h2>Precio: {handleSuma(el.price, el.quantity)}</h2>
                 </div>
             ))}
+            <div>
+                <h2>Suma total: {totalSum}</h2>
+            </div>
         </div>
     )
 }
