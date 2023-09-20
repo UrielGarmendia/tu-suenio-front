@@ -43,9 +43,10 @@ const Detail = () => {
           <h4>+ Tamaño: {alcancia[0]?.size}</h4>      
           <h4>
             + Categoria:{" "}
-            {alcancia[0]?.Categories[0]?.name || " No se encontraron categorías"}
+            {alcancia[0]?.Categories[0]?.name}
           </h4>
-          <h4>+ Stock: {alcancia[0]?.stock || 0} unidades</h4>
+          <h4>+ Stock: {alcancia[0]?.stock} unidades</h4>
+          <h4>+ Precio: $ {alcancia[0].price}</h4>
           <div className={styles.separador}></div>
           <div className={styles.button_cart_cont}>
             <button>
