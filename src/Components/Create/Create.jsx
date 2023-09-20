@@ -11,7 +11,7 @@ const Create = () => {
   const [formData, setFormData] = useState({
     name: "",
     price: "",
-    image: null,
+    image: "",
     stock: "",
     description: "",
     size: "",
@@ -36,6 +36,10 @@ const Create = () => {
         [name]: value
       })
     );
+  };
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setFormData({ ...formData, image: file });
   };
 
   const handleSubmit = async (e) => {
@@ -66,9 +70,7 @@ const Create = () => {
     if (formErrors.size) {
       alert("Error en el tamaño: " + formErrors.size);
     }
-    if (formErrors.image) {
-      alert("Error en la URL de la imagen: " + formErrors.image);
-    }
+   
     return;
   }
  
@@ -77,7 +79,7 @@ const Create = () => {
   
     try {
       const response = await axios.post(
-        "http://localhost:3001/products/create",
+        "https://tu-suenio-back.onrender.com/products/create",
         formData
       );
     alert("Producto creado: " + response.data);
@@ -86,7 +88,7 @@ const Create = () => {
       setFormData({
         name: "",
         price: "",
-        image: null, 
+        image: "", 
         stock: "",
         description: "",
         size: "",
@@ -181,14 +183,13 @@ const Create = () => {
         <div className={styles.group}>
           <label htmlFor="image">Imagen:</label>
           <input
-            type="text"
+            type="file"
             id="image"
             name="image"
-            onChange={handleInputChange}
+            onChange={handleImageChange}
             accept="image/*"
             required
           />
-          {errors.image && <p className={styles.error}>{errors.image}</p>}
         </div>
         <div className={styles.group}>
           <button type="submit">Crear alcancia</button>
