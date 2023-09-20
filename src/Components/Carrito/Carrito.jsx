@@ -56,7 +56,7 @@ const Carrito = () => {
         <div className={styles.cont}>
             <div className={styles.cont_items}>
                 <h1>Tu carrito</h1>
-                { index.map((el, indexEl) => (
+                { index?.map((el, indexEl) => (
                     <div className={styles.item} key={el.id}>
                         <img className={styles.image} src={el.image_secure_url} alt={el.name}/>
                         <div className={styles.name}>

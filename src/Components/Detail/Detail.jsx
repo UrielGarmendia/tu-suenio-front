@@ -21,7 +21,7 @@ const Detail = () => {
   const handleClick = () => {
     navigate(-1);
   };
-  
+
   return (
     <div className={styles.cont}>
       <button className={styles.close_button} onClick={handleClick}>
@@ -40,45 +40,7 @@ const Detail = () => {
           <h4 className={styles.description}>Descripción:</h4>
           <p>{alcancia[0]?.description}</p>
           <div className={styles.separador}></div>
-          <h4>+ Tamaños:</h4>
-          <div className={styles.tamaños}>
-            <div className={styles.size_item}>
-              <button className={styles.size_buttons}>Chiquitín</button>
-              <ul className={styles.ul}>
-                <li>alto 10cm</li>
-                <li>ancho 10cm</li>
-                <li>largo 10cm</li>
-                <li className={styles.price}>$ 35.000</li>
-              </ul>
-            </div>
-            <div className={styles.size_item}>
-              <button className={styles.size_buttons}>Pequeño</button>
-              <ul className={styles.ul}>
-                <li>alto 12cm</li>
-                <li>ancho 13cm</li>
-                <li>largo 14cm</li>
-                <li className={styles.price}>$ 45.000</li>
-              </ul>
-            </div>
-            <div className={styles.size_item}>
-              <button className={styles.size_buttons}>Mediano</button>
-              <ul className={styles.ul}>
-                <li>alto 15cm</li>
-                <li>ancho 13cm</li>
-                <li>largo 16cm</li>
-                <li className={styles.price}>$ 55.000</li>
-              </ul>
-            </div>
-            <div className={styles.size_item}>
-              <button className={styles.size_buttons}>Grande</button>
-              <ul className={styles.ul}>
-                <li>alto 23cm</li>
-                <li>ancho 21cm</li>
-                <li>largo 23cm</li>
-                <li className={styles.price}>$ 95.000</li>
-              </ul>
-            </div>
-          </div>
+          <h4>+ Tamaño: {alcancia[0]?.size}</h4>      
           <h4>
             + Categoria:{" "}
             {alcancia[0]?.Categories[0]?.name || " No se encontraron categorías"}
