@@ -10,13 +10,14 @@ const Carrito = () => {
     const state = useSelector(state => state.CartShopping);
     let [index, setIndex] = useState(() => {
         const savedCart = localStorage.getItem("cart");
-        return savedCart ? JSON.parse(savedCart) : state.map(item => ({...item, quantity: 1}));
+        return state.length ? state?.map(item => ({...item, quantity: 1})) : JSON.parse(savedCart);
     });
+
 
     const handleSum = (stock, indexEl) => {
         if(index[indexEl].quantity < stock) {
             const stateCopy = [...index];
-            stateCopy[indexEl].quantity++
+            stateCopy[indexEl].quantity++;
             setIndex(stateCopy);
         }
     };
@@ -42,8 +43,13 @@ const Carrito = () => {
        setIndex(filtrado)
     }
 
+    const handlerReduce = (arr) => {
+        const totalProducts = arr?.reduce((a, b) => a + b.quantity ,0);
+        return totalProducts;
+    };
+
     useEffect(() => {
-        if(index.length > 0) localStorage.setItem("cart", JSON.stringify(index));
+        if(index?.length) localStorage.setItem("cart", JSON.stringify(index));
     }, [index]); 
 
     return (
@@ -74,7 +80,7 @@ const Carrito = () => {
                 ))}
             </div>
             <div className={styles.total}>
-                <h4>Total productos {2}</h4>
+                <h4>Total productos {handlerReduce(index)}</h4>
                 <h3>Total compra $ {totalSum}</h3>
                 <button className={styles.button_compra}>Comprar</button>
             </div>
