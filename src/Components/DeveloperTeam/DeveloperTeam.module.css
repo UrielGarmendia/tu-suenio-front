@@ -1,0 +1,29 @@
+.Developer div{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+}
+
+.Developer span{
+    font-size: large;
+    display: flex;
+    justify-content: left;
+}
+
+.Developer span:hover{
+    transform: scale(1.30);
+    color: white;
+    background: #201f1f;
+    border-radius: 2rem;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+}
+.Developer span a{
+    color: #650671;
+}
+.Developer span a:hover{
+    color: #F7DE61;
+}
+.Developer span a:visited{
+    color: none;
+}

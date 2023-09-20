@@ -1,6 +1,7 @@
 import Graficos from '../Graficos/Graficos'
 import style from '../Dashboard/Dashboard.module.css'
 import { useState } from 'react';
+import { Add, ManageAccounts, PointOfSale, Settings, TrendingFlat, TrendingUpOutlined } from '@mui/icons-material';
 
 
 const Dashboard = () => {
@@ -35,19 +36,19 @@ const Dashboard = () => {
     return (
     <div className={style.dashboard}>
       <section>
-        <div>DASHBOARD</div>
-        <div>ANALYTICS
-          <h3>Estadísticas</h3>
-        </div>
-        <div>SUPPORT
-          <h3>Tickets</h3>
-          <h3>Clientes</h3>
-        </div>
-        <div>SHOP
-          <h3>Productos</h3>
-          <h3>Ordenes</h3>
-          <h3>Reportes</h3>
-        </div>
+        <ul>
+          <li><p><Add></Add>PRODUCTOS</p>
+            <ul>
+              <li><p>ACTUALIZAR PRODUCTO</p></li>
+              <li><p>CREAR PRODUCTO</p></li>
+              <li><p>ELIMINAR PRODUCTO</p></li>
+            </ul>
+          </li>
+          <li><p><PointOfSale></PointOfSale>REPORTE DE VENTAS</p></li>
+          <li><p><TrendingUpOutlined></TrendingUpOutlined>GRAFICOS</p></li>
+          <li><p><ManageAccounts></ManageAccounts>USUARIOS REGISTRADOS</p></li>
+          <li><p><Settings></Settings>CONFIGURACION DE PERFIL</p></li>
+        </ul>
       </section>
       <div className={style.graficos}>
         <div className={style.ventas}>
