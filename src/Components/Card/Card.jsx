@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import {detail} from "../../Redux/actions";
 import { useDispatch } from "react-redux";
 import { CartShopping } from "../../Redux/actions";
+import Swal from "sweetalert2";
 
 const Card = ({ id, name, title, price, stock, image, size, Categories, id_categorie }) => {
   const navigate = useNavigate();
@@ -14,8 +15,21 @@ const Card = ({ id, name, title, price, stock, image, size, Categories, id_categ
     navigate(`/detail/${id}`);
   };
 
+  const showAlert = () => {
+    Swal.fire({
+      toast: true,
+      icon: 'success',
+      title: 'producto agregado al carrito',
+      timer: 3000,
+      timerProgressBar: true,
+      showConfirmButton: false,
+      position: "top",
+    })
+  }
+
   const handleClick = (id) => {
     dispatch(CartShopping(id))
+    showAlert();
   }
 
   return (

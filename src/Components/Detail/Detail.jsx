@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { detail } from "../../redux/actions";
+import { CartShopping, detail } from "../../redux/actions";
 import { useNavigate, useParams } from "react-router-dom";
 import UndoIcon from "@mui/icons-material/Undo";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
@@ -18,13 +18,13 @@ const Detail = () => {
     dispatch(detail(id));
   }, []);
 
-  const handleClick = () => {
+  const handleNavigate = () => {
     navigate(-1);
   };
 
   return (
     <div className={styles.cont}>
-      <button className={styles.close_button} onClick={handleClick}>
+      <button className={styles.close_button} onClick={handleNavigate}>
         <UndoIcon />
       </button>
       <div className={styles.general_cont}>
@@ -46,7 +46,7 @@ const Detail = () => {
             {alcancia[0]?.Categories[0]?.name}
           </h4>
           <h4>+ Stock: {alcancia[0]?.stock} unidades</h4>
-          <h4>+ Precio: $ {alcancia[0].price}</h4>
+          <h4>+ Precio: $ {alcancia[0]?.price}</h4>
           <div className={styles.separador}></div>
           <div className={styles.button_cart_cont}>
             <button>

@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./carrito.module.css";
+import { deleteItemCart } from "../../Redux/actions";
 
 const Carrito = () => {
+
+    const dispatch = useDispatch();
 
     let suma = 0;
     let totalSum = 0;
@@ -38,9 +41,9 @@ const Carrito = () => {
 
     const handleDelete = (id) => {
        const filtrado = index.filter(el => el.id !== id);
-
-       if(!filtrado.length) localStorage.removeItem("cart")
-       setIndex(filtrado)
+       dispatch(deleteItemCart(filtrado)); 
+       localStorage.setItem("cart", JSON.stringify(filtrado));
+       setIndex(filtrado);
     }
 
     const handlerReduce = (arr) => {

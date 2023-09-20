@@ -1,3 +1,4 @@
+import { CartShopping } from "./actions";
 import {
   ALCANCIAS,
   DETAIL,
@@ -7,8 +8,10 @@ import {
   ORDERED_BY,
   FILTERED_BY,
   CLEAN_FILTERS,
-  CART_SHOPING
+  CART_SHOPING,
+  DELETE_ITEM_CART
 } from "./actions-types";
+
 
 const initialState = {
   AllAlcancias: [],
@@ -67,12 +70,17 @@ const reducer = (state = initialState, action) => {
       }
     case CART_SHOPING:
       const found = state.CartShopping.filter(el => el.id === action.payload[0].id);
-
+      
       if(!found.length) return {
         ...state,
         CartShopping: [...state.CartShopping, ...action.payload]
-      };
-    
+      }
+
+    case DELETE_ITEM_CART:
+      return {
+        ...state,
+        CartShopping: action.payload
+      }
     default:
       return state;
   }

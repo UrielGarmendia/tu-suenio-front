@@ -8,6 +8,7 @@ import {
   FILTERED_BY,
   CLEAN_FILTERS,
   CART_SHOPING,
+  DELETE_ITEM_CART
 } from "./actions-types";
 import axios from "axios";
 
@@ -154,4 +155,11 @@ export const CartShopping = (id) => {
   } catch (error) {
     return { error: error.message };
   }
+};
+
+export const deleteItemCart = (cart) => {
+  return {
+    type: DELETE_ITEM_CART,
+    payload: cart,
+  };
 };
