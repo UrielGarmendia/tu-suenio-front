@@ -39,7 +39,7 @@ const Alcancias = () => {
       <div className={styles.containerCards}>
         {currentPage.length ? (
           currentPage?.map(
-            ({ id, name, title, price, image, stock, size, Categories, id_categorie }) => {
+            ({ id, name, title, price, image, stock, size, Categories, id_categorie, image_secure_url }) => {
               return (
                 <Card
                   key={id}
@@ -49,7 +49,7 @@ const Alcancias = () => {
                   name={name}
                   title={title}
                   price={price}
-                  image={image}
+                  image={image_secure_url}
                   stock={stock}
                   size={size}
                 />

@@ -21,7 +21,7 @@ const Card = ({ id, name, title, price, stock, image, size, Categories, id_categ
   return (
     <div key={id} className="card-container">
        <AddShoppingCartIcon className="iconAddShoppingCart" onClick={() => handleClick(id)}/>
-      {/* <img src={image} alt={title} className="card-image" onClick={handleNavigate}/> */}
+      {<img src={image} alt={title} className="card-image" onClick={handleNavigate}/>}
 
       <div className="card-title" onClick={handleNavigate}>
         <h3>{title}</h3>
