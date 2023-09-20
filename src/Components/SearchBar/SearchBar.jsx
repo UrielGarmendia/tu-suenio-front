@@ -6,25 +6,24 @@ import { useNavigate } from 'react-router-dom';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 const SearchBar = () => {
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  const [name, setName] = useState();
 
-    const [name, setName] = useState();
+  function changeHandler(event) {
+    event.preventDefault();
+    let input = event.target.value;
 
-    function changeHandler (event) {
-        event.preventDefault();
-        let input = event.target.value
-  
-        setName(input);
-    };
+    setName(input);
+  }
 
-    function onSearch (name) {
-        dispatch(byName(name));
-        navigate("/alcancias");
-        setName("");
-    };
+  function onSearch(name) {
+    dispatch(byName(name));
+    navigate("/alcancias");
+    setName("");
+  }
 
     return (
         <div className={styles.cont}>
@@ -35,4 +34,3 @@ const SearchBar = () => {
 };
 
 export default SearchBar;
-
