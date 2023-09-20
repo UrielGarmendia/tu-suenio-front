@@ -9,3 +9,4 @@ export const ALL_USERS = "ALL_USERS"; // semana 3
 export const USER_BY_ID = "USER_BY_ID"; // semana 3
 export const CREATE_ALCANCIAS = 'CREATE_ALCANCIAS'; // semana 2
 export const CART_SHOPING = "CART_SHOPING"; // semana 2
+export const DELETE_ITEM_CART = "DELETE_ITEM_CART";

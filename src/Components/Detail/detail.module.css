@@ -7,7 +7,7 @@
     padding: 1rem;
     border-radius: 0.3rem;
     box-shadow: 0 0 5px 1px black;
-    background-color: rgb(203, 250, 255);
+    background-color: #f8d7e1;
     color: black;
 }
 
@@ -37,8 +37,7 @@
 
 .image {
     border-radius: 0.3rem;
-    width: 100%;
-    height: 100%;
+    width: 80%;
     box-shadow: 0 0 5px 1px rgb(249, 72, 154);
 }
 
@@ -47,7 +46,6 @@
     flex-direction: column;
     width: 50%;
     align-items: flex-start;
-    padding-left: 3rem;
 }
 
 .h2 {
@@ -69,60 +67,13 @@ p {
     margin: 0;
 }
 
-.tamaños {
+.size {
     display: flex;
-    justify-content: space-between;
-    width: 70%;
-    margin-left: 2rem;
-}
-
-.size_item {
-    width: 23%;
-}
-
-.ul {
-    display: none;
-    list-style: none;
-    margin: 0;
-    position: absolute;
-    text-align: center;
-    padding: 2px;
-    font-size: small;
-    background-color: lightblue;
-    border-radius: 0 0 10px 10px;
-}
-
-.price {
-    color: rgb(255, 76, 76);
-    font-weight: bold;
-    text-shadow: 0 0 5px white;
-}
-
-div button:hover + ul,
-div ul:hover {
-    display: block;
-    flex-direction: column;
-    align-items: center;
-    border: none;
-}
-
-.size_buttons {
-    width: 100%;
-    height: 2rem;
-    background-color: lightblue;
-    border: none;
-    font-weight: bold;
-    border-radius: 1rem 0 1rem 0;
-}
-
-.size_buttons:focus,
-.size_buttons:focus-visible {
-  outline: none;
 }
 
 .button_cart_cont {
     width: 100%;
-    height: 30vh;
+    height: 10vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -137,6 +88,7 @@ div ul:hover {
     font-weight: bold;
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .button_cart_cont button:hover {
