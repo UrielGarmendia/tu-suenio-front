@@ -22,10 +22,7 @@ export const validateForm = (formData) => {
     errors.stock = "El stock debe ser un número.";
   }
 
-  // Validar la URL de la imagen
-  if (formData.image && !/(https?:\/\/.*\.(?:png|jpg|jpeg|gif))/i.test(formData.image)) {
-    errors.image = "Debe ser una URL válida de imagen ( .png, .jpg, .jpeg, .gif).";
-  }
+
 
   return errors;
 };
