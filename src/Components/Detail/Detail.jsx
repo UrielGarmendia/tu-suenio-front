@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { CartShopping, detail } from "../../redux/actions";
+import { CartShopping, detail } from "../../redux/actions.js";
 import { useNavigate, useParams } from "react-router-dom";
 import UndoIcon from "@mui/icons-material/Undo";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
@@ -40,11 +40,8 @@ const Detail = () => {
           <h4 className={styles.description}>Descripción:</h4>
           <p>{alcancia[0]?.description}</p>
           <div className={styles.separador}></div>
-          <h4>+ Tamaño: {alcancia[0]?.size}</h4>      
-          <h4>
-            + Categoria:{" "}
-            {alcancia[0]?.Categories[0]?.name}
-          </h4>
+          <h4>+ Tamaño: {alcancia[0]?.size}</h4>
+          <h4>+ Categoria: {alcancia[0]?.Categories[0]?.name}</h4>
           <h4>+ Stock: {alcancia[0]?.stock} unidades</h4>
           <h4>+ Precio: $ {alcancia[0]?.price}</h4>
           <div className={styles.separador}></div>
