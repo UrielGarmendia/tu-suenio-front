@@ -66,10 +66,13 @@ const reducer = (state = initialState, action) => {
         AllAlcancias: state.copyAllAlcancias
       }
     case CART_SHOPING:
-      return {
+      const found = state.CartShopping.filter(el => el.id === action.payload[0].id);
+
+      if(!found.length) return {
         ...state,
         CartShopping: [...state.CartShopping, ...action.payload]
-      }
+      };
+    
     default:
       return state;
   }
