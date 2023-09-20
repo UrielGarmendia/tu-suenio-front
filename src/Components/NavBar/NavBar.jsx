@@ -6,7 +6,7 @@ import carrito from "../../Assents/carrito.png";
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import { useDispatch } from "react-redux";
-import { allAlcancias } from "../../Redux/actions";
+import { allAlcancias } from "../../Redux/actions.js";
 import { useAuth0 } from "@auth0/auth0-react";
 import SlideMenu from "../SlideMenu/SlideMenu";
 
