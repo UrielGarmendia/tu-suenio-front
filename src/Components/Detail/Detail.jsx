@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { CartShopping, detail } from "../../redux/actions.js";
+import { CartShopping, detail } from "../../Redux/actions.js";
 import { useNavigate, useParams } from "react-router-dom";
 import UndoIcon from "@mui/icons-material/Undo";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
