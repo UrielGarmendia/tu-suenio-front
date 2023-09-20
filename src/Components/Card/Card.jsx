@@ -6,7 +6,7 @@ import {detail} from "../../Redux/actions";
 import { useDispatch } from "react-redux";
 import { CartShopping } from "../../Redux/actions";
 
-const Card = ({ id, name, title, price, stock, image, size, Categories, id_categorie }) => {
+const Card = ({ id, name, title, price, stock, image_secure_url, size, Categories, id_categorie }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -21,7 +21,7 @@ const Card = ({ id, name, title, price, stock, image, size, Categories, id_categ
   return (
     <div key={id} className="card-container">
        <AddShoppingCartIcon className="iconAddShoppingCart" onClick={() => handleClick(id)}/>
-      {/* <img src={image} alt={title} className="card-image" onClick={handleNavigate}/> */}
+      <img src={image_secure_url} alt={title} className="card-image" onClick={handleNavigate}/>
 
       <div className="card-title" onClick={handleNavigate}>
         <h3>{title}</h3>

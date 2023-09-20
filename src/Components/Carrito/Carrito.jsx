@@ -9,13 +9,14 @@ const Carrito = () => {
     const state = useSelector(state => state.CartShopping);
     let [index, setIndex] = useState(() => {
         const savedCart = localStorage.getItem("cart");
-        return savedCart ? JSON.parse(savedCart) : state.map(item => ({...item, quantity: 1}));
+        return state.length ? state?.map(item => ({...item, quantity: 1})) : JSON.parse(savedCart);
     });
+
 
     const handleSum = (stock, indexEl) => {
         if(index[indexEl].quantity < stock) {
             const stateCopy = [...index];
-            stateCopy[indexEl].quantity++
+            stateCopy[indexEl].quantity++;
             setIndex(stateCopy);
         }
     };
@@ -41,14 +42,19 @@ const Carrito = () => {
        setIndex(filtrado)
     }
 
+    const handlerReduce = (arr) => {
+        const totalProducts = arr?.reduce((a, b) => a + b.quantity ,0);
+        return totalProducts;
+    };
+
     useEffect(() => {
-        if(index.length > 0) localStorage.setItem("cart", JSON.stringify(index));
+        if(index?.length) localStorage.setItem("cart", JSON.stringify(index));
     }, [index]); 
 
     return (
         <div className="car-container">
             <h1>Tu carrito</h1>
-            { index.map((el, indexEl) => (
+            { index?.map((el, indexEl) => (
                 <div key={el.id}>
                     <div><img src={el.image_secure_url} alt={el.name} /></div> 
                     <h2>{el.name}</h2>
@@ -66,6 +72,7 @@ const Carrito = () => {
             ))}
             <div>
                 <h2>Suma total: {totalSum}</h2>
+                <h2>Total de productos: {handlerReduce(index)}</h2>
             </div>
         </div>
     )
