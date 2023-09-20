@@ -1,29 +1,61 @@
+
 .dashboard{
     display: flex;
     flex-direction: row;
-    padding: 1rem;
-    margin: 2rem;
-    justify-content: space-between;
+    margin-left: 0;
 }
 
 .dashboard section{
     display: flex;
     flex-direction: column;
-    padding-bottom: 1rem;
-    padding-top: 5rem;
-    width: 15vw;
-    align-items: left;
+    justify-content: left;
+    width: 20vw;
     font-weight: bold;
-    color: #8f8c8c;
+    background: rgb(97, 24, 194);
+    color: rgba(239, 239, 239, 0.926);
+}
+.dashboard section ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
-.dashboard section h3{
-    color:#101010 ;
+.dashboard section ul li{
+    border-bottom: 0.05rem solid white;
 }
-.dashboard section div{
+
+.dashboard section ul li ul{
+    background: #333333;
+    font-size: small;
+}
+.dashboard section ul li:hover{
+    cursor: pointer;
+    background: rgb(2,0,36); 
+    background: linear-gradient(90deg, rgb(27, 17, 218) 0%, rgb(32, 69, 169) 35%, rgb(0, 255, 157) 100%);
+    
+}
+
+.dashboard section ul ul{
+    height: 0;
+    overflow: hidden;
+    transition: 0.8s;
+}
+
+.dashboard section ul li:hover ul{
+    height: 9.5rem;
+}
+
+.dashboard section ul p{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin-left: 1.5rem;
+    padding-top: 1rem;
     padding-bottom: 1rem;
-    margin-left: 3rem;
+    gap: 1rem;
 }
+
 .ventas{
     display: flex;
     justify-content: space-around;
