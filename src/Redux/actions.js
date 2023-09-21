@@ -18,7 +18,7 @@ console.log();
 export const allAlcancias = () => {
   try {
     return async function (dispatch) {
-      const { data } = await axios("https://tu-suenio-back.onrender.com/products");
+      const { data } = await axios("http://localhost:3001/products");
       return dispatch({
         type: ALCANCIAS,
         payload: data,
@@ -32,7 +32,7 @@ export const allAlcancias = () => {
 export const detail = (id) => {
   try {
     return async function (dispatch) {
-      const { data } = await axios(`https://tu-suenio-back.onrender.com/products/${id}`);
+      const { data } = await axios(`http://localhost:3001/products/${id}`);
       return dispatch({
         type: DETAIL,
         payload: data,
@@ -45,7 +45,7 @@ export const detail = (id) => {
 export const createAlcancias = (newProduct) => {
   return async function (dispatch) {
     const response = await axios.post(
-      `https://tu-suenio-back.onrender.com/products/create`,
+      `http://localhost:3001/products/create`,
       newProduct
     );
     return dispatch({
@@ -58,7 +58,7 @@ export const createAlcancias = (newProduct) => {
 export const categories = () => {
   try {
     return async function (dispatch) {
-      const { data } = await axios("https://tu-suenio-back.onrender.com/categorie");
+      const { data } = await axios("http://localhost:3001/categorie");
       return dispatch({
         type: CATEGORIES,
         payload: data,
@@ -73,7 +73,7 @@ export const byName = (name) => {
   try {
     return async function (dispatch) {
       const { data } = await axios(
-        `https://tu-suenio-back.onrender.com/products/?name=${name}`
+        `http://localhost:3001/products/?name=${name}`
       );
       return dispatch({
         type: BY_NAME,
@@ -89,7 +89,7 @@ export const ordenamiento = (event) => {
   try {
     return async function(dispatch) {
       if (event === "A-Z") {
-        const { data } = await axios("https://tu-suenio-back.onrender.com/sort/alp-asc");
+        const { data } = await axios("http://localhost:3001/sort/alp-asc");
         return dispatch({
           type: ORDERED_BY,
           payload: data
@@ -97,7 +97,7 @@ export const ordenamiento = (event) => {
       }
 
       else if(event === "Z-A") {
-        const { data } = await axios("https://tu-suenio-back.onrender.com/sort/alp-desc");
+        const { data } = await axios("http://localhost:3001/sort/alp-desc");
         return dispatch({
           type: ORDERED_BY,
           payload: data
@@ -105,7 +105,7 @@ export const ordenamiento = (event) => {
       }
 
       else if(event === "A") {
-        const { data } = await axios("https://tu-suenio-back.onrender.com/sort/price-asc");
+        const { data } = await axios("http://localhost:3001/sort/price-asc");
         return dispatch({
           type: ORDERED_BY,
           payload: data
@@ -113,7 +113,7 @@ export const ordenamiento = (event) => {
       }
 
       else if(event === "D") {
-        const { data } = await axios("https://tu-suenio-back.onrender.com/sort/price-desc");
+        const { data } = await axios("http://localhost:3001/sort/price-desc");
         return dispatch({
           type: ORDERED_BY,
           payload: data
@@ -128,7 +128,7 @@ export const ordenamiento = (event) => {
 export const filtered = (id) => {
   try {
     return async function(dispatch) {
-      const { data } = await axios(`https://tu-suenio-back.onrender.com/filter/${id}`)
+      const { data } = await axios(`http://localhost:3001/filter/${id}`)
       return dispatch({
         type: FILTERED_BY,
         payload: data
