@@ -5,7 +5,7 @@ import logoUser from "../../Assents/logoUser.png";
 import carrito from "../../Assents/carrito.png";
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { allAlcancias } from "../../Redux/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import SlideMenu from "../SlideMenu/SlideMenu";
@@ -13,6 +13,8 @@ import SlideMenu from "../SlideMenu/SlideMenu";
 const NavBar = () => {
   const { loginWithRedirect, isAuthenticated, user } = useAuth0();
   const dispatch = useDispatch();
+
+  const Cart = useSelector(state => state.CartShopping);
 
   const handleClick = () => {
     dispatch(allAlcancias());
@@ -43,7 +45,7 @@ const NavBar = () => {
         <Link to="/carrito">
           <div className={style.cart_cont}>
             <img src={carrito} alt="carrito" />
-            <p className={style.cartNumber}>{3}</p>
+            <p className={style.cartNumber}>{Cart.length}</p>
           </div>
         </Link>
         {isAuthenticated ? (

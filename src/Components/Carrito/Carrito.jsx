@@ -11,12 +11,9 @@ const Carrito = () => {
     let totalSum = 0;
 
     const state = useSelector(state => state.CartShopping);
-    let [index, setIndex] = useState(() => {
-        const savedCart = localStorage.getItem("cart");
-        return state.length ? state?.map(item => ({...item, quantity: 1})) : JSON.parse(savedCart);
-    });
+    let [index, setIndex] = useState(state?.map(item => ({...item, quantity: 1})));
 
-
+    
     const handleSum = (stock, indexEl) => {
         if(index[indexEl].quantity < stock) {
             const stateCopy = [...index];
@@ -51,9 +48,9 @@ const Carrito = () => {
         return totalProducts;
     };
 
-    useEffect(() => {
-        if(index?.length) localStorage.setItem("cart", JSON.stringify(index));
-    }, [index]); 
+    // useEffect(() => {
+    //     if(index?.length) localStorage.setItem("cart", JSON.stringify(index));
+    // }, [index]); 
 
     return (
         <div className={styles.cont}>

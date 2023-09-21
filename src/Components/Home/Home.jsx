@@ -10,15 +10,17 @@ import mujer from "./mujer.png"
 import plandeahorro from "./plan de ahorro.jpg"
 import Slide from "../Slide/Slide"
 import { useDispatch } from "react-redux";
-import { categories } from "../../Redux/actions";
+import { categories, uploadStorage } from "../../Redux/actions";
 
 
  const home = () => {
 
   const dispatch = useDispatch();
+  const localCart = JSON.parse(localStorage.getItem("cart"));
 
   useEffect(() => {
     dispatch(categories())
+    dispatch(uploadStorage(localCart))
   }, [])
 
     return (

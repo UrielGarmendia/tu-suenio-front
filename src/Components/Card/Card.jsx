@@ -20,7 +20,7 @@ const Card = ({ id, name, title, price, stock, image, size, Categories, id_categ
       toast: true,
       icon: 'success',
       title: 'producto agregado al carrito',
-      timer: 3000,
+      timer: 1200,
       timerProgressBar: true,
       showConfirmButton: false,
       position: "top",
