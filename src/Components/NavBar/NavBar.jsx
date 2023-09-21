@@ -45,7 +45,7 @@ const NavBar = () => {
         <Link to="/carrito">
           <div className={style.cart_cont}>
             <img src={carrito} alt="carrito" />
-            <p className={style.cartNumber}>{Cart.length}</p>
+            <p className={style.cartNumber}>{Cart?.length}</p>
           </div>
         </Link>
         {isAuthenticated ? (
