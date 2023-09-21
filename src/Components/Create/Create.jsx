@@ -40,6 +40,7 @@ const Create = () => {
   };
   const handleImageChange = (e) => {
     const file = e.target.files[0];
+    console.log("Archivo seleccionado:", file);
     setFormData({ ...formData, image: file });
   };
 
