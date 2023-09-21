@@ -5,6 +5,12 @@
     padding-top: 2rem;
 }
 
+h1 {
+    text-decoration: underline;
+    color: #46B7A5;
+    text-shadow: 1px 1px 1px black;
+}
+
 .cont_items {
     width: 60%;
     display: flex;
@@ -14,7 +20,7 @@
     padding: 0 1rem 2rem 1rem;
     box-shadow: 1px 1px 2px 2px rgb(93, 92, 92);
     margin-right: 1rem;
-    background-color: rgb(239, 255, 242);
+    background-image: linear-gradient(to bottom right, pink, lightgreen);
     margin-bottom: 10rem;
 }
 
@@ -101,7 +107,7 @@
     border: 1px solid black;
     border-radius: 5px;
     box-shadow: 1px 1px 2px 2px rgb(93, 92, 92);
-    background-color: rgb(239, 255, 242);
+    background-color: rgb(168, 230, 168);
 }
 
 .button_compra {
