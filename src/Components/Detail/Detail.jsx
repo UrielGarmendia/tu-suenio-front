@@ -5,11 +5,14 @@ import { useNavigate, useParams } from "react-router-dom";
 import UndoIcon from "@mui/icons-material/Undo";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import styles from "./detail.module.css";
+import Swal from "sweetalert2";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Detail = () => {
   const navigate = useNavigate();
 
   const { id } = useParams();
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
 
   const alcancia = useSelector((state) => state.detail);
   const dispatch = useDispatch();
@@ -20,6 +23,39 @@ const Detail = () => {
 
   const handleNavigate = () => {
     navigate(-1);
+  };
+
+  const showAlert = () => {
+    Swal.fire({
+      toast: true,
+      icon: "success",
+      title: "producto agregado al carrito",
+      timer: 1200,
+      timerProgressBar: true,
+      showConfirmButton: false,
+      position: "top",
+    });
+  };
+
+  const showAlert2 = () => {
+    Swal.fire({
+      toast: true,
+      icon: "info",
+      title: "Logueate para agregar un producto al carrito",
+      showConfirmButton: true,
+      position: "top"
+    }).then(() => {
+      loginWithRedirect();
+    });
+  };
+
+    const handleClick = (id) => {
+    if(isAuthenticated) {
+    dispatch(CartShopping(id));
+    showAlert();
+    } else {
+      showAlert2()
+    }
   };
 
   return (
@@ -46,7 +82,7 @@ const Detail = () => {
           <h4>+ Precio: $ {alcancia[0]?.price}</h4>
           <div className={styles.separador}></div>
           <div className={styles.button_cart_cont}>
-            <button>
+            <button onClick={() => handleClick(id)}>
               Agregar al <AddShoppingCartIcon />
             </button>
           </div>
