@@ -9,7 +9,7 @@
     display: flex;
     flex-direction: column;
     justify-content: left;
-    width: 20vw;
+    min-width: 20vw;
     font-weight: bold;
     background: rgb(97, 24, 194);
     color: rgba(239, 239, 239, 0.926);
@@ -56,34 +56,16 @@
     gap: 1rem;
 }
 
-.ventas{
-    display: flex;
-    justify-content: space-around;
-    padding: 1rem;
-}
-.ventas span{
-    border: 0.2rem solid #333333;
-    padding: 0.3rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.ventas span:hover{
-    cursor: pointer;
-}
-
-.ventas span div{
+.container {
     display: flex;
     flex-direction: column;
-    justify-content: end;
-    align-items: left;
-    padding: 0.8rem;
+    background: rgba(25, 71, 136, 0.175);
+    width: 100%;
+    justify-content: center;
+    padding: 3rem;
+
 }
 
-.graficos{
-    margin: 0;
-    width: 70vw;
-}
+
 
 
