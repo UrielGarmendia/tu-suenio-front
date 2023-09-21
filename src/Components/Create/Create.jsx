@@ -88,6 +88,7 @@ const Create = () => {
           },
         }
       );
+      console.log(response.data);
       alert("Producto creado: " + response.data);
 
       // Limpiar el formulario después de enviarlo con éxito
