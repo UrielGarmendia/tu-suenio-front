@@ -1,46 +1,44 @@
-import React, { useEffect } from "react";
+
 import styles from "../Home/Home.module.css"
 import fiestas from "./fiesta.png"
 import plan from "./plan.png"
-import dequesirve from "./dequesirve.png"
+// import dequesirve from "./dequesirve.png"
 import gafas from "./gafas.png"
 import telefono from "./telefono.png"
 import credito from "./credito.png"
 import mujer from "./mujer.png"
 import plandeahorro from "./plan de ahorro.jpg"
 import Slide from "../Slide/Slide"
-import { useDispatch } from "react-redux";
-import { categories } from "../../Redux/actions";
+import cerdos from "./cerdos.png"
+import whatsapp from "../../Assents/WhatsApp.png";
 
 
  const home = () => {
 
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(categories())
-  }, [])
+
+
+
+
 
     return (
       <div className={styles.principal}>
           <Slide />
         <div className={styles.contentContainer}>
           <div className={styles.imageContainer}>
-            <img src={plan} alt="plan" className={styles.planLogo} />
+            <img src={cerdos} alt="cerdos" className={styles.cerdos} />
           </div>
-          <div className={styles.textContainer}>
-            <h2>¿Por qué es importante ahorrar ?</h2>
+          <div className={styles.textcerditos}>
+            <h2>¿Que tamaños tenemos?</h2>
             <p>
-            Ahorrar te permite tener un colchón de dinero disponible 
-            para emergencias inesperadas, como gastos médicos, reparaciones
-            de automóviles o pérdida de empleo. Esto evita que
-            te endeudes o te veas en situaciones financieras difíciles; tambien
-            Ahorrar te ayuda a trabajar hacia metas financieras a corto y largo plazo, 
-            como comprar una casa, pagar la educación de tus hijos, tomar unas vacaciones
-             soñadas o jubilarte cómodamente.
+          estamos en mantenimiento
+          
             </p>
-            <div className={styles.informacion}>
-                <p className={styles.masinfop}>Mas informacion</p>
+            <div className={styles.masinfo}>
+              <p>mas informacion</p>
+            <a  href="https://wa.me/message/TNARBJHH3ZXGJ1" target="_blank" rel="noreferrer">
+                  <img  className={styles.whatsapp} src={whatsapp} href="" alt="" />
+                </a>
             </div>
           </div>
         </div>
@@ -54,7 +52,10 @@ import { categories } from "../../Redux/actions";
               que quieras.
             </p>
             <div className={styles.informacion1}>
-                <p className={styles.masinfop}>Mas informacion</p>
+            <p>mas informacion</p>
+            <a href="https://wa.me/message/TNARBJHH3ZXGJ1" target="_blank" rel="noreferrer">
+                  <img className={styles.whatsapp} src={whatsapp} href="" alt="" />
+                </a>
             </div>
           </div>
           <div className={styles.imageContainer}>
@@ -63,7 +64,7 @@ import { categories } from "../../Redux/actions";
         </div>
         <div className={styles.contentContainer}>
           <div className={styles.imageContainer}>
-            <img src={dequesirve} alt="dequesirve" className={styles.planLogo} />
+            <img src={ plan} alt=" plan" className={styles.planLogo} />
           </div>
           <div className={styles.textContainer}>
             <h2>¿Por qué es importante tener un plan de ahorro ?</h2>
@@ -79,21 +80,31 @@ import { categories } from "../../Redux/actions";
               <img src={plandeahorro} alt="plandeahorro" className={styles.imgAhorro} />
             </div>
             <div className={styles.informacion2}>
-                <p className={styles.masinfop}>Mas informacion</p>
+            <p>mas informacion</p>
+            <a href="https://wa.me/message/TNARBJHH3ZXGJ1" target="_blank" rel="noreferrer">
+                  <img className={styles.whatsapp} src={whatsapp} href="" alt="" />
+                </a>
             </div>
           </div>
         </div>
         <div className={styles.contentContainer}>
           <div className={styles.textContainer}>
-            <h2>¿No sé que mas preguntar?</h2>
+            <h2>¿Por qué es importante ahorrar ?</h2>
             <p>
-              Nuestras alcancías sirven para cualquier tipo de evento, ya que
-              puedes personalizarlas a tu gusto y usarlas como por ejemplo:
-              recordatorios en bodas, fiestas infantiles, prácticamente para lo
-              que quieras.
+            Ahorrar te permite tener un colchón de dinero disponible 
+            para emergencias inesperadas, como gastos médicos, reparaciones
+            de automóviles o pérdida de empleo. Esto evita que
+            te endeudes o te veas en situaciones financieras difíciles; tambien
+            Ahorrar te ayuda a trabajar hacia metas financieras a corto y largo plazo, 
+            como comprar una casa, pagar la educación de tus hijos, tomar unas vacaciones
+             soñadas o jubilarte cómodamente.
             </p>
+
             <div className={styles.informacion1}>
-                <p className={styles.masinfop}>Mas informacion</p>
+            <p>mas informacion</p>
+            <a href="https://wa.me/message/TNARBJHH3ZXGJ1" target="_blank" rel="noreferrer">
+                  <img className={styles.whatsapp} src={whatsapp} href="" alt="" />
+                </a>
             </div>
           </div>
           <div className={styles.imageContainer}>
@@ -115,7 +126,10 @@ import { categories } from "../../Redux/actions";
                el estrés relacionado con las preocupaciones financieras.
             </p>
             <div className={styles.informacion}>
-                <p className={styles.masinfop}>Mas informacion</p>
+            <p>mas informacion</p>
+            <a href="https://wa.me/message/TNARBJHH3ZXGJ1" target="_blank" rel="noreferrer">
+                  <img className={styles.whatsapp} src={whatsapp} href="" alt="" />
+                </a>
             </div>
           </div>
         </div>
@@ -129,7 +143,10 @@ import { categories } from "../../Redux/actions";
               que quieras.
             </p>
             <div className={styles.informacion1}>
-                <p className={styles.masinfop}>Mas informacion</p>
+            <p>mas informacion</p>
+            <a href="https://wa.me/message/TNARBJHH3ZXGJ1" target="_blank" rel="noreferrer">
+                  <img className={styles.whatsapp} src={whatsapp} href="" alt="" />
+                </a>
             </div>
           </div>
           <div className={styles.imageContainer}>
@@ -151,7 +168,10 @@ import { categories } from "../../Redux/actions";
                el estrés relacionado con las preocupaciones financieras.
             </p>
             <div className={styles.informacion}>
-                <p className={styles.masinfop}>Mas informacion</p>
+              <p>mas informacion</p>
+            <a href="https://wa.me/message/TNARBJHH3ZXGJ1" target="_blank" rel="noreferrer">
+                  <img  className={styles.whatsapp} src={whatsapp} href="" alt="" />
+                </a>
             </div>
           </div>
         </div>
