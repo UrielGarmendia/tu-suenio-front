@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { byName } from "../../redux/actions";
+import { byName } from "../../Redux/actions";
 import styles from "./searchBar.module.css";
 import { useNavigate } from "react-router-dom";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
