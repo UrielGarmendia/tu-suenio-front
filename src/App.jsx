@@ -7,7 +7,9 @@ import Detail from "./Components/Detail/Detail";
 import NavBar from "./Components/NavBar/NavBar";
 import Footer from "./Components/Footer/Footer"
 import Create from "./Components/Create/Create"
+import Dashboard from "./Components/Dashboard/Dashboard"
 import FilteredOrdered from "./Components/Filter/Filter";
+import Carrito from "./Components/Carrito/Carrito";
 
 function App() {
   const location = useLocation();
@@ -23,6 +25,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/create" element={<Create/>} />
         <Route path="/detail/:id" element={<Detail />} />
+        <Route path="/carrito" element={<Carrito/>}/>
+        <Route path="/admin" element={<Dashboard />} />
       </Routes>
       <Footer/>
     </div>

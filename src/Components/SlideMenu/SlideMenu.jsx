@@ -14,7 +14,7 @@ export const SlideMenu = () => {
   }
   const menuClassName = isOpen ? `${styles.containerMenu} ${styles.open}` : styles.containerMenu;
   return (
-    <div>
+    <div className={styles.principalContainer}>
           <img onClick={openMenu} className={styles.img} src={user.picture} alt={user.name} />
             <div className={menuClassName}>
               <div className={styles.containerHeader}>

@@ -8,9 +8,9 @@ import Paginado from "../Paginado/Paginado";
 const Alcancias = () => {
   const dispatch = useDispatch();
 
-  /*useEffect(() => {
+  useEffect(() => {
     dispatch(allAlcancias());
-  }, []);*/
+  }, []);
   
   const alcancias = useSelector((state) => state.AllAlcancias);
   const [pageIndex, setPageIndex] = useState(1);
@@ -18,6 +18,10 @@ const Alcancias = () => {
   let initialIndex = finalIndex - 12;
   let currentPage = alcancias.slice(initialIndex, finalIndex);
   let numberOfPages = Math.ceil(alcancias.length / 12);
+
+  useEffect(() => {
+    setPageIndex(1)
+  }, [alcancias])
 
   const changePage = (page) => {
     setPageIndex(page);
@@ -35,7 +39,7 @@ const Alcancias = () => {
       <div className={styles.containerCards}>
         {currentPage.length ? (
           currentPage?.map(
-            ({ id, name, title, price, image, stock, size, Categories, id_categorie }) => {
+            ({ id, name, title, price, image, stock, size, Categories, id_categorie, image_secure_url }) => {
               return (
                 <Card
                   key={id}
@@ -45,7 +49,7 @@ const Alcancias = () => {
                   name={name}
                   title={title}
                   price={price}
-                  image={image}
+                  image={image_secure_url}
                   stock={stock}
                   size={size}
                 />
