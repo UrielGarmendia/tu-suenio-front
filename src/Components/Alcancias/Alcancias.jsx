@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { allAlcancias } from "../../redux/actions";
+import { allAlcancias } from "../../Redux/actions";
 import Card from "../Card/Card";
 import styles from "./Alcancias.module.css";
 import Paginado from "../Paginado/Paginado";

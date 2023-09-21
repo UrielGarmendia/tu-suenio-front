@@ -10,7 +10,7 @@ import mujer from "./mujer.png";
 import plandeahorro from "./plan de ahorro.jpg";
 import Slide from "../Slide/Slide";
 import { useDispatch } from "react-redux";
-import { categories, uploadStorage } from "../../redux/actions";
+import { categories, uploadStorage } from "../../Redux/actions";
 
 const home = () => {
   const dispatch = useDispatch();

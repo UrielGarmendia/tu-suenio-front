@@ -4,7 +4,7 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useNavigate } from "react-router-dom";
 // import { detail } from "../../redux/actions";
 import { useDispatch } from "react-redux";
-import { CartShopping } from "../../redux/actions";
+import { CartShopping } from "../../Redux/actions";
 import Swal from "sweetalert2";
 
 const Card = ({

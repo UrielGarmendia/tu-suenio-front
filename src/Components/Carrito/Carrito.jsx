@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./carrito.module.css";
-import { deleteItemCart } from "../../redux/actions";
+import { deleteItemCart } from "../../Redux/actions";
 
 const Carrito = () => {
   const dispatch = useDispatch();

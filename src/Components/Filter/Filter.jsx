@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import "./Filter.css";
 import { useDispatch, useSelector } from "react-redux";
-import { categories } from "../../redux/actions";
-import { ordenamiento, filtered, cleanFilters } from "../../redux/actions";
+import { categories } from "../../Redux/actions";
+import { ordenamiento, filtered, cleanFilters } from "../../Redux/actions";
 
 const FilteredOrdered = () => {
   const clean = {
