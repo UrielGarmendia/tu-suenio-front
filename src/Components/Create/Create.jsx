@@ -81,7 +81,12 @@ const Create = () => {
     try {
       const response = await axios.post(
         "https://tu-suenio-back.onrender.com/products/create",
-        formData
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data", // Configura el tipo de contenido
+          },
+        }
       );
       alert("Producto creado: " + response.data);
 
