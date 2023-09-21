@@ -6,7 +6,7 @@ import carrito from "../../Assents/carrito.png";
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import { useDispatch, useSelector } from "react-redux";
-import { allAlcancias } from "../../Redux/actions";
+import { allAlcancias } from "../../redux/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import SlideMenu from "../SlideMenu/SlideMenu";
 
@@ -14,7 +14,7 @@ const NavBar = () => {
   const { loginWithRedirect, isAuthenticated, user } = useAuth0();
   const dispatch = useDispatch();
 
-  const Cart = useSelector(state => state.CartShopping);
+  const Cart = useSelector((state) => state.CartShopping);
 
   const handleClick = () => {
     dispatch(allAlcancias());
