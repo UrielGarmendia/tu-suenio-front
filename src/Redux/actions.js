@@ -176,10 +176,3 @@ export const deleteItemCart = (cart) => {
     payload: cart,
   };
 };
-
-export const uploadStorage = (cart) => {
-  return {
-    type: LOCAL_STORAGE,
-    payload: cart,
-  };
-};

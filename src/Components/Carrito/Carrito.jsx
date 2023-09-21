@@ -2,14 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./carrito.module.css";
 import { deleteItemCart } from "../../Redux/actions";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Carrito = () => {
   const dispatch = useDispatch();
+
+  const { isAuthenticated } = useAuth0();
 
   let suma = 0;
   let totalSum = 0;
 
   const state = useSelector((state) => state.CartShopping);
+  console.log(state);
   let [index, setIndex] = useState(
     state?.map((item) => ({ ...item, quantity: 1 }))
   );
@@ -47,6 +51,11 @@ const Carrito = () => {
     const totalProducts = arr?.reduce((a, b) => a + b.quantity, 0);
     return totalProducts;
   };
+
+  const handleBuy = () => {
+    if(isAuthenticated) return alert("Gracias por tu compra");
+    else return alert("Debes loguearte")
+  }
 
   // useEffect(() => {
   //     if(index?.length) localStorage.setItem("cart", JSON.stringify(index));
@@ -103,7 +112,7 @@ const Carrito = () => {
       <div className={styles.total}>
         <h4>Total productos {handlerReduce(index)}</h4>
         <h3>Total compra $ {totalSum}</h3>
-        <button className={styles.button_compra}>Comprar</button>
+        <button className={styles.button_compra} onClick={handleBuy}>Comprar</button>
       </div>
     </div>
   );
