@@ -8,7 +8,8 @@ import {
   FILTERED_BY,
   CLEAN_FILTERS,
   CART_SHOPING,
-  DELETE_ITEM_CART
+  DELETE_ITEM_CART,
+  LOCAL_STORAGE
 } from "./actions-types";
 import axios from "axios";
 
@@ -163,3 +164,10 @@ export const deleteItemCart = (cart) => {
     payload: cart,
   };
 };
+
+export const uploadStorage = (cart) => {
+  return {
+    type: LOCAL_STORAGE,
+    payload: cart
+  }
+}
