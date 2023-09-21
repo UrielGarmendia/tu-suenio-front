@@ -102,7 +102,13 @@ const Create = () => {
   return (
     <div className={styles.createcontainer}>
       <h2>Crear una nueva alcancia</h2>
-      <form className={styles.createform} onSubmit={handleSubmit}>
+      <form
+        className={styles.createform}
+        onSubmit={handleSubmit}
+        action="https://tu-suenio-back.onrender.com/products/create"
+        method="POST"
+        enctype="multipart/form-data"
+      >
         <div className={styles.group}>
           <label htmlFor="name">Nombre:</label>
           <input
