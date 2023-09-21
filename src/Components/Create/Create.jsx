@@ -89,7 +89,7 @@ const Create = () => {
         }
       );
       console.log(response.data);
-      alert("Producto creado: " + response.data);
+      alert("Producto creado: " + response.data.name);
 
       // Limpiar el formulario después de enviarlo con éxito
       setFormData({
