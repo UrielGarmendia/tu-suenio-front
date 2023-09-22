@@ -3,24 +3,26 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./carrito.module.css";
 import { deleteItemCart } from "../../Redux/actions";
 import { useAuth0 } from "@auth0/auth0-react";
+import Swal from "sweetalert2";
 
 const Carrito = () => {
   const dispatch = useDispatch();
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
 
   let suma = 0;
   let totalSum = 0;
 
   const state = useSelector((state) => state.CartShopping);
-  console.log(state);
+  
   let [index, setIndex] = useState(
-    state?.map((item) => ({ ...item, quantity: 1 }))
+    state?.map((item) => (!item.hasOwnProperty("quantity") ? { ...item, quantity: 1 } : item))
   );
 
   const handleSum = (stock, indexEl) => {
     if (index[indexEl].quantity < stock) {
       const stateCopy = [...index];
       stateCopy[indexEl].quantity++;
+      localStorage.setItem("cart", JSON.stringify(stateCopy));
       setIndex(stateCopy);
     }
   };
@@ -29,6 +31,7 @@ const Carrito = () => {
     if (index[indexEl].quantity > 1) {
       const stateCopy = [...index];
       stateCopy[indexEl].quantity--;
+      localStorage.setItem("cart", JSON.stringify(stateCopy));
       setIndex(stateCopy);
     }
   };
@@ -51,9 +54,21 @@ const Carrito = () => {
     return totalProducts;
   };
 
+  const showAlert = () => {
+    Swal.fire({
+      toast: true,
+      icon: "info",
+      title: "Debes estar logueado para continuar con la compra",
+      showConfirmButton: true,
+      position: "top"
+    }).then(() => {
+      loginWithRedirect();
+    });
+  };
+
   const handleBuy = () => {
-    if(isAuthenticated) return alert("Gracias por tu compra");
-    else return alert("Debes loguearte")
+    if(isAuthenticated) return;
+    else showAlert();
   }
 
   return (

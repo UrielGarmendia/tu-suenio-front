@@ -10,6 +10,7 @@ import Create from "./Components/Create/Create"
 import Dashboard from "./Components/Dashboard/Dashboard"
 import FilteredOrdered from "./Components/Filter/Filter";
 import Carrito from "./Components/Carrito/Carrito";
+import WhatsappBar from "./Components/WhatsappBar/WhatsappBar";
 
 function App() {
   const location = useLocation();
@@ -18,7 +19,7 @@ function App() {
       
       {location.pathname === "/login" || "/detail" &&  <NavBar />}
       {location.pathname == "/alcancias" && <FilteredOrdered/>}
-     
+      <WhatsappBar/>
       <Routes>
         <Route path="/login" element={<Landing />} />
         <Route path="/alcancias" element={<Alcancias />} />

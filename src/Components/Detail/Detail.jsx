@@ -37,25 +37,9 @@ const Detail = () => {
     });
   };
 
-  const showAlert2 = () => {
-    Swal.fire({
-      toast: true,
-      icon: "info",
-      title: "Logueate para agregar un producto al carrito",
-      showConfirmButton: true,
-      position: "top"
-    }).then(() => {
-      loginWithRedirect();
-    });
-  };
-
     const handleClick = (id) => {
-    if(isAuthenticated) {
     dispatch(CartShopping(id));
     showAlert();
-    } else {
-      showAlert2()
-    }
   };
 
   return (
@@ -73,16 +57,18 @@ const Detail = () => {
         </div>
         <div className={styles.info_cont}>
           <h2 className={styles.h2}>{alcancia[0]?.name}</h2>
+          <h4 className={styles.price}>$ {alcancia[0]?.price}</h4>
+          <h4 className={styles.h4_info}>Tamaño: {alcancia[0]?.size}</h4>
+          <h4 className={styles.h4_info}>Categoria: {alcancia[0]?.Categories[0]?.name}</h4>
+          <h4 className={styles.h4_info}>Stock: {alcancia[0]?.stock} unidades</h4>
           <h4 className={styles.description}>Descripción:</h4>
-          <p>{alcancia[0]?.description}</p>
-          <div className={styles.separador}></div>
-          <h4>+ Tamaño: {alcancia[0]?.size}</h4>
-          <h4>+ Categoria: {alcancia[0]?.Categories[0]?.name}</h4>
-          <h4>+ Stock: {alcancia[0]?.stock} unidades</h4>
-          <h4>+ Precio: $ {alcancia[0]?.price}</h4>
-          <div className={styles.separador}></div>
+          <p className={styles.paragraph}>{alcancia[0]?.description}</p>
+        </div>
+        <div className={styles.last_cont}>
+          <button className={styles.buy_button}>Comprar ahora</button>
+          <h4>O</h4>
           <div className={styles.button_cart_cont}>
-            <button onClick={() => handleClick(id)}>
+            <button className={styles.button} onClick={() => handleClick(id)}>
               Agregar al <AddShoppingCartIcon />
             </button>
           </div>
