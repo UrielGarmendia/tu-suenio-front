@@ -82,7 +82,7 @@ export const byName = (name) => {
   try {
     return async function (dispatch) {
       const { data } = await axios(
-        `http://localhost:3001/?name=${name}`
+        `http://localhost:3001/products/?name=${name}`
       );
       return dispatch({
         type: BY_NAME,
