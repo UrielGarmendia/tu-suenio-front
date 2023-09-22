@@ -15,9 +15,6 @@ import {
 } from "./actions-types";
 import axios from "axios";
 
-console.log();
-
-// Obtener lo que serían todas las alcancías
 export const allAlcancias = () => {
   try {
     return async function (dispatch) {
@@ -82,7 +79,7 @@ export const byName = (name) => {
   try {
     return async function (dispatch) {
       const { data } = await axios(
-        `https://tu-suenio-back.onrender.com/?name=${name}`
+        `https://tu-suenio-back.onrender.com/products?name=${name}`
       );
       return dispatch({
         type: BY_NAME,
