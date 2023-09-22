@@ -20,7 +20,8 @@ const home = () => {
 
   useEffect(() => {
     dispatch(categories());
-  }, []);
+  }, []);   
+      
   
     return (
       <div className={styles.principal}>
