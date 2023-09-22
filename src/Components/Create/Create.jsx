@@ -85,7 +85,7 @@ const Create = () => {
 
     try {
       const response = await axios.post(
-        "https://tu-suenio-back.onrender.com/products/create",
+        "http://localhost:3001/products/create",
         formData,
         {
           headers: {
@@ -117,7 +117,7 @@ const Create = () => {
       <form
         className={styles.createform}
         onSubmit={handleSubmit}
-        action="https://tu-suenio-back.onrender.com/products/create"
+        action="http://localhost:3001/products/create"
         method="POST"
         enctype="multipart/form-data"
       >

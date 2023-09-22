@@ -21,7 +21,7 @@ const Card = ({
 }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isAuthenticated, loginWithRedirect } = useAuth0()
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
 
   const handleNavigate = () => {
     navigate(`/detail/${id}`);

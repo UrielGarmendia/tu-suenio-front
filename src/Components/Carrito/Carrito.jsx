@@ -12,6 +12,7 @@ const Carrito = () => {
   let totalSum = 0;
 
   const state = useSelector((state) => state.CartShopping);
+  console.log(state);
   let [index, setIndex] = useState(
     state?.map((item) => ({ ...item, quantity: 1 }))
   );
