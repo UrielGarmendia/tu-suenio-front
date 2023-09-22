@@ -22,7 +22,6 @@ const home = () => {
     dispatch(categories());
   }, []);   
       
-  
     return (
       <div className={styles.principal}>
           <Slide />
