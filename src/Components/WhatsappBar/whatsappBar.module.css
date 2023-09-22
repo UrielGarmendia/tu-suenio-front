@@ -1,0 +1,35 @@
+.cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 3rem;
+    right: 2rem;
+    z-index: 9999;
+    background-color: rgba(30, 255, 60, 0.3);
+    border-radius: 50%;
+}
+
+.cont:hover {
+    background-color: rgb(71, 255, 71);
+    border: 1px solid black;
+}
+
+.button {
+    background-image: linear-gradient(to bottom right, rgb(255, 109, 134, .1), rgb(75, 255, 75, .1));
+    margin: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    padding: 0.5rem;
+}
+
+.button:hover {
+    background-image: linear-gradient(to bottom right, lightgreen, rgb(24, 180, 24));
+}
+
+.img {
+    width: 2rem;
+    margin: 0.5rem;
+}
