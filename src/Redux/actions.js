@@ -22,7 +22,7 @@ export const allAlcancias = () => {
   try {
     return async function (dispatch) {
       const { data } = await axios(
-        "http://localhost:3001/products"
+        "https://tu-suenio-back.onrender.com/products"
       );
       return dispatch({
         type: ALCANCIAS,
@@ -38,7 +38,7 @@ export const detail = (id) => {
   try {
     return async function (dispatch) {
       const { data } = await axios(
-        `http://localhost:3001/products/${id}`
+        `https://tu-suenio-back.onrender.com/products/${id}`
       );
       return dispatch({
         type: DETAIL,
@@ -52,7 +52,7 @@ export const detail = (id) => {
 export const createAlcancias = (newProduct) => {
   return async function (dispatch) {
     const response = await axios.post(
-      `http://localhost:3001/products/create`,
+      `https://tu-suenio-back.onrender.com/products/create`,
       newProduct
     );
     return dispatch({
@@ -66,7 +66,7 @@ export const categories = () => {
   try {
     return async function (dispatch) {
       const { data } = await axios(
-        "http://localhost:3001/categorie"
+        "https://tu-suenio-back.onrender.com/categorie"
       );
       return dispatch({
         type: CATEGORIES,
@@ -82,7 +82,7 @@ export const byName = (name) => {
   try {
     return async function (dispatch) {
       const { data } = await axios(
-        `http://localhost:3001/?name=${name}`
+        `https://tu-suenio-back.onrender.com/?name=${name}`
       );
       return dispatch({
         type: BY_NAME,
@@ -99,7 +99,7 @@ export const ordenamiento = (event) => {
     return async function (dispatch) {
       if (event === "A-Z") {
         const { data } = await axios(
-          "http://localhost:3001/sort/alp-asc"
+          "https://tu-suenio-back.onrender.com/sort/alp-asc"
         );
         return dispatch({
           type: ORDERED_BY,
@@ -107,7 +107,7 @@ export const ordenamiento = (event) => {
         });
       } else if (event === "Z-A") {
         const { data } = await axios(
-          "http://localhost:3001/sort/alp-desc"
+          "https://tu-suenio-back.onrender.com/sort/alp-desc"
         );
         return dispatch({
           type: ORDERED_BY,
@@ -115,7 +115,7 @@ export const ordenamiento = (event) => {
         });
       } else if (event === "A") {
         const { data } = await axios(
-          "http://localhost:3001/sort/price-asc"
+          "https://tu-suenio-back.onrender.com/sort/price-asc"
         );
         return dispatch({
           type: ORDERED_BY,
@@ -123,7 +123,7 @@ export const ordenamiento = (event) => {
         });
       } else if (event === "D") {
         const { data } = await axios(
-          "http://localhost:3001/sort/price-desc"
+          "https://tu-suenio-back.onrender.com/sort/price-desc"
         );
         return dispatch({
           type: ORDERED_BY,
@@ -140,7 +140,7 @@ export const filtered = (id) => {
   try {
     return async function (dispatch) {
       const { data } = await axios(
-        `http://localhost:3001/filter/${id}`
+        `https://tu-suenio-back.onrender.com/${id}`
       );
       return dispatch({
         type: FILTERED_BY,
@@ -186,7 +186,7 @@ export const CartShopping = (id) => {
   try {
     return async function (dispatch) {
       const { data } = await axios(
-        `http://localhost:3001/products/${id}`
+        `https://tu-suenio-back.onrender.com/products/${id}`
       );
       return dispatch({
         type: CART_SHOPING,
