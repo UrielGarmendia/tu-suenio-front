@@ -10,7 +10,6 @@ import {
   CART_SHOPING,
   DELETE_ITEM_CART,
   LOCAL_STORAGE,
-  DELETE_PRODUCT
 } from "./actions-types";
 import axios from "axios";
 
@@ -37,7 +36,7 @@ export const detail = (id) => {
   try {
     return async function (dispatch) {
       const { data } = await axios(
-        `http://localhost:3001/products/${id}`
+        `https://tu-suenio-back.onrender.com/products/${id}`
       );
       return dispatch({
         type: DETAIL,
@@ -139,7 +138,7 @@ export const filtered = (id) => {
   try {
     return async function (dispatch) {
       const { data } = await axios(
-        `http://localhost:3001/filter/${id}`
+        `https://tu-suenio-back.onrender.com/filter/${id}`
       );
       return dispatch({
         type: FILTERED_BY,
@@ -149,6 +148,32 @@ export const filtered = (id) => {
   } catch (error) {
     return { error: error.message };
   }
+};
+export const filterBySize = (size) => {
+  return async function (dispatch) {
+    try {
+      const { data } = await axios (`http://localhost:3001/filter/size/${size}`);
+      return dispatch({
+        type: FILTERED_BY_SIZE, 
+        payload: data,
+      });
+    } catch (error) {
+      return { error: error.message };
+    }
+  };
+};
+export const ProductsByCategoryAndSize = (id,size) => {
+  return async function (dispatch) {
+    try {
+      const { data } = await axios (`http://localhost:3001/filter/combined/${id}/${size}`);
+      return dispatch({
+        type:PRODUCTS_BY_CATEGORIEANDSIZE, 
+        payload: data,
+      });
+    } catch (error) {
+      return { error: error.message };
+    }
+  };
 };
 
 export const cleanFilters = () => {
