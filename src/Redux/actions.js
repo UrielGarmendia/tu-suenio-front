@@ -39,7 +39,7 @@ export const detail = (id) => {
   try {
     return async function (dispatch) {
       const { data } = await axios(
-        `https://tu-suenio-back.onrender.com/products/${id}`
+        `https://localhost:3001/products/${id}`
       );
       return dispatch({
         type: DETAIL,
@@ -141,7 +141,7 @@ export const filtered = (id) => {
   try {
     return async function (dispatch) {
       const { data } = await axios(
-        `https://tu-suenio-back.onrender.com/filter/${id}`
+        `http://localhost:3001/filter/categorie/${id}`
       );
       return dispatch({
         type: FILTERED_BY,
