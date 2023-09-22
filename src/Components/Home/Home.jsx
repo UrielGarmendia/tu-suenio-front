@@ -14,7 +14,6 @@ import whatsapp from "../../Assents/WhatsApp.png";
 import { useDispatch } from "react-redux";
 import { categories } from "../../Redux/actions";
 
-
 const home = () => {
   const dispatch = useDispatch();
 
@@ -22,7 +21,6 @@ const home = () => {
     dispatch(categories());
   }, []);   
       
-  
     return (
       <div className={styles.principal}>
           <Slide />
