@@ -10,3 +10,6 @@ export const USER_BY_ID = "USER_BY_ID"; // semana 3
 export const CREATE_ALCANCIAS = 'CREATE_ALCANCIAS'; // semana 2
 export const CART_SHOPING = "CART_SHOPING"; // semana 2
 export const DELETE_ITEM_CART = "DELETE_ITEM_CART";
+export const LOCAL_STORAGE = "LOCAL_STORAGE";
+export const  FILTERED_BY_SIZE="FILTERED_BY_SIZE";
+export const PRODUCTS_BY_CATEGORIEANDSIZE="PRODUCTS_BY_CATEGORIEANDSIZE";

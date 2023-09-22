@@ -18,9 +18,7 @@ import whatsapp from "../../Assents/WhatsApp.png";
 
 
 
-
-
-
+  
     return (
       <div className={styles.principal}>
           <Slide />
@@ -179,4 +177,4 @@ import whatsapp from "../../Assents/WhatsApp.png";
     );
   };
 
-export default home
+export default home;

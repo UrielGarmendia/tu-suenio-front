@@ -9,7 +9,7 @@ const Graficos = ({data, options, type}) => {
         chartType={type}
         data={data}
         options={options}
-        width={"100%"}
+        width={"900px"}
         height={"400px"}
       />
     </div>

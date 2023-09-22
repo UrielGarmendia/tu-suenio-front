@@ -1,0 +1,63 @@
+.estadisticas{
+    display: flex;
+    justify-content: center;
+}
+.ventas{
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    padding: 1rem;
+    gap: 2rem
+}
+.ventas span{
+    box-shadow: 0px 5px 5px 0px #202022;
+    border-radius: 2rem;
+    padding: 0.7rem;
+    display: flex;
+    flex-direction: row;
+    transition: 0.4s;
+}
+
+.ventas span:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.ventas span div{
+    display: flex;
+    flex-direction: column;
+    padding: 0.8rem;
+}
+
+.ventas span h3{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: end;
+    font-size: small;
+    font-weight: lighter;
+   
+}
+
+.ventas span div h2{
+    font-size: x-large;
+    font-weight:bold;
+    margin-top: 0.5rem;
+}
+.graficos{
+    margin: 0;
+    min-width: 50vw;
+}
+
+.barra {
+    width: 5rem; 
+    height: 0.8rem; 
+    background-color: #2020203e;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .nivelBarra {
+    height: 100%;
+  }
+

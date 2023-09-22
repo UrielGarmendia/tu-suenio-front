@@ -1,4 +1,3 @@
-import { CartShopping } from "./actions";
 import {
   ALCANCIAS,
   DETAIL,
@@ -9,9 +8,15 @@ import {
   FILTERED_BY,
   CLEAN_FILTERS,
   CART_SHOPING,
-  DELETE_ITEM_CART
+  DELETE_ITEM_CART,
+  LOCAL_STORAGE,
+  FILTERED_BY_SIZE,
+  PRODUCTS_BY_CATEGORIEANDSIZE,
 } from "./actions-types";
 
+//Traerme el local store si esta vacio que devuelva un array
+const local = JSON.parse(localStorage.getItem("cart"));
+const storage = local ? local : [];
 
 const initialState = {
   AllAlcancias: [],
@@ -19,7 +24,7 @@ const initialState = {
   detail: {},
   categories: [],
   allByName: [],
-  CartShopping: [],
+  CartShopping: storage,
 };
 
 const reducer = (state = initialState, action) => {
@@ -63,20 +68,39 @@ const reducer = (state = initialState, action) => {
         ...state,
         AllAlcancias: action.payload
       }
+      
+      case FILTERED_BY_SIZE:
+  return {
+    ...state,
+    AllAlcancias: action.payload,
+  }
+  case PRODUCTS_BY_CATEGORIEANDSIZE:
+    return {
+      ...state,
+      AllAlcancias: action.payload,
+    }
     case CLEAN_FILTERS:
       return {
         ...state,
         AllAlcancias: state.copyAllAlcancias
       }
     case CART_SHOPING:
-      const found = state.CartShopping.filter(el => el.id === action.payload[0].id);
+      const found = state.CartShopping.find(el => el.id === action.payload[0].id);
       
-      if(!found.length) return {
+      if(!found) {
+        const localCart = [...state.CartShopping, ...action.payload];
+        localStorage.setItem("cart", JSON.stringify(localCart));
+      return {
         ...state,
         CartShopping: [...state.CartShopping, ...action.payload]
       }
-
+    }
     case DELETE_ITEM_CART:
+      return {
+        ...state,
+        CartShopping: action.payload
+      }
+    case LOCAL_STORAGE:
       return {
         ...state,
         CartShopping: action.payload

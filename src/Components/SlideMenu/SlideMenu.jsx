@@ -34,7 +34,7 @@ export const SlideMenu = () => {
                     <ArrowForwardIosIcon className={styles.arrowIcon} sx={{ fontSize: 18 }}/>
                   </h3>
                 </a>
-                <a href="#" className={styles.menuLink} onClick={() => logout({ returnTo: window.location.origin })}>
+                <a href="#" className={styles.menuLink} onClick={() => logout({logoutParams: { returnTo: window.location.origin }})}>
                   <div className={styles.containerIcon}>
                     <LogoutIcon />
                   </div>

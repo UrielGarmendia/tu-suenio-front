@@ -21,8 +21,8 @@ const Create = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(categories())
-  }, [])
+    dispatch(categories());
+  }, []);
 
   const categorie = useSelector((state) => state.categories);
 
@@ -31,15 +31,22 @@ const Create = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-      setErrors(validateForm({
+    setErrors(
+      validateForm({
         ...formData,
-        [name]: value
+        [name]: value,
       })
     );
   };
   const handleImageChange = (e) => {
     const file = e.target.files[0];
+    console.log("Archivo seleccionado:", file);
     setFormData({ ...formData, image: file });
+  };
+  const handleRemoveImage = () => {
+    const fileInput = document.getElementById("image");
+    fileInput.value = "";
+    setInput({ ...input,  image: "" });
   };
 
   const handleSubmit = async (e) => {
@@ -54,41 +61,46 @@ const Create = () => {
     productData.append("size", formData.size);
     productData.append("id_categorie", formData.id_categorie);
 
-   const formErrors = validateForm(formData);
+    const formErrors = validateForm(formData);
 
-  if (Object.keys(formErrors).length > 0) {
-    // Manejar errores individualmente y mostrar alertas
-    if (formErrors.name) {
-      alert("Error en el nombre: " + formErrors.name);
+    if (Object.keys(formErrors).length > 0) {
+      // Manejar errores individualmente y mostrar alertas
+      if (formErrors.name) {
+        alert("Error en el nombre: " + formErrors.name);
+      }
+      if (formErrors.price) {
+        alert("Error en el precio: " + formErrors.price);
+      }
+      if (formErrors.stock) {
+        alert("Error en el stock: " + formErrors.stock);
+      }
+      if (formErrors.size) {
+        alert("Error en el tamaño: " + formErrors.size);
+      }
+
+      return;
     }
-    if (formErrors.price) {
-      alert("Error en el precio: " + formErrors.price);
-    }
-    if (formErrors.stock) {
-      alert("Error en el stock: " + formErrors.stock);
-    }
-    if (formErrors.size) {
-      alert("Error en el tamaño: " + formErrors.size);
-    }
-   
-    return;
-  }
- 
+
     setErrors({});
 
-  
     try {
       const response = await axios.post(
         "http://localhost:3001/products/create",
-        formData
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data", // Configura el tipo de contenido
+          },
+        }
       );
-    alert("Producto creado: " + response.data);
+      console.log(response.data);
+      alert("Producto creado: " + response.data.name);
 
       // Limpiar el formulario después de enviarlo con éxito
       setFormData({
         name: "",
         price: "",
-        image: "", 
+        image: "",
         stock: "",
         description: "",
         size: "",
@@ -102,7 +114,13 @@ const Create = () => {
   return (
     <div className={styles.createcontainer}>
       <h2>Crear una nueva alcancia</h2>
-      <form className={styles.createform} onSubmit={handleSubmit}>
+      <form
+        className={styles.createform}
+        onSubmit={handleSubmit}
+        action="https://tu-suenio-back.onrender.com/products/create"
+        method="POST"
+        enctype="multipart/form-data"
+      >
         <div className={styles.group}>
           <label htmlFor="name">Nombre:</label>
           <input
@@ -146,7 +164,8 @@ const Create = () => {
             name="description"
             value={formData.description}
             onChange={handleInputChange}
-            required></textarea>
+            required
+          ></textarea>
         </div>
         <div className={styles.group}>
           <label htmlFor=" id_categorie">categoria:</label>
@@ -155,7 +174,8 @@ const Create = () => {
             name="id_categorie"
             value={formData.id_categorie}
             onChange={handleInputChange}
-            required>
+            required
+          >
             <option value="">Seleccionar categoria</option>
             {categorie.map((c) => (
               <option key={c.id} value={c.id}>
@@ -172,7 +192,8 @@ const Create = () => {
             name="size"
             value={formData.size}
             onChange={handleInputChange}
-            required>
+            required
+          >
             <option value="">Seleccionar tamaño</option>
             <option value="chiquitina">Chiquitina</option>
             <option value="pequeña">Pequeña</option>
@@ -190,6 +211,13 @@ const Create = () => {
             accept="image/*"
             required
           />
+           <button
+            className={styles.buttonDelete}
+            type="button"
+            onClick={handleRemoveImage}
+          >
+            Eliminar imagen
+          </button>
         </div>
         <div className={styles.group}>
           <button type="submit">Crear alcancia</button>

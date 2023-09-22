@@ -11,7 +11,7 @@ const Alcancias = () => {
   useEffect(() => {
     dispatch(allAlcancias());
   }, []);
-  
+
   const alcancias = useSelector((state) => state.AllAlcancias);
   const [pageIndex, setPageIndex] = useState(1);
   let finalIndex = pageIndex * 12;
@@ -20,8 +20,8 @@ const Alcancias = () => {
   let numberOfPages = Math.ceil(alcancias.length / 12);
 
   useEffect(() => {
-    setPageIndex(1)
-  }, [alcancias])
+    setPageIndex(1);
+  }, [alcancias]);
 
   const changePage = (page) => {
     setPageIndex(page);
@@ -33,13 +33,23 @@ const Alcancias = () => {
     if (pageIndex > 1) setPageIndex(pageIndex - 1);
   };
 
-
   return (
     <div className={styles.principalContainer}>
       <div className={styles.containerCards}>
         {currentPage.length ? (
           currentPage?.map(
-            ({ id, name, title, price, image, stock, size, Categories, id_categorie, image_secure_url }) => {
+            ({
+              id,
+              name,
+              title,
+              price,
+              image,
+              stock,
+              size,
+              Categories,
+              id_categorie,
+              image_secure_url,
+            }) => {
               return (
                 <Card
                   key={id}
@@ -72,4 +82,3 @@ const Alcancias = () => {
 };
 
 export default Alcancias;
-
