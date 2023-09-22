@@ -39,25 +39,9 @@ const Card = ({
     });
   };
 
-  const showAlert2 = () => {
-    Swal.fire({
-      toast: true,
-      icon: "info",
-      title: "Logueate para agregar un producto al carrito",
-      showConfirmButton: true,
-      position: "top"
-    }).then(() => {
-      loginWithRedirect();
-    });
-  };
-
   const handleClick = (id) => {
-    if(isAuthenticated) {
     dispatch(CartShopping(id));
     showAlert();
-    } else {
-      showAlert2()
-    }
   };
 
   return (

@@ -14,8 +14,6 @@ const NavBar = () => {
   const { loginWithRedirect, isAuthenticated, user } = useAuth0();
   const dispatch = useDispatch();
 
-  console.log(isAuthenticated);
-
   const Cart = useSelector((state) => state.CartShopping);
 
   const handleClick = () => {
