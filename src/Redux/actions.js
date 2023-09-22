@@ -16,9 +16,6 @@ import {
 } from "./actions-types";
 import axios from "axios";
 
-console.log();
-
-// Obtener lo que serían todas las alcancías
 export const allAlcancias = () => {
   try {
     return async function (dispatch) {
@@ -39,7 +36,7 @@ export const detail = (id) => {
   try {
     return async function (dispatch) {
       const { data } = await axios(
-        `https://localhost:3001/products/${id}`
+        `http://localhost:3001/products/${id}`
       );
       return dispatch({
         type: DETAIL,
@@ -83,7 +80,9 @@ export const byName = (name) => {
   try {
     return async function (dispatch) {
       const { data } = await axios(
-        `http://localhost:3001/products/?name=${name}`
+
+        `http://localhost:3001/products?name=${name}`
+
       );
       return dispatch({
         type: BY_NAME,

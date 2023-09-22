@@ -2,22 +2,27 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./carrito.module.css";
 import { deleteItemCart } from "../../Redux/actions";
+import { useAuth0 } from "@auth0/auth0-react";
+import Swal from "sweetalert2";
 
 const Carrito = () => {
   const dispatch = useDispatch();
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
 
   let suma = 0;
   let totalSum = 0;
 
   const state = useSelector((state) => state.CartShopping);
+  
   let [index, setIndex] = useState(
-    state?.map((item) => ({ ...item, quantity: 1 }))
+    state?.map((item) => (!item.hasOwnProperty("quantity") ? { ...item, quantity: 1 } : item))
   );
 
   const handleSum = (stock, indexEl) => {
     if (index[indexEl].quantity < stock) {
       const stateCopy = [...index];
       stateCopy[indexEl].quantity++;
+      localStorage.setItem("cart", JSON.stringify(stateCopy));
       setIndex(stateCopy);
     }
   };
@@ -26,6 +31,7 @@ const Carrito = () => {
     if (index[indexEl].quantity > 1) {
       const stateCopy = [...index];
       stateCopy[indexEl].quantity--;
+      localStorage.setItem("cart", JSON.stringify(stateCopy));
       setIndex(stateCopy);
     }
   };
@@ -48,9 +54,22 @@ const Carrito = () => {
     return totalProducts;
   };
 
-  // useEffect(() => {
-  //     if(index?.length) localStorage.setItem("cart", JSON.stringify(index));
-  // }, [index]);
+  const showAlert = () => {
+    Swal.fire({
+      toast: true,
+      icon: "info",
+      title: "Debes estar logueado para continuar con la compra",
+      showConfirmButton: true,
+      position: "top"
+    }).then(() => {
+      loginWithRedirect();
+    });
+  };
+
+  const handleBuy = () => {
+    if(isAuthenticated) return;
+    else showAlert();
+  }
 
   return (
     <div className={styles.cont}>
@@ -103,7 +122,7 @@ const Carrito = () => {
       <div className={styles.total}>
         <h4>Total productos {handlerReduce(index)}</h4>
         <h3>Total compra $ {totalSum}</h3>
-        <button className={styles.button_compra}>Comprar</button>
+        <button className={styles.button_compra} onClick={handleBuy}>Comprar</button>
       </div>
     </div>
   );

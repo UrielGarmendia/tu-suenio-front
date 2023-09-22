@@ -5,11 +5,14 @@ import { useNavigate, useParams } from "react-router-dom";
 import UndoIcon from "@mui/icons-material/Undo";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import styles from "./detail.module.css";
+import Swal from "sweetalert2";
+import { useAuth0 } from "@auth0/auth0-react"
 
 const Detail = () => {
   const navigate = useNavigate();
 
   const { id } = useParams();
+  const { isAuthenticated, loginWithRedirect } = useAuth0()
 
   const alcancia = useSelector((state) => state.detail);
   const dispatch = useDispatch();
@@ -20,6 +23,23 @@ const Detail = () => {
 
   const handleNavigate = () => {
     navigate(-1);
+  };
+
+  const showAlert = () => {
+    Swal.fire({
+      toast: true,
+      icon: "success",
+      title: "producto agregado al carrito",
+      timer: 1200,
+      timerProgressBar: true,
+      showConfirmButton: false,
+      position: "top",
+    });
+  };
+
+    const handleClick = (id) => {
+    dispatch(CartShopping(id));
+    showAlert();
   };
 
   return (
@@ -37,16 +57,18 @@ const Detail = () => {
         </div>
         <div className={styles.info_cont}>
           <h2 className={styles.h2}>{alcancia[0]?.name}</h2>
+          <h4 className={styles.price}>$ {alcancia[0]?.price}</h4>
+          <h4 className={styles.h4_info}>Tamaño: {alcancia[0]?.size}</h4>
+          <h4 className={styles.h4_info}>Categoria: {alcancia[0]?.Categories[0]?.name}</h4>
+          <h4 className={styles.h4_info}>Stock: {alcancia[0]?.stock} unidades</h4>
           <h4 className={styles.description}>Descripción:</h4>
-          <p>{alcancia[0]?.description}</p>
-          <div className={styles.separador}></div>
-          <h4>+ Tamaño: {alcancia[0]?.size}</h4>
-          <h4>+ Categoria: {alcancia[0]?.Categories[0]?.name}</h4>
-          <h4>+ Stock: {alcancia[0]?.stock} unidades</h4>
-          <h4>+ Precio: $ {alcancia[0]?.price}</h4>
-          <div className={styles.separador}></div>
+          <p className={styles.paragraph}>{alcancia[0]?.description}</p>
+        </div>
+        <div className={styles.last_cont}>
+          <button className={styles.buy_button}>Comprar ahora</button>
+          <h4>O</h4>
           <div className={styles.button_cart_cont}>
-            <button>
+            <button className={styles.button} onClick={() => handleClick(id)}>
               Agregar al <AddShoppingCartIcon />
             </button>
           </div>

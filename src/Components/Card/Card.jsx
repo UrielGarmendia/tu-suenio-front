@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { CartShopping } from "../../Redux/actions";
 import Swal from "sweetalert2";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Card = ({
   id,
@@ -20,6 +21,8 @@ const Card = ({
 }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
+
   const handleNavigate = () => {
     navigate(`/detail/${id}`);
   };

@@ -13,6 +13,7 @@ import Carrito from "./Components/Carrito/Carrito";
 import { useDispatch } from "react-redux";
 import { allAlcancias } from "./Redux/actions";
 import { useEffect } from "react";
+import WhatsappBar from "./Components/WhatsappBar/WhatsappBar";
 
 function App() {
   const dispatch = useDispatch()
@@ -26,7 +27,7 @@ function App() {
       
       {location.pathname === "/login" || "/detail" &&  <NavBar />}
       {location.pathname == "/alcancias" && <FilteredOrdered/>}
-     
+      <WhatsappBar/>
       <Routes>
         <Route path="/login" element={<Landing />} />
         <Route path="/alcancias" element={<Alcancias />} />

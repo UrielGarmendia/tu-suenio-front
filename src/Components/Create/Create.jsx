@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect  } from "react";
 import { useState } from "react";
 import axios from "axios";
 import styles from "./Create.module.css";
@@ -8,6 +8,7 @@ import { StayCurrentPortraitTwoTone } from "@mui/icons-material";
 import { categories } from "../../Redux/actions";
 
 const Create = () => {
+  const [previewImage, setPreviewImage] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     price: "",
@@ -42,10 +43,12 @@ const Create = () => {
     const file = e.target.files[0];
     console.log("Archivo seleccionado:", file);
     setFormData({ ...formData, image: file });
+    setPreviewImage(URL.createObjectURL(e.target.files[0]));
   };
   const handleRemoveImage = () => {
     const fileInput = document.getElementById("image");
     fileInput.value = "";
+    setPreviewImage("");
     setInput({ ...input,  image: "" });
   };
 
@@ -85,28 +88,35 @@ const Create = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/products/create",
+        "https://tu-suenio-back.onrender.com/products/create",
         formData,
         {
           headers: {
-            "Content-Type": "multipart/form-data", // Configura el tipo de contenido
+            "Content-Type": "multipart/form-data",
           },
         }
       );
-      console.log(response.data);
-      alert("Producto creado: " + response.data.name);
-
-      // Limpiar el formulario después de enviarlo con éxito
-      setFormData({
-        name: "",
-        price: "",
-        image: "",
-        stock: "",
-        description: "",
-        size: "",
-        id_categorie: "",
-      });
+    
+      if (response.status === 200) {
+        console.log(response.data);
+        alert("Producto creado: " + response.data.name);
+        // Limpiar el formulario después de enviarlo con éxito
+        setFormData({
+          name: "",
+          price: "",
+          image: "",
+          stock: "",
+          description: "",
+          size: "",
+          id_categorie: "",
+        });
+        setPreviewImage("");
+      } else {
+        // La solicitud fue exitosa pero el servidor devuelve un error
+        alert("Error al crear el producto: " + response.statusText);
+      }
     } catch (error) {
+      // Error en la solicitud (por ejemplo, no se pudo conectar al servidor)
       alert("Error al crear el producto: " + error.message);
     }
   };
@@ -119,7 +129,7 @@ const Create = () => {
         onSubmit={handleSubmit}
         action="http://localhost:3001/products/create"
         method="POST"
-        enctype="multipart/form-data"
+        encType="multipart/form-data"
       >
         <div className={styles.group}>
           <label htmlFor="name">Nombre:</label>
@@ -204,6 +214,7 @@ const Create = () => {
         <div className={styles.group}>
           <label htmlFor="image">Imagen:</label>
           <input
+          className={styles.selectimg}
             type="file"
             id="image"
             name="image"
@@ -211,6 +222,17 @@ const Create = () => {
             accept="image/*"
             required
           />
+          <label className={styles.inputGropLabel} htmlFor="image">
+            <span className={styles.uploadButton}>Seleccionar archivo</span>
+          </label>
+          {previewImage && (
+            <img
+              className={styles.image}
+              id="preview"
+              src={previewImage}
+              alt="Preview"
+            />
+          )}
            <button
             className={styles.buttonDelete}
             type="button"

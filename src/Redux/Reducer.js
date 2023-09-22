@@ -86,7 +86,7 @@ const reducer = (state = initialState, action) => {
         AllAlcancias: state.copyAllAlcancias
       }
     case CART_SHOPING:
-      const found = state.CartShopping.find(el => el.id === action.payload[0].id);
+      const found = state.CartShopping?.find(el => el.id === action.payload[0].id);
       
       if(!found) {
         const localCart = [...state.CartShopping, ...action.payload];
@@ -95,7 +95,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         CartShopping: [...state.CartShopping, ...action.payload]
       }
-    }
+    } 
     case DELETE_ITEM_CART:
       return {
         ...state,
