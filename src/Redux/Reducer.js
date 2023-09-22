@@ -9,7 +9,10 @@ import {
   CLEAN_FILTERS,
   CART_SHOPING,
   DELETE_ITEM_CART,
-  LOCAL_STORAGE
+  LOCAL_STORAGE,
+  DELETE_PRODUCT,
+  FILTERED_BY_SIZE,
+  PRODUCTS_BY_CATEGORIEANDSIZE,
 } from "./actions-types";
 
 //Traerme el local store si esta vacio que devuelva un array

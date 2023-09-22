@@ -10,6 +10,9 @@ import {
   CART_SHOPING,
   DELETE_ITEM_CART,
   LOCAL_STORAGE,
+  DELETE_PRODUCT,
+  FILTERED_BY_SIZE,
+  PRODUCTS_BY_CATEGORIEANDSIZE,
 } from "./actions-types";
 import axios from "axios";
 
