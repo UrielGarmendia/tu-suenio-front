@@ -1,4 +1,4 @@
-
+import React, { useEffect } from "react";
 import styles from "../Home/Home.module.css"
 import fiestas from "./fiesta.png"
 import plan from "./plan.png"
@@ -11,13 +11,17 @@ import plandeahorro from "./plan de ahorro.jpg"
 import Slide from "../Slide/Slide"
 import cerdos from "./cerdos.png"
 import whatsapp from "../../Assents/WhatsApp.png";
+import { useDispatch } from "react-redux";
+import { categories } from "../../Redux/actions";
 
 
- const home = () => {
+const home = () => {
+  const dispatch = useDispatch();
 
-
-
-
+  useEffect(() => {
+    dispatch(categories());
+  }, []);   
+      
   
     return (
       <div className={styles.principal}>
