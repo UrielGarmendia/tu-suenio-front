@@ -30,9 +30,6 @@ const NavBar = () => {
           <Link to="/">
             <button>INICIO</button>
           </Link>
-          <Link to="/create">
-            <button>CREAR ALCANCIA</button>
-          </Link>
           <Link to="/alcancias">
             <button onClick={handleClick}>ALCANCIAS</button>
           </Link>

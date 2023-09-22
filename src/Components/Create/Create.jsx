@@ -43,6 +43,11 @@ const Create = () => {
     console.log("Archivo seleccionado:", file);
     setFormData({ ...formData, image: file });
   };
+  const handleRemoveImage = () => {
+    const fileInput = document.getElementById("image");
+    fileInput.value = "";
+    setInput({ ...input,  image: "" });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -80,7 +85,7 @@ const Create = () => {
 
     try {
       const response = await axios.post(
-        "https://tu-suenio-back.onrender.com/products/create",
+        "http://localhost:3001/products/create",
         formData,
         {
           headers: {
@@ -206,6 +211,13 @@ const Create = () => {
             accept="image/*"
             required
           />
+           <button
+            className={styles.buttonDelete}
+            type="button"
+            onClick={handleRemoveImage}
+          >
+            Eliminar imagen
+          </button>
         </div>
         <div className={styles.group}>
           <button type="submit">Crear alcancia</button>

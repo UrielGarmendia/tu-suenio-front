@@ -19,36 +19,47 @@
     text-align: justify;
    
 }
+.masinfo {
+    color: black;
+ margin-top:200px ;
+ margin-left: 200px;
+}
 
 .informacion {
-    border-radius: 40px;
-    border: 1px solid #ccc;
-    max-width: 10vw;
-    background-color: aquamarine;
-    margin-top: 280px;
-    margin-left:400px;
+    
+    
+    
+    margin-left:600px;
     border-color: black;
-    text-align: center;
+   
 }
 
 .informacion1{
-    border-radius: 40px;
-    width: 300px;
-    border: 1px solid #ccc;
-    background-color: aquamarine;
-    margin-top: 280px;
-    border-color: black;
-    text-align: center;
+    
+    
+    margin-top: 100px;
+   
+   
 
 }
-
-.masinfop {
-    color: black;
+.informacion2{
+    
+    margin-left: 400px;
+    margin-top: 30px;
+   
+    
 }
+.whatsapp{
+    width:80px ;
+    height:80px ;
+}
+
+
 
 .textContainer {
     flex: 1;
     max-width: 40vw;
+    text-align:left;
 }
 .textContainer img{
     max-width: 35vw;
@@ -61,6 +72,10 @@
     height: 400px;
     width: 400px;
 }
+.cerdos{
+    width: 440px;
+    height: 300px;
+}
 
 .fiestaLogo {
     height: 450px;
@@ -70,13 +85,4 @@
 .imgAhorro{
     width: 800px;
     height: 300px;
-}
-.informacion2{
-    border-radius: 40px;
-    width: 300px;
-    border: 1px solid #ccc;
-    background-color: aquamarine;
-    margin-top: 30px;
-    border-color: black;
-    text-align: center;
 }

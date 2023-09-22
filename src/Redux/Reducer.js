@@ -9,7 +9,9 @@ import {
   CLEAN_FILTERS,
   CART_SHOPING,
   DELETE_ITEM_CART,
-  LOCAL_STORAGE
+  LOCAL_STORAGE,
+  FILTERED_BY_SIZE,
+  PRODUCTS_BY_CATEGORIEANDSIZE,
 } from "./actions-types";
 
 //Traerme el local store si esta vacio que devuelva un array
@@ -66,6 +68,17 @@ const reducer = (state = initialState, action) => {
         ...state,
         AllAlcancias: action.payload
       }
+      
+      case FILTERED_BY_SIZE:
+  return {
+    ...state,
+    AllAlcancias: action.payload,
+  }
+  case PRODUCTS_BY_CATEGORIEANDSIZE:
+    return {
+      ...state,
+      AllAlcancias: action.payload,
+    }
     case CLEAN_FILTERS:
       return {
         ...state,
