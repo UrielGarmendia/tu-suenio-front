@@ -10,9 +10,17 @@ import Create from "./Components/Create/Create"
 import Dashboard from "./Components/Dashboard/Dashboard"
 import FilteredOrdered from "./Components/Filter/Filter";
 import Carrito from "./Components/Carrito/Carrito";
+import { useDispatch } from "react-redux";
+import { allAlcancias } from "./Redux/actions";
+import { useEffect } from "react";
 
 function App() {
+  const dispatch = useDispatch()
   const location = useLocation();
+  useEffect(() => {
+    dispatch(allAlcancias());
+  }, []);
+
   return (
     <div >
       

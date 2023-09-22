@@ -11,3 +11,4 @@ export const CREATE_ALCANCIAS = 'CREATE_ALCANCIAS'; // semana 2
 export const CART_SHOPING = "CART_SHOPING"; // semana 2
 export const DELETE_ITEM_CART = "DELETE_ITEM_CART";
 export const LOCAL_STORAGE = "LOCAL_STORAGE";
+export const DELETE_PRODUCT = 'DELETE_PRODUCT'

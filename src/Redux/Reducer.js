@@ -9,7 +9,8 @@ import {
   CLEAN_FILTERS,
   CART_SHOPING,
   DELETE_ITEM_CART,
-  LOCAL_STORAGE
+  LOCAL_STORAGE,
+  DELETE_PRODUCT
 } from "./actions-types";
 
 //Traerme el local store si esta vacio que devuelva un array
@@ -91,6 +92,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         CartShopping: action.payload
+      }
+    case DELETE_PRODUCT:
+      return {
+        ...state,
+        AllAlcancias: action.payload
       }
     default:
       return state;
