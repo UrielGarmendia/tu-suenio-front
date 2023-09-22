@@ -81,8 +81,6 @@ const Detail = () => {
           <p className={styles.paragraph}>{alcancia[0]?.description}</p>
         </div>
         <div className={styles.last_cont}>
-          <button className={styles.buy_button}>Comprar ahora</button>
-          <h4>O</h4>
           <div className={styles.button_cart_cont}>
             <button className={styles.button} onClick={() => handleClick(id)}>
               Agregar al <AddShoppingCartIcon />

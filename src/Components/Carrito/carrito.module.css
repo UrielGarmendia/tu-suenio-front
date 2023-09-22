@@ -5,12 +5,6 @@
     padding-top: 2rem;
 }
 
-h1 {
-    text-decoration: underline;
-    color: #46B7A5;
-    text-shadow: 1px 1px 1px black;
-}
-
 .cont_items {
     width: 60%;
     display: flex;
@@ -36,44 +30,62 @@ h1 {
 }
 
 .image {
-    width: 10%;
+    width: 25%;
     border-radius: 5px;
     margin-left: 0.5rem;
     box-shadow: 1px 1px 1px 1px rgb(93, 92, 92);
 }
 
-.name {
-    width: 50%;
+.name_cont {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.h2Name {
+.name {
     margin: 0.5rem auto;
 }
 
-.description {
-    margin-bottom: 1.5rem;
-}
-
-.spans {
+.delete {
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
-.span {
+.delete_cont {
+    position: relative;
+}
+
+.DeleteIcon {
     cursor: pointer;
-    font-weight: bold;
-    color: rgb(76, 76, 255);
-    margin: 0 1rem;
 }
 
-.span:hover {
-    color: blue;
+.DeleteIcon:hover {
+    color: red;
+}
+
+.text_delete {
+    display: none;
+    position: absolute;
+    top: -60%;
+    left: 110%;
+    background-color: rgb(191, 223, 252);
+    padding: 3px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.delete_cont:hover .text_delete {
+    display: block;
 }
 
 .cont_quantity {
     display: flex;
     flex-direction: column;
     width: 15%;
+    justify-content: center;
     align-items: center;
 }
 
@@ -97,8 +109,13 @@ h1 {
     font-weight: bold;
 }
 
-.h2Price {
+.price {
+    font-size: 2rem;
+    font-weight: lighter;
     margin: auto;
+    background-color: rgba(10, 193, 184, 0.4);
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .total {
@@ -107,7 +124,7 @@ h1 {
     border: 1px solid black;
     border-radius: 5px;
     box-shadow: 1px 1px 2px 2px rgb(93, 92, 92);
-    background-color: rgb(168, 230, 168);
+    background-color: pink;
 }
 
 .button_compra {
@@ -121,4 +138,62 @@ h1 {
 .button_compra:hover {
     background-color: rgb(76, 76, 255);
     font-weight: bold;
+}
+
+@media all and (max-width: 599px) {
+
+    .cont {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 0;
+        border-top: 2px solid black;
+    } 
+    
+    .cont_items {
+        width: 100%;
+        border: none;
+        border-radius: 0;
+        padding: 0;
+        box-shadow: none;
+        margin-right: 0;
+        background-image: linear-gradient(to bottom right, pink, lightgreen);
+        margin-bottom: 1rem;
+    }
+
+    .item {
+        width: 95%;
+        display: flex;
+        flex-direction: row;
+        border: none;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        border-radius: 0;
+        padding: 5px;
+        margin: 5px auto;
+        box-shadow: none;
+    }
+
+    .image {
+        width: 20%;
+        border-radius: 5px;
+        margin-left: 0;
+        box-shadow: 1px 1px 1px 1px rgb(93, 92, 92);
+    }
+
+    .price {
+        font-size: 1rem;
+        font-weight: normal;
+        margin: auto;
+    }
+
+    .total {
+        width: 70%;
+        height: 10rem;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        background-color: pink;
+    }
 }
