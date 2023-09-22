@@ -10,6 +10,7 @@ import {
   CART_SHOPING,
   DELETE_ITEM_CART,
   LOCAL_STORAGE,
+  DELETE_PRODUCT,
   FILTERED_BY_SIZE,
   PRODUCTS_BY_CATEGORIEANDSIZE,
 } from "./actions-types";
@@ -203,3 +204,28 @@ export const deleteItemCart = (cart) => {
     payload: cart,
   };
 };
+
+export const uploadStorage = (cart) => {
+  return {
+    type: LOCAL_STORAGE,
+    payload: cart,
+  };
+};
+
+export const deleteProduct = (id) => {
+
+  try {
+    return async function (dispatch) {
+      await axios.delete( `http://localhost:3001/products/destroy/${id}`)
+      const { data } = await axios(
+        `http://localhost:3001/products`
+      );
+      return dispatch({
+        type: DELETE_PRODUCT,
+        payload: data,
+      });
+    };
+  } catch (error) {
+    return { error: error.message };
+  }
+}
