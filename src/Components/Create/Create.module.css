@@ -72,9 +72,9 @@
   }
   
   .selectimg{
-    width: 200px;
-    height: 200px;
-    margin-left:103px ;
+   color: transparent;
+   margin-left: 135px;
+ display: none;
   }
   .buttonDelete {
     appearance: none;
