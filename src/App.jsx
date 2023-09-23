@@ -11,25 +11,58 @@ import Dashboard from "./Components/Dashboard/Dashboard"
 import FilteredOrdered from "./Components/Filter/Filter";
 import Carrito from "./Components/Carrito/Carrito";
 import WhatsappBar from "./Components/WhatsappBar/WhatsappBar";
-
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useAuth0 } from "@auth0/auth0-react";
 function App() {
+  const [infoUser, setInfoUser] = useState(null);
   const location = useLocation();
+  const { isAuthenticated, user } = useAuth0();
+
+  console.log("Está autenticado?:", isAuthenticated);
+  console.log("info del user:", user);
+  useEffect(() => {
+    if (isAuthenticated) {
+      try {
+        async function postData() {
+          const { data } = await axios.post("http://localhost:3001/user/login", { sub: user.sub });
+          console.log("resultado de login:", data);
+          if (data.error) { //
+            const { data } = await axios.post("http://localhost:3001/user/register", { //momentáneo hasta que se cree el form
+              name: user.name,
+              email: user.email,
+              image: user.picture,
+              sub: user.sub
+            });
+            console.log("resultado de register:", data);
+            setInfoUser(data);
+          } else {
+            setInfoUser(data);
+          }
+        }
+        postData();
+      } catch (error) {
+        console.error("Error en la solicitud:", error);
+      }
+    }
+  }, [isAuthenticated]);
+
   return (
     <div >
-      
-      {location.pathname === "/login" || "/detail" &&  <NavBar />}
-      {location.pathname == "/alcancias" && <FilteredOrdered/>}
-      <WhatsappBar/>
+
+      {location.pathname === "/login" || "/detail" && <NavBar infoUser={infoUser} />}
+      {location.pathname == "/alcancias" && <FilteredOrdered />}
+      <WhatsappBar />
       <Routes>
         <Route path="/login" element={<Landing />} />
         <Route path="/alcancias" element={<Alcancias />} />
         <Route path="/" element={<Home />} />
-        <Route path="/create" element={<Create/>} />
+        <Route path="/create" element={<Create />} />
         <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/carrito" element={<Carrito/>}/>
+        <Route path="/carrito" element={<Carrito />} />
         <Route path="/admin" element={<Dashboard />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
