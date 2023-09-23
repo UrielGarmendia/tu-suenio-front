@@ -18,6 +18,7 @@ import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 function App() {
   const location = useLocation();
+  const dispatch = useDispatch()
   useEffect(() => {
     dispatch(allAlcancias());
   }, []);
