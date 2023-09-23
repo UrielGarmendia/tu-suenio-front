@@ -18,14 +18,37 @@ const FilteredOrdered = () => {
     dispatch(ordenamiento(event.target.value));
   };
   
-  const handleCombinedFilter = (selectedCategory, selectedSize) => {
-    if (selectedCategory && selectedSize) {
-      dispatch(ProductsByCategoryAndSize(selectedCategory, selectedSize));
-    } else if (selectedCategory) {
-      dispatch(filtered(selectedCategory));
-    } else if (selectedSize) {
-      dispatch(filterBySize(selectedSize));
+  const handleCombinedFilter = async (selectedCategory, selectedSize) => {
+    try {
+      if (selectedCategory && selectedSize) {
+        const result = await dispatch(ProductsByCategoryAndSize(selectedCategory, selectedSize));
+        if (result.error) {
+          window.alert('no hay coincidencias')
+          dispatch(cleanFilters())
+          setSelectedCategory('')
+          setSelectedSize('')
+          dispatch(filterBySize(''))
+          dispatch(filtered(''))
+        }
+      } else if (selectedCategory) {
+        dispatch(filtered(selectedCategory));
+      } else if (selectedSize) {
+        dispatch(filterBySize(selectedSize));
+      }
+
+      if (selectedCategory === '' && selectedSize === '') {
+          dispatch(cleanFilters())
+          setSelectedCategory('')
+          setSelectedSize('')
+          dispatch(filterBySize(''))
+          dispatch(filtered(''))
+      }
+  
+    } catch (error) {
+      console.log(error)
     }
+   
+    
   };
   const handleFilter = (event) => {
       const value = event.target.value;
@@ -38,11 +61,12 @@ const FilteredOrdered = () => {
     const value = event.target.value;
     setSelectedSize(value);
     handleCombinedFilter(selectedCategory, value);
-      
   };
 
 const handleClick = () => {
   dispatch(cleanFilters());
+  setSelectedCategory('')
+  setSelectedSize('')
 };
 
   
