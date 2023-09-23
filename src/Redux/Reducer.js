@@ -10,6 +10,7 @@ import {
   CART_SHOPING,
   DELETE_ITEM_CART,
   LOCAL_STORAGE,
+  DELETE_PRODUCT,
   FILTERED_BY_SIZE,
   PRODUCTS_BY_CATEGORIEANDSIZE,
 } from "./actions-types";
@@ -99,6 +100,16 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         CartShopping: action.payload
+      }
+    case LOCAL_STORAGE:
+      return {
+        ...state,
+        CartShopping: action.payload
+      }
+    case DELETE_PRODUCT:
+      return {
+        ...state,
+        AllAlcancias: action.payload
       }
     default:
       return state;

@@ -62,6 +62,7 @@ const Alcancias = () => {
                   image={image_secure_url}
                   stock={stock}
                   size={size}
+                  Categories={Categories}
                 />
               );
             }

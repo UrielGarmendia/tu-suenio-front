@@ -39,25 +39,9 @@ const Card = ({
     });
   };
 
-  const showAlert2 = () => {
-    Swal.fire({
-      toast: true,
-      icon: "info",
-      title: "Logueate para agregar un producto al carrito",
-      showConfirmButton: true,
-      position: "top"
-    }).then(() => {
-      loginWithRedirect();
-    });
-  };
-
   const handleClick = (id) => {
-    if(isAuthenticated) {
     dispatch(CartShopping(id));
     showAlert();
-    } else {
-      showAlert2()
-    }
   };
 
   return (
@@ -81,7 +65,7 @@ const Card = ({
         <h3>Precio: {price}</h3>
         <h3>size : {size}</h3>
         <h3>
-          categoria:{id_categorie === "1" ? "Animales" : "Personajes animados"}
+          Categoria: {Categories?.map((c)=>(c.name))}
         </h3>
         <h3>Stock disponible:{stock}</h3>
       </div>

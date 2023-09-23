@@ -1,0 +1,36 @@
+.principalContainer{
+    background: green;
+}
+.containerCards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.containerCards section{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-image: linear-gradient(to right, #e0a3ab, #a44d9a);
+    border: 0.1rem solid rgb(236, 236, 228);
+    justify-content: space-between;
+}
+
+.containerCards section:hover{
+    background-image: linear-gradient(to bottom, #9c29b9, #db34db);
+}
+
+.containerCards img{
+    max-width: 8vw;
+}
+
+.containerCards button{
+    background:transparent ;
+    color: aliceblue;
+}
+
+.containerCards button:hover{
+    color: red;
+    cursor: pointer
+}
