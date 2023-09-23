@@ -20,11 +20,13 @@ import { useAuth0 } from "@auth0/auth0-react";
 function App() {
   const location = useLocation();
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(allAlcancias());
   }, []);
   const [infoUser, setInfoUser] = useState(null);
   const { isAuthenticated, user } = useAuth0();
+  
 
   useEffect(() => {
     if (isAuthenticated) {

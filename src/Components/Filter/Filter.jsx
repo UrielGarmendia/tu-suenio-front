@@ -3,8 +3,12 @@ import "./Filter.css";
 import { useDispatch, useSelector } from "react-redux";
 import { categories } from "../../Redux/actions";
 import { ordenamiento, filtered, cleanFilters,filterBySize,ProductsByCategoryAndSize } from "../../Redux/actions";
+import Swal from "sweetalert2";
 
 const FilteredOrdered = () => {
+  const showAlert = ( ) => {
+    Swal.fire('No se encontro coincidencias')
+  };
   const categorias = useSelector((state)=>state.categories)
   const dispatch = useDispatch();
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -18,14 +22,37 @@ const FilteredOrdered = () => {
     dispatch(ordenamiento(event.target.value));
   };
   
-  const handleCombinedFilter = (selectedCategory, selectedSize) => {
-    if (selectedCategory && selectedSize) {
-      dispatch(ProductsByCategoryAndSize(selectedCategory, selectedSize));
-    } else if (selectedCategory) {
-      dispatch(filtered(selectedCategory));
-    } else if (selectedSize) {
-      dispatch(filterBySize(selectedSize));
+  const handleCombinedFilter = async (selectedCategory, selectedSize) => {
+    try {
+      if (selectedCategory && selectedSize) {
+        const result = await dispatch(ProductsByCategoryAndSize(selectedCategory, selectedSize));
+        if (result.error) {
+          showAlert()
+          dispatch(cleanFilters())
+          setSelectedCategory('')
+          setSelectedSize('')
+          dispatch(filterBySize(''))
+          dispatch(filtered(''))
+        }
+      } else if (selectedCategory) {
+        dispatch(filtered(selectedCategory));
+      } else if (selectedSize) {
+        dispatch(filterBySize(selectedSize));
+      }
+
+      if (selectedCategory === '' && selectedSize === '') {
+          dispatch(cleanFilters())
+          setSelectedCategory('')
+          setSelectedSize('')
+          dispatch(filterBySize(''))
+          dispatch(filtered(''))
+      }
+  
+    } catch (error) {
+      console.log(error)
     }
+   
+    
   };
   const handleFilter = (event) => {
       const value = event.target.value;
@@ -38,11 +65,12 @@ const FilteredOrdered = () => {
     const value = event.target.value;
     setSelectedSize(value);
     handleCombinedFilter(selectedCategory, value);
-      
   };
 
 const handleClick = () => {
   dispatch(cleanFilters());
+  setSelectedCategory('')
+  setSelectedSize('')
 };
 
   

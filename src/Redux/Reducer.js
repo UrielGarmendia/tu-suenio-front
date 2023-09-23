@@ -95,7 +95,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         CartShopping: [...state.CartShopping, ...action.payload]
       }
-    } 
+    } else {
+      return {
+        ...state,
+        CartShopping: JSON.parse(localStorage.getItem("cart"))
+      }
+    }
     case DELETE_ITEM_CART:
       return {
         ...state,
