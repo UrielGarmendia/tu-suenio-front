@@ -5,6 +5,7 @@ import { deleteItemCart } from "../../Redux/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import DeleteIcon from '@mui/icons-material/Delete';
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const Carrito = () => {
   const dispatch = useDispatch();
@@ -55,6 +56,12 @@ const Carrito = () => {
     return totalProducts;
   };
 
+  const navigate = useNavigate();
+  
+  const handleNavigate = (id) => {
+    navigate(`/detail/${id}`);
+  };
+
   const showAlert = () => {
     Swal.fire({
       toast: true,
@@ -82,6 +89,7 @@ const Carrito = () => {
               className={styles.image}
               src={el.image_secure_url}
               alt={el.name}
+              onClick={() => handleNavigate(el.id)}
             />
             <div className={styles.name_cont}>
               <h2 className={styles.name}>{el.name}</h2>

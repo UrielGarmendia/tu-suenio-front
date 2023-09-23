@@ -3,10 +3,9 @@ import "./Card.css";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useNavigate } from "react-router-dom";
 // import { detail } from "../../redux/actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { CartShopping } from "../../Redux/actions";
 import Swal from "sweetalert2";
-import { useAuth0 } from "@auth0/auth0-react";
 
 const Card = ({
   id,
@@ -19,9 +18,10 @@ const Card = ({
   Categories,
   id_categorie,
 }) => {
-  const navigate = useNavigate();
+  
   const dispatch = useDispatch();
-  const { isAuthenticated, loginWithRedirect } = useAuth0();
+  const navigate = useNavigate();
+  const state = useSelector((state) => state.CartShopping);
 
   const handleNavigate = () => {
     navigate(`/detail/${id}`);
@@ -39,9 +39,23 @@ const Card = ({
     });
   };
 
+  const showAlert2 = () => {
+    Swal.fire({
+      toast: true,
+      icon: "warning",
+      title: "El producto ya esta en el carrito",
+      timer: 2000,
+      timerProgressBar: true,
+      showConfirmButton: false,
+      position: "top",
+    });
+  };
+
   const handleClick = (id) => {
     dispatch(CartShopping(id));
-    showAlert();
+    const found = state.find(el => el.id === id)
+    if(!found) showAlert();
+    else showAlert2()
   };
 
   return (
