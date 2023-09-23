@@ -23,6 +23,7 @@ function App() {
   }, []);
   const [infoUser, setInfoUser] = useState(null);
   const { isAuthenticated, user } = useAuth0();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (isAuthenticated) {
