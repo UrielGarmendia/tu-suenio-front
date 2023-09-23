@@ -3,6 +3,7 @@ import { Add, ManageAccounts, PointOfSale, Settings, TrendingFlat, TrendingUpOut
 import Estadisticas from "../Estadisticas/Estadisticas";
 import Create from "../Create/Create"
 import { useState } from 'react';
+import ProductosAdmin from '../ProductosAdmin/ProductosAdmin';
 
 const Dashboard = () => {
 
@@ -29,7 +30,7 @@ const Dashboard = () => {
       {activeButton === 'Estadisticas' && ( <Estadisticas/>)}
       {activeButton === 'Productos' && (<Create/>)}
       {activeButton === 'ActProducto' && (<h1>Aqui ira la seccion de Actualizar productos</h1>)}
-      {activeButton === 'ElProducto' && (<h1>Aqui ira la seccion de PRODUCTOS A ELIMINAR</h1>)}
+      {activeButton === 'ElProducto' && (<ProductosAdmin/>)}
       {activeButton === 'RepVentas' && (<h1>Aqui ira la seccion REPORTE DE VENTAS</h1>)}
       {activeButton === 'UserReg' && (<h1>Aqui ira la seccion USUARIOS REGISTRADOS</h1>)}
       {activeButton === 'Config' && (<h1>Aqui ira la seccion de CONFIGURACION DEL ADMIN</h1>)}

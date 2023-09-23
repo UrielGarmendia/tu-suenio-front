@@ -65,7 +65,7 @@ const Card = ({
         <h3>Precio: {price}</h3>
         <h3>size : {size}</h3>
         <h3>
-          categoria:{id_categorie === "1" ? "Animales" : "Personajes animados"}
+          Categoria: {Categories?.map((c)=>(c.name))}
         </h3>
         <h3>Stock disponible:{stock}</h3>
       </div>

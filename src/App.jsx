@@ -7,34 +7,35 @@ import Detail from "./Components/Detail/Detail";
 import NavBar from "./Components/NavBar/NavBar";
 import Footer from "./Components/Footer/Footer"
 import Create from "./Components/Create/Create"
-import Dashboard from "./Components/Dashboard/Dashboard"
+import Dashboard from "./Components/Dashboard/Dashboard";
 import FilteredOrdered from "./Components/Filter/Filter";
 import Carrito from "./Components/Carrito/Carrito";
+import { useDispatch } from "react-redux";
+import { allAlcancias } from "./Redux/actions";
 import WhatsappBar from "./Components/WhatsappBar/WhatsappBar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 function App() {
-  const [infoUser, setInfoUser] = useState(null);
   const location = useLocation();
+  useEffect(() => {
+    dispatch(allAlcancias());
+  }, []);
+  const [infoUser, setInfoUser] = useState(null);
   const { isAuthenticated, user } = useAuth0();
 
-  console.log("Está autenticado?:", isAuthenticated);
-  console.log("info del user:", user);
   useEffect(() => {
     if (isAuthenticated) {
       try {
         async function postData() {
           const { data } = await axios.post("http://localhost:3001/user/login", { sub: user.sub });
-          console.log("resultado de login:", data);
-          if (data.error) { //
+          if (data.error) { 
             const { data } = await axios.post("http://localhost:3001/user/register", { //momentáneo hasta que se cree el form
               name: user.name,
               email: user.email,
               image: user.picture,
               sub: user.sub
             });
-            console.log("resultado de register:", data);
             setInfoUser(data);
           } else {
             setInfoUser(data);
