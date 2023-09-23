@@ -3,8 +3,12 @@ import "./Filter.css";
 import { useDispatch, useSelector } from "react-redux";
 import { categories } from "../../Redux/actions";
 import { ordenamiento, filtered, cleanFilters,filterBySize,ProductsByCategoryAndSize } from "../../Redux/actions";
+import Swal from "sweetalert2";
 
 const FilteredOrdered = () => {
+  const showAlert = ( ) => {
+    Swal.fire('No se encontro coincidencias')
+  };
   const categorias = useSelector((state)=>state.categories)
   const dispatch = useDispatch();
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -23,7 +27,7 @@ const FilteredOrdered = () => {
       if (selectedCategory && selectedSize) {
         const result = await dispatch(ProductsByCategoryAndSize(selectedCategory, selectedSize));
         if (result.error) {
-          window.alert('no hay coincidencias')
+          showAlert()
           dispatch(cleanFilters())
           setSelectedCategory('')
           setSelectedSize('')
