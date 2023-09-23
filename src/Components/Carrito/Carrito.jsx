@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./carrito.module.css";
 import { deleteItemCart } from "../../Redux/actions";
 import { useAuth0 } from "@auth0/auth0-react";
+import DeleteIcon from '@mui/icons-material/Delete';
 import Swal from "sweetalert2";
 
 const Carrito = () => {
@@ -74,7 +75,7 @@ const Carrito = () => {
   return (
     <div className={styles.cont}>
       <div className={styles.cont_items}>
-        <h1>Tu carrito</h1>
+        <h1 className={styles.h1}>Tu carrito</h1>
         {index?.map((el, indexEl) => (
           <div className={styles.item} key={el.id}>
             <img
@@ -82,17 +83,14 @@ const Carrito = () => {
               src={el.image_secure_url}
               alt={el.name}
             />
-            <div className={styles.name}>
-              <h2 className={styles.h2Name}>{el.name}</h2>
-              <h4>Tamaño: {el.size}</h4>
-              <div className={styles.spans}>
-                <span
-                  className={styles.span}
-                  onClick={() => handleDelete(el.id)}
-                >
-                  Eliminar
-                </span>
-                <span className={styles.span}>Comprar ahora</span>
+            <div className={styles.name_cont}>
+              <h2 className={styles.name}>{el.name}</h2>
+              <h4 className={styles.size}>Tamaño: {el.size}</h4>
+              <div className={styles.delete}>
+                <div className={styles.delete_cont}>
+                  <DeleteIcon className={styles.DeleteIcon} onClick={() => handleDelete(el.id)}/>  
+                  <p className={styles.text_delete}>Eliminar</p>
+                </div>
               </div>
             </div>
             <div className={styles.cont_quantity}>
@@ -111,16 +109,16 @@ const Carrito = () => {
                   +
                 </button>
               </div>
-              <h4>Stock: {el.stock}</h4>
+              <h4>Stock: {el.stock} unidades</h4>
             </div>
-            <h2 className={styles.h2Price}>
+            <h2 className={styles.price}>
               $ {handleSuma(el.price, el.quantity)}
             </h2>
           </div>
-        ))}
+        ))} 
       </div>
       <div className={styles.total}>
-        <h4>Total productos {handlerReduce(index)}</h4>
+        <h4>Total productos {"("} {handlerReduce(index)} {")"}</h4>
         <h3>Total compra $ {totalSum}</h3>
         <button className={styles.button_compra} onClick={handleBuy}>Comprar</button>
       </div>
