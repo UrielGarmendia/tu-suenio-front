@@ -33,8 +33,11 @@ const NavBar = () => {
           <Link to="/alcancias">
             <button onClick={handleClick}>ALCANCIAS</button>
           </Link>
+          <Link to="/about">
           <button>EMPRESA</button>
+          </Link>
           <button>CONTACTANOS</button>
+          
         </div>
       </div>
       <SearchBar />

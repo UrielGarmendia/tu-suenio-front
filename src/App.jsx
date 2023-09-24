@@ -5,8 +5,11 @@ import Alcancias from "./Components/Alcancias/Alcancias";
 import Home from "./Components/Home/Home";
 import Detail from "./Components/Detail/Detail";
 import NavBar from "./Components/NavBar/NavBar";
-import Footer from "./Components/Footer/Footer";
-import Create from "./Components/Create/Create";
+
+import Footer from "./Components/Footer/Footer"
+import Create from "./Components/Create/Create"
+import About from "./Components/About/About";
+
 import Dashboard from "./Components/Dashboard/Dashboard";
 import FilteredOrdered from "./Components/Filter/Filter";
 import Carrito from "./Components/Carrito/Carrito";
@@ -17,13 +20,18 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 function App() {
+
   const location = useLocation();
+
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(allAlcancias());
   }, []);
+  
   const [infoUser, setInfoUser] = useState(null);
   const { isAuthenticated, user } = useAuth0();
-  const dispatch = useDispatch();
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -69,7 +77,9 @@ function App() {
         <Route path="/create" element={<Create />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/carrito" element={<Carrito />} />
-        <Route path="/admin" element={<Dashboard />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/admin" element={< Dashboard />} />
+       
       </Routes>
       <Footer />
     </div>
