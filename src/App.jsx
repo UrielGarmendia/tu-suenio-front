@@ -5,8 +5,11 @@ import Alcancias from "./Components/Alcancias/Alcancias";
 import Home from "./Components/Home/Home";
 import Detail from "./Components/Detail/Detail";
 import NavBar from "./Components/NavBar/NavBar";
+
 import Footer from "./Components/Footer/Footer"
 import Create from "./Components/Create/Create"
+import About from "./Components/About/About";
+
 import Dashboard from "./Components/Dashboard/Dashboard";
 import FilteredOrdered from "./Components/Filter/Filter";
 import Carrito from "./Components/Carrito/Carrito";
@@ -19,8 +22,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 function App() {
 
   const location = useLocation();
+
+
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     dispatch(allAlcancias());
   }, []);
@@ -32,14 +37,21 @@ function App() {
     if (isAuthenticated) {
       try {
         async function postData() {
-          const { data } = await axios.post("http://localhost:3001/user/login", { sub: user.sub });
-          if (data.error) { 
-            const { data } = await axios.post("http://localhost:3001/user/register", { //momentáneo hasta que se cree el form
-              name: user.name,
-              email: user.email,
-              image: user.picture,
-              sub: user.sub
-            });
+          const { data } = await axios.post(
+            "https://tu-suenio-back.onrender.com/user/login",
+            { sub: user.sub }
+          );
+          if (data.error) {
+            const { data } = await axios.post(
+              "https://tu-suenio-back.onrender.com/user/register",
+              {
+                //momentáneo hasta que se cree el form
+                name: user.name,
+                email: user.email,
+                image: user.picture,
+                sub: user.sub,
+              }
+            );
             setInfoUser(data);
           } else {
             setInfoUser(data);
@@ -53,9 +65,9 @@ function App() {
   }, [isAuthenticated]);
 
   return (
-    <div >
-
-      {location.pathname === "/login" || "/detail" && <NavBar infoUser={infoUser} />}
+    <div>
+      {location.pathname === "/login" ||
+        ("/detail" && <NavBar infoUser={infoUser} />)}
       {location.pathname == "/alcancias" && <FilteredOrdered />}
       <WhatsappBar />
       <Routes>
@@ -65,7 +77,9 @@ function App() {
         <Route path="/create" element={<Create />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/carrito" element={<Carrito />} />
-        <Route path="/admin" element={<Dashboard />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/admin" element={< Dashboard />} />
+       
       </Routes>
       <Footer />
     </div>
