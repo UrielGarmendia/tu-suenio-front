@@ -17,14 +17,16 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 function App() {
+
   const location = useLocation();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  
   useEffect(() => {
     dispatch(allAlcancias());
   }, []);
+  
   const [infoUser, setInfoUser] = useState(null);
   const { isAuthenticated, user } = useAuth0();
-  const dispatch = useDispatch();
 
   useEffect(() => {
     if (isAuthenticated) {
