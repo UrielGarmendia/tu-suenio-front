@@ -1,10 +1,9 @@
-import React, { useEffect  } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
 import styles from "./Create.module.css";
 import { validateForm } from "./validations";
 import { useSelector, useDispatch } from "react-redux";
-import { StayCurrentPortraitTwoTone } from "@mui/icons-material";
 import { categories } from "../../Redux/actions";
 
 const Create = () => {
@@ -23,6 +22,7 @@ const Create = () => {
 
   useEffect(() => {
     dispatch(categories());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const categorie = useSelector((state) => state.categories);
@@ -49,7 +49,6 @@ const Create = () => {
     const fileInput = document.getElementById("image");
     fileInput.value = "";
     setPreviewImage("");
-    setInput({ ...input,  image: "" });
   };
 
   const handleSubmit = async (e) => {
@@ -96,8 +95,8 @@ const Create = () => {
           },
         }
       );
-    
-      if (response.status === 200) {
+
+      if (response.status === 201) {
         console.log(response.data);
         alert("Producto creado: " + response.data.name);
         // Limpiar el formulario después de enviarlo con éxito
@@ -127,10 +126,9 @@ const Create = () => {
       <form
         className={styles.createform}
         onSubmit={handleSubmit}
-        action="http://localhost:3001/products/create"
+        action="https://tu-suenio-back.onrender.com/products/create"
         method="POST"
-        encType="multipart/form-data"
-      >
+        encType="multipart/form-data">
         <div className={styles.group}>
           <label htmlFor="name">Nombre:</label>
           <input
@@ -174,8 +172,7 @@ const Create = () => {
             name="description"
             value={formData.description}
             onChange={handleInputChange}
-            required
-          ></textarea>
+            required></textarea>
         </div>
         <div className={styles.group}>
           <label htmlFor=" id_categorie">categoria:</label>
@@ -184,8 +181,7 @@ const Create = () => {
             name="id_categorie"
             value={formData.id_categorie}
             onChange={handleInputChange}
-            required
-          >
+            required>
             <option value="">Seleccionar categoria</option>
             {categorie.map((c) => (
               <option key={c.id} value={c.id}>
@@ -202,8 +198,7 @@ const Create = () => {
             name="size"
             value={formData.size}
             onChange={handleInputChange}
-            required
-          >
+            required>
             <option value="">Seleccionar tamaño</option>
             <option value="chiquitina">Chiquitina</option>
             <option value="pequeña">Pequeña</option>
@@ -214,7 +209,7 @@ const Create = () => {
         <div className={styles.group}>
           <label htmlFor="image">Imagen:</label>
           <input
-          className={styles.selectimg}
+            className={styles.selectimg}
             type="file"
             id="image"
             name="image"
@@ -233,11 +228,10 @@ const Create = () => {
               alt="Preview"
             />
           )}
-           <button
+          <button
             className={styles.buttonDelete}
             type="button"
-            onClick={handleRemoveImage}
-          >
+            onClick={handleRemoveImage}>
             Eliminar imagen
           </button>
         </div>
