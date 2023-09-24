@@ -6,15 +6,16 @@ import UndoIcon from "@mui/icons-material/Undo";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import styles from "./detail.module.css";
 import Swal from "sweetalert2";
-import { useAuth0 } from "@auth0/auth0-react"
 
 const Detail = () => {
+
   const navigate = useNavigate();
 
   const { id } = useParams();
-  const { isAuthenticated, loginWithRedirect } = useAuth0()
 
   const alcancia = useSelector((state) => state.detail);
+  const state = useSelector((state) => state.CartShopping);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -37,9 +38,23 @@ const Detail = () => {
     });
   };
 
-    const handleClick = (id) => {
+  const showAlert2 = () => {
+    Swal.fire({
+      toast: true,
+      icon: "warning",
+      title: "El producto ya esta en el carrito",
+      timer: 2000,
+      timerProgressBar: true,
+      showConfirmButton: false,
+      position: "top",
+    });
+  };
+
+  const handleClick = (id) => {
     dispatch(CartShopping(id));
-    showAlert();
+    const found = state.find(el => el.id === id)
+    if(!found) showAlert();
+    else showAlert2()
   };
 
   return (
@@ -66,7 +81,7 @@ const Detail = () => {
         </div>
         <div className={styles.last_cont}>
           <div className={styles.button_cart_cont}>
-            <button className={styles.button} onClick={() => handleClick(id)}>
+            <button className={styles.button} onClick={() => handleClick(alcancia[0].id)}>
               Agregar al <AddShoppingCartIcon />
             </button>
           </div>

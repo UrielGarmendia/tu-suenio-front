@@ -18,16 +18,17 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 function App() {
+
   const location = useLocation();
 
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(allAlcancias());
   }, []);
+  
   const [infoUser, setInfoUser] = useState(null);
   const { isAuthenticated, user } = useAuth0();
-  const dispatch = useDispatch();
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -67,6 +68,7 @@ function App() {
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/carrito" element={<Carrito />} />
         <Route path="/about" element={<About />} />
+        <Route path="/admin" element={< Dashboard />} />
        
       </Routes>
       <Footer />
