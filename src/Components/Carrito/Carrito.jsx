@@ -83,7 +83,7 @@ const Carrito = () => {
     <div className={styles.cont}>
       <div className={styles.cont_items}>
         <h1 className={styles.h1}>Tu carrito</h1>
-        {index?.map((el, indexEl) => (
+        {index.length > 0 ? index?.map((el, indexEl) => (
           <div className={styles.item} key={el.id}>
             <img
               className={styles.image}
@@ -123,7 +123,7 @@ const Carrito = () => {
               $ {handleSuma(el.price, el.quantity)}
             </h2>
           </div>
-        ))} 
+        )) : <h3>Todavía no tienes productos en tu carrito</h3>} 
       </div>
       <div className={styles.total}>
         <h4>Total productos {"("} {handlerReduce(index)} {")"}</h4>

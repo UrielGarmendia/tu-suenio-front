@@ -9,9 +9,9 @@
     display: flex;
     flex-direction: column;
     justify-content: left;
-    min-width: 20vw;
+    min-width: 25vw;
     font-weight: bold;
-    background: rgb(97, 24, 194);
+    background: rgb(138, 89, 198);
     color: rgba(239, 239, 239, 0.926);
 }
 .dashboard section ul{
@@ -50,7 +50,9 @@
     display: flex;
     flex-direction: row;
     justify-content: left;
-    margin-left: 1.5rem;
+    margin-left: 1rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
     gap: 1rem;
