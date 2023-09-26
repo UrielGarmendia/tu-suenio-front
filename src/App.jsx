@@ -19,6 +19,7 @@ import WhatsappBar from "./Components/WhatsappBar/WhatsappBar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
+import ReviewForm from "./Components/ReviewForm/ReviewForm";
 function App() {
 
   const location = useLocation();
@@ -71,6 +72,7 @@ function App() {
       {location.pathname == "/alcancias" && <FilteredOrdered />}
       <WhatsappBar />
       <Routes>
+        <Route path="/reviewForm/:id" element={<ReviewForm />} />
         <Route path="/login" element={<Landing />} />
         <Route path="/alcancias" element={<Alcancias />} />
         <Route path="/" element={<Home />} />

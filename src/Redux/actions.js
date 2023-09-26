@@ -13,6 +13,7 @@ import {
   DELETE_PRODUCT,
   FILTERED_BY_SIZE,
   PRODUCTS_BY_CATEGORIEANDSIZE,
+  CLEAN_DETAIL,
 } from "./actions-types";
 import axios from "axios";
 
@@ -47,6 +48,13 @@ export const detail = (id) => {
     return { error: error.message };
   }
 };
+
+export function cleanDetail () {
+  return {
+    type: CLEAN_DETAIL
+  }
+}
+
 export const createAlcancias = (newProduct) => {
   return async function (dispatch) {
     const response = await axios.post(
