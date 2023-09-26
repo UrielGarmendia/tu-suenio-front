@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 //import { useDispatch, useSelector } from "react-redux";
 import { FaStar } from "react-icons/fa";
-import styles from "./Reviews.module.css";
+import styles from "./reviews.module.css";
 
 const color = {
     yellow: "#c4b700",
