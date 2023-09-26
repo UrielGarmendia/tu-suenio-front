@@ -20,6 +20,8 @@ const Detail = () => {
 
   useEffect(() => {
     dispatch(detail(id));
+    return ()=>{
+     dispatch(detail("0"))}
   }, []);
 
   const handleNavigate = () => {

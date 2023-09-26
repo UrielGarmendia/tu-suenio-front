@@ -218,7 +218,7 @@ export const deleteProduct = (id) => {
   try {
     return async function (dispatch) {
       await axios.delete(
-        `http://localhost:3001/products/destroy/${id}`
+        `http://localhost:3001/products/${id}`
       );
       const { data } = await axios(
         `http://localhost:3001/products`
