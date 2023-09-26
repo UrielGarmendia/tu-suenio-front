@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { CartShopping, detail } from "../../Redux/actions";
+import { CartShopping, cleanDetail, detail } from "../../Redux/actions";
 import { useNavigate, useParams } from "react-router-dom";
 import UndoIcon from "@mui/icons-material/Undo";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import styles from "./detail.module.css";
 import Swal from "sweetalert2";
+import Reviews from "../Reviews/Reviews";
 
 const Detail = () => {
 
@@ -20,7 +21,10 @@ const Detail = () => {
 
   useEffect(() => {
     dispatch(detail(id));
-  }, []);
+    return () => {
+      dispatch(cleanDetail());
+    };
+  },[]);
 
   const handleNavigate = () => {
     navigate(-1);
@@ -78,13 +82,14 @@ const Detail = () => {
           <h4 className={styles.h4_info}>Stock: {alcancia[0]?.stock} unidades</h4>
           <h4 className={styles.description}>Descripción:</h4>
           <p className={styles.paragraph}>{alcancia[0]?.description}</p>
-        </div>
-        <div className={styles.last_cont}>
           <div className={styles.button_cart_cont}>
             <button className={styles.button} onClick={() => handleClick(alcancia[0].id)}>
               Agregar al <AddShoppingCartIcon />
             </button>
           </div>
+        </div>
+        <div className={styles.last_cont}>
+          <Reviews id={id}/>
         </div>
       </div>
     </div>

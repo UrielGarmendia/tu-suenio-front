@@ -20,6 +20,7 @@
 
 .item {
     width: 95%;
+    height: 9rem;
     display: flex;
     flex-direction: row;
     border: 1px solid black;
@@ -27,13 +28,19 @@
     padding: 5px;
     margin: 5px auto;
     box-shadow: 1px 1px 1px 1px rgb(93, 92, 92);
+    background-color: rgb(7, 118, 230, .2);
+}
+
+.image_cont {
+    width: 20%;
+    height: 100%;
+    overflow: hidden;
 }
 
 .image {
-    width: 25%;
-    border-radius: 5px;
-    margin-left: 0.5rem;
-    box-shadow: 1px 1px 1px 1px rgb(93, 92, 92);
+    width: 100%;
+    height: 100%;
+    object-fit:contain;
     cursor: pointer;
 }
 
@@ -85,7 +92,7 @@
 .cont_quantity {
     display: flex;
     flex-direction: column;
-    width: 15%;
+    width: 20%;
     justify-content: center;
     align-items: center;
 }
@@ -94,7 +101,8 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content:space-evenly;
+    justify-content: center;
+    height: 30%;
 }
 
 .button_quantity {
@@ -102,12 +110,28 @@
     width: 2rem;
     border: 2px solid rgb(76, 76, 255);
     border-radius: 5px;
+    margin: 0 10px;
     cursor: pointer;
 }
 
 .button_quantity:hover {
     background-color: rgb(76, 76, 255);
     font-weight: bold;
+}
+
+.stock {
+    display: flex;
+    align-items: center;
+    height: 30%;
+    margin: 0;
+}
+
+.stock_limit {
+    display: flex;
+    align-items: center;
+    color: red;
+    height: 30%;
+    margin: 0;
 }
 
 .price {
@@ -166,23 +190,32 @@
     }
 
     .item {
-        width: 95%;
+        width: 100%;
+        height: auto;
         display: flex;
         flex-direction: row;
         border: none;
-        border-top: 1px solid black;
-        border-bottom: 1px solid black;
         border-radius: 0;
         padding: 5px;
         margin: 5px auto;
         box-shadow: none;
+        background-color: rgb(7, 118, 230, .1);
     }
 
-    .image {
+    .image_cont {
         width: 20%;
-        border-radius: 5px;
-        margin-left: 0;
-        box-shadow: 1px 1px 1px 1px rgb(93, 92, 92);
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .name_cont {
+        width: 35%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .price {
