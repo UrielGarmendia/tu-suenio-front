@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import Landing from "./Components/Landing/Landing";
 import Alcancias from "./Components/Alcancias/Alcancias";
 import Home from "./Components/Home/Home";
@@ -20,10 +20,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import RegistrationForm from "./Components/RegistrationForm/RegistrationForm";
+
 function App() {
 
+  const navigate = useNavigate();
   const location = useLocation();
-
 
   const dispatch = useDispatch();
 
@@ -41,13 +42,7 @@ function App() {
         async function postData() {
           const { data } = await axios.post("https://tu-suenio-back.onrender.com/user/login", { sub: user.sub });
           if (data.error) {
-            const { data } = await axios.post("https://tu-suenio-back.onrender.com/user/register", { //momentáneo hasta que se cree el form
-              name: user.name,
-              email: user.email,
-              image: user.picture,
-              sub: user.sub
-            });
-            setInfoUser(data);
+            navigate("/register");
           } else {
             setInfoUser(data);
           }

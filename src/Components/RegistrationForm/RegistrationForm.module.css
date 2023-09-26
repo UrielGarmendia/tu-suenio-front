@@ -56,6 +56,7 @@
     font-size: 15px;
     font-weight: 500;
     transition: 0.3s;
+    color: #30e6c1;
 }
 .p.active{
     color: #e377b1;
@@ -111,6 +112,10 @@
     height: 3px;
     width: 44px;
     background: white;
+}
+.numberContainer.lastNumberContainer.active{
+    border-color: #e377b1;
+    background: #e377b1;
 }
 .numberContainer.active::after{
     background: #e377b1;
@@ -170,9 +175,9 @@
 .field {
     display: flex;
     position: relative;
-    height: 50px;
+    height: 45px;
     width: 100%;
-    margin: 45px 0;
+    margin: 65px 0;
 }
 
 .input {
@@ -227,4 +232,12 @@
 .inputTelefono:focus {
     outline: none;
     border: 2px solid #30e6c1;
+}
+.button.disabled{
+    cursor: not-allowed;
+}
+.error{
+    position: absolute;
+    color: red;
+    margin-top: 52px;
 }
