@@ -1,0 +1,60 @@
+
+.contactanos {
+    max-width: 25vw;
+    margin: 0 auto;
+    margin-top: 1rem;
+    padding: 3rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #edbfe6;
+  }
+.contactanos img {
+    max-width: 10vw;
+}
+.contactanos h1 {
+    margin-bottom: 20px;
+  }
+  
+  .formGroup {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .formGroup label {
+    display: block;
+    font-weight: bold;
+  }
+
+  .formGroup input {
+    padding: 0.5rem;
+  }
+  
+  .formGroup textarea {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 0.5rem;
+  }
+  
+  .contactanos button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .contactanos button:hover {
+    background-color: #0056b3;
+  }
+
+  .error {
+    color: #e40404;
+  }
+  
