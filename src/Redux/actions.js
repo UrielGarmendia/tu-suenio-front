@@ -20,7 +20,7 @@ import axios from "axios";
 export const allAlcancias = () => {
   try {
     return async function (dispatch) {
-      const { data } = await axios(
+      const { data } = await axios.get(
         "https://tu-suenio-back.onrender.com/products"
       );
       return dispatch({
@@ -49,10 +49,10 @@ export const detail = (id) => {
   }
 };
 
-export function cleanDetail () {
+export function cleanDetail() {
   return {
-    type: CLEAN_DETAIL
-  }
+    type: CLEAN_DETAIL,
+  };
 }
 
 export const createAlcancias = (newProduct) => {
