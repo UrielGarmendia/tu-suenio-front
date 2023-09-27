@@ -85,19 +85,17 @@ export const categories = () => {
 };
 
 export const byName = (name) => {
-  try {
-    return async function (dispatch) {
-      const { data } = await axios(
-        `https://tu-suenio-back.onrender.com/products?name=${name}`
-      );
-      return dispatch({
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(`https://tu-suenio-back.onrender.com/products?name=${name}`);
+      dispatch({
         type: BY_NAME,
-        payload: data,
+        payload: response.data,
       });
-    };
-  } catch (error) {
-    return { error: error.message };
-  }
+    } catch (error) {
+      alert("No hay alcancias con ese nombre"); 
+    }
+  };
 };
 
 export const ordenamiento = (event) => {

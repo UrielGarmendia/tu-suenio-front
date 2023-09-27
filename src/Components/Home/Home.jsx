@@ -31,7 +31,7 @@ const home = () => {
           </div>
           <div className={styles.textcerditos}>
             <h2 className={styles.title_sizes}>¿Que tamaños tenemos?</h2>
-            <lu className={styles.lu}>
+            <ul className={styles.lu}>
               <li>Chiquitina
               <p className={styles.p}>10cm Alto, 10cm Ancho, 10cm Largo.</p></li>
               <li>Pequeña
@@ -41,7 +41,7 @@ const home = () => {
               <li>Grande
               <p className={styles.p}>23cm Alto, 21cm Ancho, 23cm Largo.</p></li>
 
-            </lu>
+            </ul>
           </div>
         </div>
         <div className={styles.cont_question}>
@@ -49,7 +49,7 @@ const home = () => {
             <h2 className={styles.title}>¿Que hago si no hay en la tienda el tamaño o el diseño que quiero?</h2>
             <p className={styles.text}>
               Ponte en contacto con nosotros para que podamos darle solución a tu necesidad. 
-              Puedes hacerlo a través del botón de Whatsapp que encontrarás abajo a la derecha.
+              Puedes hacerlo a través del botón de Whatsapp que encontrarás siempre en tu pantalla a la derecha.
             </p>
           </div>
           <div className={styles.imageContainer}>
@@ -134,7 +134,7 @@ const home = () => {
         <div className={styles.cont_save_for}>
           <div className={styles.textContainerSaveFor}>
             <h2 className={styles.title_save_for}>¿Para qué puedo ahorrar?</h2>
-            <lu className={styles.lu_save_for}>
+            <ul className={styles.lu_save_for}>
               <li>Para tu nueva vivienda</li>
               <li>Para tu nuevo negocio</li>
               <li>Para la educación de tus hijos </li>
@@ -145,7 +145,7 @@ const home = () => {
               <li>Para pagar cuentas pendientes</li>
               <li>Para invertir en ti </li>
               <li>Para tu jubilación </li>
-            </lu>
+            </ul>
           </div>
           <div className={styles.imageContainerSaveFor}>
             <img src={credito} alt="credito" className={styles.fiestaLogo4} />
