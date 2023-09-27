@@ -85,12 +85,14 @@ const Carrito = () => {
         <h1 className={styles.h1}>Tu carrito</h1>
         {index.length > 0 ? index?.map((el, indexEl) => (
           <div className={styles.item} key={el.id}>
-            <img
-              className={styles.image}
-              src={el.image_secure_url}
-              alt={el.name}
-              onClick={() => handleNavigate(el.id)}
-            />
+            <div className={styles.image_cont}>
+              <img
+                className={styles.image}
+                src={el.image_secure_url}
+                alt={el.name}
+                onClick={() => handleNavigate(el.id)}
+              />
+            </div>
             <div className={styles.name_cont}>
               <h2 className={styles.name}>{el.name}</h2>
               <h4 className={styles.size}>Tamaño: {el.size}</h4>
@@ -106,18 +108,20 @@ const Carrito = () => {
                 <button
                   className={styles.button_quantity}
                   onClick={() => handleRest(indexEl)}
-                >
+                  >
                   -
                 </button>
                 <h4>{el.quantity}</h4>
                 <button
                   className={styles.button_quantity}
                   onClick={() => handleSum(el.stock, indexEl)}
-                >
+                  >
                   +
                 </button>
               </div>
-              <h4>Stock: {el.stock} unidades</h4>
+              {el.stock === el.quantity ? 
+              <h4 className={styles.stock_limit}>Solo hay {el.stock} unidades</h4> : 
+              <h4 className={styles.stock}>Stock: {el.stock} unidades</h4>}
             </div>
             <h2 className={styles.price}>
               $ {handleSuma(el.price, el.quantity)}
