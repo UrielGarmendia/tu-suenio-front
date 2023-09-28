@@ -20,6 +20,8 @@ const Carrito = () => {
     state?.map((item) => (!item.hasOwnProperty("quantity") ? { ...item, quantity: 1 } : item))
   );
 
+  console.log(index);
+
   const handleSum = (stock, indexEl) => {
     if (index[indexEl].quantity < stock) {
       const stateCopy = [...index];
