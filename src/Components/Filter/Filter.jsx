@@ -2,7 +2,7 @@ import React, { useEffect, useRef , useState} from "react";
 import "./Filter.css";
 import { useDispatch, useSelector } from "react-redux";
 import { categories } from "../../Redux/actions";
-import { ordenamiento, filtered, cleanFilters,filterBySize,ProductsByCategoryAndSize } from "../../Redux/actions";
+import { ordenamiento, filtered, cleanFilters, filterBySize, ProductsByCategoryAndSize } from "../../Redux/actions";
 import Swal from "sweetalert2";
 
 const FilteredOrdered = () => {
@@ -13,12 +13,20 @@ const FilteredOrdered = () => {
   const dispatch = useDispatch();
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
+  const [selectedPrice, setSelectedPrice] = useState("");
+  const [selectedAlpha, setSelectedAlpha] = useState("");
 
   useEffect(() => {
     dispatch(categories());
   }, []);
   
-  const handleOrder = (event) => {
+  const handleOrderByPrice = (event) => {
+    setSelectedPrice(event.target.value)
+    dispatch(ordenamiento(event.target.value));
+  };
+
+  const handleOrderByAlpha = (event) => {
+    setSelectedAlpha(event.target.value)
     dispatch(ordenamiento(event.target.value));
   };
   
@@ -71,9 +79,11 @@ const handleClick = () => {
   dispatch(cleanFilters());
   setSelectedCategory('')
   setSelectedSize('')
+  setSelectedAlpha('')
+  setSelectedPrice('')
 };
 
-  
+
 
   return (
     <div className="filterAndOrder">
@@ -96,12 +106,12 @@ const handleClick = () => {
       <option value="mediana">mediana</option>
       <option value="grande">grande</option>
     </select>
-    <select className="allSelects" onChange={handleOrder} >
+    <select className="allSelects" onChange={handleOrderByAlpha} value={selectedAlpha}>
       <option value="">Orden alfabetico</option>
       <option value="A-Z">A-Z</option>
       <option value="Z-A">Z-A</option>
     </select>
-    <select className="allSelects" onChange={handleOrder} >
+    <select className="allSelects" onChange={handleOrderByPrice} value={selectedPrice}>
       <option value="">Por precio</option>
       <option value="A">Menor a mayor</option>
       <option value="D">Mayor a menor</option>

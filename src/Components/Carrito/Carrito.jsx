@@ -38,7 +38,9 @@ const Carrito = () => {
     )
   );
 
+
   console.log(index, "index");
+
 
   const handleSum = (stock, indexEl) => {
     if (index[indexEl].quantity < stock) {

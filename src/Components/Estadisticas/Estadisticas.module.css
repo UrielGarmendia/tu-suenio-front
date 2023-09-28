@@ -50,14 +50,20 @@
 }
 
 .barra {
-    width: 5rem; 
+    width: 4rem; 
     height: 0.8rem; 
     background-color: #2020203e;
     border-radius: 10px;
     overflow: hidden;
-  }
+    display: flex;
+    justify-content: left;
+    padding: 0px;
+    margin: 0px;
+}
 
-  .nivelBarra {
+.nivelBarra {
     height: 100%;
-  }
+    margin: 0px;
+    padding: 0px;
+}
 

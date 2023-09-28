@@ -14,6 +14,7 @@ import {
   FILTERED_BY_SIZE,
   PRODUCTS_BY_CATEGORIEANDSIZE,
   CLEAN_DETAIL,
+  ACTUALIZAR_PRODUCTO,
 } from "./actions-types";
 
 //Traerme el local store si esta vacio que devuelva un array
@@ -67,9 +68,40 @@ const reducer = (state = initialState, action) => {
         AllAlcancias: [...state.AllAlcancias, action.payload],
       };
     case ORDERED_BY:
-      return {
-        ...state,
-        AllAlcancias: action.payload
+      const toOrder = [...state.AllAlcancias];
+      if(action.payload === "A-Z") {
+        return {
+          ...state,
+          AllAlcancias: toOrder.sort((a, b) => {
+            if(a.name < b.name) return -1;
+            if(a.name > b.name) return 1;
+            return 0;
+          })
+        }
+      };
+      if(action.payload === "Z-A") {
+        return {
+          ...state,
+          AllAlcancias: toOrder.sort((a, b) => {
+            if(a.name < b.name) return 1;
+            if(a.name > b.name) return -1;
+            return 0;
+          })
+        }
+      };
+      if(action.payload === "D") {
+        return {
+          ...state,
+          AllAlcancias: toOrder.sort((a, b) => b.price - a.price)
+        }
+      };
+      if(action.payload === "A") {
+        return {
+          ...state,
+          AllAlcancias: toOrder.sort((a, b) => a.price - b.price)
+        }
+      } else {
+        return {...state, AllAlcancias: state.copyAllAlcancias}
       }
     case FILTERED_BY:
       return {
@@ -119,6 +151,11 @@ const reducer = (state = initialState, action) => {
         CartShopping: action.payload
       }
     case DELETE_PRODUCT:
+      return {
+        ...state,
+        AllAlcancias: action.payload
+      }
+      case ACTUALIZAR_PRODUCTO:
       return {
         ...state,
         AllAlcancias: action.payload
