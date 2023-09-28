@@ -37,6 +37,8 @@ const Carrito = () => {
     )
   );
 
+  console.log(index);
+
   const handleSum = (stock, indexEl) => {
     if (index[indexEl].quantity < stock) {
       const stateCopy = [...index];
