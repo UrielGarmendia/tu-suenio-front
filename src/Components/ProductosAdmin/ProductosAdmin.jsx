@@ -71,7 +71,7 @@ const ProductosAdmin = () => {
                 <section style={sectionStyle}>
                     <img src={image_secure_url} alt="" />
                     <article>
-                    <h2>Nombre: {name}</h2>
+                    <h2>{name}</h2>
                     <h3>Precio: {price}</h3>
                     <h3>Stock: {stock}</h3>
                     </article>
