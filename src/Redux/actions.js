@@ -186,7 +186,7 @@ export const deleteProduct = (id) => {
   try {
     return async function (dispatch) {
       await axios.delete(
-        `https://tu-suenio-back.onrender.com/products/destroy/${id}`
+        `https://tu-suenio-back.onrender.com/products/${id}`
       );
       const { data } = await axios(
         `https://tu-suenio-back.onrender.com/products`

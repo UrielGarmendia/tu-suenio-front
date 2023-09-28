@@ -1,0 +1,67 @@
+/* HistorialVentas.css */
+
+.historialVentas {
+    font-family: Arial, sans-serif;
+    max-width: 80vw;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+.historialVentas h1 {
+margin-bottom: 1rem;
+}
+
+.filtros {
+margin-bottom: 2rem;
+}
+
+.filtros input {
+padding: 0.4rem;
+margin-right: 1rem;
+height: 1rem;
+}
+
+.filtros button {
+padding: 5px 10px;
+margin-right: 1rem;
+color: #fff;
+border-radius: 0.5rem;
+cursor: pointer;
+}
+
+.historialVentas table {
+width: 100%;
+border-collapse: collapse;
+}
+
+.historialVentas  th{
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.historialVentas table td {
+padding: 10px;
+text-align: left;
+border-bottom: 1px solid #ddd;
+}
+
+.historialVentas table th {
+background-color: #f2f2f2;
+}
+
+.historialVentas tr:hover {
+background-color: #f5f5f5;
+}
+
+.historialVentas button {
+background-color: #e100ff;
+color: #fff;
+border: none;
+padding: 5px 10px;
+cursor: pointer;
+}
+
+.historialVentas button:hover {
+background-color: #b300a4;
+}
