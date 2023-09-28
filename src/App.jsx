@@ -26,7 +26,9 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
 
+
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     dispatch(allAlcancias());
@@ -34,7 +36,10 @@ function App() {
 
   const [infoUser, setInfoUser] = useState(null);
   const { isAuthenticated, user } = useAuth0();
+
+
   console.log("Este es el usuario:", user);
+
 
   useEffect(() => {
     if (isAuthenticated) {
