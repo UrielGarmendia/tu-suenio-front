@@ -5,7 +5,7 @@ import Alcancias from "./Components/Alcancias/Alcancias";
 import Home from "./Components/Home/Home";
 import Detail from "./Components/Detail/Detail";
 import NavBar from "./Components/NavBar/NavBar";
-
+import Contactanos from "./Components/Contactanos/Contactanos";
 import Footer from "./Components/Footer/Footer";
 import Create from "./Components/Create/Create";
 import About from "./Components/About/About";
@@ -26,7 +26,9 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
 
+
   const dispatch = useDispatch();
+
 
   useEffect(() => {
     dispatch(allAlcancias());
@@ -34,7 +36,10 @@ function App() {
 
   const [infoUser, setInfoUser] = useState(null);
   const { isAuthenticated, user } = useAuth0();
+
+
   console.log("Este es el usuario:", user);
+
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -73,7 +78,9 @@ function App() {
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/carrito" element={<Carrito />} />
         <Route path="/about" element={<About />} />
-        <Route path="/admin" element={<Dashboard />} />
+        <Route path="/admin" element={< Dashboard />} />
+        <Route path="/contactanos" element={< Contactanos/>} />
+
       </Routes>
       {location.pathname !== "/register" && <Footer />}
     </div>
