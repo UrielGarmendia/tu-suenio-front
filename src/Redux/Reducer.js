@@ -14,6 +14,7 @@ import {
   FILTERED_BY_SIZE,
   PRODUCTS_BY_CATEGORIEANDSIZE,
   CLEAN_DETAIL,
+  ACTUALIZAR_PRODUCTO,
 } from "./actions-types";
 
 //Traerme el local store si esta vacio que devuelva un array
@@ -150,6 +151,11 @@ const reducer = (state = initialState, action) => {
         CartShopping: action.payload
       }
     case DELETE_PRODUCT:
+      return {
+        ...state,
+        AllAlcancias: action.payload
+      }
+      case ACTUALIZAR_PRODUCTO:
       return {
         ...state,
         AllAlcancias: action.payload

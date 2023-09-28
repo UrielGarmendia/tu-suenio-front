@@ -14,6 +14,7 @@ import {
   FILTERED_BY_SIZE,
   PRODUCTS_BY_CATEGORIEANDSIZE,
   CLEAN_DETAIL,
+  ACTUALIZAR_PRODUCTO,
 } from "./actions-types";
 import axios from "axios";
 
@@ -148,6 +149,7 @@ export const ProductsByCategoryAndSize = (id, size) => {
   };
 };
 
+
 export const cleanFilters = () => {
   return { type: CLEAN_FILTERS };
 };
@@ -180,6 +182,25 @@ export const uploadStorage = (cart) => {
     type: LOCAL_STORAGE,
     payload: cart,
   };
+}; 
+export const actualizarProduct = (id, updatedProductData) => {
+  try {
+    return async function (dispatch) {
+      await axios.put(
+        `https://tu-suenio-back.onrender.com/products/${id}`,
+        updatedProductData
+      );
+      const { data } = await axios(
+        `https://tu-suenio-back.onrender.com/products`
+      );
+      return dispatch({
+        type: ACTUALIZAR_PRODUCTO,
+        payload: data,
+      });
+    };
+  } catch (error) {
+    return { error: error.message };
+  }
 };
 
 export const deleteProduct = (id) => {
@@ -199,4 +220,5 @@ export const deleteProduct = (id) => {
   } catch (error) {
     return { error: error.message };
   }
+ 
 };

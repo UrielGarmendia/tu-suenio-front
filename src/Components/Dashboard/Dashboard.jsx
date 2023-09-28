@@ -2,6 +2,7 @@ import style from '../Dashboard/Dashboard.module.css'
 import { Add, ManageAccounts, PointOfSale, Settings, TrendingFlat, TrendingUpOutlined } from '@mui/icons-material';
 import Estadisticas from "../Estadisticas/Estadisticas";
 import Create from "../Create/Create"
+import ProductosAdminActu from "../ProductosAdminActu/ProductosAdminActu"
 import { useState } from 'react';
 import ProductosAdmin from '../ProductosAdmin/ProductosAdmin';
 import ReporteVentas from '../ReporteVentas/ReporteVentas'
@@ -30,13 +31,13 @@ const Dashboard = () => {
       <div className={style.container}>
       {activeButton === 'Estadisticas' && ( <Estadisticas/>)}
       {activeButton === 'Productos' && (<Create/>)}
-      {activeButton === 'ActProducto' && (<h1>Aqui ira la seccion de Actualizar productos</h1>)}
+      {activeButton === 'ActProducto' && (<ProductosAdminActu/>)}
       {activeButton === 'ElProducto' && (<ProductosAdmin/>)}
       {activeButton === 'RepVentas' && (<ReporteVentas/>)}
       {activeButton === 'UserReg' && (<h1>Aqui ira la seccion USUARIOS REGISTRADOS</h1>)}
       {activeButton === 'Config' && (<h1>Aqui ira la seccion de CONFIGURACION DEL ADMIN</h1>)}
       <article>
-       <h1>ALGUN OTRO COMPONENTE PODRIA IR ACA</h1>
+     
       </article>
      
       </div>
