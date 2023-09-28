@@ -21,7 +21,7 @@ export const allAlcancias = () => {
   try {
     return async function (dispatch) {
       const { data } = await axios(
-        "http://localhost:3001/products"
+        "https://tu-suenio-back.onrender.com/products"
       );
       return dispatch({
         type: ALCANCIAS,
@@ -37,7 +37,7 @@ export const detail = (id) => {
   try {
     return async function (dispatch) {
       const { data } = await axios(
-        `http://localhost:3001/products/${id}`
+        `https://tu-suenio-back.onrender.com/products/${id}`
       );
       return dispatch({
         type: DETAIL,
@@ -58,7 +58,7 @@ export function cleanDetail() {
 export const createAlcancias = (newProduct) => {
   return async function (dispatch) {
     const response = await axios.post(
-      `http://localhost:3001/products/create`,
+      `https://tu-suenio-back.onrender.com/products/create`,
       newProduct
     );
     return dispatch({
@@ -72,7 +72,7 @@ export const categories = () => {
   try {
     return async function (dispatch) {
       const { data } = await axios(
-        "http://localhost:3001/categorie"
+        "https://tu-suenio-back.onrender.com/categorie"
       );
       return dispatch({
         type: CATEGORIES,
@@ -106,7 +106,7 @@ export const filtered = (id) => {
   try {
     return async function (dispatch) {
       const { data } = await axios(
-        `http://localhost:3001/filter/categorie/${id}`
+        `https://tu-suenio-back.onrender.com/filter/categorie/${id}`
       );
       return dispatch({
         type: FILTERED_BY,
@@ -121,7 +121,7 @@ export const filterBySize = (size) => {
   return async function (dispatch) {
     try {
       const { data } = await axios(
-        `http://localhost:3001/filter/size/${size}`
+        `https://tu-suenio-back.onrender.com/filter/size/${size}`
       );
       return dispatch({
         type: FILTERED_BY_SIZE,
@@ -136,7 +136,7 @@ export const ProductsByCategoryAndSize = (id, size) => {
   return async function (dispatch) {
     try {
       const { data } = await axios(
-        `http://localhost:3001/filter/combined/${id}/${size}`
+        `https://tu-suenio-back.onrender.com/filter/combined/${id}/${size}`
       );
       return dispatch({
         type: PRODUCTS_BY_CATEGORIEANDSIZE,
@@ -156,7 +156,7 @@ export const CartShopping = (id) => {
   try {
     return async function (dispatch) {
       const { data } = await axios(
-        `http://localhost:3001/products/${id}`
+        `https://tu-suenio-back.onrender.com/products/${id}`
       );
       return dispatch({
         type: CART_SHOPING,
@@ -186,10 +186,10 @@ export const deleteProduct = (id) => {
   try {
     return async function (dispatch) {
       await axios.delete(
-        `http://localhost:3001/products/destroy/${id}`
+        `https://tu-suenio-back.onrender.com/products/destroy/${id}`
       );
       const { data } = await axios(
-        `http://localhost:3001/products`
+        `https://tu-suenio-back.onrender.com/products`
       );
       return dispatch({
         type: DELETE_PRODUCT,
