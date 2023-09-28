@@ -13,6 +13,8 @@
     "@auth0/auth0-react": "^2.2.1",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@mercadopago/sdk-js": "^0.0.3",
+    "@mercadopago/sdk-react": "^0.0.14",
     "@mui/icons-material": "^5.14.9",
     "@mui/material": "^5.14.9",
     "axios": "^1.5.0",

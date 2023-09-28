@@ -1,91 +1,418 @@
 .principal {
     display: flex;
     flex-direction: column;
-    padding: 2rem;
-    margin-left: 8rem;
-    margin-right: 8rem;
-}
-.p{
-    color: brown;
+    width: 100%;
+    align-items: center;
 }
 
-.contentContainer {
+.row {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    border: 1px solid #ccc;
-    padding: 3rem;
-    margin-top: 2rem;
-    color: black;
-    border-radius: 20px;
-    border-color: black;
-    text-align: justify;
-   
-}
-.masinfo {
-    color: black;
- margin-top:200px ;
- margin-left: 200px;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 25rem;
+    margin: 1rem 0;
 }
 
-.informacion {
-    
-    
-    
-    margin-left:600px;
-    border-color: black;
-   
+.cont_save_money {
+    width: 50%;
+    display: flex;
+    border: 2px solid rgb(97, 195, 178);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 1px 1px 5px 5px grey;
 }
-
-.informacion1{
-    
-    
-    margin-top: 100px;
-   
-   
-
-}
-.informacion2{
-    
-    margin-left: 400px;
-    margin-top: 30px;
-   
-    
-}
-.whatsapp{
-    width:80px ;
-    height:80px ;
-}
-
-
 
 .textContainer {
-    flex: 1;
-    max-width: 40vw;
-    text-align:left;
-}
-.textContainer img{
-    max-width: 35vw;
-}
-.imageContainer {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 50%;
 }
 
-.planLogo {
-    height: 400px;
-    width: 400px;
+.title {
+    margin: 0;
+    margin-bottom: 2rem;
 }
-.cerdos{
-    width: 440px;
-    height: 300px;
+
+.text {
+    margin: 0;
+}
+
+.imageContainer {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .fiestaLogo {
-    height: 450px;
-    width: 450px;
-    margin-left: 150px;
+    width: 70%;
 }
-.imgAhorro{
-    width: 800px;
-    height: 300px;
+
+.fiestaLogo2 {
+    width: 95%;
 }
+
+.cont_question {
+    width: 30%;
+    display: flex;
+    border: 2px solid rgb(82, 205, 123);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 1px 1px 5px 5px grey;
+}
+
+.rowOnly {
+    display: flex;
+    align-items: center;
+    width: 95%;
+    height: 25rem;
+    border: 2px solid pink;
+    border-radius: 1rem;
+    margin: 1rem auto;
+    box-shadow: 1px 1px 5px 5px grey;
+}
+
+.imageContainerOnly {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.imgAhorro {
+    width: 100%;
+    height: 80%;
+}
+
+.textContainerOnly {
+    width: 45%;
+    text-align: left;
+    padding: 0 2rem;
+
+}
+
+.cont_planLogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.planLogo {
+    width: 20%;
+}
+
+.cont_events {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid lightgreen;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 1px 1px 5px 5px grey;
+}
+
+.title_events {
+    margin: 0;
+}
+
+.text_image {
+    display: flex;
+}
+
+.fiestaLogo3 {
+    width: 30%;
+}
+
+.cont_sizes {
+    width: 50%;
+    display: flex;
+    border: 2px solid pink;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 1px 1px 5px 5px grey;
+}
+
+.cerdos {
+    width: 90%;
+}
+
+.textcerditos {
+    width: 50%;
+}
+
+.title_sizes {
+    margin-top: 0;
+}
+
+.lu li {
+    
+    padding: 0.5rem;
+    text-align: left;
+    font-weight: 500;
+}
+
+.p {
+    margin: 0.5rem 0;
+}
+
+.cont_save_children {
+    width: 50%;
+    display: flex;
+    border: 2px solid rgb(137, 59, 159);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 1px 1px 5px 5px grey;
+}
+
+.planLogo2 {
+    width: 90%;
+}
+
+.cont_save_for {
+    width: 30%;
+    display: flex;
+    border-radius: 1rem;
+    padding: 2rem;
+    border: 2px solid rgb(97, 195, 178);
+    box-shadow: 1px 1px 5px 5px grey;
+}
+
+.title_save_for {
+    margin: 0;
+}
+
+.textContainerSaveFor {
+    width: 60%;
+    text-align: left;
+}
+
+.imageContainerSaveFor {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fiestaLogo4 {
+    width: 95%;
+}
+
+@media all and (max-width: 599px) {
+
+    .principal {
+        display: flex;
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: auto;
+        margin: 0;
+    }
+    
+    .cont_save_money {
+        width: 100%;
+        display: flex;
+        border: 2px solid rgb(97, 195, 178);
+        border-radius: 0;
+        padding: 0.5rem;
+        box-shadow: none;
+    }
+    
+    .textContainer {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        width: 100%;
+    }
+    
+    .title {
+        margin: 0;
+        margin-bottom: 2rem;
+        width: 100%;
+    }
+    
+    .text {
+        margin: 0;
+        width: 100%;
+    }
+    
+    .imageContainer {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .fiestaLogo {
+        width: 70%;
+    }
+    
+    .fiestaLogo2 {
+        width: 95%;
+    }
+    
+    .cont_question {
+        width: 100%;
+        display: flex;
+        border: 2px solid rgb(82, 205, 123);
+        border-radius: 0;
+        padding: 0.5rem;
+        box-shadow: none;
+    }
+    
+    .rowOnly {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: auto;
+        border: 2px solid pink;
+        border-radius: 0;
+        margin: 0 auto;
+        box-shadow: none;
+        padding: 0.5rem;
+    }
+    
+    .imageContainerOnly {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+    
+    .imgAhorro {
+        width: 90%;
+        height: auto;
+    }
+    
+    .textContainerOnly {
+        width: 95%;
+        text-align: left;
+        padding: 0;
+    }
+    
+    .cont_planLogo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .planLogo {
+        width: 20%;
+    }
+    
+    .cont_events {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        border: 2px solid lightgreen;
+        border-radius: 0;
+        padding: 0.5rem;
+        box-shadow: none;
+    }
+    
+    .title_events {
+        margin: 0;
+    }
+    
+    .text_image {
+        display: flex;
+        width: 98%;
+    }
+
+    .p_responsive {
+        width: 98%;
+    }
+    
+    .fiestaLogo3 {
+        width: 40%;
+    }
+    
+    .cont_sizes {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        border: 2px solid pink;
+        border-radius: 0;
+        padding: 0.5rem;
+        box-shadow: none;
+    }
+    
+    .cerdos {
+        width: 90%;
+    }
+    
+    .textcerditos {
+        width: 100%;
+    }
+    
+    .title_sizes {
+        margin-top: 0;
+    }
+    
+    .lu li {
+        
+        padding: 0.5rem;
+        text-align: left;
+        font-weight: 500;
+    }
+    
+    .p {
+        margin: 0.5rem 0;
+    }
+    
+    .cont_save_children {
+        width: 100%;
+        display: flex;
+        border: 2px solid rgb(137, 59, 159);
+        border-radius: 0;
+        padding: 0.5rem;
+        box-shadow: none;
+    }
+    
+    .planLogo2 {
+        width: 90%;
+    }
+    
+    .cont_save_for {
+        width: 100%;
+        display: flex;
+        border-radius: 0;
+        padding: 0.5rem;
+        border: 2px solid rgb(97, 195, 178);
+        box-shadow: none;
+    }
+    
+    .title_save_for {
+        margin: 0;
+    }
+    
+    .textContainerSaveFor {
+        width: 60%;
+        text-align: left;
+        margin-left: 0.5rem;
+    }
+    
+    .imageContainerSaveFor {
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .fiestaLogo4 {
+        width: 95%;
+    }
+}
+
+

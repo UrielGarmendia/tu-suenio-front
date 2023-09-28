@@ -12,11 +12,10 @@ const Slide = () => {
     const settings = {
       dots: true,
       infinite: true,
-      speed: 500,
+      speed: 2000,
       slidesToShow: 3,
       slidesToScroll: 1,
       autoplay: true,
-      speed: 2000,
       autoplaySpeed: 3000,
       };
     return(
@@ -41,8 +40,7 @@ const Slide = () => {
         <div>
           <div className={style.card}>
             <img src={homefiesta3} alt=""/>
-          </div>
-          
+          </div>  
         </div>
         
         </Slider>

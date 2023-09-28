@@ -6,6 +6,12 @@ import styles from "./Alcancias.module.css";
 import Paginado from "../Paginado/Paginado";
 
 const Alcancias = () => {
+  const dispatch = useDispatch();
+
+  /*useEffect(() => {
+    dispatch(allAlcancias());
+  }, []);*/
+
   const alcancias = useSelector((state) => state.AllAlcancias);
   const [pageIndex, setPageIndex] = useState(1);
   let finalIndex = pageIndex * 12;
