@@ -6,21 +6,16 @@ import styles from "./Alcancias.module.css";
 import Paginado from "../Paginado/Paginado";
 
 const Alcancias = () => {
-  const dispatch = useDispatch();
-
-  /*useEffect(() => {
-    dispatch(allAlcancias());
-  }, []);*/
 
   const alcancias = useSelector((state) => state.AllAlcancias);
+  console.log(alcancias);
   const [pageIndex, setPageIndex] = useState(1);
   let finalIndex = pageIndex * 12;
   let initialIndex = finalIndex - 12;
   let currentPage =alcancias.slice(initialIndex, finalIndex)
   .filter((card) => card.isAvailable === true);
   let numberOfPages = Math.ceil(alcancias.length / 12);
-  console.log(alcancias)
-  console.log(currentPage)
+
   useEffect(() => {
     setPageIndex(1);
   }, [alcancias]);
