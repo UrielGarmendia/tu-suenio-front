@@ -6,7 +6,9 @@
     align-items: center;
     flex-wrap: wrap;
     flex-direction: row;
-   
+    /*position: sticky;
+    top: 0;
+    z-index: 3;*/
 }   
 
 .cart_cont {
@@ -65,12 +67,6 @@
     cursor: pointer;
 }
 
-.navBar img:hover {
-    cursor: pointer;
-    transform: scale(1.10);
-    
-}
-
 .signin {
     display: flex;
     align-items: center;
@@ -102,5 +98,4 @@
 .img{
    width: 180px;
    height: 120px;
-   
 }
