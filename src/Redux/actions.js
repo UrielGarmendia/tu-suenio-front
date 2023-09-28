@@ -95,13 +95,13 @@ export const byName = (name) => {
         payload: response.data,
       });
     } catch (error) {
-      alert("No hay alcancias con ese nombre"); 
+      alert("No hay alcancias con ese nombre");
     }
   };
 };
 
 export const ordenamiento = (event) => {
-  return {type: ORDERED_BY, payload: event}
+  return { type: ORDERED_BY, payload: event };
 };
 
 export const filtered = (id) => {
@@ -150,7 +150,6 @@ export const ProductsByCategoryAndSize = (id, size) => {
   };
 };
 
-
 export const cleanFilters = () => {
   return { type: CLEAN_FILTERS };
 };
@@ -183,7 +182,7 @@ export const uploadStorage = (cart) => {
     type: LOCAL_STORAGE,
     payload: cart,
   };
-}; 
+};
 export const actualizarProduct = (id, updatedProductData) => {
   try {
     return async function (dispatch) {

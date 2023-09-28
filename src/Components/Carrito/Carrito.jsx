@@ -11,7 +11,8 @@ import axios from "axios";
 
 const Carrito = () => {
   const [preferenceId, setPreferenceId] = useState(null);
-  initMercadoPago("TEST-1b225994-c2fb-4e59-963b-b53ab55e0b46");
+  initMercadoPago("TEST-870a2a6e-8a90-413f-83bf-f4a03755d927");
+
   const dispatch = useDispatch();
   const { isAuthenticated, loginWithRedirect } = useAuth0();
 
@@ -32,12 +33,12 @@ const Carrito = () => {
   let [index, setIndex] = useState(
     state?.map((item) =>
       !Object.prototype.hasOwnProperty.call(item, "quantity")
-        ? { ...item, quantity: 1, unit_price: 333 }
+        ? { ...item, quantity: 1 }
         : item
     )
   );
 
-  console.log(index);
+  console.log(index, "index");
 
   const handleSum = (stock, indexEl) => {
     if (index[indexEl].quantity < stock) {
@@ -109,7 +110,7 @@ const Carrito = () => {
     try {
       const response = await axios.post(
         "https://tu-suenio-back.onrender.com/payment/create_preference",
-        state
+        index
       );
       const { id } = response.data;
       return id;
