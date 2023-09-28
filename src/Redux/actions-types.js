@@ -2,6 +2,7 @@ export const ALCANCIAS = "ALCANCIAS"; //semama 1
 export const FILTERED_BY = "FILTERED_BY"; //semama 1
 export const ORDERED_BY = "ORDERED_BY"; //semama 1
 export const DETAIL = "DETAIL"; //semama 1 
+export const CLEAN_DETAIL = "CLEAN_DETAIL";
 export const CATEGORIES = "CATEGORIES"; //semama 1
 export const BY_NAME = "BY_NAME"; //semama 1
 export const CLEAN_FILTERS = "CLEAN_FILTERS" //semama 1

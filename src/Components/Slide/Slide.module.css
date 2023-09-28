@@ -3,16 +3,36 @@
     margin-top: 1rem;
     max-height: 40vh;
     padding: 1rem;
+    width: 95%;
+    margin-bottom: 1rem;
 }
 
 .card{
     display: flex;
     justify-content: center;
     align-items: center;
-
+    width: 100%;
 }
 .slide img {
     max-height: 35vh;
     object-fit: contain; /* Ajustar la imagen manteniendo la proporción */
     object-position: center; /* Centrar la imagen */
+}
+
+@media (max-width: 599px) {
+    .slide {
+        max-height: 60vh; /* Aumenta la altura en dispositivos móviles para una mejor visualización */
+        width: 80%;
+        margin: 1rem;
+    }
+
+    .card {
+        width: 95%;
+    }
+
+    .slide img {
+        max-height: 50vh; /* Ajusta la altura de las imágenes en dispositivos móviles */
+        width: 100%;
+        height: 100%;
+    }
 }

@@ -1,13 +1,13 @@
 import "./App.css";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import Landing from "./Components/Landing/Landing";
 import Alcancias from "./Components/Alcancias/Alcancias";
 import Home from "./Components/Home/Home";
 import Detail from "./Components/Detail/Detail";
 import NavBar from "./Components/NavBar/NavBar";
 
-import Footer from "./Components/Footer/Footer"
-import Create from "./Components/Create/Create"
+import Footer from "./Components/Footer/Footer";
+import Create from "./Components/Create/Create";
 import About from "./Components/About/About";
 
 import Dashboard from "./Components/Dashboard/Dashboard";
@@ -19,22 +19,27 @@ import WhatsappBar from "./Components/WhatsappBar/WhatsappBar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
-function App() {
+import ReviewForm from "./Components/ReviewForm/ReviewForm";
+import RegistrationForm from "./Components/RegistrationForm/RegistrationForm";
 
+function App() {
+  const navigate = useNavigate();
   const location = useLocation();
-<<<<<<<<< Temporary merge branch 1
-  const dispatch = useDispatch()
-=========
+
+
   const dispatch = useDispatch();
 
 
   useEffect(() => {
     dispatch(allAlcancias());
   }, []);
-  
+
   const [infoUser, setInfoUser] = useState(null);
   const { isAuthenticated, user } = useAuth0();
-  
+
+
+  console.log("Este es el usuario:", user);
+
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -45,17 +50,7 @@ function App() {
             { sub: user.sub }
           );
           if (data.error) {
-            const { data } = await axios.post(
-              "https://tu-suenio-back.onrender.com/user/register",
-              {
-                //momentáneo hasta que se cree el form
-                name: user.name,
-                email: user.email,
-                image: user.picture,
-                sub: user.sub,
-              }
-            );
-            setInfoUser(data);
+            navigate("/register");
           } else {
             setInfoUser(data);
           }
@@ -69,22 +64,23 @@ function App() {
 
   return (
     <div>
-      {location.pathname === "/login" ||
+      {location.pathname === "/register" ||
         ("/detail" && <NavBar infoUser={infoUser} />)}
       {location.pathname == "/alcancias" && <FilteredOrdered />}
-      <WhatsappBar />
+      {location.pathname !== "/register" && <WhatsappBar />}
       <Routes>
+        <Route path="/reviewForm/:id" element={<ReviewForm />} />
         <Route path="/login" element={<Landing />} />
+        <Route path="/register" element={<RegistrationForm />} />
         <Route path="/alcancias" element={<Alcancias />} />
         <Route path="/" element={<Home />} />
         <Route path="/create" element={<Create />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/carrito" element={<Carrito />} />
         <Route path="/about" element={<About />} />
-        <Route path="/admin" element={< Dashboard />} />
-       
+        <Route path="/admin" element={<Dashboard />} />
       </Routes>
-      <Footer />
+      {location.pathname !== "/register" && <Footer />}
     </div>
   );
 }
