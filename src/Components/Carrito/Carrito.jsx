@@ -11,7 +11,7 @@ import axios from "axios";
 
 const Carrito = () => {
   const [preferenceId, setPreferenceId] = useState(null);
-  initMercadoPago("TEST-1b225994-c2fb-4e59-963b-b53ab55e0b46");
+  initMercadoPago("APP_USR-293407ad-85de-4882-a88c-ae37375ad67e");
 
   const dispatch = useDispatch();
   const { isAuthenticated, loginWithRedirect } = useAuth0();
