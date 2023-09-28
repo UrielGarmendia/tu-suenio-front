@@ -74,6 +74,7 @@ function App() {
         <Route path="/carrito" element={<Carrito />} />
         <Route path="/about" element={<About />} />
         <Route path="/admin" element={< Dashboard />} />
+        <Route path="/contactanos" element={< Contactanos/>} />
 
       </Routes>
       {location.pathname !== "/register" && <Footer />}
