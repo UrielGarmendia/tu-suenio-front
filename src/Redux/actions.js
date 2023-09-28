@@ -20,7 +20,7 @@ import axios from "axios";
 export const allAlcancias = () => {
   try {
     return async function (dispatch) {
-      const { data } = await axios.get(
+      const { data } = await axios(
         "https://tu-suenio-back.onrender.com/products"
       );
       return dispatch({
@@ -99,45 +99,7 @@ export const byName = (name) => {
 };
 
 export const ordenamiento = (event) => {
-  try {
-    return async function (dispatch) {
-      if (event === "A-Z") {
-        const { data } = await axios(
-          "https://tu-suenio-back.onrender.com/sort/alp-asc"
-        );
-        return dispatch({
-          type: ORDERED_BY,
-          payload: data,
-        });
-      } else if (event === "Z-A") {
-        const { data } = await axios(
-          "https://tu-suenio-back.onrender.com/sort/alp-desc"
-        );
-        return dispatch({
-          type: ORDERED_BY,
-          payload: data,
-        });
-      } else if (event === "A") {
-        const { data } = await axios(
-          "https://tu-suenio-back.onrender.com/sort/price-asc"
-        );
-        return dispatch({
-          type: ORDERED_BY,
-          payload: data,
-        });
-      } else if (event === "D") {
-        const { data } = await axios(
-          "https://tu-suenio-back.onrender.com/sort/price-desc"
-        );
-        return dispatch({
-          type: ORDERED_BY,
-          payload: data,
-        });
-      }
-    };
-  } catch (error) {
-    return { error: error.message };
-  }
+  return {type: ORDERED_BY, payload: event}
 };
 
 export const filtered = (id) => {
@@ -224,7 +186,7 @@ export const deleteProduct = (id) => {
   try {
     return async function (dispatch) {
       await axios.delete(
-        `https://tu-suenio-back.onrender.com/products/destroy/${id}`
+        `https://tu-suenio-back.onrender.com/products/${id}`
       );
       const { data } = await axios(
         `https://tu-suenio-back.onrender.com/products`
