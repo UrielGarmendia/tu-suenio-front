@@ -88,19 +88,21 @@ export const categories = () => {
 export const byName = (name) => {
   return async function (dispatch) {
     try {
-      const response = await axios.get(`https://tu-suenio-back.onrender.com/products?name=${name}`);
+      const response = await axios.get(
+        `https://tu-suenio-back.onrender.com/products?name=${name}`
+      );
       dispatch({
         type: BY_NAME,
         payload: response.data,
       });
     } catch (error) {
-      alert("No hay alcancias con ese nombre"); 
+      alert("No hay alcancias con ese nombre");
     }
   };
 };
 
 export const ordenamiento = (event) => {
-  return {type: ORDERED_BY, payload: event}
+  return { type: ORDERED_BY, payload: event };
 };
 
 export const filtered = (id) => {
@@ -149,7 +151,6 @@ export const ProductsByCategoryAndSize = (id, size) => {
   };
 };
 
-
 export const cleanFilters = () => {
   return { type: CLEAN_FILTERS };
 };
@@ -182,7 +183,7 @@ export const uploadStorage = (cart) => {
     type: LOCAL_STORAGE,
     payload: cart,
   };
-}; 
+};
 export const actualizarProduct = (id, updatedProductData) => {
   try {
     return async function (dispatch) {
@@ -206,9 +207,7 @@ export const actualizarProduct = (id, updatedProductData) => {
 export const deleteProduct = (id) => {
   try {
     return async function (dispatch) {
-      await axios.delete(
-        `https://tu-suenio-back.onrender.com/products/${id}`
-      );
+      await axios.delete(`https://tu-suenio-back.onrender.com/products/${id}`);
       const { data } = await axios(
         `https://tu-suenio-back.onrender.com/products`
       );
@@ -220,5 +219,4 @@ export const deleteProduct = (id) => {
   } catch (error) {
     return { error: error.message };
   }
- 
 };

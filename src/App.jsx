@@ -26,9 +26,7 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
 
-
   const dispatch = useDispatch();
-
 
   useEffect(() => {
     dispatch(allAlcancias());
@@ -37,9 +35,7 @@ function App() {
   const [infoUser, setInfoUser] = useState(null);
   const { isAuthenticated, user } = useAuth0();
 
-
   console.log("Este es el usuario:", user);
-
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -78,9 +74,8 @@ function App() {
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/carrito" element={<Carrito />} />
         <Route path="/about" element={<About />} />
-        <Route path="/admin" element={< Dashboard />} />
-        <Route path="/contactanos" element={< Contactanos/>} />
-
+        <Route path="/admin" element={<Dashboard />} />
+        <Route path="/contactanos" element={<Contactanos />} />
       </Routes>
       {location.pathname !== "/register" && <Footer />}
     </div>

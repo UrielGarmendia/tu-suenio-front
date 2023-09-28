@@ -11,7 +11,7 @@ import axios from "axios";
 
 const Carrito = () => {
   const [preferenceId, setPreferenceId] = useState(null);
-  initMercadoPago("APP_USR-293407ad-85de-4882-a88c-ae37375ad67e");
+  initMercadoPago("TEST-870a2a6e-8a90-413f-83bf-f4a03755d927");
 
   const dispatch = useDispatch();
   const { isAuthenticated, loginWithRedirect } = useAuth0();
@@ -38,9 +38,7 @@ const Carrito = () => {
     )
   );
 
-
   console.log(index, "index");
-
 
   const handleSum = (stock, indexEl) => {
     if (index[indexEl].quantity < stock) {
