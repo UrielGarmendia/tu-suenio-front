@@ -15,7 +15,7 @@ const ProductosAdminActu = ({ onCancel }) => {
     description: "",
     size: "",
     id_categorie: "",
-    Categories:"",
+    Categories:[],
   });
   const showAlert = () => {
     Swal.fire({
@@ -31,18 +31,18 @@ const ProductosAdminActu = ({ onCancel }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setEditedData({ ...editedData, [name]: value });
+    setEditedData({ ...editedData, [name]: value, Categories: [{ name: "personajes animados" }]});
   };
 
   const handleSave = async () => {
     try {
       await dispatch(actualizarProduct(editedData.id, editedData));
-      onCancel();
+      // onCancel();
     } catch (error) {
       console.error("Error al actualizar el producto:", error);
     }
   };
-
+  console.log(editedData)
   const handleEditProduct = (product) => {
     showAlert();
     setEditedData({
@@ -65,6 +65,8 @@ const ProductosAdminActu = ({ onCancel }) => {
   useEffect(() => {
     setProducts(alcancias);
   }, [alcancias]);
+
+  console.log(editedData)
 
   return (
     <div className={styles.productosAdminContainer}>
@@ -143,8 +145,8 @@ const ProductosAdminActu = ({ onCancel }) => {
           <label htmlFor="Categories">Categorias:</label>
           <select
             id="Categories"
-            name="Categories"
-            value={editedData.Categories}
+            name="id_categorie"
+            value={editedData.id_categorie}
             onChange={handleInputChange}
             required>
             <option value="">Seleccionar categoria</option>

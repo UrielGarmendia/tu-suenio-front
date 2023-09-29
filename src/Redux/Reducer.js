@@ -15,6 +15,7 @@ import {
   PRODUCTS_BY_CATEGORIEANDSIZE,
   CLEAN_DETAIL,
   ACTUALIZAR_PRODUCTO,
+  GET_USERS
 } from "./actions-types";
 
 //Traerme el local store si esta vacio que devuelva un array
@@ -28,6 +29,7 @@ const initialState = {
   categories: [],
   allByName: [],
   CartShopping: storage,
+  allUsers: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -160,6 +162,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         AllAlcancias: action.payload
       }
+      case GET_USERS:
+        return {
+          ...state,
+          allUsers: action.payload
+        }
     default:
       return state;
   }

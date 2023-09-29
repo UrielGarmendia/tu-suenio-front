@@ -6,6 +6,7 @@ import ProductosAdminActu from "../ProductosAdminActu/ProductosAdminActu"
 import { useState } from 'react';
 import ProductosAdmin from '../ProductosAdmin/ProductosAdmin';
 import ReporteVentas from '../ReporteVentas/ReporteVentas'
+import TableUsers from '../tableUsers/TableUsers';
 
 const Dashboard = () => {
 
@@ -34,7 +35,7 @@ const Dashboard = () => {
       {activeButton === 'ActProducto' && (<ProductosAdminActu/>)}
       {activeButton === 'ElProducto' && (<ProductosAdmin/>)}
       {activeButton === 'RepVentas' && (<ReporteVentas/>)}
-      {activeButton === 'UserReg' && (<h1>Aqui ira la seccion USUARIOS REGISTRADOS</h1>)}
+      {activeButton === 'UserReg' && (<TableUsers/>)}
       {activeButton === 'Config' && (<h1>Aqui ira la seccion de CONFIGURACION DEL ADMIN</h1>)}
       <article>
      
