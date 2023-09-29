@@ -6,8 +6,8 @@ import Home from "./Components/Home/Home";
 import Detail from "./Components/Detail/Detail";
 import NavBar from "./Components/NavBar/NavBar";
 import Contactanos from "./Components/Contactanos/Contactanos";
-import Footer from "./Components/Footer/Footer";
-
+import ProfileSettings from "./Components/ProfileSettings/ProfileSettings.jsx";
+import Footer from "./Components/Footer/Footer"
 import About from "./Components/About/About";
 
 import Dashboard from "./Components/Dashboard/Dashboard";
@@ -41,10 +41,7 @@ function App() {
     if (isAuthenticated) {
       try {
         async function postData() {
-          const { data } = await axios.post(
-            "https://tu-suenio-back.onrender.com/user/login",
-            { sub: user.sub }
-          );
+          const { data } = await axios.post("https://tu-suenio-back.onrender.com/user/login", { sub: user.sub });
           if (data.error) {
             navigate("/register");
           } else {
@@ -63,11 +60,12 @@ function App() {
       {location.pathname === "/register" ||
         ("/detail" && <NavBar infoUser={infoUser} />)}
       {location.pathname == "/alcancias" && <FilteredOrdered />}
-      {location.pathname !== "/register" && <WhatsappBar />}
+      {location.pathname !== "/register" && location.pathname !== "/profile" && <WhatsappBar />}
       <Routes>
         <Route path="/reviewForm/:id" element={<ReviewForm />} />
         <Route path="/login" element={<Landing />} />
         <Route path="/register" element={<RegistrationForm />} />
+        <Route path="/profile" element={<ProfileSettings />} />
         <Route path="/alcancias" element={<Alcancias />} />
         <Route path="/" element={<Home />} />
         <Route path="/detail/:id" element={<Detail />} />
@@ -76,7 +74,7 @@ function App() {
         <Route path="/admin" element={<Dashboard />} />
         <Route path="/contactanos" element={<Contactanos />} />
       </Routes>
-      {location.pathname !== "/register" && <Footer />}
+      {location.pathname !== "/register" && location.pathname !== "/profile"  && <Footer />}
     </div>
   );
 }

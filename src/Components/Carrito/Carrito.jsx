@@ -110,7 +110,13 @@ const Carrito = () => {
     try {
       const response = await axios.post(
         "https://tu-suenio-back.onrender.com/payment/create_preference",
-        index
+        index,
+        {
+          headers: {
+            Authorization:
+              "APP_USR-5109479525961540-092820-2e00818cb14b34a589cb983f4378607a-1262361729",
+          },
+        }
       );
       const { id } = response.data;
       return id;

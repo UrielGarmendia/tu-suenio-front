@@ -5,8 +5,10 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { NavLink } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import {useNavigate } from "react-router-dom";
 
 export const SlideMenu = () => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const { logout, user } = useAuth0();
   const openMenu = () => {
@@ -25,7 +27,7 @@ export const SlideMenu = () => {
                 <hr className={styles.hrMenu} />
               </div>
               <div className={styles.containerBody}>
-                <a href="#" className={styles.menuLink}>
+                <a href="#" className={styles.menuLink} onClick={() => navigate("/profile")}>
                   <div className={styles.containerIcon}>
                     <SettingsIcon />
                   </div>
