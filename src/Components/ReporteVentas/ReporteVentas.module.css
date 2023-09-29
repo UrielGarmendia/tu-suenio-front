@@ -65,3 +65,43 @@ cursor: pointer;
 .historialVentas button:hover {
 background-color: #b300a4;
 }
+
+.modal {
+  background: rgb(231, 138, 226);
+  width: 50vw;
+  margin: 0 auto;
+  padding: 3rem;
+  border-radius: 0.8rem;
+}
+
+.modal button{
+  background: red;
+  color: white;
+  border-radius: 2rem;
+  font-weight: bolder;
+}
+
+.modal button:hover {
+  cursor: pointer;
+}
+
+.modal li{
+  list-style:none ; 
+  display: flex;
+  flex-direction: row;
+  gap:2rem;
+  margin-top: 1rem;
+}
+
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semi-transparente */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
