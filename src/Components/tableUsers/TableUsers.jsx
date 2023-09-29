@@ -3,6 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../Redux/actions";
 import axios from "axios";
 import Swal from "sweetalert2";
+import styles from "./tableUsers.module.css";
+
+const color = {
+  rojo: "ff0000",
+  verde: "#008000"
+};
 
 const TableUsers = () => {
 
@@ -67,43 +73,43 @@ const TableUsers = () => {
 };
 
     return (
-        <table>
-        <thead>
-          <tr>
-            <th>Usuario</th>
-            <th>Email</th>
-            <th>Dni</th>
-            <th>Direccion</th>
-            <th>Telefono</th>
-            <th>Estado</th>
-            <th>EsAdmin</th>
-            <th>Cambiar estado</th>
-            <th>Permisos</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users?.map((user) => (
-            <tr key={user.id}>
-              <td>{user.name}</td>
-              <td>{user.email}</td>
-              <td>{user.dni}</td>
-              <td>{user.address}</td>
-              <td>{user.phone}</td>
-              <td>{user.isDisable ? "Inactivo" : "Activo"}</td> {/*true === inactivo y false = Activo*/}
-              <td>{user.isAdmin ? "Si" : "No"}</td>
-              <td>
-                <button onClick={() => banAlert(user.id, user.isDisable)}>
-                    {user.isDisable ? "Desbanear" : "Banear"}
-                </button>
-              </td>
-              <td>
-                <button onClick={() => adminAlert(user.id, user.isAdmin)}>
-                    {user.isAdmin ? "Quitar permisos" : "Dar permisos"}
-                </button>
-              </td>
+        <table className={styles.table}>
+          <thead className={styles.head}>
+            <tr>
+              <th>Usuario</th>
+              <th>Email</th>
+              <th>Dni</th>
+              <th>Direccion</th>
+              <th>Telefono</th>
+              <th>Estado</th>
+              <th>EsAdmin</th>
+              <th>Cambiar estado</th>
+              <th>Permisos</th>
             </tr>
-          ))}
-        </tbody>
+          </thead>
+          <tbody className={styles.body}>
+            {users?.map((user) => (
+              <tr key={user.id}>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
+                <td>{user.dni}</td>
+                <td>{user.address}</td>
+                <td>{user.phone}</td>
+                <td className={styles.center}>{user.isDisable ? "Inactivo" : "Activo"}</td> {/*true === inactivo y false = Activo*/}
+                <td className={styles.center}>{user.isAdmin ? "Si" : "No"}</td>
+                <td className={styles.button_cont}>
+                  <button  className={styles.button_disable} onClick={() => banAlert(user.id, user.isDisable)}>
+                      {user.isDisable ? "Desbanear" : "Banear"}
+                  </button>
+                </td>
+                <td className={styles.button_cont}>
+                  <button className={styles.button_admin} onClick={() => adminAlert(user.id, user.isAdmin)}>
+                      {user.isAdmin ? "Quitar permisos" : "Dar permisos"}
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
       </table>
     )
 }
