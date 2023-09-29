@@ -37,7 +37,7 @@ const Estadisticas= () => {
         <p className={style.barra}>
         <p
           className={style.nivelBarra}
-          style={{ width: `${(propiedad/100) * 100}%`, background:barraColor }}
+          style={{ width: `${(propiedad/100) * 100}%`, background: barraColor }}
         ></p>
       </p>
     )

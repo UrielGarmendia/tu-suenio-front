@@ -13,6 +13,9 @@ import {
   DELETE_PRODUCT,
   FILTERED_BY_SIZE,
   PRODUCTS_BY_CATEGORIEANDSIZE,
+  CLEAN_DETAIL,
+  ACTUALIZAR_PRODUCTO,
+  GET_USERS
 } from "./actions-types";
 
 //Traerme el local store si esta vacio que devuelva un array
@@ -22,10 +25,11 @@ const storage = local ? local : [];
 const initialState = {
   AllAlcancias: [],
   copyAllAlcancias: [],
-  detail: {},
+  detail: [],
   categories: [],
   allByName: [],
   CartShopping: storage,
+  allUsers: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -43,6 +47,12 @@ const reducer = (state = initialState, action) => {
         detail: action.payload,
       };
 
+    case CLEAN_DETAIL:
+      return {
+        ...state,
+        detail: []
+      }
+  
     case CATEGORIES:
       return {
         ...state,
@@ -60,9 +70,40 @@ const reducer = (state = initialState, action) => {
         AllAlcancias: [...state.AllAlcancias, action.payload],
       };
     case ORDERED_BY:
-      return {
-        ...state,
-        AllAlcancias: action.payload
+      const toOrder = [...state.AllAlcancias];
+      if(action.payload === "A-Z") {
+        return {
+          ...state,
+          AllAlcancias: toOrder.sort((a, b) => {
+            if(a.name < b.name) return -1;
+            if(a.name > b.name) return 1;
+            return 0;
+          })
+        }
+      };
+      if(action.payload === "Z-A") {
+        return {
+          ...state,
+          AllAlcancias: toOrder.sort((a, b) => {
+            if(a.name < b.name) return 1;
+            if(a.name > b.name) return -1;
+            return 0;
+          })
+        }
+      };
+      if(action.payload === "D") {
+        return {
+          ...state,
+          AllAlcancias: toOrder.sort((a, b) => b.price - a.price)
+        }
+      };
+      if(action.payload === "A") {
+        return {
+          ...state,
+          AllAlcancias: toOrder.sort((a, b) => a.price - b.price)
+        }
+      } else {
+        return {...state, AllAlcancias: state.copyAllAlcancias}
       }
     case FILTERED_BY:
       return {
@@ -116,6 +157,16 @@ const reducer = (state = initialState, action) => {
         ...state,
         AllAlcancias: action.payload
       }
+      case ACTUALIZAR_PRODUCTO:
+      return {
+        ...state,
+        AllAlcancias: action.payload
+      }
+      case GET_USERS:
+        return {
+          ...state,
+          allUsers: action.payload
+        }
     default:
       return state;
   }

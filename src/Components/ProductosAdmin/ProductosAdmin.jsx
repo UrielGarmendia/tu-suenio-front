@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { allAlcancias, deleteProduct } from "../../Redux/actions";
-import {Delete} from "@mui/icons-material";
+import {Delete, Update} from "@mui/icons-material";
 import styles from "./ProductosAdmin.module.css";
 import Paginado from "../Paginado/Paginado";
 import Swal from "sweetalert2";
@@ -63,15 +63,19 @@ const ProductosAdmin = () => {
       <div className={styles.containerCards}>
         {currentPage.length ? (
           currentPage?.map(
-            ({ id, name, title, price, image, stock, size, Categories, id_categorie, image_secure_url }) => {
+            ({ id, name, title, price, stock, isAvailable, image_secure_url }) => {
+            const sectionStyle = {
+                background: isAvailable ? "" : "#da0b26", // Cambia el color de fondo
+              };  
               return (
-                <section>
+                <section style={sectionStyle}>
                     <img src={image_secure_url} alt="" />
                     <article>
-                    <h2>Nombre: {name}</h2>
+                    <h2>{name}</h2>
                     <h3>Precio: {price}</h3>
+                    <h3>Stock: {stock}</h3>
                     </article>
-                    <button onClick={()=>{showAlert(id)}}><Delete/></button>
+                    {isAvailable? <button onClick={()=>{showAlert(id)}} disabled={!isAvailable}><Delete/></button>: <button><Update/></button>}
                 </section>
               );
             }

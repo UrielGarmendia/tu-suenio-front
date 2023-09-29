@@ -1,0 +1,60 @@
+.cont {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(229, 212, 228);
+    padding: 2rem 0;
+}
+
+.form {
+    margin-top: 1rem;
+    width: 40%;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid grey;
+    box-shadow: 0 0 10px rgb(22, 161, 145);
+    border-radius: 5px;
+    padding: 1rem;
+    background-color: rgb(246, 213, 255);
+}
+
+.star {
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+.textarea {
+    border: 2px solid grey;
+    border-radius: 5px;
+    width: 70% !important;
+}
+
+.button {
+    width: 30%;
+    cursor: pointer;
+    background-image: linear-gradient(to bottom right, pink, lightgreen);
+    border: 2px solid #946E69;
+    height: 2rem;
+    border-radius: 0.3rem;
+    font-weight: bold;
+}
+
+.button:hover {
+    box-shadow: 0 0 5px 1px rgb(249, 72, 154);
+}
+
+@media all and (max-width: 599px) {
+    .form {
+        width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+    }
+
+    .textarea {
+        border-radius: 0;
+    }
+}

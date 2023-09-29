@@ -1,10 +1,10 @@
 import styles from "./RegistrationForm.module.css";
 import logo from "../../Assents/logoTuSuenio.png";
-import CheckIcon from '@mui/icons-material/Check';
+import CheckIcon from "@mui/icons-material/Check";
 import { useState } from "react";
 import Swal from "sweetalert2";
-import PhoneInput from 'react-phone-input-2'
-import 'react-phone-input-2/lib/bootstrap.css'
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/bootstrap.css";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import { validator } from "./validation";
@@ -74,7 +74,7 @@ const RegistrationForm = () => {
         event.preventDefault();
         try {
             setCurrentPage(currentPage + 1);
-            const {data} = await axios.post("http://localhost:3001/user/register", infoUser);
+            const {data} = await axios.post("https://tu-suenio-back.onrender.com/user/register", infoUser);
             setInfoUser({
                 name: "",
                 lastName: "",
@@ -207,4 +207,4 @@ const RegistrationForm = () => {
     )
 }
 
-export default RegistrationForm
+export default RegistrationForm;
