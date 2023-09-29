@@ -15,7 +15,9 @@ import {
   PRODUCTS_BY_CATEGORIEANDSIZE,
   CLEAN_DETAIL,
   ACTUALIZAR_PRODUCTO,
-  GET_USERS
+  GET_USERS,
+  CREATE_CATEGORIA,
+  DELETE_CATEGORIE,
 } from "./actions-types";
 import axios from "axios";
 
@@ -65,6 +67,18 @@ export const createAlcancias = (newProduct) => {
     );
     return dispatch({
       type: CREATE_ALCANCIAS,
+      payload: response.data,
+    });
+  };
+};
+export const createCategoria = (newCategorie) => {
+  return async function (dispatch) {
+    const response = await axios.post(
+      `https://tu-suenio-back.onrender.com/categorie/create`,
+      newCategorie
+    );
+    return dispatch({
+      type: CREATE_CATEGORIA,
       payload: response.data,
     });
   };
@@ -221,6 +235,24 @@ export const deleteProduct = (id) => {
     return { error: error.message };
   }
 };
+export const deleteCategorie = (id) => {
+  try {
+    return async function (dispatch) {
+      await axios.delete(
+        `https://tu-suenio-back.onrender.com/categorie/${id}`
+      );
+      const { data } = await axios(
+        `https://tu-suenio-back.onrender.com/categorie`
+      );
+      return dispatch({
+        type: DELETE_CATEGORIE,
+        payload: data,
+      });
+    };
+  } catch (error) {
+    return { error: error.message };
+  }
+}
 
 export const getUsers = () => {
   return async function(dispatch) {
