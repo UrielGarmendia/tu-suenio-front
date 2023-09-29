@@ -9,7 +9,7 @@ import ReactModal from 'react-modal';
 import { useAuth0 } from '@auth0/auth0-react';
 import Logo from '../../Assents/stickerPig.png';
 import Crown from "../../Assents/crown.png";
-import Huellas from '../../Assents/HuellitasDeChancho.png';
+import Huellas from '../../Assents/huellitasDeChancho.png';
 
 const ProfileSettings = () => {
     const hiddenSubmitButtonRef = useRef(null);
