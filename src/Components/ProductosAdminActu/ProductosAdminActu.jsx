@@ -45,24 +45,8 @@ const ProductosAdminActu = ({ onCancel }) => {
 
   const handleSave = async () => {
     try {
-      const formData = new FormData();
-      formData.append("id", editedData.id);
-      formData.append("name", editedData.name);
-      formData.append("price", editedData.price);
-      formData.append("stock", editedData.stock);
-      formData.append("description", editedData.description);
-      formData.append("size", editedData.size);
-      formData.append("id_categorie", editedData.id_categorie);
-      formData.append("image", editedImage.image);
-  
-     
-      await dispatch(actualizarProduct(editedData.id, formData));
-      
-
-      setEditedImage(null);
-  
-      // Cierra el formulario de edición
-      // onCancel();
+      await dispatch(actualizarProduct(editedData.id, editedData));
+    
     } catch (error) {
       console.error("Error al actualizar el producto:", error);
     }
@@ -118,7 +102,7 @@ const ProductosAdminActu = ({ onCancel }) => {
               <td>{product.stock}</td>
               <td>{product.description}</td>
               <td>{product.size}</td>
-              <td>{product.image}</td>
+              <td className={styles.image}>{product.image}</td>
               <td> {product.Categories?.map((c) => (c.name))}</td>
               <td>
                 <button
