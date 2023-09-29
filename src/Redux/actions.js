@@ -15,6 +15,7 @@ import {
   PRODUCTS_BY_CATEGORIEANDSIZE,
   CLEAN_DETAIL,
   ACTUALIZAR_PRODUCTO,
+  GET_USERS
 } from "./actions-types";
 import axios from "axios";
 
@@ -88,9 +89,7 @@ export const categories = () => {
 export const byName = (name) => {
   return async function (dispatch) {
     try {
-      const response = await axios.get(
-        `https://tu-suenio-back.onrender.com/products?name=${name}`
-      );
+      const response = await axios.get(`https://tu-suenio-back.onrender.com/products?name=${name}`);
       dispatch({
         type: BY_NAME,
         payload: response.data,
@@ -207,7 +206,9 @@ export const actualizarProduct = (id, updatedProductData) => {
 export const deleteProduct = (id) => {
   try {
     return async function (dispatch) {
-      await axios.delete(`https://tu-suenio-back.onrender.com/products/${id}`);
+      await axios.delete(
+        `https://tu-suenio-back.onrender.com/products/${id}`
+      );
       const { data } = await axios(
         `https://tu-suenio-back.onrender.com/products`
       );
@@ -219,4 +220,18 @@ export const deleteProduct = (id) => {
   } catch (error) {
     return { error: error.message };
   }
+};
+
+export const getUsers = () => {
+  return async function(dispatch) {
+   try {    
+      const { data } = await axios.get("https://tu-suenio-back.onrender.com/user");
+      return dispatch({
+        type: GET_USERS,
+        payload: data
+      })
+   } catch (error) {
+    return error.message
+  }
+ } 
 };
