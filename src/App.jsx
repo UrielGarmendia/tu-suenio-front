@@ -7,7 +7,7 @@ import Detail from "./Components/Detail/Detail";
 import NavBar from "./Components/NavBar/NavBar";
 import Contactanos from "./Components/Contactanos/Contactanos";
 import Footer from "./Components/Footer/Footer";
-import Create from "./Components/Create/Create";
+
 import About from "./Components/About/About";
 
 import Dashboard from "./Components/Dashboard/Dashboard";
@@ -70,7 +70,6 @@ function App() {
         <Route path="/register" element={<RegistrationForm />} />
         <Route path="/alcancias" element={<Alcancias />} />
         <Route path="/" element={<Home />} />
-        <Route path="/create" element={<Create />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/carrito" element={<Carrito />} />
         <Route path="/about" element={<About />} />
