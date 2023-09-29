@@ -7,7 +7,7 @@ import Detail from "./Components/Detail/Detail";
 import NavBar from "./Components/NavBar/NavBar";
 import Contactanos from "./Components/Contactanos/Contactanos";
 import ProfileSettings from "./Components/ProfileSettings/ProfileSettings.jsx";
-import Footer from "./Components/Footer/Footer";
+import Footer from "./Components/Footer/Footer"
 import About from "./Components/About/About";
 
 import Dashboard from "./Components/Dashboard/Dashboard";
