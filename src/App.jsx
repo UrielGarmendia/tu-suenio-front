@@ -5,7 +5,7 @@ import Alcancias from "./Components/Alcancias/Alcancias";
 import Home from "./Components/Home/Home";
 import Detail from "./Components/Detail/Detail";
 import NavBar from "./Components/NavBar/NavBar";
-
+import ProfileSettings from "./Components/ProfileSettings/ProfileSettings.jsx";
 import Footer from "./Components/Footer/Footer"
 import Create from "./Components/Create/Create"
 import About from "./Components/About/About";
@@ -40,8 +40,8 @@ function App() {
     if (isAuthenticated) {
       try {
         async function postData() {
-          const { data } = await axios.post("https://tu-suenio-back.onrender.com/user/login", { sub: user.sub });
-          if (data.error) {
+          const { data } = await axios.post("http://localhost:3001/user/login", { sub: user.sub }); //cambiar url tambien en Register 
+          if (data.error) { 
             navigate("/register");
           } else {
             setInfoUser(data);
@@ -59,10 +59,11 @@ function App() {
 
       {location.pathname === "/register" || "/detail" && <NavBar infoUser={infoUser} />}
       {location.pathname == "/alcancias" && <FilteredOrdered />}
-      {location.pathname !== "/register" && <WhatsappBar />}
+      {location.pathname !== "/register" && location.pathname !== "/profile" && <WhatsappBar />}
       <Routes>
         <Route path="/login" element={<Landing />} />
         <Route path="/register" element={<RegistrationForm />} />
+        <Route path="/profile" element={<ProfileSettings />} />
         <Route path="/alcancias" element={<Alcancias />} />
         <Route path="/" element={<Home />} />
         <Route path="/create" element={<Create />} />
@@ -72,7 +73,7 @@ function App() {
         <Route path="/admin" element={< Dashboard />} />
 
       </Routes>
-      {location.pathname !== "/register" && <Footer />}
+      {location.pathname !== "/register" && location.pathname !== "/profile"  && <Footer />}
     </div>
   );
 }
