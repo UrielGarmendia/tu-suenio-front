@@ -9,7 +9,7 @@ const historialVentasMock = [
     fechaVenta: '2023-09-27',
     numeroVenta: '001',
     nombreCliente: 'Cliente 1',
-    totalPrecio: 100.00,
+    totalPrecio: 210.00,
     detalles: [
       { producto: 'Producto A', cantidad: 2, precioUnitario: 50.00 },
       { producto: 'Producto B', cantidad: 3, precioUnitario: 20.00 },
@@ -84,7 +84,7 @@ const ReporteVentas = () => {
           value={clienteFiltro}
           onChange={(e) => setClienteFiltro(e.target.value)}
         />
-        <button onClick={filtrarVentas}>Filtrar</button>
+        <button onClick={filtrarVentas}>Buscar</button>
         <button onClick={limpiarFiltros}>Limpiar Filtros</button>
         <button onClick={exportToExcel}>Exportar a Excel</button>        
       </div>
