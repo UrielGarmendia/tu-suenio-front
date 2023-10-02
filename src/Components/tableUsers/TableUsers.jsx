@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../Redux/actions";
 import axios from "axios";
 import Swal from "sweetalert2";
 import styles from "./tableUsers.module.css";
+import Users from "../UsersSearch/Search"
 
 const color = {
   rojo: "ff0000",
@@ -15,17 +16,19 @@ const TableUsers = () => {
     const dispatch = useDispatch();
     const users = useSelector(state => state.allUsers);
 
-    useEffect(() => {
-      dispatch(getUsers());
-    }, []);
+    const allUsers = users.sort((a, b) => {
+      if(a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+      if(a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+      return 0;
+    });
 
     const ban = async (id, isDisable) => {
       try {
         if(!isDisable) {
-          await axios.delete(`http://localhost:3001/user/${id}/delete`);
+          await axios.delete(`https://tu-suenio-back.onrender.com/user/${id}/delete`);
           dispatch(getUsers());
         } else {
-          await axios.put(`http://localhost:3001/user/${id}/restore`);
+          await axios.put(`https://tu-suenio-back.onrender.com/user/${id}/restore`);
           dispatch(getUsers());
         }
       } catch (error) {
@@ -36,11 +39,11 @@ const TableUsers = () => {
     const permissions = async (id, isAdmin) => {
       try {
         if(isAdmin) {
-          await axios.put(`http://localhost:3001/user/${id}/modify`, {isAdmin: false});
+          await axios.put(`https://tu-suenio-back.onrender.com/user/${id}/modify`, {isAdmin: false});
           dispatch(getUsers());
         }
         else {
-          await axios.put(`http://localhost:3001/user/${id}/modify`, {isAdmin: true});
+          await axios.put(`https://tu-suenio-back.onrender.com/user/${id}/modify`, {isAdmin: true});
           dispatch(getUsers());
         }
       } catch (error) {
@@ -70,9 +73,11 @@ const TableUsers = () => {
     }).then(() => {
       permissions(id, isAdmin);
     })
-};
+  };
 
     return (
+      <div>
+        <Users/>
         <table className={styles.table}>
           <thead className={styles.head}>
             <tr>
@@ -88,9 +93,9 @@ const TableUsers = () => {
             </tr>
           </thead>
           <tbody className={styles.body}>
-            {users?.map((user) => (
+            {allUsers?.map((user) => (
               <tr key={user.id}>
-                <td>{user.name}</td>
+                <td>{`${user.name} ${user.lastName}`}</td>
                 <td>{user.email}</td>
                 <td>{user.dni}</td>
                 <td>{user.address}</td>
@@ -111,6 +116,7 @@ const TableUsers = () => {
             ))}
           </tbody>
       </table>
+      </div>
     )
 }
 
