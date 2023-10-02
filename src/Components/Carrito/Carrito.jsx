@@ -119,7 +119,7 @@ const Carrito = ({ infoUser }) => {
         const amount = valor[0] + valor[1];
         try {
           const { data } = await axios.post(
-            "http://localhost:3001/payment/newPayment",
+            "https://tu-suenio-back.onrender.com/payment/newPayment",
             {
               amount,
               id,

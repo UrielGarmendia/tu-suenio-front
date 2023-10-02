@@ -25,10 +25,10 @@ const TableUsers = () => {
     const ban = async (id, isDisable) => {
       try {
         if(!isDisable) {
-          await axios.delete(`http://localhost:3001/user/${id}/delete`);
+          await axios.delete(`https://tu-suenio-back.onrender.com/user/${id}/delete`);
           dispatch(getUsers());
         } else {
-          await axios.put(`http://localhost:3001/user/${id}/restore`);
+          await axios.put(`https://tu-suenio-back.onrender.com/user/${id}/restore`);
           dispatch(getUsers());
         }
       } catch (error) {
@@ -39,11 +39,11 @@ const TableUsers = () => {
     const permissions = async (id, isAdmin) => {
       try {
         if(isAdmin) {
-          await axios.put(`http://localhost:3001/user/${id}/modify`, {isAdmin: false});
+          await axios.put(`https://tu-suenio-back.onrender.com/user/${id}/modify`, {isAdmin: false});
           dispatch(getUsers());
         }
         else {
-          await axios.put(`http://localhost:3001/user/${id}/modify`, {isAdmin: true});
+          await axios.put(`https://tu-suenio-back.onrender.com/user/${id}/modify`, {isAdmin: true});
           dispatch(getUsers());
         }
       } catch (error) {
