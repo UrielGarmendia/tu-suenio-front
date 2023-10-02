@@ -11,6 +11,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { CardElement, Elements } from "@stripe/react-stripe-js";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
 
+
 const Carrito = ({ infoUser }) => {
   const stripePromise = loadStripe(
     "pk_test_51NvrrEHVuLRaKy6b8nJ9tZSwmJNSUStDdReBhZ4s9hQQLrydSWTunxN35HCNNQtEq056cUmGgX09hNy9HfsTK21y00NPQA7dFA"

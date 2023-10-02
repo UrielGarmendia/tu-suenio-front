@@ -18,6 +18,8 @@ import {
   GET_USERS,
   CREATE_CATEGORIA,
   DELETE_CATEGORIE,
+  USERS_BY_NAME,
+  USERS
 } from "./actions-types";
 import axios from "axios";
 
@@ -129,6 +131,7 @@ export const filtered = (id) => {
     return { error: error.message };
   }
 };
+
 export const filterBySize = (size) => {
   return async function (dispatch) {
     try {
@@ -142,6 +145,7 @@ export const filterBySize = (size) => {
     }
   };
 };
+
 export const ProductsByCategoryAndSize = (id, size) => {
   return async function (dispatch) {
     try {
@@ -221,6 +225,7 @@ export const deleteProduct = (id) => {
     return { error: error.message };
   }
 };
+
 export const deleteCategorie = (id) => {
   try {
     return async function (dispatch) {
@@ -249,3 +254,11 @@ export const getUsers = () => {
     }
   };
 };
+
+export const userByName = (name) => {
+  return {type: USERS_BY_NAME, payload: name}
+}
+
+export const takeAllUsersBack = () => {
+  return {type: USERS}
+}

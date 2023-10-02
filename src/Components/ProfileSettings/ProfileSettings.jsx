@@ -130,8 +130,8 @@ const ProfileSettings = () => {
         }
     }
 
-    let primerNombre = dataUser.name.split(" ")[0] || "";
-    let primerApellido = dataUser.lastName.split(" ")[0] || "";
+    let primerNombre = dataUser.name?.split(" ")[0] || "";
+    let primerApellido = dataUser.lastName?.split(" ")[0] || "";
     let nombreCompleto = primerNombre + " " + primerApellido;  //para solo renderizar un nombre y un apellido
 
 

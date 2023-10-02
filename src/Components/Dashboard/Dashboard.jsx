@@ -4,14 +4,21 @@ import Estadisticas from "../Estadisticas/Estadisticas";
 import Create from "../Create/Create"
 import CreateCategorie from "../CreateCategorie/CreateCategorie";
 import ProductosAdminActu from "../ProductosAdminActu/ProductosAdminActu"
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ProductosAdmin from '../ProductosAdmin/ProductosAdmin';
 import ReporteVentas from '../ReporteVentas/ReporteVentas'
 import TableUsers from '../tableUsers/TableUsers';
+import { getUsers } from '../../Redux/actions';
+import { useDispatch } from 'react-redux';
 
 const Dashboard = () => {
 
   const [activeButton, setActiveButton] = useState('Estadisticas')
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, []);
 
     return (
     <div className={style.dashboard}>
