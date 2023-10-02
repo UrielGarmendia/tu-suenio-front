@@ -46,7 +46,7 @@ const ProfileSettings = () => {
         if (isAuthenticated) {
             try {
                 async function getUser() {
-                    const { data } = await axios.post("https://tu-suenio-back.onrender.com/user/login", { sub: user.sub });
+                    const { data } = await axios.post("http://localhost:3001/user/login", { sub: user.sub });
                     setDataUser({
                         id: data ? data.id : "",
                         name: data ? data.name : "",
@@ -120,7 +120,7 @@ const ProfileSettings = () => {
         formData.append('image', dataUser.image);
         formData.append('address', dataUser.address);
         try {
-            const { data } = await axios.put(`https://tu-suenio-back.onrender.com/user/${dataUser.id}/modify`, formData);
+            const { data } = await axios.put(`http://localhost:3001/user/${dataUser.id}/modify`, formData);
             if (!data.error) {
                 setDataUser(data);
                 setCopyDataUser(data);
