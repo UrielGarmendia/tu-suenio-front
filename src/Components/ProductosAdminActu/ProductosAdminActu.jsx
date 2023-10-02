@@ -7,7 +7,7 @@ const ProductosAdminActu = ({ onCancel }) => {
   const dispatch = useDispatch();
   const alcancias = useSelector((state) => state.AllAlcancias);
   const categorias = useSelector((state) => state.categories);
-  const [editedImage, setEditedImage] = useState(null);
+  const [previewImage, setPreviewImage] = useState("");
   const [products, setProducts] = useState([]);
   const [editedData, setEditedData] = useState({
     name: "",
@@ -16,7 +16,7 @@ const ProductosAdminActu = ({ onCancel }) => {
     description: "",
     size: "",
     id_categorie: "",
-    image: "",
+    image:"",
     Categories: [],
   });
   const showAlert = () => {
@@ -37,10 +37,18 @@ const ProductosAdminActu = ({ onCancel }) => {
   };
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    setEditedImage(file);
+    console.log("Archivo seleccionado:", file);
   
-    
+   
     setEditedData({ ...editedData, image: file });
+  
+   
+    setPreviewImage(URL.createObjectURL(file));
+  };
+  const handleRemoveImage = () => {
+    const fileInput = document.getElementById("image");
+    fileInput.value = "";
+    setPreviewImage("");
   };
 
   const handleSave = async () => {
@@ -182,13 +190,34 @@ const ProductosAdminActu = ({ onCancel }) => {
             <option value="grande">Grande</option>
           </select>
         </div>
-        <div>
+        <div className={styles.group}>
           <label htmlFor="image">Imagen:</label>
           <input
+            className={styles.selectimg}
             type="file"
+            id="image"
             name="image"
             onChange={handleImageChange}
+            accept="image/*"
+            required
           />
+          <label className={styles.inputGropLabel} htmlFor="image">
+            <span className={styles.uploadButton}>Seleccionar archivo</span>
+          </label>
+          {previewImage && (
+            <img
+              className={styles.image}
+              id="preview"
+              src={previewImage}
+              alt="Preview"
+            />
+          )}
+          <button
+            className={styles.buttonDelete}
+            type="button"
+            onClick={handleRemoveImage}>
+            Eliminar imagen
+          </button>
         </div>
         <button className={styles.saveButton} onClick={handleSave}>
           Guardar
