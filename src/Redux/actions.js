@@ -29,7 +29,7 @@ export const allAlcancias = () => {
   try {
     return async function (dispatch) {
       const { data } = await axios(
-        "http://localhost:3001/products"
+        "https://tu-suenio-back.onrender.com/products"
       );
       return dispatch({
         type: ALCANCIAS,
@@ -45,7 +45,7 @@ export const detail = (id) => {
   try {
     return async function (dispatch) {
       const { data } = await axios(
-        `http://localhost:3001/products/${id}`
+        `https://tu-suenio-back.onrender.com/products/${id}`
       );
       return dispatch({
         type: DETAIL,
@@ -66,7 +66,7 @@ export function cleanDetail() {
 export const createAlcancias = (newProduct) => {
   return async function (dispatch) {
     const response = await axios.post(
-      `http://localhost:3001/products/create`,
+      `https://tu-suenio-back.onrender.com/products/create`,
       newProduct
     );
     return dispatch({
@@ -78,7 +78,7 @@ export const createAlcancias = (newProduct) => {
 export const createCategoria = (newCategorie) => {
   return async function (dispatch) {
     const response = await axios.post(
-      `http://localhost:3001/categorie/create`,
+      `https://tu-suenio-back.onrender.com/categorie/create`,
       newCategorie
     );
     return dispatch({
@@ -92,7 +92,7 @@ export const categories = () => {
   try {
     return async function (dispatch) {
       const { data } = await axios(
-        "http://localhost:3001/categorie"
+        "https://tu-suenio-back.onrender.com/categorie"
       );
       return dispatch({
         type: CATEGORIES,
@@ -107,7 +107,7 @@ export const categories = () => {
 export const byName = (name) => {
   return async function (dispatch) {
     try {
-      const response = await axios.get(`http://localhost:3001/products?name=${name}`);
+      const response = await axios.get(`https://tu-suenio-back.onrender.com/products?name=${name}`);
       dispatch({
         type: BY_NAME,
         payload: response.data,
@@ -126,7 +126,7 @@ export const filtered = (id) => {
   try {
     return async function (dispatch) {
       const { data } = await axios(
-        `http://localhost:3001/filter/categorie/${id}`
+        `https://tu-suenio-back.onrender.com/filter/categorie/${id}`
       );
       return dispatch({
         type: FILTERED_BY,
@@ -142,7 +142,7 @@ export const filterBySize = (size) => {
   return async function (dispatch) {
     try {
       const { data } = await axios(
-        `http://localhost:3001/filter/size/${size}`
+        `https://tu-suenio-back.onrender.com/filter/size/${size}`
       );
       return dispatch({
         type: FILTERED_BY_SIZE,
@@ -158,7 +158,7 @@ export const ProductsByCategoryAndSize = (id, size) => {
   return async function (dispatch) {
     try {
       const { data } = await axios(
-        `http://localhost:3001/filter/combined/${id}/${size}`
+        `https://tu-suenio-back.onrender.com/filter/combined/${id}/${size}`
       );
       return dispatch({
         type: PRODUCTS_BY_CATEGORIEANDSIZE,
@@ -178,7 +178,7 @@ export const CartShopping = (id) => {
   try {
     return async function (dispatch) {
       const { data } = await axios(
-        `http://localhost:3001/products/${id}`
+        `https://tu-suenio-back.onrender.com/products/${id}`
       );
       return dispatch({
         type: CART_SHOPING,
@@ -207,11 +207,11 @@ export const actualizarProduct = (id, updatedProductData) => {
   try {
     return async function (dispatch) {
       await axios.put(
-        `http://localhost:3001/products/${id}`,
+        `https://tu-suenio-back.onrender.com/products/${id}`,
         updatedProductData
       );
       const { data } = await axios(
-        `http://localhost:3001/products`
+        `https://tu-suenio-back.onrender.com/products`
       );
       return dispatch({
         type: ACTUALIZAR_PRODUCTO,
@@ -227,10 +227,10 @@ export const deleteProduct = (id) => {
   try {
     return async function (dispatch) {
       await axios.delete(
-        `http://localhost:3001/products/${id}`
+        `https://tu-suenio-back.onrender.com/products/${id}`
       );
       const { data } = await axios(
-        `http://localhost:3001/products`
+        `https://tu-suenio-back.onrender.com/products`
       );
       return dispatch({
         type: DELETE_PRODUCT,
@@ -245,9 +245,9 @@ export const deleteProduct = (id) => {
 export const deleteCategorie = (id) => {
   try {
     return async function (dispatch) {
-      await axios.delete(`http://localhost:3001/categorie/${id}`);
+      await axios.delete(`https://tu-suenio-back.onrender.com/categorie/${id}`);
       const { data } = await axios(
-        `http://localhost:3001/categorie`
+        `https://tu-suenio-back.onrender.com/categorie`
       );
       return dispatch({
         type: DELETE_CATEGORIE,
@@ -262,7 +262,7 @@ export const deleteCategorie = (id) => {
 export const getUsers = () => {
   return async function(dispatch) {
    try {    
-      const { data } = await axios.get("http://localhost:3001/user");
+      const { data } = await axios.get("https://tu-suenio-back.onrender.com/user");
       return dispatch({
         type: GET_USERS,
         payload: data,
@@ -276,7 +276,7 @@ export const getUsers = () => {
 export const getOrders = () =>{
   return async function(dispatch) {
     try {    
-       const { data } = await axios.get("http://localhost:3001/order");
+       const { data } = await axios.get("https://tu-suenio-back.onrender.com/order");
        return dispatch({
          type: GET_ORDERS,
          payload: data,
@@ -290,7 +290,7 @@ export const getOrders = () =>{
 export const getOrdersById = (id) =>{
   return async function(dispatch) {
     try {    
-       const { data } = await axios.get(`http://localhost:3001/order/${id}`);
+       const { data } = await axios.get(`https://tu-suenio-back.onrender.com/order/${id}`);
        return dispatch({
          payload: data,
        });
