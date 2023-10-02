@@ -36,13 +36,14 @@ function App() {
   const { isAuthenticated, user } = useAuth0();
 
   console.log("Este es el usuario:", user);
+  console.log("esto es infoUser", infoUser);
 
   useEffect(() => {
     if (isAuthenticated) {
       try {
         async function postData() {
           const { data } = await axios.post(
-            "https://tu-suenio-back.onrender.com/user/login",
+            "http://localhost:3001/user/login",
             { sub: user.sub }
           );
           if (data.error) {
@@ -71,7 +72,7 @@ function App() {
         <Route path="/alcancias" element={<Alcancias />} />
         <Route path="/" element={<Home />} />
         <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/carrito" element={<Carrito />} />
+        <Route path="/carrito" element={<Carrito infoUser={infoUser} />} />
         <Route path="/about" element={<About />} />
         <Route path="/admin" element={<Dashboard />} />
         <Route path="/contactanos" element={<Contactanos />} />

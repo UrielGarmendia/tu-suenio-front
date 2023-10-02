@@ -78,7 +78,7 @@ const RegistrationForm = () => {
     try {
       setCurrentPage(currentPage + 1);
       const { data } = await axios.post(
-        "https://tu-suenio-back.onrender.com/user/register",
+        "http://localhost:3001/user/register",
         infoUser
       );
       setInfoUser({
