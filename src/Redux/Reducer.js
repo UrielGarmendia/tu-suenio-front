@@ -15,6 +15,9 @@ import {
   PRODUCTS_BY_CATEGORIEANDSIZE,
   CLEAN_DETAIL,
   ACTUALIZAR_PRODUCTO,
+  GET_USERS,
+  CREATE_CATEGORIA,
+  DELETE_CATEGORIE,
 } from "./actions-types";
 
 //Traerme el local store si esta vacio que devuelva un array
@@ -28,6 +31,7 @@ const initialState = {
   categories: [],
   allByName: [],
   CartShopping: storage,
+  allUsers: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -66,6 +70,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         AllAlcancias: [...state.AllAlcancias, action.payload],
+      };
+      case  CREATE_CATEGORIA:
+      return {
+        ...state,
+        categories: [...state.categories, action.payload],
       };
     case ORDERED_BY:
       const toOrder = [...state.AllAlcancias];
@@ -155,11 +164,21 @@ const reducer = (state = initialState, action) => {
         ...state,
         AllAlcancias: action.payload
       }
+      case DELETE_CATEGORIE:
+        return {
+          ...state,
+          categories: action.payload
+        }
       case ACTUALIZAR_PRODUCTO:
       return {
         ...state,
         AllAlcancias: action.payload
       }
+      case GET_USERS:
+        return {
+          ...state,
+          allUsers: action.payload
+        }
     default:
       return state;
   }

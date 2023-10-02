@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { allAlcancias, actualizarProduct, categories } from "../../Redux/actions";
-import styles from "./ProductosAdminActu.module.css"; // Asegúrate de que la ruta del archivo CSS sea correcta
+import styles from "./ProductosAdminActu.module.css"; 
 import Swal from "sweetalert2";
 const ProductosAdminActu = ({ onCancel }) => {
   const dispatch = useDispatch();
   const alcancias = useSelector((state) => state.AllAlcancias);
   const categorias = useSelector((state) => state.categories);
+  const [editedImage, setEditedImage] = useState(null);
   const [products, setProducts] = useState([]);
   const [editedData, setEditedData] = useState({
     name: "",
@@ -15,14 +16,15 @@ const ProductosAdminActu = ({ onCancel }) => {
     description: "",
     size: "",
     id_categorie: "",
-    Categories:"",
+    image: "",
+    Categories: [],
   });
   const showAlert = () => {
     Swal.fire({
       toast: false,
       icon: "success",
       title: "Alcancia agregada para editar",
-      timer:1200,
+      timer: 1200,
       timerProgressBar: true,
       showConfirmButton: false,
       position: "center",
@@ -31,18 +33,41 @@ const ProductosAdminActu = ({ onCancel }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setEditedData({ ...editedData, [name]: value });
+    setEditedData({ ...editedData, [name]: value, Categories: [{ name: "personajes animados" }] });
+  };
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setEditedImage(file);
+  
+    
+    setEditedData({ ...editedData, image: file });
   };
 
   const handleSave = async () => {
     try {
-      await dispatch(actualizarProduct(editedData.id, editedData));
-      onCancel();
+      const formData = new FormData();
+      formData.append("id", editedData.id);
+      formData.append("name", editedData.name);
+      formData.append("price", editedData.price);
+      formData.append("stock", editedData.stock);
+      formData.append("description", editedData.description);
+      formData.append("size", editedData.size);
+      formData.append("id_categorie", editedData.id_categorie);
+      formData.append("image", editedImage.image);
+  
+     
+      await dispatch(actualizarProduct(editedData.id, formData));
+      
+
+      setEditedImage(null);
+  
+      // Cierra el formulario de edición
+      // onCancel();
     } catch (error) {
       console.error("Error al actualizar el producto:", error);
     }
   };
-
+  console.log(editedData)
   const handleEditProduct = (product) => {
     showAlert();
     setEditedData({
@@ -53,7 +78,8 @@ const ProductosAdminActu = ({ onCancel }) => {
       description: product.description,
       size: product.size,
       Categories: product.Categories,
-      
+      image: product.image,
+      id_categorie: product.id_categorie, 
     });
   };
 
@@ -66,6 +92,8 @@ const ProductosAdminActu = ({ onCancel }) => {
     setProducts(alcancias);
   }, [alcancias]);
 
+  console.log(editedData)
+
   return (
     <div className={styles.productosAdminContainer}>
       <h2>Lista de Productos</h2>
@@ -77,6 +105,7 @@ const ProductosAdminActu = ({ onCancel }) => {
             <th>Stock</th>
             <th>Descripción</th>
             <th>Tamaño</th>
+            <th>imagen</th>
             <th>Categoría</th>
             <th>Acciones</th>
           </tr>
@@ -89,7 +118,8 @@ const ProductosAdminActu = ({ onCancel }) => {
               <td>{product.stock}</td>
               <td>{product.description}</td>
               <td>{product.size}</td>
-              <td> {product.Categories?.map((c)=>(c.name))}</td>
+              <td>{product.image}</td>
+              <td> {product.Categories?.map((c) => (c.name))}</td>
               <td>
                 <button
                   className={styles.editButton}
@@ -143,8 +173,8 @@ const ProductosAdminActu = ({ onCancel }) => {
           <label htmlFor="Categories">Categorias:</label>
           <select
             id="Categories"
-            name="Categories"
-            value={editedData.Categories}
+            name="id_categorie"
+            value={editedData.id_categorie}
             onChange={handleInputChange}
             required>
             <option value="">Seleccionar categoria</option>
@@ -167,6 +197,14 @@ const ProductosAdminActu = ({ onCancel }) => {
             <option value="mediana">Mediana</option>
             <option value="grande">Grande</option>
           </select>
+        </div>
+        <div>
+          <label htmlFor="image">Imagen:</label>
+          <input
+            type="file"
+            name="image"
+            onChange={handleImageChange}
+          />
         </div>
         <button className={styles.saveButton} onClick={handleSave}>
           Guardar

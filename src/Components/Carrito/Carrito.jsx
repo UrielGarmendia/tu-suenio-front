@@ -6,13 +6,15 @@ import { useAuth0 } from "@auth0/auth0-react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import axios from "axios";
+import { loadStripe } from "@stripe/stripe-js";
+import { CardElement, Elements } from "@stripe/react-stripe-js";
+import { useStripe, useElements } from "@stripe/react-stripe-js";
 
-const Carrito = () => {
-  const [preferenceId, setPreferenceId] = useState(null);
-  initMercadoPago("TEST-1b225994-c2fb-4e59-963b-b53ab55e0b46");
-
+const Carrito = ({ infoUser }) => {
+  const stripePromise = loadStripe(
+    "pk_test_51NvrrEHVuLRaKy6b8nJ9tZSwmJNSUStDdReBhZ4s9hQQLrydSWTunxN35HCNNQtEq056cUmGgX09hNy9HfsTK21y00NPQA7dFA"
+  );
   const dispatch = useDispatch();
   const { isAuthenticated, loginWithRedirect } = useAuth0();
 
@@ -20,13 +22,6 @@ const Carrito = () => {
   let totalSum = 0;
 
   const state = useSelector((state) => state.CartShopping);
-
-  const newState = () => {
-    state.map((e) => {
-      e.unit_price = e?.price;
-    });
-  };
-  newState();
 
   console.log("este es el carrito", state);
 
@@ -38,9 +33,7 @@ const Carrito = () => {
     )
   );
 
-
   console.log(index, "index");
-
 
   const handleSum = (stock, indexEl) => {
     if (index[indexEl].quantity < stock) {
@@ -98,28 +91,68 @@ const Carrito = () => {
 
   const handleBuy = async () => {
     if (isAuthenticated) {
-      const id = await createPreference();
-      if (id) {
-        setPreferenceId(id);
-      }
       return;
     } else {
       showAlert();
     }
   };
+  const CheckoutForm = ({ infoUser }) => {
+    const stripe = useStripe();
+    const elements = useElements();
+    const [message, setMessage] = useState("");
+    console.log(infoUser?.id, "INFOUSER MAN");
 
-  const createPreference = async () => {
-    try {
-      const response = await axios.post(
-        "https://tu-suenio-back.onrender.com/payment/create_preference",
-        index
-      );
-      const { id } = response.data;
-      return id;
-    } catch (error) {
-      console.error(error);
-    }
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+
+      const { error, paymentMethod } = await stripe.createPaymentMethod({
+        type: "card",
+        card: elements.getElement(CardElement),
+      });
+
+      if (!error) {
+        const { id } = paymentMethod;
+        const valor = index.map((e) => {
+          return e.price * e.quantity;
+        });
+        const amount = valor[0] + valor[1];
+        try {
+          const { data } = await axios.post(
+            "http://localhost:3001/payment/newPayment",
+            {
+              amount,
+              id,
+            }
+          );
+
+          console.log(data, "ESTO ES DATA MAN");
+          setMessage(data.message);
+          elements.getElement(CardElement).clear();
+
+          // const response = axios.post("http://localhost:3001/order", {
+          //   status: data.message,
+          //   totalprice: amount,
+          //   UserId: infoUser?.id,
+          //   ProductId: index.id,
+          // });
+        } catch (error) {
+          console.error(error, "esto es el error");
+        }
+      }
+    };
+    return (
+      <div>
+        <form onSubmit={handleSubmit}>
+          <CardElement />
+          <button onClick={handleBuy} className={styles.button_compra}>
+            Buy
+          </button>
+          {message ? <p>{message}</p> : ""}
+        </form>
+      </div>
+    );
   };
+
   return (
     <div className={styles.cont}>
       <div className={styles.cont_items}>
@@ -184,10 +217,10 @@ const Carrito = () => {
           Total productos {"("} {handlerReduce(index)} {")"}
         </h4>
         <h3>Total compra $ {totalSum}</h3>
-        <button className={styles.button_compra} onClick={handleBuy}>
-          Comprar
-        </button>
-        {preferenceId && <Wallet initialization={{ preferenceId }} />}
+
+        <Elements stripe={stripePromise}>
+          <CheckoutForm infoUser={infoUser} />
+        </Elements>
       </div>
     </div>
   );

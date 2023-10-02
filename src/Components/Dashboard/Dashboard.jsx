@@ -2,10 +2,12 @@ import style from '../Dashboard/Dashboard.module.css'
 import { Add, ManageAccounts, PointOfSale, Settings, TrendingFlat, TrendingUpOutlined } from '@mui/icons-material';
 import Estadisticas from "../Estadisticas/Estadisticas";
 import Create from "../Create/Create"
+import CreateCategorie from "../CreateCategorie/CreateCategorie";
 import ProductosAdminActu from "../ProductosAdminActu/ProductosAdminActu"
 import { useState } from 'react';
 import ProductosAdmin from '../ProductosAdmin/ProductosAdmin';
 import ReporteVentas from '../ReporteVentas/ReporteVentas'
+import TableUsers from '../tableUsers/TableUsers';
 
 const Dashboard = () => {
 
@@ -19,6 +21,7 @@ const Dashboard = () => {
             <ul>
               <li onClick={()=>setActiveButton('ActProducto')}><p>ACTUALIZAR PRODUCTO</p></li>
               <li onClick={()=>setActiveButton('Productos')}><p>CREAR PRODUCTO</p></li>
+              <li onClick={()=>setActiveButton('categoria')}><p>CREAR CATEGORIA</p></li>
               <li onClick={()=>setActiveButton('ElProducto')}><p>ELIMINAR PRODUCTO</p></li>
             </ul>
           </li>
@@ -31,10 +34,11 @@ const Dashboard = () => {
       <div className={style.container}>
       {activeButton === 'Estadisticas' && ( <Estadisticas/>)}
       {activeButton === 'Productos' && (<Create/>)}
+      {activeButton === 'categoria' && (<CreateCategorie/>)}
       {activeButton === 'ActProducto' && (<ProductosAdminActu/>)}
       {activeButton === 'ElProducto' && (<ProductosAdmin/>)}
       {activeButton === 'RepVentas' && (<ReporteVentas/>)}
-      {activeButton === 'UserReg' && (<h1>Aqui ira la seccion USUARIOS REGISTRADOS</h1>)}
+      {activeButton === 'UserReg' && (<TableUsers/>)}
       {activeButton === 'Config' && (<h1>Aqui ira la seccion de CONFIGURACION DEL ADMIN</h1>)}
       <article>
      
