@@ -11,7 +11,7 @@ import axios from "axios";
 
 const Carrito = () => {
   const [preferenceId, setPreferenceId] = useState(null);
-  initMercadoPago("TEST-870a2a6e-8a90-413f-83bf-f4a03755d927");
+  initMercadoPago("TEST-52732dc9-ed5e-488b-a91d-fce91646cd4b");
 
   const dispatch = useDispatch();
   const { isAuthenticated, loginWithRedirect } = useAuth0();
@@ -113,8 +113,8 @@ const Carrito = () => {
         index,
         {
           headers: {
-            Authorization:
-              "APP_USR-5109479525961540-092820-2e00818cb14b34a589cb983f4378607a-1262361729",
+            "Content-type": "application/json",
+            Authorization: `Bearer TEST-5109479525961540-092820-5100bda1ace05b50ee93777e6609fd1f-1262361729`,
           },
         }
       );

@@ -18,6 +18,8 @@ import {
   GET_USERS,
   CREATE_CATEGORIA,
   DELETE_CATEGORIE,
+  USERS_BY_NAME,
+  USERS
 } from "./actions-types";
 import axios from "axios";
 
@@ -103,7 +105,9 @@ export const categories = () => {
 export const byName = (name) => {
   return async function (dispatch) {
     try {
-      const response = await axios.get(`https://tu-suenio-back.onrender.com/products?name=${name}`);
+      const response = await axios.get(
+        `https://tu-suenio-back.onrender.com/products?name=${name}`
+      );
       dispatch({
         type: BY_NAME,
         payload: response.data,
@@ -133,6 +137,7 @@ export const filtered = (id) => {
     return { error: error.message };
   }
 };
+
 export const filterBySize = (size) => {
   return async function (dispatch) {
     try {
@@ -148,6 +153,7 @@ export const filterBySize = (size) => {
     }
   };
 };
+
 export const ProductsByCategoryAndSize = (id, size) => {
   return async function (dispatch) {
     try {
@@ -220,9 +226,7 @@ export const actualizarProduct = (id, updatedProductData) => {
 export const deleteProduct = (id) => {
   try {
     return async function (dispatch) {
-      await axios.delete(
-        `https://tu-suenio-back.onrender.com/products/${id}`
-      );
+      await axios.delete(`https://tu-suenio-back.onrender.com/products/${id}`);
       const { data } = await axios(
         `https://tu-suenio-back.onrender.com/products`
       );
@@ -235,12 +239,11 @@ export const deleteProduct = (id) => {
     return { error: error.message };
   }
 };
+
 export const deleteCategorie = (id) => {
   try {
     return async function (dispatch) {
-      await axios.delete(
-        `https://tu-suenio-back.onrender.com/categorie/${id}`
-      );
+      await axios.delete(`https://tu-suenio-back.onrender.com/categorie/${id}`);
       const { data } = await axios(
         `https://tu-suenio-back.onrender.com/categorie`
       );
@@ -252,18 +255,28 @@ export const deleteCategorie = (id) => {
   } catch (error) {
     return { error: error.message };
   }
-}
+};
 
 export const getUsers = () => {
-  return async function(dispatch) {
-   try {    
-      const { data } = await axios.get("https://tu-suenio-back.onrender.com/user");
+  return async function (dispatch) {
+    try {
+      const { data } = await axios.get(
+        "https://tu-suenio-back.onrender.com/user"
+      );
       return dispatch({
         type: GET_USERS,
-        payload: data
-      })
-   } catch (error) {
-    return error.message
-  }
- } 
+        payload: data,
+      });
+    } catch (error) {
+      return error.message;
+    }
+  };
 };
+
+export const userByName = (name) => {
+  return {type: USERS_BY_NAME, payload: name}
+}
+
+export const takeAllUsersBack = () => {
+  return {type: USERS}
+}
