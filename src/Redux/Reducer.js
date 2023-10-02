@@ -19,7 +19,9 @@ import {
   CREATE_CATEGORIA,
   DELETE_CATEGORIE,
   GET_ORDERS,
-  GET_ORDERS_ID
+  GET_ORDERS_ID,
+  USERS_BY_NAME,
+  USERS,
 } from "./actions-types";
 
 //Traerme el local store si esta vacio que devuelva un array
@@ -34,7 +36,8 @@ const initialState = {
   allByName: [],
   CartShopping: storage,
   allUsers: [],
-  orders: []
+  orders: [],
+  copyAllUsers: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -177,10 +180,25 @@ const reducer = (state = initialState, action) => {
         ...state,
         AllAlcancias: action.payload
       }
+
       case GET_USERS:
         return {
           ...state,
-          allUsers: action.payload
+          allUsers: action.payload,
+          copyAllUsers: action.payload
+        }
+
+      case USERS_BY_NAME:
+        const byName = state.copyAllUsers.filter(el => el.name.toLowerCase().includes(action.payload.toLowerCase()));
+        return {
+          ...state,
+          allUsers: byName
+        }
+
+      case USERS:
+        return {
+          ...state,
+          allUsers: state.copyAllUsers
         }
 
       case GET_ORDERS:
@@ -188,6 +206,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         orders: action.payload
       }
+        
     default:
       return state;
   }
