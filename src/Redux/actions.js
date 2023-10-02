@@ -18,6 +18,8 @@ import {
   GET_USERS,
   CREATE_CATEGORIA,
   DELETE_CATEGORIE,
+  GET_ORDERS,
+  GET_ORDERS_ID,
 } from "./actions-types";
 import axios from "axios";
 
@@ -74,7 +76,7 @@ export const createAlcancias = (newProduct) => {
 export const createCategoria = (newCategorie) => {
   return async function (dispatch) {
     const response = await axios.post(
-      `https://tu-suenio-back.onrender.com/categorie/create`,
+      `http://localhost:3001/categorie/create`,
       newCategorie
     );
     return dispatch({
@@ -103,7 +105,7 @@ export const categories = () => {
 export const byName = (name) => {
   return async function (dispatch) {
     try {
-      const response = await axios.get(`https://tu-suenio-back.onrender.com/products?name=${name}`);
+      const response = await axios.get(`http://localhost:3001/products?name=${name}`);
       dispatch({
         type: BY_NAME,
         payload: response.data,
@@ -221,7 +223,7 @@ export const deleteProduct = (id) => {
   try {
     return async function (dispatch) {
       await axios.delete(
-        `https://tu-suenio-back.onrender.com/products/${id}`
+        `http://localhost:3001/products/${id}`
       );
       const { data } = await axios(
         `http://localhost:3001/products`
@@ -238,9 +240,9 @@ export const deleteProduct = (id) => {
 export const deleteCategorie = (id) => {
   try {
     return async function (dispatch) {
-      await axios.delete(`https://tu-suenio-back.onrender.com/categorie/${id}`);
+      await axios.delete(`http://localhost:3001/categorie/${id}`);
       const { data } = await axios(
-        `https://tu-suenio-back.onrender.com/categorie`
+        `http://localhost:3001/categorie`
       );
       return dispatch({
         type: DELETE_CATEGORIE,
@@ -255,7 +257,7 @@ export const deleteCategorie = (id) => {
 export const getUsers = () => {
   return async function(dispatch) {
    try {    
-      const { data } = await axios.get("https://tu-suenio-back.onrender.com/user");
+      const { data } = await axios.get("http://localhost:3001/user");
       return dispatch({
         type: GET_USERS,
         payload: data,
@@ -265,3 +267,30 @@ export const getUsers = () => {
     }
   };
 };
+
+export const getOrders = () =>{
+  return async function(dispatch) {
+    try {    
+       const { data } = await axios.get("http://localhost:3001/order");
+       return dispatch({
+         type: GET_ORDERS,
+         payload: data,
+       });
+     } catch (error) {
+       return error.message;
+     }
+   };
+}
+
+export const getOrdersById = (id) =>{
+  return async function(dispatch) {
+    try {    
+       const { data } = await axios.get(`http://localhost:3001/order/${id}`);
+       return dispatch({
+         payload: data,
+       });
+     } catch (error) {
+       return error.message;
+     }
+   };
+}

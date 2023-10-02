@@ -43,12 +43,13 @@ border-collapse: collapse;
 
 .historialVentas table td {
 padding: 10px;
-text-align: left;
+text-align: center;
 border-bottom: 1px solid #ddd;
 }
 
 .historialVentas table th {
 background-color: #f2f2f2;
+text-align: center;
 }
 
 .historialVentas tr:hover {
@@ -56,15 +57,20 @@ background-color: #f5f5f5;
 }
 
 .historialVentas button {
-background-color: #e100ff;
+background: #e100ff;
 color: #fff;
 border: none;
 padding: 5px 10px;
 cursor: pointer;
+transition: 0.8s ease; 
 }
 
 .historialVentas button:hover {
-background-color: #b300a4;
+background: #b300a4;
+}
+
+.historialVentas table button{
+  margin-left: 0.5rem;
 }
 
 .modal {
@@ -116,4 +122,12 @@ background-color: #b300a4;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.filtros .botonExcel{
+  background: rgb(12, 167, 12);
+}
+
+.filtros .botonExcel:hover {
+  background: rgb(33, 134, 15);
 }
