@@ -21,8 +21,6 @@ const Reviews = ({id, alcancia, infoUser}) => {
 
     const reviews = useSelector(state => state.reviews);
 
-    reviews.reverse();
-
     useEffect(() => {
         dispatch(getReviews(id))
     },[]);

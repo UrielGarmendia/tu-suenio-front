@@ -6,7 +6,7 @@ const color = {
     grey: "#808080"
 };
 
-const AllReviews = ({reviews, stars, getUser, isCommentsOpen, closeComments}) => {
+const AllReviews = ({reviews, stars, isCommentsOpen, closeComments}) => {
 
     if(!isCommentsOpen) return null;
 
@@ -17,8 +17,8 @@ const AllReviews = ({reviews, stars, getUser, isCommentsOpen, closeComments}) =>
   return (
     <div className={styles.cont} onClick={closeComments}>
         <div className={styles.comments_cont} onClick={handleCommentsClick}>
-            <h2 className={styles.title}>Comentarios</h2>
-                {reviews.reverse()?.map((review) => (
+            <h2 className={styles.title}>Todos los comentarios</h2>
+                {reviews?.map((review) => (
                     <div key={review.id} className={styles.opinion}>
                         <div className={styles.name_date}>                 
                             <h4 className={styles.name}>{review.userId}</h4> 

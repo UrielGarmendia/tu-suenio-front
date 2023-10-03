@@ -58,11 +58,10 @@ const ReviewForm = ({infoUser, id, alcancia, isOpen, closeForm}) => {
                 productId: id 
             })
             showAlert();
+            closeForm(false);
         } catch (error) {
             alert(error.message);
-        };
-        console.log(comment, currentDate, ratingValue, infoUser.id, id); 
-        closeForm(false);
+        }; 
     };
 
     return (
