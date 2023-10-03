@@ -1,16 +1,26 @@
 import React, { useState } from 'react';
 import style from '../Contactanos/Contactanos.module.css'
 import logo from '../../Assents/logoPrincipal.png'
+import Swal from "sweetalert2";
 
 function Contactanos() {
+  const showAd = ()=>{
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Su consulta fue enviado con exito',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
   const [formData, setFormData] = useState({
-    nombre: '',
+    name: '',
     email: '',
     consulta: '',
   });
 
   const [errors, setErrors] = useState({
-    nombre: '',
+    name: '',
     email: '',
   });
 
@@ -21,17 +31,17 @@ function Contactanos() {
       [name]: value,
     });
 
-    if (name === 'nombre') {
+    if (name === 'name') {
       const regex = /^[a-zA-Z\s]*$/; 
       if (!regex.test(value)) {
         setErrors({
           ...errors,
-          nombre: 'El nombre solo debe contener letras y espacios.',
+          name: 'El nombre solo debe contener letras y espacios.',
         });
       } else {
         setErrors({
           ...errors,
-          nombre: '',
+          name: '',
         });
       }
     }
@@ -57,7 +67,7 @@ function Contactanos() {
    
     if (formData.nombre && formData.email && formData.consulta) {
         setFormData({
-            nombre: '',
+            name: '',
             email: '',
             consulta: '',
         })
@@ -71,13 +81,13 @@ function Contactanos() {
     <div className={style.contactanos}>
         <img src={logo} alt="" />
       <h1>Contáctanos</h1>
-      <form onSubmit={handleSubmit}>
+      <form action="https://formsubmit.co/sirius.kaiyu@free2ducks.com" method="POST">
         <div className={style.formGroup}>
           <label htmlFor="nombre">Nombre:</label>
           <input
             type="text"
-            id="nombre"
-            name="nombre"
+            id="name"
+            name="name"
             placeholder='Tu nombre'
             value={formData.nombre}
             onChange={handleChange}
@@ -109,8 +119,8 @@ function Contactanos() {
             required
           ></textarea>
         </div>
-        <button>Enviar</button>
-      </form>
+        <button type='submit'onClick={()=>{showAd()}}>Enviar</button>
+      </form >
     </div>
   );
 }
