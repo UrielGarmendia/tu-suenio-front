@@ -129,7 +129,7 @@ const Carrito = ({ infoUser }) => {
 
         try {
           const { data } = await axios.post(
-            "http://localhost:3001/payment/newPayment",
+            "https://tu-suenio-back.onrender.com/newPayment",
             {
               amount,
               id,
@@ -141,12 +141,15 @@ const Carrito = ({ infoUser }) => {
           setMessage(data.message);
           elements.getElement(CardElement).clear();
 
-          const response = axios.post("http://localhost:3001/order", {
-            status: data.message,
-            totalprice: amount,
-            UserId: infoUser?.id,
-            products: productos,
-          });
+          const response = axios.post(
+            "https://tu-suenio-back.onrender.com/order",
+            {
+              status: data.message,
+              totalprice: amount,
+              UserId: infoUser?.id,
+              products: productos,
+            }
+          );
 
           if (data.message === "succeeded") {
             setTimeout(function () {
