@@ -16,6 +16,7 @@ margin-bottom: 2rem;
 }
 
 .filtros input {
+max-width: 10vw;  
 padding: 0.4rem;
 margin-right: 1rem;
 height: 1rem;
@@ -42,12 +43,13 @@ border-collapse: collapse;
 
 .historialVentas table td {
 padding: 10px;
-text-align: left;
+text-align: center;
 border-bottom: 1px solid #ddd;
 }
 
 .historialVentas table th {
 background-color: #f2f2f2;
+text-align: center;
 }
 
 .historialVentas tr:hover {
@@ -55,19 +57,24 @@ background-color: #f5f5f5;
 }
 
 .historialVentas button {
-background-color: #e100ff;
+background: #e100ff;
 color: #fff;
 border: none;
 padding: 5px 10px;
 cursor: pointer;
+transition: 0.8s ease; 
 }
 
 .historialVentas button:hover {
-background-color: #b300a4;
+background: #b300a4;
+}
+
+.historialVentas table button{
+  margin-left: 0.5rem;
 }
 
 .modal {
-  background: rgb(231, 138, 226);
+  background: rgb(96, 199, 163);
   width: 50vw;
   margin: 0 auto;
   padding: 3rem;
@@ -83,6 +90,17 @@ background-color: #b300a4;
 
 .modal button:hover {
   cursor: pointer;
+}
+
+.modal span{
+  font-weight: bolder;
+}
+.modal label{
+  background: #a29e9e8f;
+  border: 0.1rem solid #202020;
+  font-weight: 400;
+  padding: 0.3rem;
+  margin: 0.3rem;
 }
 
 .modal li{
@@ -104,4 +122,12 @@ background-color: #b300a4;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.filtros .botonExcel{
+  background: rgb(12, 167, 12);
+}
+
+.filtros .botonExcel:hover {
+  background: rgb(33, 134, 15);
 }

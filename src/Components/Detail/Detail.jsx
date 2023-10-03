@@ -8,7 +8,7 @@ import styles from "./detail.module.css";
 import Swal from "sweetalert2";
 import Reviews from "../Reviews/Reviews";
 
-const Detail = () => {
+const Detail = ({infoUser}) => {
 
   const navigate = useNavigate();
 
@@ -89,7 +89,7 @@ const Detail = () => {
           </div>
         </div>
         <div className={styles.last_cont}>
-          <Reviews id={id}/>
+          <Reviews id={id} infoUser={infoUser} alcancia={alcancia[0]?.name}/>
         </div>
       </div>
     </div>

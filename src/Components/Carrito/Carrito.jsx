@@ -23,8 +23,6 @@ const Carrito = ({ infoUser }) => {
 
   const state = useSelector((state) => state.CartShopping);
 
-  console.log("este es el carrito", state);
-
   let [index, setIndex] = useState(
     state?.map((item) =>
       !Object.prototype.hasOwnProperty.call(item, "quantity")
@@ -32,8 +30,6 @@ const Carrito = ({ infoUser }) => {
         : item
     )
   );
-
-  console.log(index, "index");
 
   const handleSum = (stock, indexEl) => {
     if (index[indexEl].quantity < stock) {
@@ -96,11 +92,14 @@ const Carrito = ({ infoUser }) => {
       showAlert();
     }
   };
+
   const CheckoutForm = ({ infoUser }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [message, setMessage] = useState("");
     console.log(infoUser?.id, "INFOUSER MAN");
+
+    console.log(index, "INDEX");
 
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -115,37 +114,60 @@ const Carrito = ({ infoUser }) => {
         const valor = index.map((e) => {
           return e.price * e.quantity;
         });
-        const amount = valor[0] + valor[1];
+        console.log(valor, "esto es valor");
+
+        const amount = valor.reduce(
+          (a, b) => a + (typeof b === "number" ? b : 0),
+          0
+        );
+        console.log(amount, "esto es");
+
+        const productos = index.map((e) => {
+          const { id, quantity, price, name } = e;
+          return { id, quantity, price, name };
+        });
+
         try {
           const { data } = await axios.post(
-            "http://localhost:3001/payment/newPayment",
+            "https://tu-suenio-back.onrender.com/newPayment",
             {
               amount,
               id,
             }
           );
+          console.log(index.id, "ID DE LOS PRODUCTOS");
 
           console.log(data, "ESTO ES DATA MAN");
           setMessage(data.message);
           elements.getElement(CardElement).clear();
 
-          // const response = axios.post("http://localhost:3001/order", {
-          //   status: data.message,
-          //   totalprice: amount,
-          //   UserId: infoUser?.id,
-          //   ProductId: index.id,
-          // });
+          const response = axios.post(
+            "https://tu-suenio-back.onrender.com/order",
+            {
+              status: data.message,
+              totalprice: amount,
+              UserId: infoUser?.id,
+              products: productos,
+            }
+          );
+
+          if (data.message === "succeeded") {
+            setTimeout(function () {
+              window.location.href = "/payment/success";
+            }, 3000);
+          }
+          
         } catch (error) {
           console.error(error, "esto es el error");
         }
       }
     };
     return (
-      <div>
-        <form onSubmit={handleSubmit}>
+      <div className={styles.cont_form_buy}>
+        <form className={styles.form_buy} onSubmit={handleSubmit}>
           <CardElement />
           <button onClick={handleBuy} className={styles.button_compra}>
-            Buy
+            Comprar
           </button>
           {message ? <p>{message}</p> : ""}
         </form>
