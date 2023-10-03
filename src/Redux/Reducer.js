@@ -19,6 +19,8 @@ import {
   CREATE_CATEGORIA,
   DELETE_CATEGORIE,
   GET_REVIEWS,
+  GET_ORDERS,
+  GET_ORDERS_ID,
   USERS_BY_NAME,
   USERS,
 } from "./actions-types";
@@ -36,6 +38,7 @@ const initialState = {
   CartShopping: storage,
   allUsers: [],
   reviews: [],
+  orders: [],
   copyAllUsers: []
 };
 
@@ -204,6 +207,12 @@ const reducer = (state = initialState, action) => {
           ...state,
           allUsers: state.copyAllUsers
         }
+
+      case GET_ORDERS:
+      return {
+        ...state,
+        orders: action.payload
+      }
         
     default:
       return state;
