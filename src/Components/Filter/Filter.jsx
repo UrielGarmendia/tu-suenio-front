@@ -13,21 +13,16 @@ const FilteredOrdered = () => {
   const dispatch = useDispatch();
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
-  const [selectedPrice, setSelectedPrice] = useState("");
-  const [selectedAlpha, setSelectedAlpha] = useState("");
+  const [selected, setSelected] = useState("");
 
   useEffect(() => {
     dispatch(categories());
   }, []);
-  
-  const handleOrderByPrice = (event) => {
-    setSelectedPrice(event.target.value)
-    dispatch(ordenamiento(event.target.value));
-  };
 
   const handleOrderByAlpha = (event) => {
-    setSelectedAlpha(event.target.value)
-    dispatch(ordenamiento(event.target.value));
+    const { value } = event.target;
+    setSelected(value);
+    dispatch(ordenamiento(value));
   };
   
   const handleCombinedFilter = async (selectedCategory, selectedSize) => {
@@ -66,6 +61,7 @@ const FilteredOrdered = () => {
       const value = event.target.value;
       setSelectedCategory(value);
       handleCombinedFilter(value, selectedSize);
+      setSelected("")
   };
 
 
@@ -73,13 +69,14 @@ const FilteredOrdered = () => {
     const value = event.target.value;
     setSelectedSize(value);
     handleCombinedFilter(selectedCategory, value);
+    setSelected("")
   };
 
 const handleClick = () => {
   dispatch(cleanFilters());
   setSelectedCategory('')
   setSelectedSize('')
-  setSelectedAlpha('')
+  setSelected('')
   setSelectedPrice('')
 };
 
@@ -106,15 +103,16 @@ const handleClick = () => {
       <option value="mediana">mediana</option>
       <option value="grande">grande</option>
     </select>
-    <select className="allSelects" onChange={handleOrderByAlpha} value={selectedAlpha}>
-      <option value="">Orden alfabetico</option>
-      <option value="A-Z">A-Z</option>
-      <option value="Z-A">Z-A</option>
-    </select>
-    <select className="allSelects" onChange={handleOrderByPrice} value={selectedPrice}>
-      <option value="">Por precio</option>
-      <option value="A">Menor a mayor</option>
-      <option value="D">Mayor a menor</option>
+    <select className="allSelects" onChange={handleOrderByAlpha} value={selected}>
+    <option value="">Ordenar por</option>
+      <optgroup label="Orden Alfabetico">
+        <option value="A-Z" name="alpha">A-Z</option>
+        <option value="Z-A" name="alpha">Z-A</option>
+      </optgroup>
+      <optgroup label="Precio">
+        <option value="A" name="price">Menor a mayor</option>
+        <option value="D" name="price">Mayor a menor</option>
+      </optgroup>
     </select>
     <button className="limpiar" onClick={handleClick}>
       Limpiar filtros

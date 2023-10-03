@@ -18,6 +18,9 @@ import {
   GET_USERS,
   CREATE_CATEGORIA,
   DELETE_CATEGORIE,
+  GET_REVIEWS,
+  USERS_BY_NAME,
+  USERS,
 } from "./actions-types";
 import axios from "axios";
 
@@ -129,6 +132,7 @@ export const filtered = (id) => {
     return { error: error.message };
   }
 };
+
 export const filterBySize = (size) => {
   return async function (dispatch) {
     try {
@@ -142,6 +146,7 @@ export const filterBySize = (size) => {
     }
   };
 };
+
 export const ProductsByCategoryAndSize = (id, size) => {
   return async function (dispatch) {
     try {
@@ -221,6 +226,7 @@ export const deleteProduct = (id) => {
     return { error: error.message };
   }
 };
+
 export const deleteCategorie = (id) => {
   try {
     return async function (dispatch) {
@@ -248,4 +254,27 @@ export const getUsers = () => {
       return error.message;
     }
   };
+};
+
+export const getReviews = (id) => {
+  return async function (dispatch) {
+    try {
+      const { data } = await axios.get(
+        `http://localhost:3001/review/product/${id}`
+      );
+      return dispatch({
+        type: GET_REVIEWS,
+        payload: data,
+      });
+    } catch (error) {
+      return error.message;
+    }
+  };
+};
+export const userByName = (name) => {
+  return { type: USERS_BY_NAME, payload: name };
+};
+
+export const takeAllUsersBack = () => {
+  return { type: USERS };
 };

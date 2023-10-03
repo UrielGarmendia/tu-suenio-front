@@ -1,0 +1,487 @@
+.contenedorPrincipal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 85vh;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.contenedorSecundario {
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    justify-content: center;
+}
+
+.contenedorPerfil {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 290px;
+    max-height: 80%;
+    border: solid 3px #30e6c1;
+    border-radius: 10px;
+    background-color: #ffff;
+    padding: 0px 35px 15px 35px;
+}
+.divAvatar{
+    position: relative;
+    margin-top: 5px;
+}
+.crown{
+    position: absolute;
+    top: -26px;
+    left: -33px;
+    width: 100px;
+    height: 100px;
+    transform: rotate(-45deg);
+}
+.fotoAvatar {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 99;
+}
+.fotoAvatar.disabled{
+    cursor: not-allowed;
+}
+
+.divDescripcionSubirFoto {
+    background-color: #FEF3F7;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: lightgray solid 3px;
+    margin-top: 15px;
+    height: 100px;
+    width: 100%;
+    background: #FBE9FA;
+}
+
+.descripcionSubirFoto {
+    color:  #4b4b4b;
+    font-size: 17px;
+}
+.contenedorConfigPerfil {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1090px;
+    height: 670px;
+    border: #30e6c1 solid 3px;
+    border-radius: 10px;
+    background-color: #fff;
+    overflow: hidden;
+
+}
+
+.containerInputs {
+    position: relative;
+    display: grid;
+    grid-template-columns: 5fr 5fr;
+}
+
+.divNombreConfigPerfil {
+    display: flex;
+    justify-content: initial;
+    align-items: center;
+    width: 100%;
+}
+
+.configuracionPerfil {
+    font-size: 50px;
+    color: #303030;
+    font-weight: 700;
+}
+
+.nombreApellido {
+    color: #303030;
+    font-size: 35px;
+    max-width: 100%;
+    word-wrap: break-word;
+    margin: 0 0 20px 0;
+}
+
+.inputsIzquierda {
+    position: relative;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    margin-right: 60px;
+}
+
+.inputsDerecha {
+    position: relative;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: initial;
+    margin-left: 60px;
+}
+
+/* .inputsDerecha::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -3px; 
+    height: 600px;
+    bottom: 0;
+    width: 3px;
+    background-color: #4b4b4b; 
+} */
+.label {
+    color: #303030;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.input {
+    height: 35px;
+    width: 350px;
+    font-size: 21px;
+    margin-bottom: 30px;
+    padding: 0 10px;
+    padding-left: 15px;
+    border-radius: 5px;
+    border: 2px solid #F7D3E5;
+    transition: border 0.2s;
+    background: #fff;
+    color: #303030;
+}
+
+.input:focus {
+    outline: none;
+    border-radius: 5px;
+    border: 2px solid #e377b1;
+}
+
+.inputTelefono {
+    height: 40px;
+    width: 100%;
+    padding-left: 60px;
+    font-size: 18px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    border: 2px solid #F7D3E5;
+    transition: border 0.2s;
+    background: #fff;
+    color: #303030;
+}
+
+.inputTelefono:focus {
+    outline: none;
+    border: 2px solid #e377b1;
+}
+
+.containerClass {
+    border: none;
+    width: 80px;
+    height: 35px;
+    font-size: 18px;
+}
+
+.dropdown {
+    border: none;
+    box-shadow: none;
+    height: 180px;
+}
+
+.containerButtons {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 60px;
+}
+
+.botonGuardar {
+    height: 40px;
+    width: 100%;
+    font-size: 20px;
+    background-color: #30e6c1;
+    color: #FFFFFFDC;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.botonGuardar:hover {
+    background-color: #24B397;
+}
+
+.botonGuardar:disabled:hover {
+    background-color: #24B397;
+}
+
+.botonDesaparecer {
+    display: none;
+}
+
+.botonGuardarDisabled {
+    height: 40px;
+    width: 100%;
+    font-size: 20px;
+    background-color: #24B397;
+    color: #FFFFFFDC;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    cursor: not-allowed;
+    margin-left: 5px;
+    font-weight: 500;
+}
+
+.botonGuardarDisabled:hover {
+    background-color: #24B397;
+}
+
+.botonEditar {
+    height: 40px;
+    width: 100%;
+    font-size: 20px;
+    background-color: #e377b1;
+    color: #FFFFFFDC;
+    top: 7rem;
+    left: 7rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.botonEditar:hover {
+    background-color: rgba(204, 107, 159, 1);
+}
+
+.botonCancelar {
+    height: 40px;
+    width: 100%;
+    font-size: 20px;
+    background-color: #e377b1;
+    color: #FFFFFFDC;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.botonCancelar:hover {
+    background-color: rgba(204, 107, 159, 1);
+}
+
+.inputSeleccionarArchivo {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 0;
+    height: 0;
+}
+
+.labelSubirFoto {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    height: 40px;
+    width: 100%;
+    font-size: 20px;
+    background-color: #e377b1;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.labelSubirFoto.disabled {
+    cursor: not-allowed;
+    background: rgba(204, 107, 159, 1);
+}
+
+.labelSubirFoto:hover {
+    background-color: rgba(204, 107, 159, 1);
+}
+
+.iconView {
+    position: absolute;
+    margin-top: 45px;
+    right: 10px;
+    color: #4b4b4b;
+    cursor: pointer;
+    transition: all 200ms linear;
+}
+
+.divIconDeleteImage {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    width: 35px;
+    background-color: #FBE9FA;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.divIconDeleteImage:hover {
+    background-color: #FBE9FA;
+}
+.divIconDeleteImage.disabled {
+    cursor: not-allowed;
+}
+
+.iconDeleteImage {
+    color: rgba(204, 107, 159, 1);
+}
+.iconDeleteImage:hover {
+    color: #e377b1;
+}
+
+input[disabled] {
+    background-color: #FBE9FA;
+    color: #555;
+    cursor: not-allowed;
+    border: 2px solid transparent;
+    
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(8px);
+    /* background-color: rgba(0, 0, 0, 0.5);  usen esto si les parece*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    position: relative;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    color: #4b4b4b;
+    padding: 45px;
+    border-radius: 8px;
+    border: 2px solid #30e6c1;
+    overflow: hidden;
+}
+
+.containerButtonsModal {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.confirmDialogButton {
+    position: relative;
+    height: 60px;
+    width: 100%;
+    font-size: 20px;
+    background-color: #30e6c1;
+    color: #FFFFFFDC;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.confirmDialogButton:hover {
+    background-color: #24B397;
+}
+
+.confirmDialogButtonGray {
+    position: relative;
+    height: 60px;
+    width: 100%;
+    font-size: 20px;
+    background-color: #e377b1;
+    color: #FFFFFFDC;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+    font-weight: 500;
+    font-size: 25px;
+    z-index: 99;
+}
+
+.confirmDialogButtonGray:hover {
+    background-color: rgba(204, 107, 159, 1);
+}
+
+.confirmDialogP {
+    font-size: 28px;
+    font-weight: 800;
+    margin: 20px 0px 5px 0px;
+}
+
+.confirmDialogSpan {
+    font-size: 23px;
+    margin-bottom: 15px;
+}
+
+.logoModal {
+    height: 200px;
+    width: 200px;
+}
+
+@media all and (max-width: 599px) {
+    .contenedorSecundario {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-content: center;
+    }
+    .contenedorConfigPerfil {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+.huellasTop{
+    position: absolute;
+    height: 30%;
+    width: 30%;
+    top: -3rem;
+    right: -1rem;
+}
+.huellasBottom{
+    position: absolute;
+    height: 30%;
+    width: 30%;
+    bottom: -3rem;
+    left: -1rem;
+}
+.huellasTopModal{
+    position: absolute;
+    height: 30%;
+    width: 30%;
+    top: -2rem;
+    right: -1rem;
+}
+.huellasBottomModal{
+    position: absolute;
+    height: 30%;
+    width: 30%;
+    bottom: -2rem;
+    left: -1rem;
+}
