@@ -49,11 +49,6 @@ const ReviewForm = ({infoUser, id, alcancia, isOpen, closeForm}) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const date = new Date();
-        const day = String(date.getDate()).padStart(2, '0'); 
-        const month = String(date.getMonth() + 1).padStart(2, '0'); 
-        const year = date.getFullYear(); 
-        const currentDate = `${day}/${month}/${year}`;
         try {
             await axios.post("https://tu-suenio-back.onrender.com/review/create", 
             { 
@@ -66,7 +61,7 @@ const ReviewForm = ({infoUser, id, alcancia, isOpen, closeForm}) => {
         } catch (error) {
             alert(error.message);
         };
-        console.log(comment, currentDate, ratingValue, infoUser.id, id); //acá va la función para guardar el comentario.
+        console.log(comment, currentDate, ratingValue, infoUser.id, id); 
         closeForm(false);
     };
 

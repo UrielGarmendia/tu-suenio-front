@@ -13,9 +13,9 @@
 }
 
 .comments_cont {
-    background-color: rgb(193, 232, 225);
+    background-color: rgb(228, 255, 250);
     width: 40%;
-    border-radius: 5px;
+    border-radius: 1rem;
     border: 2px solid grey;
     box-shadow: 0 0 10px rgb(22, 161, 145);
     padding: 1rem;
@@ -23,8 +23,11 @@
 
 .title {
     margin: 0;
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-decoration: underline;
+    color: palevioletred;
+    text-shadow: 1px 1px 1px black;
 }
 
 .opinion {

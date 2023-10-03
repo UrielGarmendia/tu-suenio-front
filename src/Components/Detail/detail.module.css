@@ -74,6 +74,7 @@
 .paragraph {
     text-align: left;
     text-shadow: none;
+    margin-right: 5px;
 }
 
 .last_cont {

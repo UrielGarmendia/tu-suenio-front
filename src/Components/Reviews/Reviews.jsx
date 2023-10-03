@@ -19,7 +19,9 @@ const Reviews = ({id, alcancia, infoUser}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isCommentsOpen, setIsCommentsOpen] = useState(false);
 
-    const reviews = useSelector(state => state.reviews)
+    const reviews = useSelector(state => state.reviews);
+
+    reviews.reverse();
 
     useEffect(() => {
         dispatch(getReviews(id))
@@ -27,7 +29,6 @@ const Reviews = ({id, alcancia, infoUser}) => {
 
     const stars = Array(5).fill(0);
 
-    //const reviews = Array(4).fill(0);
     const threeReviews = reviews.slice(0, 3);
 
     return (
@@ -38,7 +39,7 @@ const Reviews = ({id, alcancia, infoUser}) => {
                 <div key={review.id} className={styles.opinion}>
                     <div className={styles.name_date}>                 
                         <h4 className={styles.name}>{review?.userId}</h4> 
-                        <p className={styles.date}>{review?.date}</p>
+                        <p className={styles.date}>{review?.date.slice(0, 10)}</p>
                     </div>
                     <div className={styles.stars}>
                         {stars.map((__, index) => {
@@ -62,7 +63,7 @@ const Reviews = ({id, alcancia, infoUser}) => {
             </span> :
             <div></div>
             }
-            <AllReviews reviews={reviews} stars={stars} getUser={getUser} isCommentsOpen={isCommentsOpen} closeComments={()=>setIsCommentsOpen(false)}/>
+            <AllReviews reviews={reviews} stars={stars} isCommentsOpen={isCommentsOpen} closeComments={()=>setIsCommentsOpen(false)}/>
             <button className={styles.button} onClick={()=>setIsOpen(true)}>Deja tu comentario</button>
             <ReviewForm id={id} infoUser={infoUser} isOpen={isOpen} alcancia={alcancia} closeForm={()=>setIsOpen(false)}/>
         </div>
