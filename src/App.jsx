@@ -72,7 +72,7 @@ function App() {
         <Route path="/profile" element={<ProfileSettings />} />
         <Route path="/alcancias" element={<Alcancias />} />
         <Route path="/" element={<Home />} />
-        <Route path="/detail/:id" element={<Detail />} />
+        <Route path="/detail/:id" element={<Detail infoUser={infoUser} />} />
         <Route path="/carrito" element={<Carrito infoUser={infoUser} />} />
         <Route path="/about" element={<About />} />
         <Route path="/admin" element={<Dashboard />} />

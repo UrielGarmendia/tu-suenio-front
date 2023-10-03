@@ -18,6 +18,7 @@ import {
   GET_USERS,
   CREATE_CATEGORIA,
   DELETE_CATEGORIE,
+  GET_REVIEWS,
   USERS_BY_NAME,
   USERS
 } from "./actions-types";
@@ -255,6 +256,19 @@ export const getUsers = () => {
   };
 };
 
+export const getReviews = (id) => {
+  return async function (dispatch) {
+    try {
+      const {data} = await axios.get(`https://tu-suenio-back.onrender.com/review/product/${id}`);
+      return dispatch({
+        type: GET_REVIEWS,
+        payload: data
+      })
+    } catch (error) {
+      return error.message;
+    }
+  }
+}
 export const userByName = (name) => {
   return {type: USERS_BY_NAME, payload: name}
 }

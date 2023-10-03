@@ -19,5 +19,6 @@ export const  ACTUALIZAR_PRODUCTO="ACTUALIZAR_PRODUCTO";
 export const GET_USERS = "GET_USERS";
 export const CREATE_CATEGORIA = "CREATE_CATEGORIA";
 export const DELETE_CATEGORIE = "DELETE_CATEGORIE";
+export const GET_REVIEWS = "GET_REVIEWS";
 export const USERS_BY_NAME = "USERS_BY_NAME";
 export const USERS = "USERS";

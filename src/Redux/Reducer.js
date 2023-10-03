@@ -18,6 +18,7 @@ import {
   GET_USERS,
   CREATE_CATEGORIA,
   DELETE_CATEGORIE,
+  GET_REVIEWS,
   USERS_BY_NAME,
   USERS,
 } from "./actions-types";
@@ -34,6 +35,7 @@ const initialState = {
   allByName: [],
   CartShopping: storage,
   allUsers: [],
+  reviews: [],
   copyAllUsers: []
 };
 
@@ -183,6 +185,11 @@ const reducer = (state = initialState, action) => {
           ...state,
           allUsers: action.payload,
           copyAllUsers: action.payload
+        }
+      case GET_REVIEWS:
+        return {
+          ...state,
+          reviews: action.payload
         }
 
       case USERS_BY_NAME:
