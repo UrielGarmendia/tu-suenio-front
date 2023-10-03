@@ -3,9 +3,8 @@ import { FaStar } from "react-icons/fa";
 import ReviewForm from "../ReviewForm/ReviewForm";
 import { useEffect, useState } from "react";
 import { getReviews } from "../../Redux/actions";
-import axios from "axios";
-import styles from "./reviews.module.css";
 import AllReviews from "./AllReviews";
+import styles from "./reviews.module.css";
 
 const color = {
     yellow: "#c4b700",
@@ -36,7 +35,7 @@ const Reviews = ({id, alcancia, infoUser}) => {
             threeReviews?.map((review) => (
                 <div key={review.id} className={styles.opinion}>
                     <div className={styles.name_date}>                 
-                        <h4 className={styles.name}>{review?.userId}</h4> 
+                        <h4 className={styles.name}>{review.User.name}</h4> 
                         <p className={styles.date}>{review?.date.slice(0, 10)}</p>
                     </div>
                     <div className={styles.stars}>

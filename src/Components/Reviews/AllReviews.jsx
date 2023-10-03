@@ -21,7 +21,7 @@ const AllReviews = ({reviews, stars, isCommentsOpen, closeComments}) => {
                 {reviews?.map((review) => (
                     <div key={review.id} className={styles.opinion}>
                         <div className={styles.name_date}>                 
-                            <h4 className={styles.name}>{review.userId}</h4> 
+                            <h4 className={styles.name}>{review.User.name}</h4> 
                             <p className={styles.date}>{review?.date.slice(0, 10)}</p>
                         </div>
                         <div className={styles.stars}>
