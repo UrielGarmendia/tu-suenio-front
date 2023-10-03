@@ -18,6 +18,8 @@ import {
   GET_USERS,
   CREATE_CATEGORIA,
   DELETE_CATEGORIE,
+  GET_ORDERS,
+  GET_ORDERS_ID,
   GET_REVIEWS,
   USERS_BY_NAME,
   USERS
@@ -100,9 +102,7 @@ export const categories = () => {
 export const byName = (name) => {
   return async function (dispatch) {
     try {
-      const response = await axios.get(
-        `https://tu-suenio-back.onrender.com/products?name=${name}`
-      );
+      const response = await axios.get(`https://tu-suenio-back.onrender.com/products?name=${name}`);
       dispatch({
         type: BY_NAME,
         payload: response.data,
@@ -216,7 +216,9 @@ export const deleteProduct = (id) => {
   try {
     return async function (dispatch) {
       await axios.delete(`https://tu-suenio-back.onrender.com/products/${id}`);
-      const { data } = await axios(`https://tu-suenio-back.onrender.com/products`);
+      const { data } = await axios(
+        `https://tu-suenio-back.onrender.com/products`
+      );
       return dispatch({
         type: DELETE_PRODUCT,
         payload: data,
@@ -243,8 +245,8 @@ export const deleteCategorie = (id) => {
 };
 
 export const getUsers = () => {
-  return async function (dispatch) {
-    try {
+  return async function(dispatch) {
+   try {    
       const { data } = await axios.get("https://tu-suenio-back.onrender.com/user");
       return dispatch({
         type: GET_USERS,
@@ -268,6 +270,32 @@ export const getReviews = (id) => {
       return error.message;
     }
   }
+}
+export const getOrders = () =>{
+  return async function(dispatch) {
+    try {    
+       const { data } = await axios.get("https://tu-suenio-back.onrender.com/order");
+       return dispatch({
+         type: GET_ORDERS,
+         payload: data,
+       });
+     } catch (error) {
+       return error.message;
+     }
+   };
+}
+
+export const getOrdersById = (id) =>{
+  return async function(dispatch) {
+    try {    
+       const { data } = await axios.get(`https://tu-suenio-back.onrender.com/order/${id}`);
+       return dispatch({
+         payload: data,
+       });
+     } catch (error) {
+       return error.message;
+     }
+   };
 }
 export const userByName = (name) => {
   return {type: USERS_BY_NAME, payload: name}
