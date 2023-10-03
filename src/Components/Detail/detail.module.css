@@ -149,7 +149,7 @@
     .last_cont {
         width: 100%;
         border-top: 1px solid rgb(77, 76, 76);
-        
+        border-left: none;
     }
 
     .button_cart_cont {

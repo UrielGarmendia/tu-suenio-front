@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { FaStar } from "react-icons/fa";
 import Swal from 'sweetalert2';
-import styles from "./reviewForm.module.css";
 import axios from 'axios';
+import { useDispatch } from "react-redux";
+import styles from "./reviewForm.module.css";
+import { getReviews } from '../../Redux/actions';
 
 const color = {
     yellow: "#c4b700",
@@ -14,6 +16,8 @@ const ReviewForm = ({infoUser, id, alcancia, isOpen, closeForm}) => {
     if(!isOpen) return null;
 
     const stars = Array(5).fill(0);
+
+    const dispatch = useDispatch();
 
     const [ratingValue, setRatingValue] = useState(0); //acá almacenamos el valor de las estrellas
     const [hoverValue, setHoverValue] = useState(undefined); 
@@ -58,11 +62,11 @@ const ReviewForm = ({infoUser, id, alcancia, isOpen, closeForm}) => {
                 productId: id 
             })
             showAlert();
+            closeForm(false);
+            dispatch(getReviews(id));
         } catch (error) {
             alert(error.message);
-        };
-        console.log(comment, currentDate, ratingValue, infoUser.id, id); 
-        closeForm(false);
+        }; 
     };
 
     return (
