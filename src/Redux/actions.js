@@ -18,6 +18,7 @@ import {
   GET_USERS,
   CREATE_CATEGORIA,
   DELETE_CATEGORIE,
+  GET_REVIEWS,
 } from "./actions-types";
 import axios from "axios";
 
@@ -267,3 +268,17 @@ export const getUsers = () => {
     }
   };
 };
+
+export const getReviews = (id) => {
+  return async function (dispatch) {
+    try {
+      const {data} = await axios.get(`https://tu-suenio-back.onrender.com/review/product/${id}`);
+      return dispatch({
+        type: GET_REVIEWS,
+        payload: data
+      })
+    } catch (error) {
+      return error.message;
+    }
+  }
+}

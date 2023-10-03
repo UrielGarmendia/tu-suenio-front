@@ -18,6 +18,7 @@ import {
   GET_USERS,
   CREATE_CATEGORIA,
   DELETE_CATEGORIE,
+  GET_REVIEWS,
 } from "./actions-types";
 
 //Traerme el local store si esta vacio que devuelva un array
@@ -31,7 +32,8 @@ const initialState = {
   categories: [],
   allByName: [],
   CartShopping: storage,
-  allUsers: []
+  allUsers: [],
+  reviews: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -178,6 +180,11 @@ const reducer = (state = initialState, action) => {
         return {
           ...state,
           allUsers: action.payload
+        }
+      case GET_REVIEWS:
+        return {
+          ...state,
+          reviews: action.payload
         }
     default:
       return state;

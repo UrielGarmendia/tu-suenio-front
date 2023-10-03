@@ -1,39 +1,44 @@
-import { useNavigate } from "react-router-dom";
-//import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FaStar } from "react-icons/fa";
+import ReviewForm from "../ReviewForm/ReviewForm";
+import { useEffect, useState } from "react";
+import { getReviews } from "../../Redux/actions";
+import axios from "axios";
 import styles from "./reviews.module.css";
+import AllReviews from "./AllReviews";
 
 const color = {
     yellow: "#c4b700",
     grey: "#808080"
 }
 
-const Reviews = (props) => {
+const Reviews = ({id, alcancia, infoUser}) => {
 
-    const { id } = props;
+    const dispatch = useDispatch();
 
-    const navigate = useNavigate();
+    const [isOpen, setIsOpen] = useState(false);
+    const [isCommentsOpen, setIsCommentsOpen] = useState(false);
 
-    //const reviews = useSelector(state => state.reviews)
+    const reviews = useSelector(state => state.reviews)
+
+    useEffect(() => {
+        dispatch(getReviews(id))
+    },[]);
 
     const stars = Array(5).fill(0);
 
-    /*Las reviews están hardcodeadas para que se vean tres por el momento*/
-    const reviews = Array(4).fill(0);
+    //const reviews = Array(4).fill(0);
     const threeReviews = reviews.slice(0, 3);
-
-    const handleNavigate = () => {
-        navigate(`/reviewForm/${id}`);
-    };
 
     return (
         <div className={styles.cont}>
             <h2 className={styles.title}>Comentarios</h2>
-            {threeReviews.map((review) => (
+            {threeReviews.length > 0 ? (
+            threeReviews?.map((review) => (
                 <div key={review.id} className={styles.opinion}>
                     <div className={styles.name_date}>                 
-                        <h4 className={styles.name}>{"Joan Jaramillo"}</h4> 
-                        <p className={styles.date}>{"25/09/2023"}</p>
+                        <h4 className={styles.name}>{review?.userId}</h4> 
+                        <p className={styles.date}>{review?.date}</p>
                     </div>
                     <div className={styles.stars}>
                         {stars.map((__, index) => {
@@ -41,21 +46,25 @@ const Reviews = (props) => {
                                 <FaStar 
                                     className={styles.star} 
                                     key={index}
-                                    color={review.stars > index ? color.yellow : color.grey} 
+                                    color={review?.rating > index ? color.yellow : color.grey} 
                                 />
                             )
                         })}
                     </div>
-                    <p className={styles.text}>{"Este es el comentario que dejó el usuario Joan Jaramillo"}</p>
+                    <p className={styles.text}>{review?.comment}</p>
                 </div>
-            ))}
+            ))
+            ) : (<p>Aún no hay comentarios</p>)            
+            }
             {reviews.length > 3 ? 
-                <span className={styles.showAllComments} onClick={"acá va una función que lleve a todos los comment de la alcancia"}>
+                <span className={styles.showAllComments} onClick={()=>setIsCommentsOpen(true)}>
                 Mostrar todos los comentarios
             </span> :
             <div></div>
             }
-            <button className={styles.button} onClick={handleNavigate}>Deja tu comentario</button>
+            <AllReviews reviews={reviews} stars={stars} getUser={getUser} isCommentsOpen={isCommentsOpen} closeComments={()=>setIsCommentsOpen(false)}/>
+            <button className={styles.button} onClick={()=>setIsOpen(true)}>Deja tu comentario</button>
+            <ReviewForm id={id} infoUser={infoUser} isOpen={isOpen} alcancia={alcancia} closeForm={()=>setIsOpen(false)}/>
         </div>
     );
 };
