@@ -1,8 +1,10 @@
 import styles from "./About.module.css";
+import familia from "./familia.jpg"
 
 const About = () => {
   return (
     <div className={styles.container}>
+      <div className={styles.containerTex}>
       <section>
         <h1>Bienvenidos a tu sueño alcancías</h1>
         <p>
@@ -50,6 +52,8 @@ const About = () => {
           colombiana y generar empleo, especialmente en madres cabeza de familia.
         </p>
       </section>
+      </div>
+      <img src={familia} alt="familia" className={styles.familia} />
     </div>
   );
 };

@@ -5,9 +5,14 @@ import instagram from "../../Assents/Instagram.png";
 import tiktok from "../../Assents/Tiktok.png";
 import whatsapp from "../../Assents/WhatsApp.png";
 import { Mail, PinDrop, Phone } from "@mui/icons-material";
-import DeveloperTeam from "../DeveloperTeam/DeveloperTeam";
+import { useNavigate } from 'react-router-dom';
 
 function Footer() {
+  const navigate = useNavigate();
+
+  const goToDeveloper = () => {
+    navigate('/developer'); 
+  }
   return (
     <footer className={style.footer}>
       <section>
@@ -61,7 +66,11 @@ function Footer() {
             <Mail></Mail>Email: <span> tusueno022@gmail.com</span>
           </h4>
         </div>
-        {/* <DeveloperTeam/> */}
+        <div className={style.developerButtonContainer}>
+        <button className={style.developerButton} onClick={goToDeveloper}>
+          Grupo de Desarrolladores
+        </button>
+      </div>
       </section>
       <h2>©2023, Tu Sueño </h2>
     </footer>

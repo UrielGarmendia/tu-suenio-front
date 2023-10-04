@@ -9,7 +9,6 @@ import Contactanos from "./Components/Contactanos/Contactanos";
 import ProfileSettings from "./Components/ProfileSettings/ProfileSettings.jsx";
 import Footer from "./Components/Footer/Footer";
 import About from "./Components/About/About";
-
 import Dashboard from "./Components/Dashboard/Dashboard";
 import FilteredOrdered from "./Components/Filter/Filter";
 import Carrito from "./Components/Carrito/Carrito";
@@ -22,6 +21,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import ReviewForm from "./Components/ReviewForm/ReviewForm";
 import RegistrationForm from "./Components/RegistrationForm/RegistrationForm";
 import Ban from "./Components/BanPage/BanPage";
+import DeveloperTeam from "./Components/DeveloperTeam/DeveloperTeam";
 
 function App() {
   const navigate = useNavigate();
@@ -70,6 +70,7 @@ function App() {
       {location.pathname !== "/register" &&
         location.pathname !== "/profile" && <WhatsappBar />}
       <Routes>
+        
         <Route path="/reviewForm/:id" element={<ReviewForm />} />
         <Route path="/login" element={<Landing />} />
         <Route path="/register" element={<RegistrationForm />} />
@@ -82,6 +83,7 @@ function App() {
         <Route path="/admin" element={<Dashboard infoUser={infoUser} />} />
         <Route path="/contactanos" element={<Contactanos />} />
         <Route path="/ban" element={<Ban/>}/>
+        <Route path="/developer" element={<DeveloperTeam />} />
       </Routes>
       {location.pathname !== "/register" &&
         location.pathname !== "/profile" && location.pathname !== "/ban" && <Footer />}
