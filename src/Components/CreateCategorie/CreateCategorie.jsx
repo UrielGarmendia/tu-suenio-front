@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createCategoria, categories, deleteCategorie} from "../../Redux/actions";
+import { createCategoria, categories, deleteCategorie,allAlcancias} from "../../Redux/actions";
 import axios from "axios";
 import { validateFormC } from "./validationsCategorie";
 import styles from "./CreateCategorie.module.css"
 import Swal from "sweetalert2";
 
 const CreateCategorie = () => {
+  const alcancias = useSelector((state) => state.AllAlcancias);
   const [formData, setFormData] = useState({
     name: "",
   });
@@ -54,6 +55,11 @@ const CreateCategorie = () => {
       dispatch(createCategoria(formData));
     }
   };
+  const handleReset = () => {
+    setFormData({ name: "" });
+    setErrors({ name: "" });
+    setPutCategorie({});
+  };
 
   const handleDeleteCategory = (categoryId) => {
       dispatch(deleteCategorie(categoryId));
@@ -93,7 +99,7 @@ const CreateCategorie = () => {
       <h2>{putCategorie.hasOwnProperty("id") ? `Actualizar categoria: '${putCategorie.name}'` : "Crear nueva categoria"}</h2>
       <form onSubmit={handleSubmit}>
         <div className={styles.group}>
-          <label htmlFor="name">Categoría:</label>
+        <label htmlFor="name" className={styles.label}>Categoría:</label>
           <input
             type="text"
             id="name"
@@ -101,12 +107,20 @@ const CreateCategorie = () => {
             value={formData.name}
             onChange={handleInputChange}
             required
+            className={styles.input}
           />
           {errors?.name ? <div className={styles.errorText}>{errors.name}</div> : errors.name = ""}
         </div>
-        <button type="submit" className={styles.createButton}>{putCategorie.hasOwnProperty("id") ? "Actualizar" : "Crear categoria"}</button>
-      </form>
-    </div>
+        <button type="submit" className={styles.createButton}>
+      {putCategorie.hasOwnProperty("id") ? "Actualizar" : "Crear categoria"}
+    </button>
+  </form>
+  {putCategorie.hasOwnProperty("id") && (
+    <button  onClick={handleReset} className={styles.resetButton}>
+      Volver 
+    </button>
+  )}
+</div>
   </div>
 );
 };
