@@ -10,15 +10,18 @@ import ReporteVentas from '../ReporteVentas/ReporteVentas'
 import TableUsers from '../tableUsers/TableUsers';
 import { getUsers } from '../../Redux/actions';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
 
-const Dashboard = () => {
+const Dashboard = (infoUser) => {
 
   const [activeButton, setActiveButton] = useState('Estadisticas')
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getUsers());
-  }, []);
+    if(!infoUser.infoUser?.isAdmin) navigate("/")
+  }, [infoUser]);
 
     return (
     <div className={style.dashboard}>
