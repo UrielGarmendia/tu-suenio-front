@@ -156,6 +156,7 @@ const Carrito = ({ infoUser }) => {
               window.location.href = "/payment/success";
             }, 3000);
           }
+          
         } catch (error) {
           console.error(error, "esto es el error");
         }
