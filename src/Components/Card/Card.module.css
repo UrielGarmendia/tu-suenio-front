@@ -8,7 +8,7 @@
   color: #2B2A29;
   position: relative;
   padding: 30px 20px;
-  max-height: 525px;
+  max-height: 523px;
   box-shadow: 0 2px 4px rgba(227, 119, 177, 0.5);
   border-radius: 10px;
 }
@@ -40,6 +40,7 @@
   margin-top: -20px;
 }
 .title{
+  width: 100%;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -51,22 +52,25 @@
 .nombre {
   margin: 0;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 28px;
   color: #303030;
+  word-wrap: break-word;
+  white-space: normal;
+  max-width: 60%;
 }
 
 .price {
   margin: 0;
   font-weight: 700;
-  font-size: 40px;
+  font-size: 28px;
   padding: 10px 0px;
   line-height: 1.8;
   color: #303030;
 }
 .tags{
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   margin-top: 5px;
 }
 
@@ -86,8 +90,8 @@
 .size {
   width: 100%;
   margin: 0;
-  margin-left: 5px;
   display: inline-block;
+  margin-top: 5px;
   font-size: 15px;
   padding: 6px 7px;
   background: #30e6c1  ;
@@ -147,7 +151,7 @@
   color: white;
 }
 .containerButtonDetail{
-  margin-top: 25px;
+  margin-top: 15px;
   display: flex;
   width: 100%;
   align-items: center;
@@ -155,7 +159,7 @@
 }
 .buttonDetail{
   width: 100%;
-  padding: 13px 15px;
+  padding: 11px 13px;
   border: none;
   color: white;
   background: #e377b1;
