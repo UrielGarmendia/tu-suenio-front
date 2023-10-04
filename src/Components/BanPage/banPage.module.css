@@ -1,0 +1,19 @@
+.cont {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(lightgreen, pink);
+}
+
+.title {
+    color: rgb(202, 0, 0);
+    text-shadow: 1px 1px 5px grey;
+}
+
+.text {
+    font-size: large;
+    font-weight: 700;
+}
