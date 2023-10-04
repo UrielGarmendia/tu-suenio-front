@@ -263,6 +263,7 @@ export const getReviews = (id) => {
     try {
 
       const {data} = await axios.get(`https://tu-suenio-back.onrender.com/review/product/${id}`);
+      const reverseData = data.reverse();
 
       return dispatch({
         type: GET_REVIEWS,

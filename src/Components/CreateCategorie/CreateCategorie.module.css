@@ -55,18 +55,20 @@
   margin-bottom: 20px;
 }
 
-label {
+.label {
   display: block;
   font-size: 16px;
   margin-bottom: 5px;
 }
 
-input[type="text"] {
+.input {
+ 
   width: 100%;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
+ 
 }
 
 
@@ -82,6 +84,15 @@ input[type="text"] {
   color: #fff;
   border: none;
   padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.resetButton{
+  margin-top: 10px;
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
   font-size: 16px;
   cursor: pointer;
 }
