@@ -156,17 +156,18 @@ const Carrito = ({ infoUser }) => {
               window.location.href = "/payment/success";
             }, 3000);
           }
+          
         } catch (error) {
           console.error(error, "esto es el error");
         }
       }
     };
     return (
-      <div>
-        <form onSubmit={handleSubmit}>
+      <div className={styles.cont_form_buy}>
+        <form className={styles.form_buy} onSubmit={handleSubmit}>
           <CardElement />
           <button onClick={handleBuy} className={styles.button_compra}>
-            Buy
+            Comprar
           </button>
           {message ? <p>{message}</p> : ""}
         </form>

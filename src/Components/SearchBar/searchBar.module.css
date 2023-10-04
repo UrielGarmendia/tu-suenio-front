@@ -5,10 +5,11 @@
 }
 
 .input {
-    height: 2rem;
+    height: 2.5rem;
     border-radius: 0.3rem 0 0 0.3rem;
     border: 2px solid rgb(26, 178, 163);
     background-color: rgb(242, 255, 242);
+    width: 70%;
 }
 
 .button {
