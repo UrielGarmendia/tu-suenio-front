@@ -1,6 +1,19 @@
 .container{
-    max-width: 800px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
     margin: 0 auto;
     padding: 20px;
     font-family: Arial, sans-serif;
+   justify-content: center;
+}
+.containerTex{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+.familia{
+    padding:3rem ;
+    width: 30%;
+    height: 600px;
 }
