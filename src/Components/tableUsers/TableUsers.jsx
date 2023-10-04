@@ -4,12 +4,7 @@ import { getUsers } from "../../Redux/actions";
 import axios from "axios";
 import Swal from "sweetalert2";
 import styles from "./tableUsers.module.css";
-import Users from "../UsersSearch/Search"
-
-const color = {
-  rojo: "ff0000",
-  verde: "#008000"
-};
+import Search from "../UsersSearch/Search"
 
 const TableUsers = () => {
 
@@ -57,9 +52,12 @@ const TableUsers = () => {
           icon: "warning",
           title: !isDisable ? "Estas segura/o de banear al usuario?" : "Estas segura/o de desbanear al usuario?",
           showConfirmButton: true,
+          showCancelButton: true,
           position: "center",
-      }).then(() => {
-          ban(id, isDisable)
+      }).then((result) => {
+        if (result.isConfirmed) {
+          ban(id, isDisable);
+        }
       })
   };
 
@@ -69,15 +67,19 @@ const TableUsers = () => {
         icon: "warning",
         title: !isAdmin ? "Estas segura/o de dar permisos de administrador al usuario?" : "Estas segura/o de quitar permisos de administrador al usuario?",
         showConfirmButton: true,
+        showCancelButton: true,
         position: "center",
-    }).then(() => {
-      permissions(id, isAdmin);
+    }).then((result) => {
+      if (result.isConfirmed) {
+        permissions(id, isAdmin);
+      }
     })
   };
-
+  
+  
     return (
       <div>
-        <Users/>
+        <Search/>
         <table className={styles.table}>
           <thead className={styles.head}>
             <tr>
