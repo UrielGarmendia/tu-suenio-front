@@ -6,6 +6,7 @@ import { Close } from '@mui/icons-material';
 import { getOrders, getUsers } from '../../Redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import Swal from "sweetalert2";
 
 const ReporteVentas = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -24,7 +25,28 @@ const ReporteVentas = () => {
     dispatch(getUsers())
   }, []);
 
-  
+  const showAlert = () => {
+    Swal.fire({
+        title: '¿Estas seguro de guardar los cambios?',
+        text: "Una vez realizado no se podra revertir el proceso",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Si, guardar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            // dispatch(deleteProduct(json))
+          Swal.fire(
+            'Cambios guardados!',
+            'Los cambios fueron cambiados con exito',
+            'success'
+          )
+        }
+      })
+  };
+
   users.forEach((user) => {
     userIdToNameMap[user.id] = `${user.name} ${user.lastName}`; 
   });
@@ -42,7 +64,7 @@ const ReporteVentas = () => {
   useEffect(()=>{
     setVentasData(currentItems)
   }, [ordenes, users, currentPage])
-  
+  console.log(ordenesActualizado);
   const [ventaAEditar, setVentaAEditar] = useState(ordenesActualizado);
 
   const abrirModal = (venta) => {
@@ -102,19 +124,18 @@ const ReporteVentas = () => {
   const guardarCambiosVenta = ( ) => {
     cerrarModalModificar();
     setVentaAEditar({})
+    showAlert(ventaAEditar)
   };
   
   const goToNextPage = () => {
     if (currentPage < Math.ceil(ordenesActualizado.length / itemsPerPage)) {
       setCurrentPage(currentPage + 1);
-      filtrarVentas(); 
     }
   };
   
   const goToPrevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
-      filtrarVentas(); 
     }
   };
 
@@ -185,19 +206,19 @@ const ReporteVentas = () => {
   >
   {selectedVenta && (
     <div>
-      <button onClick={cerrarModal}><Close/></button>
+      <button onClick={()=>{cerrarModal()}}><Close/></button>
       <h2>Detalle de Venta</h2>
-      <p>Fecha de Venta: {selectedVenta.createdAt}</p>
-      <p>Número de Venta: {selectedVenta.id}</p>
-      <p>Nombre del Cliente: {selectedVenta.UserId}</p>
-      <p>Total del Precio: {selectedVenta.totalprice}</p>
+      <p> <span>Fecha de Venta:</span>{selectedVenta.createdAt}</p>
+      <p><span>Número de Venta:</span> {selectedVenta.id}</p>
+      <p><span>Nombre del Cliente:</span> {selectedVenta.nombreCliente}</p>
+      <p><span>Total del Precio: </span>{selectedVenta.totalprice}</p>
       <h3>Detalles:</h3>
       <ul>
-        {selectedVenta.detalles?.map((detalle, index) => (
+        {selectedVenta.products?.map((detalle, index) => (
           <li key={index}>
-            <span>Producto: <label>{detalle.producto}</label> </span> 
-            <span>Cantidad: <label> {detalle.cantidad}</label></span>
-            <span>Precio Unitario: <label>{detalle.precioUnitario}</label> </span>
+            <p><span>Producto:</span>  <label>{detalle.name}</label></p> 
+            <p><span>Cantidad: </span><label> {detalle.quantity}</label></p>
+            <p><span>Precio Unitario: </span><label>{detalle.price}</label> </p>
           </li>
         ))}
       </ul>
@@ -207,12 +228,12 @@ const ReporteVentas = () => {
 <Modal
   isOpen={modalModificarIsOpen}
   onRequestClose={cerrarModalModificar}
-  className={style.modal}
-  overlayClassName={style.overlay}
+  className={style.modalEditar}
+  overlayClassName={style.overlayEditar}
 >
   {ventaAEditar && (
-    <div>
-      <button onClick={cerrarModalModificar}><Close /></button>
+    <article>
+      <button className={style.botonX}onClick={cerrarModalModificar}><Close /></button>
       <h2>Editar Orden de Venta</h2>
       <div>
         <span> Fecha</span>
@@ -243,9 +264,9 @@ const ReporteVentas = () => {
           value={ventaAEditar.status} 
           onChange={(e) => handleChangeCampo(e)}
         />
-        <button onClick={guardarCambiosVenta}>Guardar Cambios</button>
+        <button className={style.botonSave} onClick={()=>{showAlert()}}>Guardar Cambios</button>
       </div>
-    </div>
+    </article>
   )}
 </Modal>
 
