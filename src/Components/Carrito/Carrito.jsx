@@ -161,11 +161,11 @@ const Carrito = ({ infoUser }) => {
             }
           );
 
-          // if (data.message === "succeeded") {
-          //   setTimeout(function () {
-          //     window.location.href = "/payment/success";
-          //   }, 3000);
-          // }
+          if (data.message === "succeeded") {
+            setTimeout(function () {
+              window.location.href = "/payment/success";
+            }, 3000);
+          }
         } catch (error) {
           console.error(error, "esto es el error");
         }
