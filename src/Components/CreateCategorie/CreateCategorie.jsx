@@ -7,7 +7,7 @@ import styles from "./CreateCategorie.module.css"
 import Swal from "sweetalert2";
 
 const CreateCategorie = () => {
-  const alcancias = useSelector((state) => state.AllAlcancias);
+
   const [formData, setFormData] = useState({
     name: "",
   });
@@ -21,6 +21,7 @@ const CreateCategorie = () => {
   }, [dispatch]);
 
   const categoriesList = useSelector((state) => state.categories);
+  const alcancias = useSelector((state) => state.AllAlcancias);
 
   const [errors, setErrors] = useState({
     name: "",
@@ -61,12 +62,17 @@ const CreateCategorie = () => {
     setPutCategorie({});
   };
 
-  const handleDeleteCategory = (categoryId) => {
-      dispatch(deleteCategorie(categoryId));
-      setPutCategorie({})
-  };
+  const existAlert = () => {
+    Swal.fire({
+        toast: false,
+        icon: "warning",
+        title: "Existen productos usando esta categoria no puedes eliminarlo",
+        showConfirmButton: true,
+        position: "center",
+    })
+};
 
-  const deleteAlert = (id) => {
+  const deleteAlert = () => {
     Swal.fire({
         toast: false,
         icon: "warning",
@@ -76,9 +82,22 @@ const CreateCategorie = () => {
         position: "center",
     }).then((result) => {
         if (result.isConfirmed) {
-          handleDeleteCategory(id)
+          Swal.fire(
+            "Categoria borrada con exito"
+          )
         }
     })
+};
+
+const handleDeleteCategory = (categoryId) => {
+  const verifyCategorie = alcancias.find(el => +el.id_categorie === categoryId);
+  if(verifyCategorie) {
+    return existAlert();
+  } else {
+    deleteAlert()
+    dispatch(deleteCategorie(categoryId));
+    setPutCategorie({});
+  }
 };
 
   return (
@@ -89,7 +108,7 @@ const CreateCategorie = () => {
         {categoriesList.map((c) => (
           <li key={c.id}>
             {c.name}
-            <button className={styles.deleteButton} onClick={() => deleteAlert(c.id)}>Eliminar</button>
+            <button className={styles.deleteButton} onClick={() => handleDeleteCategory(c.id)}>Eliminar</button>
             <button className={styles.deleteButton} onClick={() => setPutCategorie({id: c.id, name: c.name})}>Cambiar</button>
           </li>
         ))}
