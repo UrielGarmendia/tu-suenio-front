@@ -22,7 +22,7 @@ import {
   GET_ORDERS_ID,
   GET_REVIEWS,
   USERS_BY_NAME,
-  USERS
+  USERS,
 } from "./actions-types";
 import axios from "axios";
 
@@ -264,7 +264,7 @@ export const getReviews = (id) => {
       const {data} = await axios.get(`http://localhost:3001/review/product/${id}`);
       return dispatch({
         type: GET_REVIEWS,
-        payload: data
+        payload: reverseData
       })
     } catch (error) {
       return error.message;
@@ -298,9 +298,9 @@ export const getOrdersById = (id) =>{
    };
 }
 export const userByName = (name) => {
-  return {type: USERS_BY_NAME, payload: name}
-}
+  return { type: USERS_BY_NAME, payload: name };
+};
 
 export const takeAllUsersBack = () => {
-  return {type: USERS}
-}
+  return { type: USERS };
+};

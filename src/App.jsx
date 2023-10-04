@@ -7,7 +7,7 @@ import Detail from "./Components/Detail/Detail";
 import NavBar from "./Components/NavBar/NavBar";
 import Contactanos from "./Components/Contactanos/Contactanos";
 import ProfileSettings from "./Components/ProfileSettings/ProfileSettings.jsx";
-import Footer from "./Components/Footer/Footer"
+import Footer from "./Components/Footer/Footer";
 import About from "./Components/About/About";
 
 import Dashboard from "./Components/Dashboard/Dashboard";
@@ -21,6 +21,7 @@ import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import ReviewForm from "./Components/ReviewForm/ReviewForm";
 import RegistrationForm from "./Components/RegistrationForm/RegistrationForm";
+import Ban from "./Components/BanPage/BanPage";
 
 function App() {
   const navigate = useNavigate();
@@ -37,6 +38,7 @@ function App() {
 
   console.log("Este es el usuario:", user);
   console.log("esto es infoUser", infoUser);
+  console.log("esto es infoUser", infoUser);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -50,6 +52,7 @@ function App() {
             navigate("/register");
           } else {
             setInfoUser(data);
+            if(data?.isDisable) navigate("/ban");
           }
         }
         postData();
@@ -61,10 +64,11 @@ function App() {
 
   return (
     <div>
-      {location.pathname === "/register" ||
+      {location.pathname === "/register" || location.pathname === "/ban" ||
         ("/detail" && <NavBar infoUser={infoUser} />)}
       {location.pathname == "/alcancias" && <FilteredOrdered />}
-      {location.pathname !== "/register" && location.pathname !== "/profile" && <WhatsappBar />}
+      {location.pathname !== "/register" &&
+        location.pathname !== "/profile" && <WhatsappBar />}
       <Routes>
         <Route path="/reviewForm/:id" element={<ReviewForm />} />
         <Route path="/login" element={<Landing />} />
@@ -75,10 +79,12 @@ function App() {
         <Route path="/detail/:id" element={<Detail infoUser={infoUser} />} />
         <Route path="/carrito" element={<Carrito infoUser={infoUser} />} />
         <Route path="/about" element={<About />} />
-        <Route path="/admin" element={<Dashboard />} />
+        <Route path="/admin" element={<Dashboard infoUser={infoUser} />} />
         <Route path="/contactanos" element={<Contactanos />} />
+        <Route path="/ban" element={<Ban/>}/>
       </Routes>
-      {location.pathname !== "/register" && location.pathname !== "/profile"  && <Footer />}
+      {location.pathname !== "/register" &&
+        location.pathname !== "/profile" && location.pathname !== "/ban" && <Footer />}
     </div>
   );
 }
