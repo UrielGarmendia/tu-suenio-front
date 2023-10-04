@@ -21,8 +21,12 @@ const FilteredOrdered = () => {
 
   const handleOrderByAlpha = (event) => {
     const { value } = event.target;
-    setSelected(value);
-    dispatch(ordenamiento(value));
+    if(value !== "") {
+      dispatch(ordenamiento(value));
+      setSelected(value);
+    } else {
+      setSelected(value);
+    }
   };
   
   const handleCombinedFilter = async (selectedCategory, selectedSize) => {

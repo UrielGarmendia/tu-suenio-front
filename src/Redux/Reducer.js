@@ -117,8 +117,6 @@ const reducer = (state = initialState, action) => {
           ...state,
           AllAlcancias: toOrder.sort((a, b) => a.price - b.price)
         }
-      } else {
-        return {...state, AllAlcancias: state.copyAllAlcancias}
       }
     case FILTERED_BY:
       return {

@@ -94,28 +94,49 @@ const TableUsers = () => {
   };
   
   
-    return (
-      <div>
-        <Search/>
-        <table className={styles.table}>
-          <thead className={styles.head}>
-            <tr>
-              <th>Usuario</th>
-              <th>Email</th>
-              <th>Dni</th>
-              <th>Direccion</th>
-              <th>Telefono</th>
-              <th>Estado</th>
-              <th>EsAdmin</th>
-              <th>Cambiar estado</th>
-              <th>Permisos</th>
-
+  return (
+    <div>
+      <Search/>
+      <table className={styles.table}>
+        <thead className={styles.head}>
+          <tr>
+            <th>Usuario</th>
+            <th>Email</th>
+            <th>Dni</th>
+            <th>Direccion</th>
+            <th>Telefono</th>
+            <th>Estado</th>
+            <th>EsAdmin</th>
+            <th>Cambiar estado</th>
+            <th>Permisos</th>
+          </tr>
+        </thead>
+        <tbody className={styles.body}>
+          {allUsers?.map((user) => (
+            <tr key={user.id}>
+              <td>{`${user.name} ${user.lastName}`}</td>
+              <td>{user.email}</td>
+              <td>{user.dni}</td>
+              <td>{user.address}</td>
+              <td>{user.phone}</td>
+              <td className={styles.center}>{user.isDisable ? "Inactivo" : "Activo"}</td>
+              <td className={styles.center}>{user.isAdmin ? "Si" : "No"}</td>
+              <td className={styles.button_cont}>
+                <button  className={styles.button_disable} onClick={() => banAlert(user.id, user.isDisable)}>
+                    {user.isDisable ? "Desbanear" : "Banear"}
+                </button>
+              </td>
+              <td className={styles.button_cont}>
+                <button className={styles.button_admin} onClick={() => adminAlert(user.id, user.isAdmin)}>
+                    {user.isAdmin ? "Quitar permisos" : "Dar permisos"}
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
-      </table>
+    </table>
     </div>
-  );
-};
+  )
+}
 
 export default TableUsers;
