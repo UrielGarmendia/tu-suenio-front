@@ -12,8 +12,8 @@ const Alcancias = () => {
   const [pageIndex, setPageIndex] = useState(1);
   let finalIndex = pageIndex * 12;
   let initialIndex = finalIndex - 12;
-  let currentPage =alcancias.slice(initialIndex, finalIndex)
-  .filter((card) => card.isAvailable === true);
+  let currentPage = alcancias.slice(initialIndex, finalIndex)
+    .filter((card) => card.isAvailable === true);
   let numberOfPages = Math.ceil(alcancias.length / 12);
 
   useEffect(() => {
@@ -32,6 +32,13 @@ const Alcancias = () => {
 
   return (
     <div className={styles.principalContainer}>
+      <Paginado
+        pageIndex={pageIndex}
+        changePage={changePage}
+        numberOfPages={numberOfPages}
+        next={nextPage}
+        prev={prevPage}
+      />
       <div className={styles.containerCards}>
         {currentPage.length ? (
           currentPage?.map(

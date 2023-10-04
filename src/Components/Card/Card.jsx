@@ -1,5 +1,5 @@
 import React from "react";
-import "./Card.css";
+import styles from "./Card.module.css";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useNavigate } from "react-router-dom";
 // import { detail } from "../../redux/actions";
@@ -18,7 +18,7 @@ const Card = ({
   Categories,
   id_categorie,
 }) => {
-  
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const state = useSelector((state) => state.CartShopping);
@@ -54,34 +54,38 @@ const Card = ({
   const handleClick = (id) => {
     dispatch(CartShopping(id));
     const found = state.find(el => el.id === id)
-    if(!found) showAlert();
+    if (!found) showAlert();
     else showAlert2()
   };
 
   return (
-    <div key={id} className="card-container">
-      <AddShoppingCartIcon
-        className="iconAddShoppingCart"
-        onClick={() => handleClick(id)}
+    <div key={id} className={styles.cardContainer}>
+      <img
+        src={image}
+        alt={title}
+        className={styles.img}
       />
-      {
-        <img
-          src={image}
-          alt={title}
-          className="card-image"
-          onClick={handleNavigate}
-        />
-      }
-
-      <div className="card-title" onClick={handleNavigate}>
-        <h3>{title}</h3>
-        <h2>{name}</h2>
-        <h3>Precio: {price}</h3>
-        <h3>size : {size}</h3>
-        <h3>
-          Categoria: {Categories?.map((c)=>(c.name))}
-        </h3>
-        <h3>Stock disponible:{stock}</h3>
+      <div className={styles.containerBottom} >
+        <div className={styles.title}>
+        <h2 className={styles.nombre}>{name}</h2>
+        <h3 className={styles.price}> ${price}</h3>
+        <button className={styles.button} onClick={() => handleClick(id)}>
+          <AddShoppingCartIcon className={styles.icon} sx={{ fontSize: 25 }} />
+        </button>
+        </div>
+        <div className={styles.tags}>
+          <h3 className={styles.categories}>
+            {Categories?.map((c) => (c.name))}
+          </h3>
+          <h3 className={styles.size}>{size}</h3>
+        </div>
+        <h3 className={styles.stock}>Stock disponible:
+        <p className={stock > 0 && +stock? styles.numStock : styles.stockSoldOut}>{stock}</p></h3>
+        <div className={styles.containerButtonDetail}>
+          <button className={styles.buttonDetail} onClick={handleNavigate}>
+            Detalle
+          </button>
+        </div>
       </div>
     </div>
   );
