@@ -129,7 +129,7 @@ const Carrito = ({ infoUser }) => {
 
         try {
           const { data } = await axios.post(
-            "https://tu-suenio-back.onrender.com/newPayment",
+            "https://tu-suenio-back.onrender.com/payment/newPayment",
             {
               amount,
               id,
@@ -141,7 +141,7 @@ const Carrito = ({ infoUser }) => {
           setMessage(data.message);
           elements.getElement(CardElement).clear();
 
-          const response = axios.post(
+          const response = await axios.post(
             "https://tu-suenio-back.onrender.com/order",
             {
               status: data.message,
@@ -150,13 +150,22 @@ const Carrito = ({ infoUser }) => {
               products: productos,
             }
           );
+          console.log("info en la response: ", response);
+
+          const dataOrder = response.data;
+          console.log("info en el dataOrder", dataOrder);
+          const notification = await axios.post(
+            "https://tu-suenio-back.onrender.com/payment/order-notification",
+            {
+              dataOrder,
+            }
+          );
 
           if (data.message === "succeeded") {
             setTimeout(function () {
               window.location.href = "/payment/success";
             }, 3000);
           }
-          
         } catch (error) {
           console.error(error, "esto es el error");
         }
@@ -207,13 +216,15 @@ const Carrito = ({ infoUser }) => {
                 <div className={styles.quantity}>
                   <button
                     className={styles.button_quantity}
-                    onClick={() => handleRest(indexEl)}>
+                    onClick={() => handleRest(indexEl)}
+                  >
                     -
                   </button>
                   <h4>{el.quantity}</h4>
                   <button
                     className={styles.button_quantity}
-                    onClick={() => handleSum(el.stock, indexEl)}>
+                    onClick={() => handleSum(el.stock, indexEl)}
+                  >
                     +
                   </button>
                 </div>
