@@ -1,11 +1,11 @@
 .principalContainer {
-    padding: 0rem 9%;
+    padding: 0rem 11%;
 }
 .containerCards {
     display: grid;
     margin-top: 2rem;
     grid-auto-rows: auto;
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     row-gap: 25px;
     column-gap: 53px;
 }
