@@ -45,18 +45,7 @@ const ProductosAdminActu = ({ onCancel }) => {
     const { name, value } = e.target;
     setEditedData({ ...editedData, [name]: value, Categories: [{ name: "personajes animados" }] });
   };
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    console.log("Archivo seleccionado:", file);
-  
-   
-    setEditedData({ ...editedData, image: file });
-  
-   
-    setPreviewImage(URL.createObjectURL(file));
-  };
-
-
+ 
   const handleSave = async () => {
     try {
       await dispatch(actualizarProduct(editedData.id, editedData));
@@ -108,7 +97,7 @@ const ProductosAdminActu = ({ onCancel }) => {
         id_categorie: "",
         Categories: [],
       });
-      setPreviewImage("");
+      
     }
   }, [updateSuccess]);
 
