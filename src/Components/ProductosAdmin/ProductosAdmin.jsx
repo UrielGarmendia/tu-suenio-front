@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { allAlcancias, deleteProduct } from "../../Redux/actions";
+import { allAlcancias, deleteProduct, actualizarProduct } from "../../Redux/actions";
 import {Delete, Update} from "@mui/icons-material";
 import styles from "./ProductosAdmin.module.css";
 import Paginado from "../Paginado/Paginado";
@@ -41,6 +41,9 @@ const ProductosAdmin = () => {
       })
   };
 
+    const actualizar = (id)=>{
+      dispatch(actualizarProduct(id, {isAvailable: true}))
+    }
 
   let finalIndex = pageIndex * 10;
   let initialIndex = finalIndex - 10;
@@ -75,7 +78,7 @@ const ProductosAdmin = () => {
                     <h3>Precio: {price}</h3>
                     <h3>Stock: {stock}</h3>
                     </article>
-                    {isAvailable? <button onClick={()=>{showAlert(id)}} disabled={!isAvailable}><Delete/></button>: <button><Update/></button>}
+                    {isAvailable? <button onClick={()=>{showAlert(id)}} disabled={!isAvailable}><Delete/></button>: <button onClick={()=>actualizar(id)}><Update/></button>}
                 </section>
               );
             }
