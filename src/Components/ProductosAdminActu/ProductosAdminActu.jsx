@@ -7,7 +7,6 @@ const ProductosAdminActu = ({ onCancel }) => {
   const dispatch = useDispatch();
   const alcancias = useSelector((state) => state.AllAlcancias);
   const categorias = useSelector((state) => state.categories);
-  const [previewImage, setPreviewImage] = useState("");
   const [products, setProducts] = useState([]);
   const [editedData, setEditedData] = useState({
     name: "",
@@ -16,14 +15,25 @@ const ProductosAdminActu = ({ onCancel }) => {
     description: "",
     size: "",
     id_categorie: "",
-    image:"",
     Categories: [],
   });
+  const [updateSuccess, setUpdateSuccess] = useState(false);
   const showAlert = () => {
     Swal.fire({
       toast: false,
       icon: "success",
       title: "Alcancia agregada para editar",
+      timer: 1200,
+      timerProgressBar: true,
+      showConfirmButton: false,
+      position: "center",
+    });
+  };
+  const showAlert2 = () => {
+    Swal.fire({
+      toast: false,
+      icon: "success",
+      title: "Producto actualizado con éxito",
       timer: 1200,
       timerProgressBar: true,
       showConfirmButton: false,
@@ -45,23 +55,26 @@ const ProductosAdminActu = ({ onCancel }) => {
    
     setPreviewImage(URL.createObjectURL(file));
   };
-  const handleRemoveImage = () => {
-    const fileInput = document.getElementById("image");
-    fileInput.value = "";
-    setPreviewImage("");
-  };
+
 
   const handleSave = async () => {
     try {
       await dispatch(actualizarProduct(editedData.id, editedData));
-    
+      setUpdateSuccess(true);
+      showAlert2("Producto actualizado con éxito");
+
+      setTimeout(() => {
+        setUpdateSuccess(false);
+      }, 2000);
     } catch (error) {
       console.error("Error al actualizar el producto:", error);
+      showAlert("Error al actualizar el producto");
     }
   };
   console.log(editedData)
   const handleEditProduct = (product) => {
     showAlert();
+    setUpdateSuccess(false);
     setEditedData({
       id: product.id,
       name: product.name,
@@ -70,7 +83,6 @@ const ProductosAdminActu = ({ onCancel }) => {
       description: product.description,
       size: product.size,
       Categories: product.Categories,
-      image: product.image,
       id_categorie: product.id_categorie, 
     });
   };
@@ -83,6 +95,22 @@ const ProductosAdminActu = ({ onCancel }) => {
   useEffect(() => {
     setProducts(alcancias);
   }, [alcancias]);
+
+
+  useEffect(() => {
+    if (updateSuccess) {
+      setEditedData({
+        name: "",
+        price: "",
+        stock: "",
+        description: "",
+        size: "",
+        id_categorie: "",
+        Categories: [],
+      });
+      setPreviewImage("");
+    }
+  }, [updateSuccess]);
 
   console.log(editedData)
 
@@ -97,8 +125,8 @@ const ProductosAdminActu = ({ onCancel }) => {
             <th>Stock</th>
             <th>Descripción</th>
             <th>Tamaño</th>
-            <th>imagen</th>
             <th>Categoría</th>
+            <th>Estado</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -110,8 +138,8 @@ const ProductosAdminActu = ({ onCancel }) => {
               <td>{product.stock}</td>
               <td>{product.description}</td>
               <td>{product.size}</td>
-              <td className={styles.image}>{product.image}</td>
               <td> {product.Categories?.map((c) => (c.name))}</td>
+              <td>{product.isAvailable ? "Activo" : "Inactivo"}</td>
               <td>
                 <button
                   className={styles.editButton}
@@ -162,22 +190,6 @@ const ProductosAdminActu = ({ onCancel }) => {
           />
         </div>
         <div>
-          <label htmlFor="Categories">Categorias:</label>
-          <select
-            id="Categories"
-            name="id_categorie"
-            value={editedData.id_categorie}
-            onChange={handleInputChange}
-            required>
-            <option value="">Seleccionar categoria</option>
-            {categorias.map((c) => (
-              <option key={c.id} value={c.id}>
-                {c.name}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
           <label htmlFor="size">Tamaño:</label>
           <select
             name="size"
@@ -190,35 +202,7 @@ const ProductosAdminActu = ({ onCancel }) => {
             <option value="grande">Grande</option>
           </select>
         </div>
-        <div className={styles.group}>
-          <label htmlFor="image">Imagen:</label>
-          <input
-            className={styles.selectimg}
-            type="file"
-            id="image"
-            name="image"
-            onChange={handleImageChange}
-            accept="image/*"
-            required
-          />
-          <label className={styles.inputGropLabel} htmlFor="image">
-            <span className={styles.uploadButton}>Seleccionar archivo</span>
-          </label>
-          {previewImage && (
-            <img
-              className={styles.image}
-              id="preview"
-              src={previewImage}
-              alt="Preview"
-            />
-          )}
-          <button
-            className={styles.buttonDelete}
-            type="button"
-            onClick={handleRemoveImage}>
-            Eliminar imagen
-          </button>
-        </div>
+      
         <button className={styles.saveButton} onClick={handleSave}>
           Guardar
         </button>
