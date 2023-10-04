@@ -21,6 +21,7 @@ import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import ReviewForm from "./Components/ReviewForm/ReviewForm";
 import RegistrationForm from "./Components/RegistrationForm/RegistrationForm";
+import Ban from "./Components/BanPage/BanPage";
 
 function App() {
   const navigate = useNavigate();
@@ -51,6 +52,7 @@ function App() {
             navigate("/register");
           } else {
             setInfoUser(data);
+            if(data?.isDisable) navigate("/ban");
           }
         }
         postData();
@@ -62,7 +64,7 @@ function App() {
 
   return (
     <div>
-      {location.pathname === "/register" ||
+      {location.pathname === "/register" || location.pathname === "/ban" ||
         ("/detail" && <NavBar infoUser={infoUser} />)}
       {location.pathname == "/alcancias" && <FilteredOrdered />}
       {location.pathname !== "/register" &&
@@ -77,11 +79,12 @@ function App() {
         <Route path="/detail/:id" element={<Detail infoUser={infoUser} />} />
         <Route path="/carrito" element={<Carrito infoUser={infoUser} />} />
         <Route path="/about" element={<About />} />
-        <Route path="/admin" element={<Dashboard />} />
+        <Route path="/admin" element={<Dashboard infoUser={infoUser} />} />
         <Route path="/contactanos" element={<Contactanos />} />
+        <Route path="/ban" element={<Ban/>}/>
       </Routes>
       {location.pathname !== "/register" &&
-        location.pathname !== "/profile" && <Footer />}
+        location.pathname !== "/profile" && location.pathname !== "/ban" && <Footer />}
     </div>
   );
 }
