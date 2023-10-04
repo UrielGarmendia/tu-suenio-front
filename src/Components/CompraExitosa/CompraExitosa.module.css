@@ -1,0 +1,22 @@
+.CompraExitosa {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .CompraExitosa h2 {
+    color: #00a000;
+  }
+  
+  .CompraExitosa ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .CompraExitosa li {
+    margin-bottom: 5px;
+  }
+  

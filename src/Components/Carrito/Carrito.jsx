@@ -6,13 +6,15 @@ import { useAuth0 } from "@auth0/auth0-react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import axios from "axios";
+import { loadStripe } from "@stripe/stripe-js";
+import { CardElement, Elements } from "@stripe/react-stripe-js";
+import { useStripe, useElements } from "@stripe/react-stripe-js";
 
-const Carrito = () => {
-  const [preferenceId, setPreferenceId] = useState(null);
-  initMercadoPago("TEST-52732dc9-ed5e-488b-a91d-fce91646cd4b");
-
+const Carrito = ({ infoUser }) => {
+  const stripePromise = loadStripe(
+    "pk_test_51NvrrEHVuLRaKy6b8nJ9tZSwmJNSUStDdReBhZ4s9hQQLrydSWTunxN35HCNNQtEq056cUmGgX09hNy9HfsTK21y00NPQA7dFA"
+  );
   const dispatch = useDispatch();
   const { isAuthenticated, loginWithRedirect } = useAuth0();
 
@@ -21,15 +23,6 @@ const Carrito = () => {
 
   const state = useSelector((state) => state.CartShopping);
 
-  const newState = () => {
-    state.map((e) => {
-      e.unit_price = e?.price;
-    });
-  };
-  newState();
-
-  console.log("este es el carrito", state);
-
   let [index, setIndex] = useState(
     state?.map((item) =>
       !Object.prototype.hasOwnProperty.call(item, "quantity")
@@ -37,8 +30,6 @@ const Carrito = () => {
         : item
     )
   );
-
-  console.log(index, "index");
 
   const handleSum = (stock, indexEl) => {
     if (index[indexEl].quantity < stock) {
@@ -96,34 +87,94 @@ const Carrito = () => {
 
   const handleBuy = async () => {
     if (isAuthenticated) {
-      const id = await createPreference();
-      if (id) {
-        setPreferenceId(id);
-      }
       return;
     } else {
       showAlert();
     }
   };
 
-  const createPreference = async () => {
-    try {
-      const response = await axios.post(
-        "https://tu-suenio-back.onrender.com/payment/create_preference",
-        index,
-        {
-          headers: {
-            "Content-type": "application/json",
-            Authorization: `Bearer TEST-5109479525961540-092820-5100bda1ace05b50ee93777e6609fd1f-1262361729`,
-          },
+  const CheckoutForm = ({ infoUser }) => {
+    const stripe = useStripe();
+    const elements = useElements();
+    const [message, setMessage] = useState("");
+    console.log(infoUser?.id, "INFOUSER MAN");
+
+    console.log(index, "INDEX");
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+
+      const { error, paymentMethod } = await stripe.createPaymentMethod({
+        type: "card",
+        card: elements.getElement(CardElement),
+      });
+
+      if (!error) {
+        const { id } = paymentMethod;
+        const valor = index.map((e) => {
+          return e.price * e.quantity;
+        });
+        console.log(valor, "esto es valor");
+
+        const amount = valor.reduce(
+          (a, b) => a + (typeof b === "number" ? b : 0),
+          0
+        );
+        console.log(amount, "esto es");
+
+        const productos = index.map((e) => {
+          const { id, quantity, price, name } = e;
+          return { id, quantity, price, name };
+        });
+
+        try {
+          const { data } = await axios.post(
+            "https://tu-suenio-back.onrender.com/newPayment",
+            {
+              amount,
+              id,
+            }
+          );
+          console.log(index.id, "ID DE LOS PRODUCTOS");
+
+          console.log(data, "ESTO ES DATA MAN");
+          setMessage(data.message);
+          elements.getElement(CardElement).clear();
+
+          const response = axios.post(
+            "https://tu-suenio-back.onrender.com/order",
+            {
+              status: data.message,
+              totalprice: amount,
+              UserId: infoUser?.id,
+              products: productos,
+            }
+          );
+
+          if (data.message === "succeeded") {
+            setTimeout(function () {
+              window.location.href = "/payment/success";
+            }, 3000);
+          }
+          
+        } catch (error) {
+          console.error(error, "esto es el error");
         }
-      );
-      const { id } = response.data;
-      return id;
-    } catch (error) {
-      console.error(error);
-    }
+      }
+    };
+    return (
+      <div className={styles.cont_form_buy}>
+        <form className={styles.form_buy} onSubmit={handleSubmit}>
+          <CardElement />
+          <button onClick={handleBuy} className={styles.button_compra}>
+            Comprar
+          </button>
+          {message ? <p>{message}</p> : ""}
+        </form>
+      </div>
+    );
   };
+
   return (
     <div className={styles.cont}>
       <div className={styles.cont_items}>
@@ -188,10 +239,10 @@ const Carrito = () => {
           Total productos {"("} {handlerReduce(index)} {")"}
         </h4>
         <h3>Total compra $ {totalSum}</h3>
-        <button className={styles.button_compra} onClick={handleBuy}>
-          Comprar
-        </button>
-        {preferenceId && <Wallet initialization={{ preferenceId }} />}
+
+        <Elements stripe={stripePromise}>
+          <CheckoutForm infoUser={infoUser} />
+        </Elements>
       </div>
     </div>
   );

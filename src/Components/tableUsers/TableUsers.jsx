@@ -1,31 +1,29 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../Redux/actions";
 import axios from "axios";
 import Swal from "sweetalert2";
 import styles from "./tableUsers.module.css";
-
-const color = {
-  rojo: "ff0000",
-  verde: "#008000"
-};
+import Search from "../UsersSearch/Search"
 
 const TableUsers = () => {
 
     const dispatch = useDispatch();
     const users = useSelector(state => state.allUsers);
 
-    useEffect(() => {
-      dispatch(getUsers());
-    }, []);
+    const allUsers = users.sort((a, b) => {
+      if(a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+      if(a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+      return 0;
+    });
 
     const ban = async (id, isDisable) => {
       try {
         if(!isDisable) {
-          await axios.delete(`http://localhost:3001/user/${id}/delete`);
+          await axios.delete(`https://tu-suenio-back.onrender.com/user/${id}/delete`);
           dispatch(getUsers());
         } else {
-          await axios.put(`http://localhost:3001/user/${id}/restore`);
+          await axios.put(`https://tu-suenio-back.onrender.com/user/${id}/restore`);
           dispatch(getUsers());
         }
       } catch (error) {
@@ -36,11 +34,11 @@ const TableUsers = () => {
     const permissions = async (id, isAdmin) => {
       try {
         if(isAdmin) {
-          await axios.put(`http://localhost:3001/user/${id}/modify`, {isAdmin: false});
+          await axios.put(`https://tu-suenio-back.onrender.com/user/${id}/modify`, {isAdmin: false});
           dispatch(getUsers());
         }
         else {
-          await axios.put(`http://localhost:3001/user/${id}/modify`, {isAdmin: true});
+          await axios.put(`https://tu-suenio-back.onrender.com/user/${id}/modify`, {isAdmin: true});
           dispatch(getUsers());
         }
       } catch (error) {
@@ -54,9 +52,12 @@ const TableUsers = () => {
           icon: "warning",
           title: !isDisable ? "Estas segura/o de banear al usuario?" : "Estas segura/o de desbanear al usuario?",
           showConfirmButton: true,
+          showCancelButton: true,
           position: "center",
-      }).then(() => {
-          ban(id, isDisable)
+      }).then((result) => {
+        if (result.isConfirmed) {
+          ban(id, isDisable);
+        }
       })
   };
 
@@ -66,13 +67,19 @@ const TableUsers = () => {
         icon: "warning",
         title: !isAdmin ? "Estas segura/o de dar permisos de administrador al usuario?" : "Estas segura/o de quitar permisos de administrador al usuario?",
         showConfirmButton: true,
+        showCancelButton: true,
         position: "center",
-    }).then(() => {
-      permissions(id, isAdmin);
+    }).then((result) => {
+      if (result.isConfirmed) {
+        permissions(id, isAdmin);
+      }
     })
-};
-
+  };
+  
+  
     return (
+      <div>
+        <Search/>
         <table className={styles.table}>
           <thead className={styles.head}>
             <tr>
@@ -88,9 +95,9 @@ const TableUsers = () => {
             </tr>
           </thead>
           <tbody className={styles.body}>
-            {users?.map((user) => (
+            {allUsers?.map((user) => (
               <tr key={user.id}>
-                <td>{user.name}</td>
+                <td>{`${user.name} ${user.lastName}`}</td>
                 <td>{user.email}</td>
                 <td>{user.dni}</td>
                 <td>{user.address}</td>
@@ -111,6 +118,7 @@ const TableUsers = () => {
             ))}
           </tbody>
       </table>
+      </div>
     )
 }
 
