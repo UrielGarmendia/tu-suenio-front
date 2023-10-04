@@ -32,6 +32,13 @@ const Alcancias = () => {
 
   return (
     <div className={styles.principalContainer}>
+      <Paginado
+        pageIndex={pageIndex}
+        changePage={changePage}
+        numberOfPages={numberOfPages}
+        next={nextPage}
+        prev={prevPage}
+      />
       <div className={styles.containerCards}>
         {currentPage.length ? (
           currentPage?.map(
