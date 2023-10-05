@@ -128,8 +128,7 @@ const Create = () => {
         onSubmit={handleSubmit}
         action="https://tu-suenio-back.onrender.com/products/create"
         method="POST"
-        encType="multipart/form-data"
-      >
+        encType="multipart/form-data">
         <div className={styles.group}>
           <label htmlFor="name">Nombre:</label>
           <input
@@ -173,8 +172,7 @@ const Create = () => {
             name="description"
             value={formData.description}
             onChange={handleInputChange}
-            required
-          ></textarea>
+            required></textarea>
         </div>
         <div className={styles.group}>
           <label htmlFor=" id_categorie">categoria:</label>
@@ -183,8 +181,7 @@ const Create = () => {
             name="id_categorie"
             value={formData.id_categorie}
             onChange={handleInputChange}
-            required
-          >
+            required>
             <option value="">Seleccionar categoria</option>
             {categorie.map((c) => (
               <option key={c.id} value={c.id}>
@@ -201,8 +198,7 @@ const Create = () => {
             name="size"
             value={formData.size}
             onChange={handleInputChange}
-            required
-          >
+            required>
             <option value="">Seleccionar tamaño</option>
             <option value="chiquitina">Chiquitina</option>
             <option value="pequeña">Pequeña</option>
@@ -235,8 +231,7 @@ const Create = () => {
           <button
             className={styles.buttonDelete}
             type="button"
-            onClick={handleRemoveImage}
-          >
+            onClick={handleRemoveImage}>
             Eliminar imagen
           </button>
         </div>

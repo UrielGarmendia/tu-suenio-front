@@ -14,7 +14,7 @@ import { useNavigate } from 'react-router';
 
 const Dashboard = (infoUser) => {
 
-  const [activeButton, setActiveButton] = useState('Estadisticas')
+  const [activeButton, setActiveButton] = useState('UserReg')
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

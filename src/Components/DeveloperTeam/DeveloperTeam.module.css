@@ -1,29 +1,153 @@
-.Developer div{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.8rem;
-}
-
-.Developer span{
-    font-size: large;
+.Developer {
     display: flex;
-    justify-content: left;
-}
-
-.Developer span:hover{
-    transform: scale(1.30);
-    color: white;
-    background: #201f1f;
-    border-radius: 2rem;
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
-}
-.Developer span a{
-    color: #650671;
-}
-.Developer span a:hover{
-    color: #F7DE61;
-}
-.Developer span a:visited{
-    color: none;
-}
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .Row {
+    display: flex;
+    flex-wrap: wrap; /* Añadido para que las tarjetas se envuelvan en una nueva fila si no caben */
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .Developer h3 {
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .Developer .DeveloperCard {
+    flex: 1;
+    text-align: center;
+    margin: 10px; /* Reduje el margen para que quepan más tarjetas por fila */
+    width: calc(25% - 20px); /* Ajuste para mostrar 4 tarjetas por fila y espacio entre ellas */
+    max-width: 300px; /* Ancho máximo de las tarjetas */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .Name {
+    font-size: 24px;
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  .Developer img {
+    width: 100%;
+    max-height: 300px;
+    transition: transform 0.3s ease;
+  }
+  
+  .Developer img:hover {
+    transform: scale(1.1);
+  }
+  
+  .Icons {
+    margin-top: 10px;
+  }
+  
+  .Icons a {
+    text-decoration: none;
+    color: #333;
+    margin: 0 10px;
+    font-size: 24px;
+  }
+  
+  .Icons a:hover {
+    color: #0077b5;
+  }
+  
+  .Developer svg {
+    vertical-align: middle;
+  }.Developer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .Row {
+    display: flex;
+    flex-wrap: wrap; /* Añadido para que las tarjetas se envuelvan en una nueva fila si no caben */
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .Developer h3 {
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .Developer .DeveloperCard {
+    flex: 1;
+    text-align: center;
+    margin: 10px; /* Reduje el margen para que quepan más tarjetas por fila */
+    width: calc(25% - 20px); /* Ajuste para mostrar 4 tarjetas por fila y espacio entre ellas */
+    max-width: 300px; /* Ancho máximo de las tarjetas */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .Name {
+    font-size: 24px;
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  .Developer img {
+    width: 100%;
+    max-height: 300px;
+    transition: transform 0.3s ease;
+  }
+  
+  .Developer img:hover {
+    transform: scale(1.1);
+  }
+  
+  .Icons {
+    margin-top: 10px;
+  }
+  
+  .Icons a {
+    text-decoration: none;
+    color: #333;
+    margin: 0 10px;
+    font-size: 24px;
+  }
+  
+  .Icons a:hover {
+    color: #0077b5;
+  }
+  
+  .Developer svg {
+    vertical-align: middle;
+  }
+  .GoBackButton {
+    background-color: #5184a0; 
+    color: #fff; 
+    border: none;
+    padding: 10px 20px; 
+    font-size: 16px; 
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+  }
+  
+  .GoBackButton:hover {
+    background-color: #00568d; 
+  }
