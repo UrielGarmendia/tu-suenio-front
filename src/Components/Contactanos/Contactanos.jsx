@@ -81,7 +81,7 @@ function Contactanos() {
     <div className={style.contactanos}>
         <img src={logo} alt="" />
       <h1>Contáctanos</h1>
-      <form action="https://formsubmit.co/sirius.kaiyu@free2ducks.com" method="POST">
+      <form action="https://formsubmit.co/tusueno022@gmail.com" method="POST">
         <div className={style.formGroup}>
           <label htmlFor="nombre">Nombre:</label>
           <input

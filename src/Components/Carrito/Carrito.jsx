@@ -164,6 +164,7 @@ const Carrito = ({ infoUser }) => {
               );
             });
             setTimeout(function () {
+              localStorage.removeItem("cart");
               window.location.href = "/alcancias";
             }, 3000);
           }
