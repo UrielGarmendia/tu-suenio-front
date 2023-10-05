@@ -1,7 +1,8 @@
-.principalContainer{
+.principalContainer {
   display: flex;
   position: relative;
 }
+
 .img {
   width: 3.5rem;
   height: 3.5rem !important;
@@ -18,13 +19,14 @@
   top: 4rem;
   right: 0;
   min-width: 250px;
-  max-width: 350px ; 
+  max-width: 350px;
   z-index: 100;
   border-radius: 5px;
   max-height: 0px;
   overflow: hidden;
   transition: max-height 0.5s;
 }
+
 .containerMenu.open {
   max-height: 900px;
 }
@@ -56,6 +58,17 @@
   border-radius: 50%;
   transform: none !important;
   margin: 10px 0px !important;
+}
+
+.containerLogo {
+  position: relative;
+}
+
+.imgLogo {
+  position: absolute;
+  transform: rotate(-45deg);
+  top: -10px;
+  left: 9px;
 }
 
 .nameMenu {
