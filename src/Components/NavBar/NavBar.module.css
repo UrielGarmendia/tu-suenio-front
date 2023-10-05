@@ -1,15 +1,12 @@
 .navBar {
     background-image: linear-gradient(to right, #46B7A5, #FFC5C4, #E5CDF7);
     display: flex;
-    padding: 0.5em ;
-    justify-content:space-around;
+    padding: 0.5em;
+    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
     flex-direction: row;
-    /*position: sticky;
-    top: 0;
-    z-index: 3;*/
-}   
+}
 
 .cart_cont {
     position: relative;
@@ -22,35 +19,39 @@
     height: 1.5rem;
     border-radius: 50%;
     top: 0;
-    left: 1rem; 
+    left: 1rem;
     font-weight: bold;
     color: white;
 }
 
-.navBar .search{
+.navBar .search {
+    flex: 1; 
+    display: flex;
     justify-content: center;
 }
 
-.navBar .search input{
+.navBar .search input {
     background: #202020;
-    color:  #0085CA;
+    color: #0085CA;
     font-size: medium;
     border-radius: 2em 0.5em 0.5em 2em;
     padding: 0.5em;
+    width: 100%; 
+    max-width: 300px; 
 }
 
-.navBar .search button{
+.navBar .search button {
     margin: 0;
     border-radius: 0.5em 2em 2em 0.5em;
     font-weight: bolder;
     padding: 0.5em;
-
 }
-.botones{
+
+.botones {
     margin: 0.5em;
 }
 
-.navBar .botones button{
+.navBar .botones button {
     color: #bd21b0;
     border: 0.1em solid #Dc7996;
     border-radius: 1rem;
@@ -63,7 +64,7 @@
 
 .navBar button:hover {
     color: #46B7A5;
-    border: 0.2em solid#46B7A5;
+    border: 0.2em solid #46B7A5;
     cursor: pointer;
 }
 
@@ -85,17 +86,45 @@
     padding: 15px;
     border-radius: 5px;
     font-weight: 500;
-    translate: none !important;
     margin-left: 25px;
     border: 2px solid #46B7A5 !important;
 }
-.signin button:hover{
+
+.signin button:hover {
     transform: translateX(0px);
 }
-.signin img{
+
+.signin img {
     height: 2rem;
 }
-.img{
-   width: 180px;
-   height: 120px;
+
+.img {
+    width: 180px;
+    height: 120px;
 }
+
+
+@media screen and (max-width: 768px) {
+    .navBar {
+        flex-direction: column;
+        text-align: center; 
+    }
+
+    .navBar .search {
+        order: 1; 
+    }
+
+    .navBar .search input {
+        border-radius: 0.5em;
+        width: 70%; 
+        max-width: 300px;
+    }
+
+    .navBar .botones {
+        margin-top: 1rem;
+    }
+}
+
+
+
+

@@ -1,46 +1,63 @@
 .filterAndOrder {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    background-image: linear-gradient(to right, #46B7A5, #FFC5C4, #E5CDF7);
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  padding: 8px;
+  background-image: linear-gradient(to right, #46B7A5, #FFC5C4, #E5CDF7);
 }
 
 .allSelects {
-    margin-left: 20px;
-    padding-left: 5px;  
-    border-radius: 15px;
-    cursor: pointer;
-    height: 40px;
-    width: 195px;
-    border: 2px solid #ffffff;
-    font-size: 1em;
-    font-weight: 600;
-    font-family: sans-serif;
-    text-align: left;
-    color: #000000;
-    background: #FFD9F4;
+  margin: 10px 5px; 
+  padding-left: 5px;
+  border-radius: 15px;
+  cursor: pointer;
+  height: 40px;
+  width: 100%; 
+  max-width: 195px; 
+  border: 2px solid #ffffff;
+  font-size: 1em;
+  font-weight: 600;
+  font-family: sans-serif;
+  text-align: left;
+  color: #000000;
+  background: #FFD9F4;
 }
 
 .filterAndOrder button {
-    margin-left: 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    width: 180px;
-    font-weight: 600;
-    font-family: sans-serif;
-    background: #FFD9F4;
+  margin: 10px 5px; 
+  border-radius: 20px;
+  cursor: pointer;
+  width: 100%; 
+  max-width: 180px; 
+  font-weight: 600;
+  font-family: sans-serif;
+  background: #FFD9F4;
 }
 
 .filterAndOrder select:hover {
-    background: none;
+  background: none;
+}
+
+.filterAndOrder button:hover {
+  background: none;
+}
+
+.limpiar {
+  border-color: #ffffff;
+}
+
+@media screen and (min-width: 768px) {
+ 
+  .filterAndOrder {
+      flex-direction: row;
+      justify-content: center;
   }
 
-  .filterAndOrder button:hover {
-    background: none;
+  .allSelects,
+  .filterAndOrder button {
+      margin: 0; 
+      margin-right: 10px; 
+      width: auto; 
+      max-width: none; 
   }
-  .limpiar{
-    border-color: #ffffff;
-  }
-
+}
