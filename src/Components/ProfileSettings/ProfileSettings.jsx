@@ -10,7 +10,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Logo from "../../Assents/stickerPig.png";
 import Crown from "../../Assents/crown.png";
 import Huellas from "../../Assents/huellitasDeChancho.png";
-import Crown from "../../Assents/crown.png";
 ReactModal.setAppElement("#root");
 
 const ProfileSettings = ({handleUpdate}) => {

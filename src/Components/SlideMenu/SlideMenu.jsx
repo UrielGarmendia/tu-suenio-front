@@ -6,7 +6,6 @@ import { NavLink } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useNavigate } from "react-router-dom";
-import Crown from "../../Assents/crown.png";
 
 export const SlideMenu = ({ infoUser }) => {
   const { logout, user } = useAuth0();
