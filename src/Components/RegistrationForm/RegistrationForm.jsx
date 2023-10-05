@@ -78,7 +78,7 @@ const RegistrationForm = () => {
     try {
       setCurrentPage(currentPage + 1);
       const { data } = await axios.post(
-        "http://localhost:3001/user/register",
+        "https://tu-suenio-back.onrender.com/user/register",
         infoUser
       );
       setInfoUser({
@@ -128,8 +128,7 @@ const RegistrationForm = () => {
             <p
               className={
                 currentPage >= 2 ? ` ${styles.p} ${styles.active}` : styles.p
-              }
-            >
+              }>
               Nombres
             </p>
             <div className={styles.containerNumberIcon}>
@@ -138,15 +137,13 @@ const RegistrationForm = () => {
                   currentPage >= 2
                     ? ` ${styles.numberContainer} ${styles.active}`
                     : styles.numberContainer
-                }
-              >
+                }>
                 <span
                   className={
                     currentPage >= 2
                       ? `${styles.span} ${styles.active}`
                       : styles.span
-                  }
-                >
+                  }>
                   2
                 </span>
               </div>
@@ -155,8 +152,7 @@ const RegistrationForm = () => {
                   currentPage >= 2
                     ? `${styles.iconCheck} ${styles.active}`
                     : styles.iconCheck
-                }
-              >
+                }>
                 <CheckIcon />
               </h1>
             </div>
@@ -165,8 +161,7 @@ const RegistrationForm = () => {
             <p
               className={
                 currentPage >= 3 ? ` ${styles.p} ${styles.active}` : styles.p
-              }
-            >
+              }>
               Información
             </p>
             <div className={styles.containerNumberIcon}>
@@ -175,15 +170,13 @@ const RegistrationForm = () => {
                   currentPage >= 3
                     ? ` ${styles.numberContainer} ${styles.active}`
                     : styles.numberContainer
-                }
-              >
+                }>
                 <span
                   className={
                     currentPage >= 3
                       ? `${styles.span} ${styles.active}`
                       : styles.span
-                  }
-                >
+                  }>
                   3
                 </span>
               </div>
@@ -192,8 +185,7 @@ const RegistrationForm = () => {
                   currentPage >= 3
                     ? `${styles.iconCheck} ${styles.active}`
                     : styles.iconCheck
-                }
-              >
+                }>
                 <CheckIcon />
               </h1>
             </div>
@@ -203,8 +195,7 @@ const RegistrationForm = () => {
               c
               className={
                 currentPage >= 4 ? ` ${styles.p} ${styles.active}` : styles.p
-              }
-            >
+              }>
               Contacto
             </p>
             <div className={styles.containerNumberIcon}>
@@ -213,15 +204,13 @@ const RegistrationForm = () => {
                   currentPage >= 4
                     ? `${styles.numberContainer} ${styles.lastNumberContainer} ${styles.active}`
                     : `${styles.numberContainer} ${styles.lastNumberContainer}`
-                }
-              >
+                }>
                 <span
                   className={
                     currentPage >= 4
                       ? `${styles.span} ${styles.active}`
                       : styles.span
-                  }
-                >
+                  }>
                   4
                 </span>
               </div>
@@ -230,8 +219,7 @@ const RegistrationForm = () => {
                   currentPage >= 4
                     ? `${styles.iconCheck} ${styles.active}`
                     : styles.iconCheck
-                }
-              >
+                }>
                 <CheckIcon />
               </h1>
             </div>
@@ -241,8 +229,7 @@ const RegistrationForm = () => {
           <form className={styles.form} onSubmit={handleSubmit}>
             <div
               className={styles.containerPage}
-              style={{ marginLeft: `${firstMarginLeft}%` }}
-            >
+              style={{ marginLeft: `${firstMarginLeft}%` }}>
               <h2 className={styles.title}>Información Básica</h2>
               <div className={styles.field}>
                 <label className={styles.label}>Nombre</label>
@@ -342,8 +329,7 @@ const RegistrationForm = () => {
                       ? `${styles.button} ${styles.disabled}`
                       : styles.button
                   }
-                  disabled={disabledButton}
-                >
+                  disabled={disabledButton}>
                   Enviar
                 </button>
               </div>
