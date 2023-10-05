@@ -1,6 +1,5 @@
 import style from '../Dashboard/Dashboard.module.css'
 import { Add, ManageAccounts, PointOfSale, Settings, TrendingFlat, TrendingUpOutlined } from '@mui/icons-material';
-import Estadisticas from "../Estadisticas/Estadisticas";
 import Create from "../Create/Create"
 import CreateCategorie from "../CreateCategorie/CreateCategorie";
 import ProductosAdminActu from "../ProductosAdminActu/ProductosAdminActu"
@@ -36,12 +35,11 @@ const Dashboard = (infoUser) => {
             </ul>
           </li>
           <li onClick={()=>setActiveButton('RepVentas')}><p><PointOfSale></PointOfSale>REPORTE DE VENTAS</p></li>
-          <li onClick={()=>setActiveButton('Estadisticas')}><p><TrendingUpOutlined></TrendingUpOutlined>ESTADÍSTICAS</p></li>
           <li onClick={()=>setActiveButton('UserReg')}><p><ManageAccounts></ManageAccounts>USUARIOS REGISTRADOS</p></li>
         </ul>
       </section>
       <div className={style.container}>
-      {activeButton === 'Estadisticas' && ( <Estadisticas/>)}
+  
       {activeButton === 'Productos' && (<Create/>)}
       {activeButton === 'categoria' && (<CreateCategorie/>)}
       {activeButton === 'ActProducto' && (<ProductosAdminActu/>)}
