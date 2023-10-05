@@ -141,6 +141,19 @@ const Carrito = ({ infoUser }) => {
           setMessage(data.message);
           elements.getElement(CardElement).clear();
 
+          if (data.message === "succeeded") {
+            const responseProduct = productos.map((e) => {
+              const newResponse = axios.put(
+                `https://tu-suenio-back.onrender.com/products/${e.id}`,
+                {
+                  stock: e.stock - e.quantity,
+                }
+              );
+            });
+            setTimeout(function () {
+              window.location.href = "/payment/success";
+            }, 3000);
+          }
           const response = await axios.post(
             "https://tu-suenio-back.onrender.com/order",
             {
@@ -160,20 +173,6 @@ const Carrito = ({ infoUser }) => {
               dataOrder,
             }
           );
-
-          if (data.message === "succeeded") {
-            const responseProduct = productos.map((e) => {
-              const newResponse = axios.put(
-                `https://tu-suenio-back.onrender.com/products/${e.id}`,
-                {
-                  stock: e.stock - e.quantity,
-                }
-              );
-            });
-            setTimeout(function () {
-              window.location.href = "/payment/success";
-            }, 3000);
-          }
         } catch (error) {
           console.error(error, "esto es el error");
         }
