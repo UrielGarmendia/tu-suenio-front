@@ -100,48 +100,64 @@ const handleDeleteCategory = (categoryId) => {
   }
 };
 
-  return (
-    <div className={styles.container}>
-    <div className={styles.categoriesList}>
-      <h2>Categorías Existentes</h2>
-      <ul>
-        {categoriesList.map((c) => (
-          <li key={c.id}>
-            {c.name}
-            <button className={styles.deleteButton} onClick={() => handleDeleteCategory(c.id)}>Eliminar</button>
-            <button className={styles.deleteButton} onClick={() => setPutCategorie({id: c.id, name: c.name})}>Cambiar</button>
-          </li>
-        ))}
-      </ul>
-    </div>
-    <div className={styles.createCategoryForm}>
-      <h2>{putCategorie.hasOwnProperty("id") ? `Actualizar categoria: '${putCategorie.name}'` : "Crear nueva categoria"}</h2>
-      <form onSubmit={handleSubmit}>
-        <div className={styles.group}>
-        <label htmlFor="name" className={styles.label}>Categoría:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleInputChange}
-            required
-            className={styles.input}
-          />
-          {errors?.name ? <div className={styles.errorText}>{errors.name}</div> : errors.name = ""}
+    return (
+      <div className={styles.container}>
+        <div className={styles.categoriesList}>
+          <h2>Categorías Existentes</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Nombre de Categoría</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {categoriesList.map((c) => (
+                <tr key={c.id}>
+                  <td>{c.name}</td>
+                  <td>
+                    <button className={styles.deleteButton} onClick={() => handleDeleteCategory(c.id)}>
+                      Eliminar
+                    </button>
+                    <button className={styles.editar} onClick={() => setPutCategorie({ id: c.id, name: c.name })}>
+                      Editar
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-        <button type="submit" className={styles.createButton}>
-      {putCategorie.hasOwnProperty("id") ? "Actualizar" : "Crear categoria"}
-    </button>
-  </form>
-  {putCategorie.hasOwnProperty("id") && (
-    <button  onClick={handleReset} className={styles.resetButton}>
-      Volver 
-    </button>
-  )}
-</div>
-  </div>
-);
-};
+        <div className={styles.createCategoryForm}>
+          <h2>{putCategorie.hasOwnProperty("id") ? `Actualizar categoría: '${putCategorie.name}'` : "Crear nueva categoría"}</h2>
+          <form onSubmit={handleSubmit}>
+            <div className={styles.group}>
+              <label htmlFor="name" className={styles.label}>
+                Categoría:
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                required
+                className={styles.input}
+              />
+              {errors?.name ? <div className={styles.errorText}>{errors.name}</div> : (errors.name = "")}
+            </div>
+            <button type="submit" className={styles.createButton}>
+              {putCategorie.hasOwnProperty("id") ? "Actualizar" : "Crear categoría"}
+            </button>
+          </form>
+          {putCategorie.hasOwnProperty("id") && (
+            <button onClick={handleReset} className={styles.resetButton}>
+              Volver
+            </button>
+          )}
+        </div>
+      </div>
+    );
+  };
   
 export default CreateCategorie;

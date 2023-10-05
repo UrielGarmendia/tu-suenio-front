@@ -71,6 +71,7 @@ function App() {
       {location.pathname !== "/register" &&
         location.pathname !== "/profile" && <WhatsappBar />}
       <Routes>
+        
         <Route path="/reviewForm/:id" element={<ReviewForm />} />
         <Route path="/login" element={<Landing />} />
         <Route path="/register" element={<RegistrationForm />} />
@@ -82,7 +83,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/admin" element={<Dashboard infoUser={infoUser} />} />
         <Route path="/contactanos" element={<Contactanos />} />
-        <Route path="/ban" element={<Ban />} />
+        <Route path="/ban" element={<Ban/>}/>
+
         <Route path="/developer" element={<DeveloperTeam />} />
       </Routes>
       {location.pathname !== "/register" &&
