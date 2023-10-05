@@ -164,7 +164,7 @@ const Carrito = ({ infoUser }) => {
               );
             });
             setTimeout(function () {
-              window.location.href = "/payment/success";
+              window.location.href = "/alcancias";
             }, 3000);
           }
           const response = await axios.post(
