@@ -30,7 +30,6 @@ const Carrito = ({ infoUser }) => {
         : item
     )
   );
-
   const handleSum = (stock, indexEl) => {
     if (index[indexEl].quantity < stock) {
       const stateCopy = [...index];
@@ -39,7 +38,6 @@ const Carrito = ({ infoUser }) => {
       setIndex(stateCopy);
     }
   };
-
   const handleRest = (indexEl) => {
     if (index[indexEl].quantity > 1) {
       const stateCopy = [...index];
@@ -98,8 +96,23 @@ const Carrito = ({ infoUser }) => {
     const elements = useElements();
     const [message, setMessage] = useState("");
     console.log(infoUser?.id, "INFOUSER MAN");
-
     console.log(index, "INDEX");
+    const showAlert2 = () => {
+      Swal.fire({
+        toast: false,
+        icon: "success",
+        title: `Gracias por tu compra ${infoUser?.name}`,
+        timer: 2000,
+        timerProgressBar: true,
+        showConfirmButton: false,
+        position: "center",
+      });
+    };
+    useEffect(() => {
+      if (message === "succeeded") {
+        showAlert2();
+      }
+    }, [message])
 
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -185,7 +198,6 @@ const Carrito = ({ infoUser }) => {
           <button onClick={handleBuy} className={styles.button_compra}>
             Comprar
           </button>
-          {message ? <p>{message}</p> : ""}
         </form>
       </div>
     );
