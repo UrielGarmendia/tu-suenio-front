@@ -1,19 +1,39 @@
-.container{
+.container {
     display: flex;
     flex-direction: row;
     width: 100%;
     margin: 0 auto;
     padding: 20px;
     font-family: Arial, sans-serif;
-   justify-content: center;
+    justify-content: center;
 }
-.containerTex{
+
+.containerTex {
     display: flex;
     flex-direction: column;
     width: 45%;
 }
-.familia{
-    padding:3rem ;
+
+.familia {
+    padding: 3rem;
     width: 30%;
     height: 600px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column; 
+        align-items: center; 
+    }
+
+    .containerTex {
+        width: 100%; 
+        margin-top: 20px; 
+    }
+
+    .familia {
+        width: 100%; 
+        height: auto; 
+    }
 }

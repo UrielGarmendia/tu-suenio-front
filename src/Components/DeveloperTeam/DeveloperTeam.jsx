@@ -10,6 +10,7 @@ import pedro from "./pedro.jpg";
 import uriel from "./uriel.jpg";
 import kevin from "./kevin.jpg";
 import jose from "./jose.jpg";
+import santi from "./santi.jpg";
 const developers = [
   {
     name: "Paul Gamarra",
@@ -27,7 +28,7 @@ const developers = [
   },
   {
     name: "Santiago Zucchi",
-    image: joan,
+    image: santi,
     linkedin: "https://www.linkedin.com/in/santiago-zucchi-4bbbaa269/",
     github: "https://github.com/SanteZ97",
     email: "Santiago_zucchi@hotmail.com"

@@ -1,15 +1,18 @@
 .cont {
     display: flex;
-    width: 25%;
     justify-content: center;
+   
+    align-items: center; 
 }
 
 .input {
     height: 2.5rem;
-    border-radius: 0.3rem 0 0 0.3rem;
+    border-radius: 0.3rem;
     border: 2px solid rgb(26, 178, 163);
     background-color: rgb(242, 255, 242);
-    width: 70%;
+    width: 100%; 
+    max-width: 300px; 
+    
 }
 
 .button {
@@ -22,10 +25,11 @@
     font-size: large;
     font-weight: bold;
     cursor: pointer;
+    width: 2.5rem; 
+    height: 2.5rem;
 }
 
 .button:hover {
-    border: none !important;
-    color: black !important;
+    border: none ;
+    color: black ;
 }
-
