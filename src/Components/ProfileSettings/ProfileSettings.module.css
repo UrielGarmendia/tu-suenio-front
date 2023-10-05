@@ -446,17 +446,6 @@ input[disabled] {
     width: 200px;
 }
 
-@media all and (max-width: 599px) {
-    .contenedorSecundario {
-        display: grid;
-        grid-template-columns: 1fr;
-        justify-content: center;
-    }
-    .contenedorConfigPerfil {
-        display: grid;
-        grid-template-columns: 1fr;
-    }
-}
 .huellasTop{
     position: absolute;
     height: 30%;
@@ -484,4 +473,107 @@ input[disabled] {
     width: 30%;
     bottom: -2rem;
     left: -1rem;
+}
+
+@media all and (max-width: 1000px) {
+    .contenedorPrincipal {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 10px;
+        height: 90rem;
+    }
+    .contenedorSecundario {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .contenedorPerfil {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 58%;
+        max-height: 80%;
+        border: solid 3px #30e6c1;
+        border-radius: 10px;
+        background-color: #ffff;
+        padding: 15px 35px 15px 35px;
+    }
+    .contenedorConfigPerfil{
+        display: flex;
+        max-width: 500px;
+        height: 830px;
+        margin-top: 20px;
+    }
+    .configuracionPerfil {
+        font-size: 30px;
+        color: #303030;
+        font-weight: 700;
+        margin-left: 15px;
+    }
+    .containerInputs {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+    .inputsIzquierda {
+        position: relative;
+        top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+    }
+    
+    .inputsDerecha {
+        position: relative;
+        top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        margin-top: 30px;
+    }
+    .containerButtons {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        margin-top: 20px;
+    }
+    .containerButtons button{
+        margin: 0px 1px;
+    }
+    .input {
+        height: 35px;
+        width: 280px;
+        font-size: 21px;
+        margin-bottom: 30px;
+        padding: 0 10px;
+        padding-left: 15px;
+        border-radius: 5px;
+        border: 2px solid #F7D3E5;
+        transition: border 0.2s;
+        background: #fff;
+        color: #303030;
+    }
+    .inputTelefono{
+        width: 320px;
+    }
+    .botonGuardar{
+        height: 50px ;
+    }
+    .botonGuardarDisabled{
+        height: 50px;
+    }
+    .botonEditar{
+        height: 50px;
+    }
+    .botonCancelar{
+        height: 50px;
+    }
 }

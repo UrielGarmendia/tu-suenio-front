@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { useNavigate } from "react-router-dom";
+import Crow from "../../Assents/crown.png";
 
 export const SlideMenu = ({ infoUser }) => {
   const { logout, user } = useAuth0();
@@ -17,12 +18,17 @@ export const SlideMenu = ({ infoUser }) => {
   const menuClassName = isOpen ? `${styles.containerMenu} ${styles.open}` : styles.containerMenu;
   return (
     <div className={styles.principalContainer}>
-      <img onClick={openMenu} className={styles.img} src={infoUser? infoUser.image : user.picture} alt={user.name} />
+      <div className={styles.containerLogo}>
+        {infoUser && infoUser.isAdmin &&
+        <img className={styles.imgLogo} src={Crow} alt="Logo" />
+      }
+        <img onClick={openMenu} className={styles.img} src={infoUser ? infoUser.image : user.picture} alt={user.name} />
+      </div>
       <div className={menuClassName}>
         <div className={styles.containerHeader}>
           <div className={styles.subContainerHeader}>
-            <img className={styles.imgMenu} src={infoUser? infoUser.image : user.picture} alt={user.name} />
-            <h4 className={styles.nameMenu}>{`${infoUser? infoUser.name: user.nickname} ${infoUser?.lastName}`}</h4>
+            <img className={styles.imgMenu} src={infoUser ? infoUser.image : user.picture} alt={user.name} />
+            <h4 className={styles.nameMenu}>{`${infoUser ? infoUser.name : user.nickname} ${infoUser?.lastName}`}</h4>
           </div>
           <hr className={styles.hrMenu} />
         </div>
