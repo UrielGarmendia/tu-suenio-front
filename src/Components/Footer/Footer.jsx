@@ -52,10 +52,10 @@ function Footer() {
         <div className={style.informacion}>
           <h3>Contáctenos:</h3>
           <h4>
-            <PinDrop></PinDrop>Dirección: <span> Bogota, Colombia</span>
+            <PinDrop></PinDrop>Dirección: <span> Cali, Colombia</span>
           </h4>
           <h4>
-            <Phone></Phone>Telefono: <span> 3004464509</span>
+            <Phone></Phone>Telefono: <span> +57 300 4464509</span>
           </h4>
           <h4>
             <Mail></Mail>Email: <span> tusueno022@gmail.com</span>

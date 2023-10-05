@@ -68,6 +68,7 @@
   color: #303030;
 }
 .tags{
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -76,11 +77,10 @@
 
 .categories {
   margin: 0;
-  display: inline-block;
   font-size: 15px;
   padding: 6px 7px;
   background: #e377b1 ;
-  width: 90px;
+  width: auto;
   border-radius: 10px;
   color: white;
   text-align: center;
@@ -95,7 +95,7 @@
   font-size: 15px;
   padding: 6px 7px;
   background: #30e6c1  ;
-  width: 90px;
+  width: auto;
   border-radius: 10px;
   color: white;
   text-align: center;
