@@ -10,15 +10,18 @@ import ReporteVentas from '../ReporteVentas/ReporteVentas'
 import TableUsers from '../tableUsers/TableUsers';
 import { getUsers } from '../../Redux/actions';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
 
-const Dashboard = () => {
+const Dashboard = (infoUser) => {
 
-  const [activeButton, setActiveButton] = useState('Estadisticas')
-  const dispatch = useDispatch()
+  const [activeButton, setActiveButton] = useState('UserReg')
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getUsers());
-  }, []);
+    if(!infoUser.infoUser?.isAdmin) navigate("/")
+  }, [infoUser]);
 
     return (
     <div className={style.dashboard}>
@@ -28,14 +31,13 @@ const Dashboard = () => {
             <ul>
               <li onClick={()=>setActiveButton('ActProducto')}><p>ACTUALIZAR PRODUCTO</p></li>
               <li onClick={()=>setActiveButton('Productos')}><p>CREAR PRODUCTO</p></li>
-              <li onClick={()=>setActiveButton('categoria')}><p>CREAR CATEGORIA</p></li>
+              <li onClick={()=>setActiveButton('categoria')}><p>CATEGORIAS</p></li>
               <li onClick={()=>setActiveButton('ElProducto')}><p>ELIMINAR PRODUCTO</p></li>
             </ul>
           </li>
           <li onClick={()=>setActiveButton('RepVentas')}><p><PointOfSale></PointOfSale>REPORTE DE VENTAS</p></li>
           <li onClick={()=>setActiveButton('Estadisticas')}><p><TrendingUpOutlined></TrendingUpOutlined>ESTADÍSTICAS</p></li>
           <li onClick={()=>setActiveButton('UserReg')}><p><ManageAccounts></ManageAccounts>USUARIOS REGISTRADOS</p></li>
-          <li onClick={()=>setActiveButton('Config')}><p><Settings></Settings>CONFIGURACIÓN DE PERFIL</p></li>
         </ul>
       </section>
       <div className={style.container}>
@@ -46,7 +48,6 @@ const Dashboard = () => {
       {activeButton === 'ElProducto' && (<ProductosAdmin/>)}
       {activeButton === 'RepVentas' && (<ReporteVentas/>)}
       {activeButton === 'UserReg' && (<TableUsers/>)}
-      {activeButton === 'Config' && (<h1>Aqui ira la seccion de CONFIGURACION DEL ADMIN</h1>)}
       <article>
      
       </article>

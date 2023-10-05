@@ -129,7 +129,7 @@ const Carrito = ({ infoUser }) => {
 
         try {
           const { data } = await axios.post(
-            "http://localhost:3001/payment/newPayment",
+            "https://tu-suenio-back.onrender.com/payment/newPayment",
             {
               amount,
               id,
@@ -141,16 +141,30 @@ const Carrito = ({ infoUser }) => {
           setMessage(data.message);
           elements.getElement(CardElement).clear();
 
-          const response = axios.post("http://localhost:3001/order", {
-            status: data.message,
-            totalprice: amount,
-            UserId: infoUser?.id,
-            products: productos,
-          });
+          const response = await axios.post(
+            "https://tu-suenio-back.onrender.com/order",
+            {
+              status: data.message,
+              totalprice: amount,
+              UserId: infoUser?.id,
+              products: productos,
+            }
+          );
+          console.log("info en la response: ", response);
+
+          const dataOrder = response.data;
+          console.log("info en el dataOrder", dataOrder);
+          const notification = await axios.post(
+            "https://tu-suenio-back.onrender.com/payment/order-notification",
+            {
+              dataOrder,
+            }
+          );
+
           if (data.message === "succeeded") {
             const responseProduct = productos.map((e) => {
               const newResponse = axios.put(
-                `http://localhost:3001/products/${e.id}`,
+                `https://tu-suenio-back.onrender.com/products/${e.id}`,
                 {
                   stock: e.stock - e.quantity,
                 }
@@ -166,11 +180,11 @@ const Carrito = ({ infoUser }) => {
       }
     };
     return (
-      <div>
-        <form onSubmit={handleSubmit}>
+      <div className={styles.cont_form_buy}>
+        <form className={styles.form_buy} onSubmit={handleSubmit}>
           <CardElement />
           <button onClick={handleBuy} className={styles.button_compra}>
-            Buy
+            Comprar
           </button>
           {message ? <p>{message}</p> : ""}
         </form>

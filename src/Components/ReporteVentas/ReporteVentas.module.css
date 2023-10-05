@@ -74,7 +74,7 @@ background: #b300a4;
 }
 
 .modal {
-  background: rgb(96, 199, 163);
+  background: rgb(158, 243, 213);
   width: 50vw;
   margin: 0 auto;
   padding: 3rem;
@@ -82,10 +82,14 @@ background: #b300a4;
 }
 
 .modal button{
-  background: red;
-  color: white;
+  background: rgb(255, 255, 255);
+  color: rgb(21, 20, 20);
   border-radius: 2rem;
+  border-color: red;
   font-weight: bolder;
+  position: absolute;
+  top: 18vh;
+  right: 25vw
 }
 
 .modal button:hover {
@@ -94,21 +98,24 @@ background: #b300a4;
 
 .modal span{
   font-weight: bolder;
+
 }
 .modal label{
   background: #a29e9e8f;
   border: 0.1rem solid #202020;
   font-weight: 400;
-  padding: 0.3rem;
-  margin: 0.3rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
-
+.modal p{
+  display: flex;
+  flex-direction: column;
+}
 .modal li{
   list-style:none ; 
   display: flex;
   flex-direction: row;
-  gap:2rem;
-  margin-top: 1rem;
+  gap:1rem;
 }
 
 
@@ -130,4 +137,61 @@ background: #b300a4;
 
 .filtros .botonExcel:hover {
   background: rgb(33, 134, 15);
+}
+
+.modalEditar {
+  background: #d390dc;
+  width: 40vw;
+  margin: 0 auto;
+  padding: 3rem;
+  border-radius: 0.8rem;
+}
+
+.overlayEditar {
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semi-transparente */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalEditar div{
+  display: flex;
+  flex-direction: column;
+  justify-content:right;
+  align-items: baseline;
+}
+
+.modalEditar input{
+  max-width: 15vw;
+  margin-bottom: 0.5rem;
+}
+
+.modalEditar span{
+  font-weight: bolder;
+  margin-bottom: 0.3rem;
+}
+
+.modalEditar button:hover{
+  cursor: pointer;
+  transform: scale(1.10);
+}
+.modalEditar .botonX{
+  color: white;
+  background: #b300a4;
+  border-radius: 5rem;
+  position: absolute;
+  top: 25vh;
+  right: 30vw
+}
+
+.modalEditar .botonSave {
+  background: rgb(39, 39, 142);
+  color: white;
+  border-radius: 3rem;
+  padding: 0.5rem;
 }

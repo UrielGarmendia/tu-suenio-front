@@ -32,10 +32,10 @@ const SearchBar = () => {
         type="search"
         value={name}
         onChange={changeHandler}
-        placeholder="Busca por nombre"
+        placeholder="Buscar alcancia"
       />
       <button className={styles.button} onClick={() => onSearch(name)}>
-        <SearchOutlinedIcon></SearchOutlinedIcon>
+        <SearchOutlinedIcon/>
       </button>
     </div>
   );

@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createCategoria, categories, deleteCategorie} from "../../Redux/actions";
+import { createCategoria, categories, deleteCategorie,allAlcancias} from "../../Redux/actions";
 import axios from "axios";
 import { validateFormC } from "./validationsCategorie";
 import styles from "./CreateCategorie.module.css"
+import Swal from "sweetalert2";
 
 const CreateCategorie = () => {
+
   const [formData, setFormData] = useState({
     name: "",
   });
+
+  const [putCategorie, setPutCategorie] = useState({});
 
   const dispatch = useDispatch();
 
@@ -17,15 +21,17 @@ const CreateCategorie = () => {
   }, [dispatch]);
 
   const categoriesList = useSelector((state) => state.categories);
+  const alcancias = useSelector((state) => state.AllAlcancias);
 
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({
+    name: "",
+  });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
   
-    const inputErrors = validateFormC({ [name]: value });
-    setErrors({ ...errors, ...inputErrors });
     setFormData({ ...formData, [name]: value });
+    setErrors(validateFormC(formData))
   };
 
   const handleSubmit = async (e) => {
@@ -36,15 +42,63 @@ const CreateCategorie = () => {
       return;
     }
 
-    const productData = new FormData();
-    productData.append("name", formData.name);
-    dispatch(createCategoria(formData));
-  };
-  const handleDeleteCategory = (categoryId) => {
-    if (window.confirm("¿Seguro que deseas eliminar esta categoría? -Asegurate de no estar usando esta categoria")) {
-      dispatch(deleteCategorie(categoryId));
+    if(putCategorie.hasOwnProperty("id")) {
+      try {
+        await axios.put(`https://tu-suenio-back.onrender.com/categorie/${putCategorie.id}`, formData);
+        dispatch(categories());
+        setPutCategorie({})
+      } catch (error) {
+        console.log(error.message);
+      }
+    } else {
+      const productData = new FormData();
+      productData.append("name", formData.name);
+      dispatch(createCategoria(formData));
     }
   };
+  const handleReset = () => {
+    setFormData({ name: "" });
+    setErrors({ name: "" });
+    setPutCategorie({});
+  };
+
+  const existAlert = () => {
+    Swal.fire({
+        toast: false,
+        icon: "warning",
+        title: "Existen productos usando esta categoria no puedes eliminarlo",
+        showConfirmButton: true,
+        position: "center",
+    })
+};
+
+  const deleteAlert = () => {
+    Swal.fire({
+        toast: false,
+        icon: "warning",
+        title: "Estas segura/o de eliminar la categoria",
+        showConfirmButton: true,
+        showCancelButton: true,
+        position: "center",
+    }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            "Categoria borrada con exito"
+          )
+        }
+    })
+};
+
+const handleDeleteCategory = (categoryId) => {
+  const verifyCategorie = alcancias.find(el => +el.id_categorie === categoryId);
+  if(verifyCategorie) {
+    return existAlert();
+  } else {
+    deleteAlert()
+    dispatch(deleteCategorie(categoryId));
+    setPutCategorie({});
+  }
+};
 
   return (
     <div className={styles.container}>
@@ -55,15 +109,16 @@ const CreateCategorie = () => {
           <li key={c.id}>
             {c.name}
             <button className={styles.deleteButton} onClick={() => handleDeleteCategory(c.id)}>Eliminar</button>
+            <button className={styles.deleteButton} onClick={() => setPutCategorie({id: c.id, name: c.name})}>Cambiar</button>
           </li>
         ))}
       </ul>
     </div>
     <div className={styles.createCategoryForm}>
-      <h2>Crear Nueva Categoría</h2>
+      <h2>{putCategorie.hasOwnProperty("id") ? `Actualizar categoria: '${putCategorie.name}'` : "Crear nueva categoria"}</h2>
       <form onSubmit={handleSubmit}>
         <div className={styles.group}>
-          <label htmlFor="name">Categoría:</label>
+        <label htmlFor="name" className={styles.label}>Categoría:</label>
           <input
             type="text"
             id="name"
@@ -71,12 +126,20 @@ const CreateCategorie = () => {
             value={formData.name}
             onChange={handleInputChange}
             required
+            className={styles.input}
           />
-          {errors.name && <div className={styles.errorText}>{errors.name}</div>}
+          {errors?.name ? <div className={styles.errorText}>{errors.name}</div> : errors.name = ""}
         </div>
-        <button type="submit" className={styles.createButton}>Crear Categoría</button>
-      </form>
-    </div>
+        <button type="submit" className={styles.createButton}>
+      {putCategorie.hasOwnProperty("id") ? "Actualizar" : "Crear categoria"}
+    </button>
+  </form>
+  {putCategorie.hasOwnProperty("id") && (
+    <button  onClick={handleReset} className={styles.resetButton}>
+      Volver 
+    </button>
+  )}
+</div>
   </div>
 );
 };

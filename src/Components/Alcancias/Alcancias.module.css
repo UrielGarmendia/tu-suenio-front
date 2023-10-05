@@ -1,15 +1,16 @@
-.principalContainer{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    flex-wrap: wrap;
-    padding: 1rem;
-    margin: 1rem;
+.principalContainer {
+    padding: 0rem 11%;
 }
 .containerCards {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid;
+    margin-top: 2rem;
+    grid-auto-rows: auto;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    row-gap: 25px;
+    column-gap: 53px;
 }
+@media (max-width:768px){
+    .principalContainer {
+      padding: 20px;
+    }
+  }
