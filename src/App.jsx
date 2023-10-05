@@ -52,7 +52,7 @@ function App() {
             navigate("/register");
           } else {
             setInfoUser(data);
-            if(data?.isDisable) navigate("/ban");
+            if (data?.isDisable) navigate("/ban");
           }
         }
         postData();
@@ -64,13 +64,13 @@ function App() {
 
   return (
     <div>
-      {location.pathname === "/register" || location.pathname === "/ban" ||
+      {location.pathname === "/register" ||
+        location.pathname === "/ban" ||
         ("/detail" && <NavBar infoUser={infoUser} />)}
       {location.pathname == "/alcancias" && <FilteredOrdered />}
       {location.pathname !== "/register" &&
         location.pathname !== "/profile" && <WhatsappBar />}
       <Routes>
-        
         <Route path="/reviewForm/:id" element={<ReviewForm />} />
         <Route path="/login" element={<Landing />} />
         <Route path="/register" element={<RegistrationForm />} />
@@ -82,11 +82,12 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/admin" element={<Dashboard infoUser={infoUser} />} />
         <Route path="/contactanos" element={<Contactanos />} />
-        <Route path="/ban" element={<Ban/>}/>
+        <Route path="/ban" element={<Ban />} />
         <Route path="/developer" element={<DeveloperTeam />} />
       </Routes>
       {location.pathname !== "/register" &&
-        location.pathname !== "/profile" && location.pathname !== "/ban" && <Footer />}
+        location.pathname !== "/profile" &&
+        location.pathname !== "/ban" && <Footer />}
     </div>
   );
 }
