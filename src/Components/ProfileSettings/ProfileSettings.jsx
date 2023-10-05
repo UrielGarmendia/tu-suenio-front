@@ -10,11 +10,11 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Logo from "../../Assents/stickerPig.png";
 import Crown from "../../Assents/crown.png";
 import Huellas from "../../Assents/huellitasDeChancho.png";
+ReactModal.setAppElement("#root");
 
-const ProfileSettings = () => {
+const ProfileSettings = ({handleUpdate}) => {
   const hiddenSubmitButtonRef = useRef(null);
   const { user, isAuthenticated } = useAuth0();
-  console.log("Este es el usuario en config Perf:", user);
   const [selectedImage, setSelectedImage] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
@@ -90,8 +90,6 @@ const ProfileSettings = () => {
     setHasChanges(haveChanges);
   }, [dataUser, copyDataUser]);
 
-  console.log("usuario en ProfileSettings", dataUser);
-
   const handleInputs = (event) => {
     setDataUser({
       ...dataUser,
@@ -132,6 +130,7 @@ const ProfileSettings = () => {
       if (!data.error) {
         setDataUser(data);
         setCopyDataUser(data);
+        handleUpdate();
       }
     } catch (error) {
       console.error("Error en la solicitud PUT", error.message);

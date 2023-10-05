@@ -10,7 +10,7 @@ import { allAlcancias } from "../../Redux/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import SlideMenu from "../SlideMenu/SlideMenu";
 
-const NavBar = (infoUser) => {
+const NavBar = ({infoUser}) => {
   const { loginWithRedirect, isAuthenticated, user } = useAuth0();
   const dispatch = useDispatch();
 
@@ -51,12 +51,12 @@ const NavBar = (infoUser) => {
           </div>
         </Link>
         {isAuthenticated ? (
-          <SlideMenu />
+          <SlideMenu  infoUser={infoUser}/>
         ) : (
           <button onClick={() => loginWithRedirect()}>Iniciar sesion</button>
         )}
       {
-        infoUser.infoUser && infoUser.infoUser.isAdmin && (
+        infoUser && infoUser.isAdmin && (
           <Link to="/admin">
           <button>
             <SettingsIcon></SettingsIcon>

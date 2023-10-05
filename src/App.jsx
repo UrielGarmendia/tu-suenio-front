@@ -34,11 +34,12 @@ function App() {
   }, []);
 
   const [infoUser, setInfoUser] = useState(null);
+  const [forceUpdate, setForceUpdate] = useState(false);
   const { isAuthenticated, user } = useAuth0();
 
-  console.log("Este es el usuario:", user);
-  console.log("esto es infoUser", infoUser);
-  console.log("esto es infoUser", infoUser);
+  const handleUpdate = () => {
+    setForceUpdate(!forceUpdate);
+  }
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -60,7 +61,7 @@ function App() {
         console.error("Error en la solicitud:", error);
       }
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, forceUpdate]);
 
   return (
     <div>
@@ -75,7 +76,7 @@ function App() {
         <Route path="/reviewForm/:id" element={<ReviewForm />} />
         <Route path="/login" element={<Landing />} />
         <Route path="/register" element={<RegistrationForm />} />
-        <Route path="/profile" element={<ProfileSettings />} />
+        <Route path="/profile" element={<ProfileSettings handleUpdate={handleUpdate}/>} />
         <Route path="/alcancias" element={<Alcancias />} />
         <Route path="/" element={<Home />} />
         <Route path="/detail/:id" element={<Detail infoUser={infoUser} />} />
