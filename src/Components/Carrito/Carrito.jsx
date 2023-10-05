@@ -123,8 +123,8 @@ const Carrito = ({ infoUser }) => {
         console.log(amount, "esto es");
 
         const productos = index.map((e) => {
-          const { id, quantity, price, name } = e;
-          return { id, quantity, price, name };
+          const { id, quantity, price, name, stock } = e;
+          return { id, quantity, price, name, stock };
         });
 
         try {
@@ -162,6 +162,14 @@ const Carrito = ({ infoUser }) => {
           );
 
           if (data.message === "succeeded") {
+            const responseProduct = productos.map((e) => {
+              const newResponse = axios.put(
+                `https://tu-suenio-back.onrender.com/products/${e.id}`,
+                {
+                  stock: e.stock - e.quantity,
+                }
+              );
+            });
             setTimeout(function () {
               window.location.href = "/payment/success";
             }, 3000);
@@ -216,15 +224,13 @@ const Carrito = ({ infoUser }) => {
                 <div className={styles.quantity}>
                   <button
                     className={styles.button_quantity}
-                    onClick={() => handleRest(indexEl)}
-                  >
+                    onClick={() => handleRest(indexEl)}>
                     -
                   </button>
                   <h4>{el.quantity}</h4>
                   <button
                     className={styles.button_quantity}
-                    onClick={() => handleSum(el.stock, indexEl)}
-                  >
+                    onClick={() => handleSum(el.stock, indexEl)}>
                     +
                   </button>
                 </div>
