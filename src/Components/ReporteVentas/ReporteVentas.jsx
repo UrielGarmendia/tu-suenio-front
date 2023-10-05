@@ -16,6 +16,7 @@ const ReporteVentas = () => {
   const [fechaFiltro, setFechaFiltro] = useState('');
   const [clienteFiltro, setClienteFiltro] = useState('');
   const [modalModificarIsOpen, setModalModificarIsOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
   const [ventasData, setVentasData] = useState([]);
   const dispatch = useDispatch()
   const userIdToNameMap = {};
@@ -25,28 +26,6 @@ const ReporteVentas = () => {
     dispatch(getUsers())
   }, []);
 
-  const showAlert = () => {
-    Swal.fire({
-        title: '¿Estas seguro de guardar los cambios?',
-        text: "Una vez realizado no se podra revertir el proceso",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        cancelButtonText: 'Cancelar',
-        confirmButtonText: 'Si, guardar'
-      }).then((result) => {
-        if (result.isConfirmed) {
-            // dispatch(deleteProduct(json))
-          Swal.fire(
-            'Cambios guardados!',
-            'Los cambios fueron cambiados con exito',
-            'success'
-          )
-        }
-      })
-  };
-
   users.forEach((user) => {
     userIdToNameMap[user.id] = `${user.name} ${user.lastName}`; 
   });
@@ -55,7 +34,6 @@ const ReporteVentas = () => {
     nombreCliente: userIdToNameMap[venta.UserId],
     createdAt: venta.createdAt.split('T')[0]
   }));
-  const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -94,6 +72,7 @@ const ReporteVentas = () => {
         (!clienteFiltro || nombreClient?.includes(clienteFiltro.toLowerCase()))
         );
       });
+    setCurrentPage(1)
     setVentasData(ventasFiltradas.slice(indexOfFirstItem, indexOfLastItem));
   };
 
@@ -124,11 +103,10 @@ const ReporteVentas = () => {
   const guardarCambiosVenta = ( ) => {
     cerrarModalModificar();
     setVentaAEditar({})
-    showAlert(ventaAEditar)
   };
   
   const goToNextPage = () => {
-    if (currentPage < Math.ceil(ordenesActualizado.length / itemsPerPage)) {
+    if (currentPage < Math.ceil(ordenesActualizado.length / itemsPerPage) && ventasData.length >= itemsPerPage) {
       setCurrentPage(currentPage + 1);
     }
   };
@@ -151,7 +129,6 @@ const ReporteVentas = () => {
         <input
           type="text"
           placeholder="Filtrar por cliente"
-          onKeyDown={filtrarVentas}
           value={clienteFiltro}
           onChange={(e) => setClienteFiltro(e.target.value)}
         />
@@ -180,7 +157,6 @@ const ReporteVentas = () => {
               <td>{venta.status}</td>
               <td>
                 <button onClick={() => abrirModal(venta)}>Ver Detalle</button>
-                <button style={{background: '#2e20c6'}}  onClick={() => abrirModalAct(venta, true)}>Modificar</button>
               </td>
             </tr>
           ))}
@@ -264,7 +240,6 @@ const ReporteVentas = () => {
           value={ventaAEditar.status} 
           onChange={(e) => handleChangeCampo(e)}
         />
-        <button className={style.botonSave} onClick={()=>{showAlert()}}>Guardar Cambios</button>
       </div>
     </article>
   )}
