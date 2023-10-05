@@ -10,7 +10,7 @@
   
   .Row {
     display: flex;
-    flex-wrap: wrap; /* Añadido para que las tarjetas se envuelvan en una nueva fila si no caben */
+    flex-wrap: wrap; 
     justify-content: space-between;
     margin-bottom: 20px;
   }
@@ -25,9 +25,9 @@
   .Developer .DeveloperCard {
     flex: 1;
     text-align: center;
-    margin: 10px; /* Reduje el margen para que quepan más tarjetas por fila */
-    width: calc(25% - 20px); /* Ajuste para mostrar 4 tarjetas por fila y espacio entre ellas */
-    max-width: 300px; /* Ancho máximo de las tarjetas */
+    margin: 10px;
+    width: calc(25% - 20px); 
+    max-width: 300px; 
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -79,7 +79,7 @@
   
   .Row {
     display: flex;
-    flex-wrap: wrap; /* Añadido para que las tarjetas se envuelvan en una nueva fila si no caben */
+    flex-wrap: wrap; 
     justify-content: space-between;
     margin-bottom: 20px;
   }
@@ -94,9 +94,9 @@
   .Developer .DeveloperCard {
     flex: 1;
     text-align: center;
-    margin: 10px; /* Reduje el margen para que quepan más tarjetas por fila */
-    width: calc(25% - 20px); /* Ajuste para mostrar 4 tarjetas por fila y espacio entre ellas */
-    max-width: 300px; /* Ancho máximo de las tarjetas */
+    margin: 10px;
+    width: calc(25% - 20px); 
+    max-width: 300px; 
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
