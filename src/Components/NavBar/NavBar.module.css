@@ -10,20 +10,41 @@
 
 .cart_cont {
     position: relative;
+    background-color: white;
+    border-radius: 50%;
+    height: 3.5rem;
+    width: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #30e6c1;
+    transition: all 0.3s;
+}
+.cart_cont:hover {
+    cursor: pointer;
+    border: 3px solid #24B397;
+    transform: scale(1.1);
 }
 
 .cartNumber {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    background-color: red;
-    width: 1.5rem;
-    height: 1.5rem;
+    background-color: #e377b1;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
-    top: 0;
-    left: 1rem;
+    top: 18px;
+    left: 30px;
     font-weight: bold;
+    font-size: 12px;
     color: white;
 }
-
+.carrito{
+    height: 15px;
+    width: 30px;
+}
 .navBar .search {
     flex: 1; 
     display: flex;
@@ -48,24 +69,28 @@
 }
 
 .botones {
-    margin: 0.5em;
+    margin: 0;
 }
 
-.navBar .botones button {
-    color: #bd21b0;
-    border: 0.1em solid #Dc7996;
-    border-radius: 1rem;
-    background: #E5CDF7;
-    margin-left: 0.1em;
-    padding: 0.5em;
+.button {
+    border: 2px solid #e377b1;
+    border-radius: 15px;
+    background: white;
+    margin: 0 1.5rem;
+    padding: 13px 20px;
+    color: #646464;
     font-size: medium;
     font-weight: bolder;
+    transition: all 0.4s;
 }
 
-.navBar button:hover {
-    color: #46B7A5;
-    border: 0.2em solid #46B7A5;
+.button:hover {
+    color: #e377b1;
     cursor: pointer;
+}
+.button:active,
+.button:focus {
+    color: #e377b1;
 }
 
 .signin {
@@ -75,23 +100,28 @@
     padding: 0.2rem;
 }
 
-.signin button {
+.buttonSettings {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 2rem;
+    height: 55px;
+    width: 55px;
     margin: 0.5rem;
     border: none;
     font-size: 18px;
-    padding: 15px;
-    border-radius: 5px;
+    border-radius: 50%;
     font-weight: 500;
     margin-left: 25px;
-    border: 2px solid #46B7A5 !important;
+    border: 2px solid #30e6c1 !important;
+    background-color: #ffffff;
+    color: #646464;
+    transition: all 0.3s;
 }
 
-.signin button:hover {
+.buttonSettings:hover {
     transform: translateX(0px);
+    transform: scale(1.1);
+    border: 2px solid #46B7A5 !important;
 }
 
 .signin img {
@@ -99,15 +129,38 @@
 }
 
 .img {
-    width: 180px;
-    height: 120px;
+    width: 150px;
+    height: 100px;
 }
-
+.loginButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    width: 100%;
+    margin: 0.5rem;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 25px;
+    border: 2px solid #30e6c1;
+    background-color: #ffffff;
+    transition: all 0.3s;
+    border-radius: 10px;
+    font-weight: 600;
+    padding: 0 15px;
+    color: #646464;
+}
+.loginButton:hover{
+    transform: scale(1.1);
+    border: 2px solid #46B7A5;
+    color: black;
+}
 
 @media screen and (max-width: 768px) {
     .navBar {
         flex-direction: column;
-        text-align: center; 
+        text-align: center;
     }
 
     .navBar .search {
@@ -116,12 +169,17 @@
 
     .navBar .search input {
         border-radius: 0.5em;
-        width: 70%; 
+        width: 100%; 
         max-width: 300px;
     }
 
     .navBar .botones {
-        margin-top: 1rem;
+        margin-top: 14px;
+        display: flex;
+        flex-direction: column;
+    }
+    .navBar .botones .button {
+        margin-top: 5px;
     }
 }
 

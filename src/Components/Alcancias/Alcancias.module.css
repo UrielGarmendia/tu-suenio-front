@@ -3,10 +3,10 @@
 }
 .containerCards {
     display: grid;
-    margin-top: 2rem;
+    margin-top: 1rem;
     grid-auto-rows: auto;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    row-gap: 25px;
+    row-gap: 10px;
     column-gap: 53px;
 }
 @media (max-width:768px){

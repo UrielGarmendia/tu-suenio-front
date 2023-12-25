@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { categories } from "../../Redux/actions";
 import { ordenamiento, filtered, cleanFilters, filterBySize, ProductsByCategoryAndSize } from "../../Redux/actions";
 import Swal from "sweetalert2";
+import CleaningServicesIcon from '@mui/icons-material/CleaningServices';
 
 const FilteredOrdered = () => {
   const showAlert = ( ) => {
@@ -119,7 +120,8 @@ const handleClick = () => {
       </optgroup>
     </select>
     <button className="limpiar" onClick={handleClick}>
-      Limpiar filtros
+      Limpiar
+      <CleaningServicesIcon className="cleanIcon" fontSize="medium"/>
     </button>
   </div>
 );
