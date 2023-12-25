@@ -9,8 +9,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { allAlcancias } from "../../Redux/actions";
 import { useAuth0 } from "@auth0/auth0-react";
 import SlideMenu from "../SlideMenu/SlideMenu";
+import { useLocation } from "react-router-dom";
 
 const NavBar = ({infoUser}) => {
+  const location = useLocation();
   const { loginWithRedirect, isAuthenticated, user } = useAuth0();
   const dispatch = useDispatch();
 
@@ -25,45 +27,42 @@ const NavBar = ({infoUser}) => {
       <div>
         <img src={logo} alt="logo" height="100px" className={style.img} />
       </div>
+      <SearchBar />
       <div className={style.botones}>
-        <div className={style.links}>
           <Link to="/">
-            <button>INICIO</button>
+            <button className={style.button}>INICIO</button>
           </Link>
           <Link to="/alcancias">
-            <button onClick={handleClick}>ALCANCIAS</button>
+            <button className={style.button} onClick={handleClick}>ALCANCIAS</button>
           </Link>
           <Link to="/about">
-          <button>EMPRESA</button>
+          <button className={style.button}>EMPRESA</button>
           </Link>
           <Link to='/contactanos'>
-            <button>CONTACTANOS</button>
+            <button className={style.button}>CONTACTANOS</button>
           </Link>
-          
-        </div>
       </div>
-      <SearchBar />
       <div className={style.signin}>
         <Link to="/carrito">
           <div className={style.cart_cont}>
-            <img src={carrito} alt="carrito" />
+            <img src={carrito} alt="carrito" className={style.carrito}/>
             <p className={style.cartNumber}>{Cart?.length}</p>
           </div>
         </Link>
-        {isAuthenticated ? (
-          <SlideMenu  infoUser={infoUser}/>
-        ) : (
-          <button onClick={() => loginWithRedirect()}>Iniciar sesion</button>
-        )}
-      {
+        {
         infoUser && infoUser.isAdmin && (
           <Link to="/admin">
-          <button>
+          <button className={style.buttonSettings}>
             <SettingsIcon></SettingsIcon>
           </button>
         </Link>
         )
       }
+        {isAuthenticated ? (
+          <SlideMenu  infoUser={infoUser}/>
+        ) : (
+          <button onClick={() => loginWithRedirect()} className={style.loginButton}>Iniciar sesion</button>
+        )}
       </div>
     </div>
   );

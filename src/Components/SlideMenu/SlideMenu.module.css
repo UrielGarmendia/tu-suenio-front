@@ -7,8 +7,14 @@
   width: 3.5rem;
   height: 3.5rem !important;
   border-radius: 50%;
-  transform: none !important;
   margin-left: 20px;
+  border: 3px solid #30e6c1;
+  transition: all 0.3s;
+}
+.img:hover {
+  cursor: pointer;
+  border: 3px solid #24B397;
+  transform: scale(1.1);
 }
 
 .containerMenu {
@@ -16,7 +22,7 @@
   flex-direction: column;
   position: absolute;
   background: #fff;
-  top: 4rem;
+  top: 4.5rem;
   right: 0;
   min-width: 250px;
   max-width: 350px;
@@ -56,7 +62,6 @@
   width: 3.5rem;
   height: 3.5rem !important;
   border-radius: 50%;
-  transform: none !important;
   margin: 10px 0px !important;
 }
 
@@ -108,7 +113,7 @@
   width: 35px;
   height: 35px;
   border-radius: 50%;
-  background: linear-gradient(#ff4568, #FF95AA);
+  background: linear-gradient(#e377b1,  #f8d5e7);;
   color: white;
 }
 

@@ -1,4 +1,4 @@
-import logo from "./logo_whatsapp.png"
+import logo from "./logoWhat.png";
 import styles from "./whatsappBar.module.css";
 
 const WhatsappBar = () => {
